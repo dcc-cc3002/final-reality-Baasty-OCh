@@ -2,8 +2,9 @@ package model.playable
 import model.playable.Playable
 
 class Character extends Playable {
-  def sayName(name: String): Unit = {
-    println(name)
+  def sayName(name: String): String = {
+    return name
+
   }
 
   def sayLife(life: Int): Unit = {
@@ -22,10 +23,21 @@ class Character extends Playable {
     println(kind)
   }
 
-  def checkWeapon(player: Playable): Unit = {
-    // if player.
+  def putWeapon(weapon: String): Unit = {
+    val arma: Unit = println(weapon)
 
   }
-
-
 }
+
+  object HelloWorld {
+    def main(args: Array[String]): Unit = {
+
+      var Cris: Playable = new Character()
+      Cris.sayName("Mercedes Benz")
+      Cris.sayLife(2019)
+      Cris.sayDefence(2015)
+
+
+    }
+  }
+
