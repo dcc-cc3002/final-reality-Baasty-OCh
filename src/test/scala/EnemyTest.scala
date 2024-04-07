@@ -1,7 +1,7 @@
 import munit.FunSuite
 import model.nonplayable.{MagicWeapon, NonPlayable, Weapon,Enemy}
 import model.playable.{Character, MagicCharacter, Playable}
-class NonPlayableTest extends FunSuite {
+class EnemyTest extends FunSuite {
   var Sword: Weapon = _
   var Bow: Weapon = _
   var Wand: MagicWeapon = _
