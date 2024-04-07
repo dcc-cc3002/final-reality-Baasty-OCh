@@ -92,7 +92,7 @@ class PlayableTest extends FunSuite {
     var expected: String = "Mago Blanco"
     assertEquals(clase, expected)
   }
-  test("NotEqualsKind") {
+  test("NotEqualsMagicKind") {
     var clase1 = Alexis.sayKind("Mago Blanco")
     var clase2 = Vidal.sayKind("Mago Negro")
     assertNotEquals(clase1, clase2)
