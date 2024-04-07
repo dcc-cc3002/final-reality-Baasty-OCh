@@ -87,4 +87,9 @@ class PlayableTest extends FunSuite {
     var mana2 = Vidal.sayMana(80)
     assertNotEquals(mana1, mana2)
   }
+  test("equalsMagicKind") {
+    var clase = Alexis.sayKind("Mago Blanco")
+    var expected: String = "Mago Blanco"
+    assertEquals(clase, expected)
+  }
 }
