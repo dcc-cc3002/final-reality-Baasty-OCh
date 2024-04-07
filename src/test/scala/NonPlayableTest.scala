@@ -90,7 +90,7 @@ class NonPlayableTest extends FunSuite {
     var mana2 = Staff.sayAttack(30)
     assertNotEquals(mana1, mana2)
   }
-  test("EqualsEnemyName"){
+  test("equalsEnemyName"){
     var nombre: String = Neymar.sayName("Neymar")
     var expected: String = "Neymar"
     assertEquals(nombre,expected)
