@@ -69,4 +69,9 @@ class PlayableTest extends FunSuite {
     var expected: String = "Hacha"
     assertEquals(arma, expected)
   }
+  test("NotEqualsWeapon") {
+    var arma1 = Cristiano.putWeapon("Hacha")
+    var arma2 = Messi.putWeapon("Arco")
+    assertNotEquals(arma1, arma2)
+  }
 }
