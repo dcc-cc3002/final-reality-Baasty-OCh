@@ -1,6 +1,6 @@
 package model.nonplayable
-import model.nonplayable.Nonplayable
-class Weapon extends Nonplayable {
+import model.nonplayable.NonPlayable
+class Weapon extends NonPlayable {
   def sayName(name: String) : String = {
     return name
   }
