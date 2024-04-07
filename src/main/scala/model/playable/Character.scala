@@ -15,8 +15,8 @@ class Character extends Playable {
     return defence
   }
 
-  def sayWeight(weight: Int): Unit = {
-    println(weight)
+  def sayWeight(weight: Int): Int = {
+    return weight
   }
 
   def sayKind(kind: String): Unit = {
