@@ -9,7 +9,7 @@ class PlayableTest extends FunSuite{
     var Messi = Character()
   }
 
-  test("equalsname"){
+  test("equalsName"){
     val nombre = Cristiano.sayName("Cristiano")
     val expected = "Cristiano"
     assertEquals(nombre,expected)

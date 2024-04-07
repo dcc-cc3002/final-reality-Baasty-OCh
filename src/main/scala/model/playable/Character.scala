@@ -1,5 +1,10 @@
 package model.playable
 
-class Character {
+
+class Character extends Playable {
+  def sayName(name: String): Unit = {
+    println(name)
+
+  }
 
 }
