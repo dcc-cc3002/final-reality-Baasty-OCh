@@ -11,6 +11,7 @@ class NonPlayableTest extends FunSuite {
   var Alexis: MagicCharacter = _
   var Vidal: MagicCharacter = _
   var Neymar: Enemy = _
+  var Bale: Enemy = _
   override def beforeEach(context: BeforeEach): Unit = {
     Sword = new Weapon()
     Bow = new Weapon()
@@ -21,6 +22,7 @@ class NonPlayableTest extends FunSuite {
     Alexis = new MagicCharacter()
     Vidal = new MagicCharacter()
     Neymar = new Enemy()
+    Bale = new Enemy()
 
   }
 
@@ -94,6 +96,11 @@ class NonPlayableTest extends FunSuite {
     var nombre: String = Neymar.sayName("Neymar")
     var expected: String = "Neymar"
     assertEquals(nombre,expected)
+  }
+  test("NotEqualsEnemyName"){
+    var nombre1: String = Neymar.sayName("Neymar")
+    var nombre2: String = Bale.sayName("Bale")
+    assertNotEquals(nombre1,nombre2)
   }
 }
 
