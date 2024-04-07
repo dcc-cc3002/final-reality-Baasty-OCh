@@ -5,7 +5,7 @@ trait Playable {
   def sayLife(life: Int): Int
   def sayDefence(defence: Int): Int
   def sayWeight(weight: Int): Int
-  def sayKind(kind: String): Unit
+  def sayKind(kind: String): String
   def putWeapon(weapon: String): Unit
 
 

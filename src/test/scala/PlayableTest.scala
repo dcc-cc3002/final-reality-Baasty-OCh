@@ -54,4 +54,9 @@ class PlayableTest extends FunSuite {
     var peso2 = Messi.sayWeight(40)
     assertNotEquals(peso1, peso2)
   }
+  test("equalsKind") {
+    var clase = Cristiano.sayKind("Paladin")
+    var expected: String = "Paladin"
+    assertEquals(clase, expected)
+  }
 }
