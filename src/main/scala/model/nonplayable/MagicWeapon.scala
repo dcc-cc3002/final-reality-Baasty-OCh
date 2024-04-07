@@ -3,11 +3,12 @@ import model.nonplayable.NonPlayable
 import model.playable.MagicCharacter
 
 class MagicWeapon extends NonPlayable {
+  def sayMagicOwner(magicOwner : MagicCharacter): MagicCharacter = {
+    return magicOwner
+  }
+
   def sayMana(mana:Int): Int = {
     return mana
-  }
-  def sayMagicOwner(magicOwner: MagicCharacter): MagicCharacter ={
-    return magicOwner
   }
 
   def sayName(name: String): String = {
@@ -21,7 +22,4 @@ class MagicWeapon extends NonPlayable {
   def sayAttack(attack: Int): Int = {
     return attack
   }
-
-
-
 }
