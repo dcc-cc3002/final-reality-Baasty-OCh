@@ -46,9 +46,9 @@ class NonPlayableTest extends FunSuite {
 
   }
   test("equalsMana") {
-    var ataque = Wand.sayMana(20)
+    var mana = Wand.sayMana(20)
     var expected: Int = 20
-    assertEquals(ataque, expected)
+    assertEquals(mana, expected)
   }
   test("NotEqualsMana") {
     var mana1 = Wand.sayMana(20)
