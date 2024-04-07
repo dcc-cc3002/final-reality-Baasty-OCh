@@ -4,11 +4,12 @@ class PlayableTest extends FunSuite {
   var Cristiano: Playable = _
   var Messi: Playable = _
   var Alexis: MagicCharacter = _
-
+  var Vidal: MagicCharacter = _
   override def beforeEach(context: BeforeEach): Unit = {
     Cristiano = new Character()
     Messi = new Character()
     Alexis = new MagicCharacter()
+    Vidal = new MagicCharacter()
 
   }
 
@@ -80,5 +81,10 @@ class PlayableTest extends FunSuite {
     var mana = Alexis.sayMana(90)
     var expected: Int = 90
     assertEquals(mana, expected)
+  }
+  test("NotEqualsMana") {
+    var mana1 = Alexis.sayMana(90)
+    var mana2 = Vidal.sayMana(80)
+    assertNotEquals(mana1, mana2)
   }
 }
