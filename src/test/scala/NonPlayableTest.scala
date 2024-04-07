@@ -3,7 +3,7 @@ import model.nonplayable.{MagicWeapon, NonPlayable, Weapon}
 import model.playable.{Character,Playable}
 class NonPlayableTest extends FunSuite {
   var Sword: Weapon = _
-  var Bow: NonPlayable = _
+  var Bow: Weapon = _
   var Wand: MagicWeapon = _
   var Staff: MagicWeapon = _
   var Cristiano: Character = _
@@ -58,9 +58,8 @@ class NonPlayableTest extends FunSuite {
   test("NotEqualsOwner") {
     var dueño1: Character = Sword.sayOwner(Cristiano)
     var dueño2: Character = Bow.sayOwner(Messi)
-    assertEquals(dueño1, dueño2)
+    assertNotEquals(dueño1, dueño2)
   }
-
 
   test("equalsMana") {
     var mana = Wand.sayMana(20)

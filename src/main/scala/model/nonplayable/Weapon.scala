@@ -5,6 +5,7 @@ class Weapon extends NonPlayable {
   def sayOwner(owner : Character): Character = {
     return owner
   }
+
   def sayName(name: String): String = {
     return name
   }
