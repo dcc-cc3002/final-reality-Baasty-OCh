@@ -1,5 +1,5 @@
 import munit.FunSuite
-import model.nonplayable.{MagicWeapon, NonPlayable, Weapon}
+import model.nonplayable.{MagicWeapon, NonPlayable, Weapon,Enemy}
 import model.playable.{Character, MagicCharacter, Playable}
 class NonPlayableTest extends FunSuite {
   var Sword: Weapon = _
@@ -10,6 +10,7 @@ class NonPlayableTest extends FunSuite {
   var Messi: Character = _
   var Alexis: MagicCharacter = _
   var Vidal: MagicCharacter = _
+  var Neymar: Enemy = _
   override def beforeEach(context: BeforeEach): Unit = {
     Sword = new Weapon()
     Bow = new Weapon()
@@ -19,6 +20,7 @@ class NonPlayableTest extends FunSuite {
     Messi = new Character()
     Alexis = new MagicCharacter()
     Vidal = new MagicCharacter()
+    Neymar = new Enemy()
 
   }
 
@@ -88,4 +90,10 @@ class NonPlayableTest extends FunSuite {
     var mana2 = Staff.sayAttack(30)
     assertNotEquals(mana1, mana2)
   }
+  test("EqualsEnemyName"){
+    var nombre: String = Neymar.sayName("Neymar")
+    var expected: String = "Neymar"
+    assertEquals(nombre,expected)
+  }
 }
+
