@@ -39,4 +39,9 @@ class PlayableTest extends FunSuite {
     var expected: Int = 10
     assertEquals(defensa, expected)
   }
+  test("NotEqualsDefence") {
+    var defensa1 = Cristiano.sayDefence(10)
+    var defensa2 = Messi.sayDefence(5)
+    assertNotEquals(defensa1, defensa2)
+  }
 }
