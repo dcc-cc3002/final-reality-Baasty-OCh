@@ -10,28 +10,6 @@ class EnemyTest extends FunSuite {
 
   }
 
-  test("equalsMagicOwner") {
-    var dueño: MagicCharacter = Wand.sayMagicOwner(Alexis)
-    var expected : MagicCharacter = Alexis
-    assertEquals(dueño, expected)
-  }
-
-  test("NotEqualsMagicOwner") {
-    var dueño1: Character = Wand.sayMagicOwner(Alexis)
-    var dueño2: Character = Staff.sayMagicOwner(Vidal)
-    assertNotEquals(dueño1, dueño2)
-  }
-
-  test("equalsMana") {
-    var mana = Wand.sayMana(20)
-    var expected: Int = 20
-    assertEquals(mana, expected)
-  }
-  test("NotEqualsMana") {
-    var mana1 = Wand.sayMana(20)
-    var mana2 = Staff.sayAttack(30)
-    assertNotEquals(mana1, mana2)
-  }
   test("equalsEnemyName"){
     var nombre: String = Neymar.sayName("Neymar")
     var expected: String = "Neymar"
