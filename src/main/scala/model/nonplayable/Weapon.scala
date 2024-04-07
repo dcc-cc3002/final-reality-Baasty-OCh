@@ -7,6 +7,9 @@ class Weapon extends Nonplayable {
   def sayWeight(weight: Int): Int = {
     return weight
   }
+  def sayAttack(attack: Int): Int = {
+    return attack
+  }
 
 
 
