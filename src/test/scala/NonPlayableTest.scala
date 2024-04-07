@@ -8,11 +8,15 @@ class NonPlayableTest extends FunSuite {
     Sword = new Weapon()
     Bow = new Weapon()
   }
-  test("equalsName"){
+
+  test("equalsName") {
     var nombre: String = Sword.sayName("Espada")
-    var expected  = "Espada"
-    assertEquals(nombre,expected)
+    var expected = "Espada"
+    assertEquals(nombre, expected)
   }
-
+  test("NotEqualsName") {
+    var nombre1 = Sword.sayName("Espada")
+    var nombre2 = Bow.sayName("Arco")
+    assertNotEquals(nombre1, nombre2)
   }
-
+}
