@@ -72,6 +72,12 @@ class NonPlayableTest extends FunSuite {
     assertEquals(dueño, expected)
   }
 
+  test("NotEqualsMagicOwner") {
+    var dueño1: Character = Wand.sayMagicOwner(Alexis)
+    var dueño2: Character = Staff.sayMagicOwner(Vidal)
+    assertNotEquals(dueño1, dueño2)
+  }
+
   test("equalsMana") {
     var mana = Wand.sayMana(20)
     var expected: Int = 20
