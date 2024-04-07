@@ -7,8 +7,8 @@ class Character extends Playable {
 
   }
 
-  def sayLife(life: Int): Unit = {
-    println(life)
+  def sayLife(life: Int): Int = {
+    return life
   }
 
   def sayDefence(defence: Int): Unit = {

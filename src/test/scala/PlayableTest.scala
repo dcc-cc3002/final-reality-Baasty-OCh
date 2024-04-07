@@ -22,6 +22,12 @@ class PlayableTest extends FunSuite{
       assertNotEquals(nombre1,nombre2)
 
   }
+  test("equalsLife"){
+    var vida = Cristiano.sayLife(100)
+    var expected: Int = 100
+    assertEquals(vida,expected)
+
+  }
 
 
 }
