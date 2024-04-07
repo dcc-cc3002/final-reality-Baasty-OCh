@@ -48,6 +48,11 @@ class NonPlayableTest extends FunSuite {
     assertNotEquals(vida1, vida2)
 
   }
+  test("equalsOwner") {
+    var dueño: Character = Sword.sayOwner(Cristiano)
+    var expected : Character = Cristiano
+    assertEquals(dueño, expected)
+  }
 
 
   test("equalsMana") {
