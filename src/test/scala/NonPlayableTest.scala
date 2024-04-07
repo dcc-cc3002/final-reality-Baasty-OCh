@@ -7,5 +7,12 @@ class NonPlayableTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Sword = new Weapon()
     Bow = new Weapon()
+  }
+  test("equalsName"){
+    var nombre: String = Sword.sayName("Espada")
+    var expected  = "Espada"
+    assertEquals(nombre,expected)
+  }
 
   }
+
