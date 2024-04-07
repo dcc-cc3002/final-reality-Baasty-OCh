@@ -9,6 +9,8 @@ class NonPlayableTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Sword = new Weapon()
     Bow = new Weapon()
+    Wand = new MagicWeapon()
+    Staff = new MagicWeapon()
   }
 
   test("equalsName") {
