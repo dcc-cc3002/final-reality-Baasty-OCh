@@ -15,6 +15,39 @@ class MagicWeaponTest extends FunSuite {
 
   }
 
+  test("equalsName") {
+    var nombre: String = Wand.sayName("Barita")
+    var expected = "Barita"
+    assertEquals(nombre, expected)
+  }
+  test("NotEqualsName") {
+    var nombre1 = Wand.sayName("Barita")
+    var nombre2 = Staff.sayName("Baston")
+    assertNotEquals(nombre1, nombre2)
+  }
+  test("equalsWeight") {
+    var peso = Wand.sayWeight(5)
+    var expected: Int = 5
+    assertEquals(peso, expected)
+  }
+  test("NotEqualsWeight") {
+    var peso1 = Wand.sayWeight(5)
+    var peso2 = Staff.sayWeight(3)
+    assertNotEquals(peso1, peso2)
+  }
+  test("equalsAttack") {
+    var ataque = Wand.sayAttack(25)
+    var expected: Int = 25
+    assertEquals(ataque, expected)
+
+  }
+  test("NotEqualsAttack") {
+    var vida1 = Wand.sayAttack(25)
+    var vida2 = Staff.sayAttack(20)
+    assertNotEquals(vida1, vida2)
+
+  }
+
   test("equalsMagicOwner") {
     var dueño: MagicCharacter = Wand.sayMagicOwner(Alexis)
     var expected: MagicCharacter = Alexis
