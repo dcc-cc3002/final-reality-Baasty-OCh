@@ -1,6 +1,9 @@
 package model.playable
-
-class MagicCharacter {
+import model.playable.Playable
+class MagicCharacter extends Playable {
+  def sayMana(mana: Int): Int = {
+    return mana
+  }
   def sayName(name: String): String = {
     return name
 
@@ -26,8 +29,6 @@ class MagicCharacter {
     return weapon
 
   }
-  def sayMana(mana: Int): Int = {
-    return mana
-  }
+
 
 }
