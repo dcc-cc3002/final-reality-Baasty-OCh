@@ -10,5 +10,9 @@ class Character extends Playable {
     println(life)
   }
 
+  def sayDefence(defence: Int): Unit = {
+    println(defence)
+  }
+
 
 }
