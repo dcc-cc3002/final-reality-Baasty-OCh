@@ -1,5 +1,5 @@
 package model.playable
-
+import model.playable.Playable
 
 class Character extends Playable {
   def sayName(name: String): Unit = {
@@ -16,6 +16,15 @@ class Character extends Playable {
 
   def sayWeight(weight: Int): Unit = {
     println(weight)
+  }
+
+  def sayKind(kind: String): Unit = {
+    println(kind)
+  }
+
+  def checkWeapon(player: Playable): Unit = {
+    // if player.
+
   }
 
 
