@@ -23,8 +23,8 @@ class Character extends Playable {
     return kind
   }
 
-  def putWeapon(weapon: String): Unit = {
-    val arma: Unit = println(weapon)
+  def putWeapon(weapon: String): String = {
+    return weapon
 
   }
 }
