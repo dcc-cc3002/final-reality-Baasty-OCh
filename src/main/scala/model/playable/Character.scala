@@ -29,15 +29,5 @@ class Character extends Playable {
   }
 }
 
-  object HelloWorld {
-    def main(args: Array[String]): Unit = {
 
-      var Cris: Playable = new Character()
-      Cris.sayName("Mercedes Benz")
-      Cris.sayLife(2019)
-      Cris.sayDefence(2015)
-
-
-    }
-  }
 
