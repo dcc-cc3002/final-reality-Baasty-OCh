@@ -19,4 +19,9 @@ class NonPlayableTest extends FunSuite {
     var nombre2 = Bow.sayName("Arco")
     assertNotEquals(nombre1, nombre2)
   }
+  test("equalsWeight") {
+    var peso = Sword.sayWeight(5)
+    var expected: Int = 5
+    assertEquals(peso, expected)
+  }
 }
