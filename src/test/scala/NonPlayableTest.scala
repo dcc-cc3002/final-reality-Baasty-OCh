@@ -7,13 +7,14 @@ class NonPlayableTest extends FunSuite {
   var Wand: MagicWeapon = _
   var Staff: MagicWeapon = _
   var Cristiano: Character = _
-
+  var Messi: Character = _
   override def beforeEach(context: BeforeEach): Unit = {
     Sword = new Weapon()
     Bow = new Weapon()
     Wand = new MagicWeapon()
     Staff = new MagicWeapon()
     Cristiano = new Character()
+    Messi = new Character()
   }
 
   test("equalsName") {
@@ -52,6 +53,12 @@ class NonPlayableTest extends FunSuite {
     var dueño: Character = Sword.sayOwner(Cristiano)
     var expected : Character = Cristiano
     assertEquals(dueño, expected)
+  }
+
+  test("NotEqualsOwner") {
+    var dueño1: Character = Sword.sayOwner(Cristiano)
+    var dueño2: Character = Bow.sayOwner(Messi)
+    assertEquals(dueño1, dueño2)
   }
 
 
