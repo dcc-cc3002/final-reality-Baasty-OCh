@@ -26,5 +26,8 @@ class MagicCharacter {
     return weapon
 
   }
+  def sayMana(mana: Int): Int = {
+    return mana
+  }
 
 }
