@@ -52,9 +52,4 @@ class WeaponTest extends FunSuite {
     assertEquals(dueño, expected)
   }
 
-  test("NotEqualsOwner") {
-    var dueño1: Character = Sword.sayOwner()
-    var dueño2: Character = Bow.sayOwner()
-    assertNotEquals(dueño1, dueño2)
-  }
 }

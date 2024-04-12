@@ -31,7 +31,11 @@ class Character(name:String, life:Int,
     if (other.isInstanceOf[Playable]) {
       val otherCast = other.asInstanceOf[Character]
       sayName() == otherCast.sayName() &&
-        sayKind() == otherCast.sayKind()
+        sayKind() == otherCast.sayKind() &&
+        sayWeight() == otherCast.sayWeight() &&
+        sayLife() == otherCast.sayLife() &&
+        sayDefence() == otherCast.sayDefence()
+
     } else false
   }
 }

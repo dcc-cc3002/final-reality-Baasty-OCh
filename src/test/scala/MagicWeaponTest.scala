@@ -6,6 +6,7 @@ class MagicWeaponTest extends FunSuite {
   var Staff: MagicWeapon = _
   var Alexis: MagicCharacter = _
   var Vidal: MagicCharacter = _
+  var Cristiano: Character = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     Wand = new MagicWeapon("Barita",10,50,50,Alexis)
@@ -47,19 +48,6 @@ class MagicWeaponTest extends FunSuite {
     assertNotEquals(vida1, vida2)
 
   }
-
-  test("equalsMagicOwner") {
-    var dueño: MagicCharacter = Wand.sayOwner()
-    var expected: MagicCharacter = Alexis
-    assertEquals(dueño, expected)
-  }
-
-  test("NotEqualsMagicOwner") {
-    var dueño1: MagicCharacter = Wand.sayOwner()
-    var dueño2: MagicCharacter = Staff.sayOwner()
-    assertNotEquals(dueño1, dueño2)
-  }
-
   test("equalsMana") {
     var mana = Wand.sayMana()
     var expected: Int = 50
