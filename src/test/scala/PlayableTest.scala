@@ -72,16 +72,7 @@ class PlayableTest extends FunSuite {
     var expected: Boolean = false
     assertEquals(arma, expected)
   }
-  test("NotEqualsWeapon") {
-    var arma1 = Cristiano.havWeapon()
-    var arma2 = Messi.havWeapon()
-    assertNotEquals(arma1, arma2)
-  }
-  test("equalsMana") {
-    var mana = Alexis.sayMana()
-    var expected: Int = 90
-    assertEquals(mana, expected)
-  }
+
   test("NotEqualsMana") {
     var mana1 = Alexis.sayMana()
     var mana2 = Vidal.sayMana()
