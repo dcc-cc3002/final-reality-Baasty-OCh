@@ -2,24 +2,25 @@ package model.nonplayable
 import model.nonplayable.NonPlayable
 import model.playable.MagicCharacter
 
-class MagicWeapon extends NonPlayable {
-  def sayMagicOwner(magicOwner : MagicCharacter): MagicCharacter = {
-    return magicOwner
+class MagicWeapon(name:String,weight:Int,
+                  attack:Int,mana:Int,
+                  owner: MagicCharacter) extends NonPlayable {
+  def sayMana(): Int ={
+    mana
   }
 
-  def sayMana(mana:Int): Int = {
-    return mana
+  def sayName(): String = {
+    name
   }
 
-  def sayName(name: String): String = {
-    return name
+  def sayWeight(): Int = {
+    weight
   }
 
-  def sayWeight(weight: Int): Int = {
-    return weight
+  def sayAttack() : Int = {
+    attack
   }
-
-  def sayAttack(attack: Int): Int = {
-    return attack
+  def sayOwner(): MagicCharacter = {
+    owner
   }
 }
