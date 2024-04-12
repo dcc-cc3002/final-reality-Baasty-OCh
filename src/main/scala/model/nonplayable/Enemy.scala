@@ -1,24 +1,26 @@
 package model.nonplayable
 import model.nonplayable.NonPlayable
-class Enemy extends NonPlayable{
+class Enemy(name:String,weight:Int,
+            attack:Int,life:Int,
+            defence:Int) extends NonPlayable{
 
-  def sayName(name: String): String = {
-    return name
+  def sayName():String= {
+    name
   }
 
-  def sayWeight(weight: Int): Int = {
-    return weight
+  def sayWeight(): Int ={
+    weight
   }
 
-  def sayAttack(attack: Int): Int = {
-    return attack
+  def sayAttack(): Int = {
+    attack
   }
 
-  def sayLife(life: Int): Int = {
-    return life
+  def sayLife() : Int = {
+    life
   }
 
-  def sayDefence(defence: Int): Int = {
-    return defence
+  def sayDefence() : Int = {
+    defence
   }
 }
