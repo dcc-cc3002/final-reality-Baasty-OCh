@@ -4,7 +4,9 @@ class MagicCharacter(name:String, life:Int,
                       defence:Int,weight:Int,
                       kind:String,weapon:Boolean,
                       mana:Int) extends Playable {
-  def sayName() = {name}
+  def sayName(): String = {
+    name
+  }
 
   def sayLife(): Int = {
     life
