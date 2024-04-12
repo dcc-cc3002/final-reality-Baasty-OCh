@@ -25,7 +25,16 @@ class MagicCharacter(name:String, life:Int,
     weapon
   }
 
-  def sayMana()={mana}
+  def sayMana()={
+    mana
+  }
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Playable]) {
+      val otherCast = other.asInstanceOf[MagicCharacter]
+      sayName() == otherCast.sayName() &&
+        sayKind() == otherCast.sayKind()
+    } else false
+  }
 
 
 }
