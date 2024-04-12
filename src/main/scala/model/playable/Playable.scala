@@ -6,7 +6,7 @@ trait Playable {
   def sayDefence(): Int
   def sayWeight(): Int
   def sayKind(): String
-  def havWeapon(): String
+  def havWeapon(): Boolean
 
 
 

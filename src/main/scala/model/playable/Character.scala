@@ -4,15 +4,29 @@ import model.playable.Playable
 class Character(name:String, life:Int,
                 defence:Int,weight:Int,
                 kind:String,weapon:Boolean) extends Playable {
-  def sayName() = {name}
-  def sayLife()= {life}
+  def sayName(): String = {
+    name
+  }
 
-  def sayDefence()= {defence}
+  def sayLife(): Int = {
+    life
+  }
 
-  def sayWeight()={weight}
-  def sayKind()={kind}
+  def sayDefence(): Int = {
+    defence
+  }
 
-  def havWeapon()={weapon}
+  def sayWeight(): Int = {
+    weight
+  }
+
+  def sayKind(): String = {
+    kind
+  }
+
+  def havWeapon(): Boolean = {
+    weapon}
+
 
 }
 
