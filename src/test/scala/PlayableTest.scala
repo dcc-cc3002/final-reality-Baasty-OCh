@@ -97,4 +97,14 @@ class PlayableTest extends FunSuite {
     var clase2 = Vidal.sayKind()
     assertNotEquals(clase1, clase2)
   }
+  test("equalsMagicCharacter") {
+    val pjm: MagicCharacter = Alexis
+    var expected = Alexis
+    assertEquals(pjm, expected)
+  }
+  test("NotEqualsMagicCharacter") {
+    val pjm1: MagicCharacter = Alexis
+    val pjm2 : MagicCharacter = Vidal
+    assertNotEquals(pjm1, pjm2)
+  }
 }
