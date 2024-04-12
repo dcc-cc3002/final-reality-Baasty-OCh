@@ -1,8 +1,8 @@
 import munit.FunSuite
 import model.playable.{Character, MagicCharacter, Playable}
 class PlayableTest extends FunSuite {
-  var Cristiano: Playable = _
-  var Messi: Playable = _
+  var Cristiano: Character = _
+  var Messi: Character = _
   var Alexis: MagicCharacter = _
   var Vidal: MagicCharacter = _
   override def beforeEach(context: BeforeEach): Unit = {
@@ -12,7 +12,16 @@ class PlayableTest extends FunSuite {
     Vidal = new MagicCharacter("Vidal",90,100,70,"Mago Negro",true,50)
 
   }
-
+  test("equals") {
+    val pj : Character = Cristiano
+    var expected = Cristiano
+    assertEquals(pj, expected)
+  }
+  test("NotEquals") {
+    val pj1 : Character = Cristiano
+    val pj2 : Character = Messi
+    assertNotEquals(pj1, pj2)
+  }
   test("equalsName") {
     var nombre = Cristiano.sayName()
     val expected: String = "Cristiano"
