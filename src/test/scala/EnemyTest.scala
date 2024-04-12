@@ -2,8 +2,8 @@ import munit.FunSuite
 import model.nonplayable.{MagicWeapon, NonPlayable, Weapon,Enemy}
 import model.playable.{Character, MagicCharacter, Playable}
 class EnemyTest extends FunSuite {
-  var Neymar: NonPlayable = _
-  var Bale: NonPlayable = _
+  var Neymar: Enemy = _
+  var Bale: Enemy = _
   override def beforeEach(context: BeforeEach): Unit = {
     Neymar = new Enemy("Neymar",60,90,70,30)
     Bale = new Enemy("Bale",70,85,75,50)

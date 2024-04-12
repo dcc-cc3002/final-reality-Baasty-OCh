@@ -27,7 +27,13 @@ class Character(name:String, life:Int,
   def havWeapon(): Boolean = {
     weapon}
 
-
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Playable]) {
+      val otherCast = other.asInstanceOf[Character]
+      sayName() == otherCast.sayName() &&
+        sayKind() == otherCast.sayKind()
+    } else false
+  }
 }
 
 

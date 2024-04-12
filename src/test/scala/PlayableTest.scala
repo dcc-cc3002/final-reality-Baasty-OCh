@@ -3,8 +3,8 @@ import model.playable.{Character, MagicCharacter, Playable}
 class PlayableTest extends FunSuite {
   var Cristiano: Playable = _
   var Messi: Playable = _
-  var Alexis: Playable = _
-  var Vidal: Playable = _
+  var Alexis: MagicCharacter = _
+  var Vidal: MagicCharacter = _
   override def beforeEach(context: BeforeEach): Unit = {
     Cristiano = new Character("Cristiano",100,50,70,"Paladin",false)
     Messi = new Character("Messi",90,40,60,"Guerrero",true)

@@ -55,8 +55,8 @@ class MagicWeaponTest extends FunSuite {
   }
 
   test("NotEqualsMagicOwner") {
-    var dueño1: Character = Wand.sayOwner(Alexis)
-    var dueño2: Character = Staff.sayOwner(Vidal)
+    var dueño1: MagicCharacter = Wand.sayOwner()
+    var dueño2: MagicCharacter = Staff.sayOwner()
     assertNotEquals(dueño1, dueño2)
   }
 
@@ -71,3 +71,4 @@ class MagicWeaponTest extends FunSuite {
     assertNotEquals(mana1, mana2)
   }
 }
+/////probar las clases de los pj con equals nuevo
