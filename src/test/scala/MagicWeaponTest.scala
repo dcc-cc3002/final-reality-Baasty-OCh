@@ -8,66 +8,66 @@ class MagicWeaponTest extends FunSuite {
   var Vidal: MagicCharacter = _
 
   override def beforeEach(context: BeforeEach): Unit = {
-    Wand = new MagicWeapon()
-    Staff = new MagicWeapon()
-    Alexis = new MagicCharacter()
-    Vidal = new MagicCharacter()
+    Wand = new MagicWeapon("Barita",10,50,50,Alexis)
+    Staff = new MagicWeapon("Baston",15,60,45,Vidal)
+    //Alexis = new MagicCharacter()
+    //Vidal = new MagicCharacter()
 
   }
 
   test("equalsName") {
-    var nombre: String = Wand.sayName("Barita")
+    var nombre: String = Wand.sayName()
     var expected = "Barita"
     assertEquals(nombre, expected)
   }
   test("NotEqualsName") {
-    var nombre1 = Wand.sayName("Barita")
-    var nombre2 = Staff.sayName("Baston")
+    var nombre1 = Wand.sayName()
+    var nombre2 = Staff.sayName()
     assertNotEquals(nombre1, nombre2)
   }
   test("equalsWeight") {
-    var peso = Wand.sayWeight(5)
-    var expected: Int = 5
+    var peso = Wand.sayWeight()
+    var expected: Int = 10
     assertEquals(peso, expected)
   }
   test("NotEqualsWeight") {
-    var peso1 = Wand.sayWeight(5)
-    var peso2 = Staff.sayWeight(3)
+    var peso1 = Wand.sayWeight()
+    var peso2 = Staff.sayWeight()
     assertNotEquals(peso1, peso2)
   }
   test("equalsAttack") {
-    var ataque = Wand.sayAttack(25)
-    var expected: Int = 25
+    var ataque = Wand.sayAttack()
+    var expected: Int = 50
     assertEquals(ataque, expected)
 
   }
   test("NotEqualsAttack") {
-    var vida1 = Wand.sayAttack(25)
-    var vida2 = Staff.sayAttack(20)
+    var vida1 = Wand.sayAttack()
+    var vida2 = Staff.sayAttack()
     assertNotEquals(vida1, vida2)
 
   }
 
   test("equalsMagicOwner") {
-    var dueño: MagicCharacter = Wand.sayMagicOwner(Alexis)
+    var dueño: MagicCharacter = Wand.sayOwner()
     var expected: MagicCharacter = Alexis
     assertEquals(dueño, expected)
   }
 
   test("NotEqualsMagicOwner") {
-    var dueño1: Character = Wand.sayMagicOwner(Alexis)
-    var dueño2: Character = Staff.sayMagicOwner(Vidal)
+    var dueño1: Character = Wand.sayOwner(Alexis)
+    var dueño2: Character = Staff.sayOwner(Vidal)
     assertNotEquals(dueño1, dueño2)
   }
 
   test("equalsMana") {
-    var mana = Wand.sayMana(20)
-    var expected: Int = 20
+    var mana = Wand.sayMana()
+    var expected: Int = 50
     assertEquals(mana, expected)
   }
   test("NotEqualsMana") {
-    var mana1 = Wand.sayMana(20)
-    var mana2 = Staff.sayAttack(30)
+    var mana1 = Wand.sayMana()
+    var mana2 = Staff.sayAttack()
     assertNotEquals(mana1, mana2)
   }
 }
