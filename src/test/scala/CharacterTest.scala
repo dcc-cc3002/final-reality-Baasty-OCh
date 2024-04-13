@@ -73,5 +73,15 @@ class CharacterTest extends FunSuite {
     var clase2 = Messi.sayKind()
     assertNotEquals(clase1, clase2)
   }
+  test("haveWeapon") {
+    val w = Messi.havWeapon()
+    var expected = true
+    assertEquals(w, expected)
+  }
+  test("haveNotWeapon") {
+    val w = Cristiano.havWeapon()
+    var expected = false
+    assertEquals(w, expected)
+  }
 
 }
