@@ -6,7 +6,7 @@ class Party {
   val allies: Map[String, Playable] = Map()
 
   // Método para añadir un personaje a la party
-  def addPlayable(character: Playable): Unit = {
-    allies.put(character.sayKind(), character)
+  def addPlayable(pj: Playable): Unit = {
+    allies.put(pj.sayKind(), pj)
   }
   }
