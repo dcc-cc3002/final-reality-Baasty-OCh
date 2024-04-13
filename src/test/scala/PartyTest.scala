@@ -9,8 +9,8 @@ class PartyTest extends FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     Team1 = new Party()
-    Cristiano = new Character("Cristiano",100,50,70,"Paladin",false)
-    Alexis = new MagicCharacter("Alexis", 80, 55, 65, "Mago Blanco", false, 90)
+    Cristiano = new Character("Cristiano",0,50,70,"Paladin",false)
+    Alexis = new MagicCharacter("Alexis", 0, 55, 65, "Mago Blanco", false, 90)
 
   }
   test("addCharacter") {
@@ -28,6 +28,11 @@ class PartyTest extends FunSuite {
     var state: Boolean = Team1.isDefeated
     assertEquals(state,expected)
 
+  }
+  test("isDefeat"){
+    Team1.addPlayable((Cristiano))
+    Team1.addPlayable(Alexis)
+    assertEquals(Team1.isDefeated,true)
   }
 
 }
