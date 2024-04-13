@@ -1,6 +1,6 @@
 import munit.FunSuite
 import model.playable.{Character, MagicCharacter, Playable}
-class PlayableTest extends FunSuite {
+class CharacterTest extends FunSuite {
   var Cristiano: Character = _
   var Messi: Character = _
   var Alexis: MagicCharacter = _
