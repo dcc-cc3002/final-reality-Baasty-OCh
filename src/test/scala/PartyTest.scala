@@ -13,11 +13,15 @@ class PartyTest extends FunSuite {
     Alexis = new MagicCharacter("Alexis", 80, 55, 65, "Mago Blanco", false, 90)
 
   }
-  test("addPersonaje") {
+  test("addCharacter") {
     Team1.addPlayable(Cristiano)
     val expected: Map[String, Playable] = Map("Paladin" -> Cristiano)
     assertEquals(Team1.allies.toMap, expected)
   }
-
+  test("addMagicCharacter") {
+    Team1.addPlayable(Alexis)
+    val expected: Map[String, Playable] = Map("Mago Blanco" -> Alexis)
+    assertEquals(Team1.allies.toMap, expected)
+  }
 
 }
