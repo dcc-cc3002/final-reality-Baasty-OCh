@@ -11,8 +11,7 @@ class MagicWeaponTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Wand = new MagicWeapon("Barita",10,50,50,Alexis)
     Staff = new MagicWeapon("Baston",15,60,45,Vidal)
-    //Alexis = new MagicCharacter()
-    //Vidal = new MagicCharacter()
+
 
   }
   test("equalsName") {
