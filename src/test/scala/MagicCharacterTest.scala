@@ -1,8 +1,8 @@
 import model.playable.{Character, MagicCharacter,Playable}
 import munit.FunSuite
 class MagicCharacterTest extends FunSuite {
-  var Alexis: MagicCharacter = _ // We declare a variable Cristiano of type MagicCharacter
-  var Vidal: MagicCharacter = _ // We declare a variable Cristiano of type MagicCharacter
+  var Alexis: MagicCharacter = _ // We declare a variable Alexis of type MagicCharacter
+  var Vidal: MagicCharacter = _ // We declare a variable Vidal of type MagicCharacter
 
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the Magic Character class with the specified parameters:
