@@ -21,6 +21,19 @@ class MagicCharacterTest extends FunSuite {
     assertNotEquals(nombre1, nombre2)
 
   }
+  test("equalsLife") {
+    var vida = Alexis.sayLife()
+    var expected: Int = 80
+    assertEquals(vida, expected)
+
+  }
+  test("NotEqualsLife") {
+    var vida1 = Alexis.sayLife()
+    var vida2 = Vidal.sayLife()
+    assertNotEquals(vida1, vida2)
+
+  }
+
   test("equalsMana") {
     var mana = Alexis.sayMana()
     var expected: Int = 90
