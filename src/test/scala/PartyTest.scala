@@ -11,12 +11,12 @@ class PartyTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Team1 = new Party() // Creates a new instance of the Party class and assigns it to the variable Team1.
     // Creates a new instance of the Character class with the specified parameters:
-    Cristiano = new Character("Cristiano",0, // - Name: "Cristiano" // - Life: 0
+    Cristiano = new Character("Cristiano",0, // - Name: Cristiano // - Life: 0
                                        50,70, // - Defence : 50 // - Weight: 70
                                        "Paladin",false)  // - Kind: Paladin // - Weapon: false
 
     // Creates a new instance of the MagicCharacter class with the specified parameters:
-    Alexis = new MagicCharacter("Alexis", 0, // - Name: "Alexis" // - Life: 0
+    Alexis = new MagicCharacter("Alexis", 0, // - Name: Alexis // - Life: 0
                                     55, 65, // - Defence : 55 // - Weight: 65
                                     "Mago Blanco", false, 90) // - Kind: Mago Blanco // - Weapon: false
 
