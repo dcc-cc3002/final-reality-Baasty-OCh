@@ -9,7 +9,18 @@ class MagicCharacterTest extends FunSuite {
     Vidal = new MagicCharacter("Vidal", 90, 100, 70, "Mago Negro", true, 50)
 
   }
+  test("equalsName") {
+    var nombre = Alexis.sayName()
+    val expected: String = "Alexis"
+    assertEquals(nombre, expected)
+  }
 
+  test("NotEqualsName") {
+    var nombre1 = Alexis.sayName()
+    var nombre2 = Vidal.sayName()
+    assertNotEquals(nombre1, nombre2)
+
+  }
   test("equalsMana") {
     var mana = Alexis.sayMana()
     var expected: Int = 90
