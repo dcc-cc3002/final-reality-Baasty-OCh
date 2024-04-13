@@ -24,15 +24,20 @@ class PartyTest extends FunSuite {
     assertEquals(Team1.allies.toMap, expected)
   }
   test("isEmpty"){
-    val expected: Boolean = true
     var state: Boolean = Team1.isDefeated
-    assertEquals(state,expected)
+    assertEquals(state,true)
 
   }
   test("isDefeat"){
     Team1.addPlayable((Cristiano))
     Team1.addPlayable(Alexis)
     assertEquals(Team1.isDefeated,true)
+  }
+  test("isNotDefeat"){
+    Team1.addPlayable((Cristiano))
+    Alexis = new MagicCharacter("Alexis",100,90,10,"Mago Blanco",false,50)
+    Team1.addPlayable(Alexis)
+    assertEquals(Team1.isDefeated,false)
   }
 
 }
