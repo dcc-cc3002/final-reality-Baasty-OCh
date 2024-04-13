@@ -23,5 +23,11 @@ class PartyTest extends FunSuite {
     val expected: Map[String, Playable] = Map("Mago Blanco" -> Alexis)
     assertEquals(Team1.allies.toMap, expected)
   }
+  test("isEmpty"){
+    val expected: Boolean = true
+    var state: Boolean = Team1.isDefeated
+    assertEquals(state,expected)
+
+  }
 
 }
