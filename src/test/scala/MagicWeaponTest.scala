@@ -15,7 +15,6 @@ class MagicWeaponTest extends FunSuite {
     //Vidal = new MagicCharacter()
 
   }
-
   test("equalsName") {
     var nombre: String = Wand.sayName()
     var expected = "Barita"
@@ -58,5 +57,10 @@ class MagicWeaponTest extends FunSuite {
     var mana2 = Staff.sayAttack()
     assertNotEquals(mana1, mana2)
   }
+
+  test("equalsMagicOwner") {
+    var dueño: MagicCharacter = Wand.sayOwner()
+    var expected: MagicCharacter = Alexis
+    assertEquals(dueño, expected)
+  }
 }
-/////probar las clases de los pj con equals nuevo
