@@ -54,7 +54,16 @@ class MagicCharacterTest extends FunSuite {
     assertNotEquals(peso1, peso2)
   }
 
-
+  test("haveWeapon") {
+    val w = Vidal.havWeapon()
+    var expected = true
+    assertEquals(w, expected)
+  }
+  test("haveNotWeapon") {
+    val w = Alexis.havWeapon()
+    var expected = false
+    assertEquals(w, expected)
+  }
 
   test("equalsMana") {
     var mana = Alexis.sayMana()
