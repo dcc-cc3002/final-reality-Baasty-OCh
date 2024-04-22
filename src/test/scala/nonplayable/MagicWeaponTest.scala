@@ -1,6 +1,8 @@
+package nonplayable
+
+import model.nonplayable.MagicWeapon
+import model.playable.{Character, MagicCharacter}
 import munit.FunSuite
-import model.nonplayable.{MagicWeapon, NonPlayable, Weapon,Enemy}
-import model.playable.{Character, MagicCharacter, Playable}
 class MagicWeaponTest extends FunSuite {
   var Wand: MagicWeapon = _ // We declare a variable Wand of type MagicWeapon
   var Staff: MagicWeapon = _ // We declare a variable Staff of type MagicWeapon

@@ -1,4 +1,6 @@
-import model.playable.{Character, MagicCharacter,Playable}
+package playable
+
+import model.playable.MagicCharacter
 import munit.FunSuite
 class MagicCharacterTest extends FunSuite {
   var Alexis: MagicCharacter = _ // We declare a variable Alexis of type MagicCharacter

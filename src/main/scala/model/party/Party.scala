@@ -17,7 +17,7 @@ class Party {
   // Method to check if the party is defeated
   def isDefeated: Boolean = {
     if (allies.isEmpty) {
-      println("Party Empty") // Print a message if the party is empty
+      // Print a message if the party is empty
       true // The party is considered defeated if it's empty
     } else {
       // The party is considered defeated if all allies have 0 life points
