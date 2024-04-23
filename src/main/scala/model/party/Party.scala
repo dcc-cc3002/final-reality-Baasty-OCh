@@ -1,6 +1,6 @@
 package model.party
 
-import model.playable.{Character, MagicCharacter, Playable}
+import model.playable.{APlayable, MagicCharacter, Playable}
 
 import scala.collection.mutable.Map
 

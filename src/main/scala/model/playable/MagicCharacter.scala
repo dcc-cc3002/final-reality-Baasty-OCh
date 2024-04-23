@@ -1,5 +1,5 @@
 package model.playable
-import model.playable.Character
+import model.playable.APlayable
 
 // MagicCharacter class extends the Playable trait
 class MagicCharacter(name: String, life: Int,

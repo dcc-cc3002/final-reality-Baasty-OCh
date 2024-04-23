@@ -1,6 +1,6 @@
 package model.nonplayable
 import model.nonplayable.NonPlayable
-import model.playable.Character
+import model.playable.APlayable
 
 // Weapon class represents a non-playable entity that is a weapon
 class Weapon(name: String, weight: Int,
