@@ -1,8 +1,8 @@
 package model.playable
 import model.playable.Playable
-class APlayable(name: String, life: Int,
-                defence: Int, weight: Int,
-                kind: String, weapon: Boolean) extends Playable {
+abstract class APlayable(val name: String, var life: Int,
+                         val defence: Int, val weight: Int,
+                         var kind: String, var weapon: Boolean, val mana: Int) extends Playable {
 
   // Method to return the name of the character
   def sayName(): String = {
@@ -33,6 +33,10 @@ class APlayable(name: String, life: Int,
   def havWeapon(): Boolean = {
     weapon
   }
+  def sayMana(): Int = {
+    mana
+  }
 
 
 }
+

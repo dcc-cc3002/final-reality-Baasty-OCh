@@ -1,14 +1,14 @@
 package nonplayable
 
 import model.nonplayable.MagicWeapon
-import model.playable.{Character, MagicCharacter}
+import model.playable.{APlayable}
 import munit.FunSuite
 class MagicWeaponTest extends FunSuite {
   var Wand: MagicWeapon = _ // We declare a variable Wand of type MagicWeapon
   var Staff: MagicWeapon = _ // We declare a variable Staff of type MagicWeapon
-  var Alexis: MagicCharacter = _ // We declare a variable Alexis of type MagicCharacter
-  var Vidal: MagicCharacter = _ // We declare a variable Vidal of type MagicCharacter
-  var Cristiano: Character = _ // We declare a variable Cristiano of type Character
+  var Alexis: APlayable = _ // We declare a variable Alexis of type MagicCharacter
+  var Vidal: APlayable = _ // We declare a variable Vidal of type MagicCharacter
+  var Cristiano: APlayable = _ // We declare a variable Cristiano of type Character
 
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the MagicWeapon class with the specified parameters:
@@ -67,8 +67,8 @@ class MagicWeaponTest extends FunSuite {
   }
 
   test("equalsMagicOwner") { // Test if the returned owner character for a wand matches the expected character
-    var owner: MagicCharacter = Wand.sayOwner() // Retrieve the owner character of the wand and store it in the 'owner' variable
-    var expected: MagicCharacter = Alexis // Define the expected owner character
+    var owner: APlayable = Wand.sayOwner() // Retrieve the owner character of the wand and store it in the 'owner' variable
+    var expected: APlayable = Alexis // Define the expected owner character
     assertEquals(owner, expected) // Compare the actual owner character with the expected character
   }
 

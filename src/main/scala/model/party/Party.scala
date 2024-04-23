@@ -1,16 +1,16 @@
 package model.party
 
-import model.playable.{APlayable, MagicCharacter, Playable}
+import model.playable.{APlayable}
 
 import scala.collection.mutable.Map
 
 // Party class to manage a group of playable characters
 class Party {
   // Map to store the allies in the party, keyed by their kind/type
-  val allies: Map[String, Playable] = Map()
+  val allies: Map[String, APlayable] = Map()
 
   // Method to add a playable character to the party
-  def addPlayable(pj: Playable): Unit = {
+  def addPlayable(pj: APlayable): Unit = {
     allies.put(pj.sayKind(), pj) // Adds the playable character to the allies map with their kind as the key
   }
 

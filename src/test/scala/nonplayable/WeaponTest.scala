@@ -1,7 +1,7 @@
 package nonplayable
 
 import model.nonplayable.Weapon
-import model.playable.Character
+import model.playable.APlayable
 import munit.FunSuite
 class WeaponTest extends FunSuite {
   var Sword: Weapon = _ // We declare a variable Sword of type Weapon

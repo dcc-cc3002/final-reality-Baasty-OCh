@@ -1,29 +1,27 @@
 package playable
 
-import model.playable.Character
+import model.playable.{APlayable, Guerrero, Paladin}
 import munit.FunSuite
 class CharacterTest extends FunSuite {
-  var Cristiano: Character = _ // We declare a variable Cristiano of type Character
-  var Messi: Character = _ // We declare a variable Messi of type Character
+  var Cristiano: APlayable = _ // We declare a variable Cristiano of type Character
+  var Messi: APlayable = _ // We declare a variable Messi of type Character
 
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the Character class with the specified parameters:
-    Cristiano = new Character("Cristiano",100,50 // - Name: Cristiano // - Life: 100 // - Defence : 50
-                             ,70,"Paladin",false) // - Weight: 70 // - Kind: Paladin // - Weapon: false
+    Cristiano = new Paladin("Cristiano")
     // Creates a new instance of the Character class with the specified parameters:
-    Messi = new Character("Messi",90,40, // - Name: Messi // - Life: 90 // - Defence : 40
-                         60,"Guerrero",true) // - Weight: 60 // - Kind: Guerrero // - Weapon: true
+    Messi = new Guerrero("Messi")// - Weight: 60 // - Kind: Guerrero // - Weapon: true
 
   }
   test("equals") { // Test if two references to the same character are equal
-    val character: Character = Cristiano // Create a reference to the character Cristiano and assign it to the variable 'character'
+    val character: APlayable = Cristiano // Create a reference to the character Cristiano and assign it to the variable 'character'
     var expected = Cristiano // Define the expected value as the character Cristiano
     assertEquals(character, expected) // Compare the actual reference with the expected value
   }
 
   test("NotEquals") { // Test if two references to different characters are not equal
-    val character1: Character = Cristiano // Create a reference to the character Cristiano and assign it to the variable 'character1'
-    val character2: Character = Messi // Create a reference to the character Messi and assign it to the variable 'character2'
+    val character1: APlayable = Cristiano // Create a reference to the character Cristiano and assign it to the variable 'character1'
+    val character2: APlayable = Messi // Create a reference to the character Messi and assign it to the variable 'character2'
     assertNotEquals(character1, character2) // Assert that the references to Cristiano and Messi are not equal
   }
 
@@ -64,13 +62,13 @@ class CharacterTest extends FunSuite {
 
   test("equalsWeight") { // Test if the returned weight value for a character matches the expected value
     var weight = Cristiano.sayWeight() // Retrieve the weight value of the character Cristiano and store it in the 'weight' variable
-    var expected: Int = 70 // Define the expected weight value
+    var expected: Int = 50 // Define the expected weight value
     assertEquals(weight, expected) // Compare the actual weight value with the expected value
   }
 
   test("NotEqualsWeight") { // Test if the weight values of two different characters are not equal
-    var weight1 = Cristiano.sayWeight() // Retrieve the weight value of the character Cristiano and store it in the 'weight1' variable
-    var weight2 = Messi.sayWeight() // Retrieve the weight value of the character Messi and store it in the 'weight2' variable
+    var weight1 = Cristiano.weight // Retrieve the weight value of the character Cristiano and store it in the 'weight1' variable
+    var weight2 = Messi.weight // Retrieve the weight value of the character Messi and store it in the 'weight2' variable
     assertNotEquals(weight1, weight2) // Assert that the weight values of Cristiano and Messi are not equal
   }
 
@@ -87,13 +85,14 @@ class CharacterTest extends FunSuite {
   }
 
   test("haveWeapon") { // Test if the character Messi has a weapon
-    val hasWeapon = Messi.havWeapon() // Check if the character Messi has a weapon and store the result in the 'hasWeapon' variable
+    Messi.weapon = true
+    val hasWeapon = Messi.weapon // Check if the character Messi has a weapon and store the result in the 'hasWeapon' variable
     var expected = true // Define the expected value indicating that Messi has a weapon
     assertEquals(hasWeapon, expected) // Compare the actual result with the expected value
   }
 
   test("haveNotWeapon") { // Test if the character Cristiano doesn't have a weapon
-    val hasWeapon = Cristiano.havWeapon() // Check if the character Cristiano has a weapon and store the result in the 'hasWeapon' variable
+    val hasWeapon = Cristiano.weapon // Check if the character Cristiano has a weapon and store the result in the 'hasWeapon' variable
     var expected = false // Define the expected value indicating that Cristiano doesn't have a weapon
     assertEquals(hasWeapon, expected) // Compare the actual result with the expected value
   }
