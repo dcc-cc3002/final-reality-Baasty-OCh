@@ -1,41 +1,46 @@
 package model.playable
 import model.playable.Playable
-abstract class APlayable(val name: String, var life: Int,
-                         val defence: Int, val weight: Int,
-                         val kind: String, var weapon: Boolean, val mana: Int) extends Playable {
 
-  // Method to return the name of the character
-  def sayName(): String = {
-    name
-  }
+/**
+ * An abstract class representing a Playable entity in the game.
+ * @param name The name of the character.
+ * @param healthPoints The health points of the character.
+ * @param defensePoints The defense points of the character.
+ * @param weight The weight of the character.
+ */
+abstract class APlayable(val name: String, var healthPoints: Int,
+                         val defensePoints: Int, val weight: Int,
+                         val mana: Int) extends Playable {
 
-  // Method to return the life points of the character
-  def sayLife(): Int = {
-    life
-  }
+  /**
+   * Implementation of Method to get the name of the playable entity
+   * @return : The name of playable entity
+    */
+  def getName: String = name
 
-  // Method to return the defense points of the character
-  def sayDefence(): Int = {
-    defence
-  }
+  /**
+   * Implementation of Method to get the health points of the playable entity
+    * @return The health points of playable entity
+   */
+  def getHp: Int = healthPoints
 
-  // Method to return the weight of the character
-  def sayWeight(): Int = {
-    weight
-  }
+  /**
+   * Implementation of Method to get the defense points of the playable entity
+   * @return The defense points of playable entity
+   */
+  def getDp: Int = defensePoints
 
-  // Method to return the kind/type of the character
-  def sayKind(): String = {
-    kind
-  }
+  /**
+   * Implementation of Method to get the weight of the playable entity
+   * @return The weight of playable entity
+   */
+  def getWeight: Int = weight
 
-  // Method to check if the character has a weapon
-  def havWeapon(): Boolean = {
-    weapon
-  }
-  def sayMana(): Int = {
-    mana
-  }
+  /**
+   * Implementation of Method to get the mana points of the playable entity
+   * @return The mana of playable entity
+   */
+  def getMana: Int = mana
 
 
 }

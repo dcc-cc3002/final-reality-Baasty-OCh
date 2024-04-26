@@ -22,9 +22,9 @@ trait Playable {
    */
   def getWeight: Int
 
-  // Abstract method to get the kind/type of the playable entity
-
-
-  // Abstract method to check if the playable entity has a weapon
+  /**
+   * Abstract Method to get the mana points of the playable entity
+   */
+  def getMana: Int
 
 }
