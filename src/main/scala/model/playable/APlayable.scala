@@ -2,7 +2,7 @@ package model.playable
 import model.playable.Playable
 abstract class APlayable(val name: String, var life: Int,
                          val defence: Int, val weight: Int,
-                         var kind: String, var weapon: Boolean, val mana: Int) extends Playable {
+                         val kind: String, var weapon: Boolean, val mana: Int) extends Playable {
 
   // Method to return the name of the character
   def sayName(): String = {
