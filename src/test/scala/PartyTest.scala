@@ -1,7 +1,7 @@
 import munit.FunSuite
 import model.party.Party
 import model.playable.{APlayable,Paladin,Guerrero,Ninja,MagoBlanco,MagoNegro}
-import model.nonplayable.{Enemy, MagicWeapon, Weapon}
+import model.nonplayable.{Enemy, Weapon}
 class PartyTest extends FunSuite {
   var Team1: Party = _ // We declare a variable Team1 of type Party
   var Cristiano: APlayable = _ // We declare a variable Cristiano of type Playable

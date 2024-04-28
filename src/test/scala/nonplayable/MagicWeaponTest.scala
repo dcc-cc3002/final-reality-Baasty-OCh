@@ -1,7 +1,6 @@
 package nonplayable
 
-import model.nonplayable.MagicWeapon
-import model.playable.{APlayable}
+import model.playable.APlayable
 import munit.FunSuite
 class MagicWeaponTest extends FunSuite {
   var Wand: MagicWeapon = _ // We declare a variable Wand of type MagicWeapon
