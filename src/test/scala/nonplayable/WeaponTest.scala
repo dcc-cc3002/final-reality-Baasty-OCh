@@ -17,13 +17,6 @@ class WeaponTest extends FunSuite {
     Axe = new Axe(Casemiro)
 
   }
-  test("equals") { // Test if the returned name value for a sword matches the expected value
-    assertEquals(Sword, Sword) // Compare the actual name value with the expected value
-    assertEquals(Bow,Bow)
-    assertEquals(Axe,Axe)
-  }
-
-
 
   test("equalsWeight") { // Test if the returned weight value for a sword matches the expected value
     var weight = Sword.getWeight // Retrieve the weight value of the sword and store it in the 'weight' variable
