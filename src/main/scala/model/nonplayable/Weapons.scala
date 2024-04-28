@@ -35,6 +35,6 @@ class Wand(name: String, weight: Int,
            attackPoints: Int, owner: Playable ,
            mana: Int) extends AWeapon(name, weight, attackPoints, owner) {
   def this(owner:Playable) = {
-    this("Varita",70,70,owner, 30)
+    this("Varita",40,50,owner, 30)
   }
 }
