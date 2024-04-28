@@ -14,14 +14,14 @@ import model.playable.APlayable
  */
 class Paladin(name:String, healthPoints:Int,
               defensePoints:Int, weight:Int,
-              private val mana:Int = 0) extends APlayable(name, healthPoints, defensePoints,weight,mana){
+              mana:Int) extends APlayable(name, healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,100,75,50,mana)
+    this(name,100,75,50,0)
   }
 }
 /**
@@ -37,14 +37,14 @@ class Paladin(name:String, healthPoints:Int,
  */
 class Guerrero(name:String, healthPoints:Int,
                defensePoints:Int, weight:Int,
-               private val mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+               mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,120,100,70,mana)
+    this(name,120,100,70,0)
   }
 }
 /**
@@ -58,18 +58,19 @@ class Guerrero(name:String, healthPoints:Int,
  */
 class Ninja(name:String, healthPoints:Int,
             defensePoints:Int, weight:Int,
-            private val mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+            mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,80,70,30,mana)
+    this(name,80,70,30,0)
   }
 }
 
  // Override equals method to compare two characters based on their attributes
+
 
 
 

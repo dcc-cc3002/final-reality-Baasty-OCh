@@ -1,92 +1,85 @@
 package playable
-
-import model.playable.{APlayable, MagoBlanco, MagoNegro}
+import model.playable.Playable
+import model.playable.{MagoBlanco, MagoNegro}
 import munit.FunSuite
 class MagicCharacterTest extends FunSuite {
-  var Alexis: APlayable = _ // We declare a variable Alexis of type MagicCharacter
-  var Vidal: APlayable = _ // We declare a variable Vidal of type MagicCharacter
+  var Alexis: Playable = _ // We declare a variable Alexis of type MagicCharacter
+  var Vidal: Playable = _ // We declare a variable Vidal of type MagicCharacter
 
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the Magic Character class with the specified parameters:
-    Alexis = new MagoBlanco("Alexis")  // - Kind: Mago Blanco // - Weapon: false
-    // Creates a new instance of the Magic Character class with the specified parameters:
-    Vidal = new MagoNegro("Vidal") // - Kind: Mago Negro // - Weapon: true
+    Alexis = new MagoBlanco("Alexis")
+    Vidal = new MagoNegro("Vidal")
 
   }
-  test("equalsName") { // Test if the sayName method behaves correctly
-    var name = Alexis.sayName() // Store the name of the character in the 'name' variable
-    val expected: String = "Alexis" // Declare the variable for comparison
-    assertEquals(name, expected) // Compare the results
+  test("equals") { // Test if two references to the same character are equal
+    assertEquals(Vidal,Vidal)
+    assertEquals(Alexis,Alexis)
   }
 
+  test("NotEquals") { // Test if two references to different characters are not equal
+  assertNotEquals(Vidal,Alexis)
+  }
+
+  test("SetName") { // Test if the sayName method behaves correctly
+    var name = Alexis.getName // Store the name of the character in the 'name' variable
+    val expected: String = "Alexis"
+    assertEquals(name, expected)
+  }
 
   test("NotEqualsName") { // Test if the names returned by the sayName method for two different characters are not equal
-    var name1 = Alexis.sayName() // Store the name of the first character in the 'name1' variable
-    var name2 = Vidal.sayName() // Store the name of the second character in the 'name2' variable
+    var name1 = Alexis.getName // Store the name of the first character in the 'name1' variable
+    var name2 = Vidal.getName // Store the name of the second character in the 'name2' variable
     assertNotEquals(name1, name2) // Assert that the two names are not equal
   }
-  test("equalsLife") { // Test if the returned life value for a character matches the expected value
-    var life = Alexis.life // Retrieve the life value of the character Alexis and store it in the 'life' variable
-    var expected: Int = 50 // Define the expected life value
+  test("SetLife") { // Test if the returned life value for a character matches the expected value
+    var life = Alexis.getHp // Retrieve the life value of the character Alexis and store it in the 'life' variable
+    var expected: Int = 100 // Define the expected life value
     assertEquals(life, expected) // Compare the actual life value with the expected value
   }
   test("NotEqualsLife") { // Test if the life values of two different characters are not equal
-    var life1 = Alexis.sayLife() // Retrieve the life value of the character Alexis and store it in the 'life1' variable
-    var life2 = Vidal.sayLife() // Retrieve the life value of the character Vidal and store it in the 'life2' variable
+    var life1 = Alexis.getHp // Retrieve the life value of the character Alexis and store it in the 'life1' variable
+    var life2 = Vidal.getHp // Retrieve the life value of the character Vidal and store it in the 'life2' variable
     assertNotEquals(life1, life2) // Assert that the life values of Alexis and Vidal are not equal
   }
 
+  test("SetDefense") { // Test if the returned life value for a character matches the expected value
+    var life = Alexis.getDp // Retrieve the life value of the character Alexis and store it in the 'life' variable
+    var expected: Int = 80 // Define the expected life value
+    assertEquals(life, expected) // Compare the actual life value with the expected value
+  }
+
   test("NotEqualsDefence") { // Test if the defense values of two different characters are not equal
-    var defense1 = Alexis.defence // Retrieve the defense value of the character Alexis and store it in the 'defense1' variable
-    var defense2 = Vidal.defence // Retrieve the defense value of the character Vidal and store it in the 'defense2' variable
+    var defense1 = Alexis.getDp // Retrieve the defense value of the character Alexis and store it in the 'defense1' variable
+    var defense2 = Vidal.getDp // Retrieve the defense value of the character Vidal and store it in the 'defense2' variable
     assertNotEquals(defense1, defense2) // Assert that the defense values of Alexis and Vidal are not equal
   }
 
-
+  test("SetWeight") { // Test if the returned life value for a character matches the expected value
+    var life = Alexis.getWeight // Retrieve the life value of the character Alexis and store it in the 'life' variable
+    var expected: Int = 60 // Define the expected life value
+    assertEquals(life, expected) // Compare the actual life value with the expected value
+  }
 
   test("NotEqualsWeight") { // Test if the weight values of two different characters are not equal
-    var weight1 = Alexis.weight // Retrieve the weight value of the character Alexis and store it in the 'weight1' variable
-    var weight2 = Vidal.weight // Retrieve the weight value of the character Vidal and store it in the 'weight2' variable
+    var weight1 = Alexis.getWeight // Retrieve the weight value of the character Alexis and store it in the 'weight1' variable
+    var weight2 = Vidal.getWeight // Retrieve the weight value of the character Vidal and store it in the 'weight2' variable
     assertNotEquals(weight1, weight2) // Assert that the weight values of Alexis and Vidal are not equal
   }
 
-
-  test("haveNotWeapon") { // Test if the character Alexis doesn't have a weapon
-    val hasWeapon = Alexis.weapon // Check if the character Alexis has a weapon and store the result in the 'hasWeapon' variable
-    var expected = false // Define the expected value indicating that Alexis doesn't have a weapon
-    assertEquals(hasWeapon, expected) // Compare the actual result with the expected value
+  test("SetMana") { // Test if the returned life value for a character matches the expected value
+    var life = Alexis.getMana // Retrieve the life value of the character Alexis and store it in the 'life' variable
+    var expected: Int = 40 // Define the expected life value
+    assertEquals(life, expected) // Compare the actual life value with the expected value
   }
 
-
   test("NotEqualsMana") { // Test if the mana values of two different characters are not equal
-    var mana1 = Alexis.mana // Retrieve the mana value of the character Alexis and store it in the 'mana1' variable
-    var mana2 = Vidal.mana // Retrieve the mana value of the character Vidal and store it in the 'mana2' variable
+    var mana1 = Alexis.getMana // Retrieve the mana value of the character Alexis and store it in the 'mana1' variable
+    var mana2 = Vidal.getMana // Retrieve the mana value of the character Vidal and store it in the 'mana2' variable
     assertNotEquals(mana1, mana2) // Assert that the mana values of Alexis and Vidal are not equal
   }
 
-  test("equalsMagicKind") { // Test if the returned magic kind for a character matches the expected value
-    var magicKind = Alexis.kind // Retrieve the magic kind of the character Alexis and store it in the 'magicKind' variable
-    var expected: String = "MagoBlanco" // Define the expected magic kind
-    assertEquals(magicKind, expected) // Compare the actual magic kind with the expected value
-  }
 
-  test("NotEqualsMagicKind") { // Test if the magic kinds of two different characters are not equal
-    var magicKind1 = Alexis.sayKind() // Retrieve the magic kind of the character Alexis and store it in the 'magicKind1' variable
-    var magicKind2 = Vidal.sayKind() // Retrieve the magic kind of the character Vidal and store it in the 'magicKind2' variable
-    assertNotEquals(magicKind1, magicKind2) // Assert that the magic kinds of Alexis and Vidal are not equal
-  }
-
-  test("equalsMagicCharacter") { // Test if two references to the same magic character are equal
-    val pmc: APlayable = Alexis // Create a reference to the character Alexis and assign it to the variable 'pmc'
-    var expected = Alexis // Define the expected value as the character Alexis
-    assertEquals(pmc, expected) // Compare the actual reference with the expected value
-  }
-
-  test("NotEqualsMagicCharacter") { // Test if two references to different magic characters are not equal
-    val pmc1: APlayable = Alexis // Create a reference to the character Alexis and assign it to the variable 'pmc1'
-    val pmc2: APlayable = Vidal // Create a reference to the character Vidal and assign it to the variable 'pmc2'
-    assertNotEquals(pmc1, pmc2) // Assert that the references to Alexis and Vidal are not equal
-  }
 
 
 
