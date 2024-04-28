@@ -11,10 +11,26 @@ import model.nonplayable.NonPlayable
  * @param defence
  */
 class Enemy(name: String, weight: Int,
-            attack: Int, life: Int,
-            defence: Int) extends ANonPlayable(name,weight,attack) {
+            attackPoints: Int, life: Int,
+            defence: Int) extends NonPlayable {
   def this(name:String) ={
     this(name,50,50,250,50)
   }
-
+  /**
+   * Implementation of Method to get the name of the non-playable entity
+   * @return : The name of non-playable entity
+   */
+  def getName: String = name
+  /**
+   * Implementation of Method to get the weight of the non-playable entity
+   * @return The weight of non-playable entity
+   */
+  def getWeight: Int = weight
+  /**
+   * Implementation of Method to get the attack points of the non-playable entity
+   * @return The attack points of non-playable entity
+   */
+  def getAttack: Int = attackPoints
 }
+
+
