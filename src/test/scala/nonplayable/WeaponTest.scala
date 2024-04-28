@@ -1,19 +1,20 @@
 package nonplayable
 
-import model.nonplayable.Weapon
-import model.playable.APlayable
+import model.nonplayable.{NonPlayable,Sword,Axe,Bow}
+import model.playable.Playable
 import munit.FunSuite
 class WeaponTest extends FunSuite {
-  var Sword: Weapon = _ // We declare a variable Sword of type Weapon
-  var Bow: Weapon = _ // We declare a variable Bow of type Weapon
-  var Cristiano: Character = _ // We declare a variable Cristiano of type Character
-  var Messi: Character = _ // We declare a variable Messi of type Character
-
+  var Sword: NonPlayable = _ // We declare a variable Sword of type Weapon
+  var Bow: NonPlayable = _ // We declare a variable Bow of type Weapon
+  var Axe: NonPlayable = _
+  var Cristiano: Playable = _ // We declare a variable Cristiano of type Character
+  var Messi: Playable = _ // We declare a variable Messi of type Character
+  var Casemiro: Playable = _
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the Weapon class with the specified parameters:
-    Sword = new Weapon("Espada",70,100,Cristiano) // -Name : Espada // - Weight: 70 // - Attack: 100 // - Owner : Cristiano
-    // Creates a new instance of the Weapon class with the specified parameters:
-    Bow = new Weapon("Arco",25,50,Messi) // -Name : Arco // - Weight: 25 // - Attack: 50 // - Owner : Messi
+    Sword = new Sword(Cristiano) // -Name : Espada // - Weight: 70 // - Attack:
+    Bow = new Bow(Messi) // -Name : Arco // - Weight: 25 // - Attack: 50 // - Owner : Messi
+    Axe = new Axe(Casemiro)
 
   }
   test("equalsName") { // Test if the returned name value for a sword matches the expected value

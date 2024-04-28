@@ -26,6 +26,12 @@ abstract class AWeapon(name: String, weight: Int,
    * @return The owner of the Weapon
    */
   def getOwner: Playable = owner
+  override def equals(other:Any):Boolean = { // override anula la funcion por defecto y me permite escribir una nueva
+    if (other.isInstanceOf[NonPlayable]) {
+      val otherCast = other.asInstanceOf[NonPlayable]
+      getClass() == otherCast.getClass()
+    } else false
+  }
   }
 
 

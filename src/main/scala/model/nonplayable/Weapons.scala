@@ -7,6 +7,7 @@ class Axe(name: String, weight: Int,
   def this(owner: Playable) = {
     this("Hacha", 50, 50, owner)
   }
+
 }
 class Sword(name: String, weight: Int,
             attackPoints: Int, owner: Playable) extends AWeapon(name, weight, attackPoints, owner) {
