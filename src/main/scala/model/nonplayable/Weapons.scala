@@ -22,7 +22,7 @@ class Bow(name: String, weight: Int,
   }
 }
 
-class Band(name: String, weight: Int,
+class Staff(name: String, weight: Int,
             attackPoints: Int, owner: Playable ,
             mana: Int) extends AWeapon(name, weight, attackPoints, owner) {
   def this(owner:Playable) = {
