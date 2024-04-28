@@ -1,23 +1,75 @@
 package model.playable
 import model.playable.Playable
 import model.playable.APlayable
-// Character class extends the Playable trait
-class Paladin(name:String) extends APlayable(name,100,50,50,"Paladin",false,0) {
 
+/**
+ * "A paladin is thought of as a very balanced character,
+ * not excelling excessively in any attribute but also
+ * not possessing notable deficiencies compared to other characters."
+ * @param name The name of the character.
+ * @param healthPoints The health points of the character.
+ * @param defensePoints The defense points of the character.
+ * @param weight The weight of the character.
+ * @param mana is zero for no magic characters
+ */
+class Paladin(name:String, healthPoints:Int,
+              defensePoints:Int, weight:Int,
+              private val mana:Int = 0) extends APlayable(name, healthPoints, defensePoints,weight,mana){
+  /**
+   * "The auxiliary builder receives the name that the user chooses for their character
+   * and sets the other statistics according to the chosen class."
+   * @param name
+   */
+  def this(name:String) = {
+    this(name,100,75,50,mana)
+  }
 }
-class Guerrero(name:String) extends APlayable(name,120,80,40,"Guerrero",false,0) {
-
+/**
+ * "The warrior is a character designed
+ * to be the main powerhouse of a team,
+ * very resilient but somewhat slow;
+ * this is often referred to as the game's 'tank'."
+ * @param name The name of the character.
+ * @param healthPoints The health points of the character.
+ * @param defensePoints The defense points of the character.
+ * @param weight The weight of the character.
+ * @param mana is zero for no magic characters
+ */
+class Guerrero(name:String, healthPoints:Int,
+               defensePoints:Int, weight:Int,
+               private val mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+  /**
+   * "The auxiliary builder receives the name that the user chooses for their character
+   * and sets the other statistics according to the chosen class."
+   * @param name
+   */
+  def this(name:String) = {
+    this(name,120,100,70,mana)
+  }
 }
-class Ninja(name:String) extends APlayable(name,50,80,20,"Ninja",false,0) {
-
+/**
+ *"A ninja is a key character in any game;
+ * they may not excel in defensive arts but can be decisive due to their high attack speed."
+ * @param name The name of the character.
+ * @param healthPoints The health points of the character.
+ * @param defensePoints The defense points of the character.
+ * @param weight The weight of the character.
+ * @param mana is zero for no magic characters
+ */
+class Ninja(name:String, healthPoints:Int,
+            defensePoints:Int, weight:Int,
+            private val mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+  /**
+   * "The auxiliary builder receives the name that the user chooses for their character
+   * and sets the other statistics according to the chosen class."
+   * @param name
+   */
+  def this(name:String) = {
+    this(name,80,70,30,mana)
+  }
 }
-class MagoNegro(name:String) extends APlayable(name,100,100,120,"MagoNegro",false,50) {
 
-}
-
-class MagoBlanco(name:String) extends APlayable(name,50,150,100,"MagoBlanco",false,80) {
-
-} // Override equals method to compare two characters based on their attributes
+ // Override equals method to compare two characters based on their attributes
 
 
 
