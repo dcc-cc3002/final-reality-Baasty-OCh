@@ -10,7 +10,7 @@ import model.playable.Playable
  */
 abstract class APlayable(val name: String, var healthPoints: Int,
                          val defensePoints: Int, val weight: Int,
-                         val mana: Int) extends Playable {
+                         val mana: Int, var armed: Boolean) extends Playable {
 
   /**
    * Implementation of Method to get the name of the playable entity
@@ -41,6 +41,8 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * @return The mana of playable entity
    */
   def getMana: Int = mana
+
+  def haveWeapon: Boolean = armed
   override def equals(other:Any):Boolean = { // override anula la funcion por defecto y me permite escribir una nueva
     if (other.isInstanceOf[Playable]) {
       val otherCast = other.asInstanceOf[Playable]
