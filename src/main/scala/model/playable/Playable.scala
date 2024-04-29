@@ -27,4 +27,8 @@ trait Playable {
    */
   def getMana: Int
 
+  /**
+   * Abstract Method to know if Playable have a weapon or not
+   */
+  def haveWeapon: Boolean
 }
