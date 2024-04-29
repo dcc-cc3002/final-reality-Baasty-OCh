@@ -66,6 +66,11 @@ class WeaponTest extends FunSuite {
     var expected: Playable = Cristiano // Define the expected owner character
     assertEquals(owner, expected) // Compare the actual owner character with the expected character
   }
+  test("setMAP"){
+    assertEquals(Sword.getMAP,0)
+    assertEquals(Bow.getMAP,0)
+    assertEquals(Axe.getMAP,0)
+  }
 
 
 

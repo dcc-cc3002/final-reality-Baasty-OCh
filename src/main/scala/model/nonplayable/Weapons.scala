@@ -32,7 +32,7 @@ class Bow(name: String, weight: Int,
 
 class Staff(name: String, weight: Int,
             attackPoints: Int, owner: Playable ,
-            mana: Int) extends AWeapon(name, weight, attackPoints, owner) {
+            magicAttackPoints:Int) extends AWeapon(name, weight, attackPoints, owner,magicAttackPoints ) {
   def this(owner:Playable) = {
     this("Baston",70,70,owner, 40)
   }
@@ -40,7 +40,7 @@ class Staff(name: String, weight: Int,
 
 class Wand(name: String, weight: Int,
            attackPoints: Int, owner: Playable ,
-           mana: Int) extends AWeapon(name, weight, attackPoints, owner) {
+           magicAttackPoints: Int) extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
   def this(owner:Playable) = {
     this("Varita",40,50,owner, 30)
   }

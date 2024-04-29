@@ -33,6 +33,7 @@ class Enemy(name: String, weight: Int,
   def getAttack: Int = attackPoints
 
   override def getOwner: String  = {"The Game"}
+  override def getMAP: Int = 0
 }
 
 

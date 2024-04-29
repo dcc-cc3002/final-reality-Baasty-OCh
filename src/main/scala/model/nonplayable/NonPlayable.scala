@@ -16,5 +16,6 @@ trait NonPlayable {
    */
   def getAttack: Int
   def getOwner: {}
+  def getMAP: Int
 }
 

@@ -52,6 +52,10 @@ class MagicWeaponTest extends FunSuite {
     var expected: Playable = Vidal // Define the expected owner character
     assertEquals(owner, expected) // Compare the actual owner character with the expected character
   }
+  test("setMAP"){
+    assertEquals(Staff.getMAP,40)
+    assertEquals(Wand.getMAP,30)
+  }
 
 
 
