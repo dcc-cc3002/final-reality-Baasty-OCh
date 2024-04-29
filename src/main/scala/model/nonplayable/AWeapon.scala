@@ -26,6 +26,11 @@ abstract class AWeapon(name: String, weight: Int,
    * @return The owner of the Weapon
    */
   override def getOwner: Playable = owner
+
+  /**
+   * Implementation for method to get de magic points of a Magic Weapon entity
+   * @return The magic Points of a Magic Weapon to attack
+   */
   def getMAP : Int = magicAttackPoints
 
   /**
