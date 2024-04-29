@@ -31,6 +31,8 @@ class Enemy(name: String, weight: Int,
    * @return The attack points of non-playable entity
    */
   def getAttack: Int = attackPoints
+
+  override def getOwner: String  = {"The Game"}
 }
 
 

@@ -23,6 +23,8 @@ class Paladin(name:String, healthPoints:Int,
   def this(name:String) = {
     this(name,100,75,50,0)
   }
+
+  override def getMana: Int = 0
 }
 /**
  * "The warrior is a character designed
@@ -37,7 +39,7 @@ class Paladin(name:String, healthPoints:Int,
  */
 class Guerrero(name:String, healthPoints:Int,
                defensePoints:Int, weight:Int,
-               mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+               mana:Int ) extends APlayable(name,healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
@@ -46,6 +48,7 @@ class Guerrero(name:String, healthPoints:Int,
   def this(name:String) = {
     this(name,120,100,70,0)
   }
+  override def getMana: Int = 0
 }
 /**
  *"A ninja is a key character in any game;
@@ -58,7 +61,7 @@ class Guerrero(name:String, healthPoints:Int,
  */
 class Ninja(name:String, healthPoints:Int,
             defensePoints:Int, weight:Int,
-            mana:Int = 0) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+            mana:Int ) extends APlayable(name,healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
@@ -67,6 +70,7 @@ class Ninja(name:String, healthPoints:Int,
   def this(name:String) = {
     this(name,80,70,30,0)
   }
+  override def getMana: Int = 0
 }
 
  // Override equals method to compare two characters based on their attributes

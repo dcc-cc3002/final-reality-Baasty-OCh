@@ -8,7 +8,6 @@ class MagicWeaponTest extends FunSuite {
   var Staff: Staff = _ // We declare a variable Staff of type MagicWeapon
   var Alexis: Playable = _ // We declare a variable Alexis of type MagicCharacter
   var Vidal: Playable = _ // We declare a variable Vidal of type MagicCharacter
-  var Cristiano: Playable = _ // We declare a variable Cristiano of type Character
 
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the MagicWeapon class with the specified parameters:
@@ -23,8 +22,6 @@ class MagicWeaponTest extends FunSuite {
     assertEquals(Wand, Wand) // Compare the actual name value with the expected value
     assertEquals(Staff,Staff)
   }
-
-
 
   test("equalsWeight") { // Test if the returned weight value for a sword matches the expected value
     var weight = Staff.getWeight // Retrieve the weight value of the sword and store it in the 'weight' variable

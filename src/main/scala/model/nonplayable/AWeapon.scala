@@ -25,7 +25,7 @@ abstract class AWeapon(name: String, weight: Int,
    * Implementation of Method to get the weight of the non-playable entity
    * @return The owner of the Weapon
    */
-  def getOwner: Playable = owner
+  override def getOwner: Playable = owner
 
   /**
    *

@@ -4,9 +4,9 @@ import model.nonplayable.{NonPlayable,Sword,Axe,Bow}
 import model.playable.Playable
 import munit.FunSuite
 class WeaponTest extends FunSuite {
-  var Sword: Sword = _ // We declare a variable Sword of type Weapon
-  var Bow: Bow = _ // We declare a variable Bow of type Weapon
-  var Axe: Axe = _
+  var Sword: NonPlayable = _ // We declare a variable Sword of type Weapon
+  var Bow: NonPlayable = _ // We declare a variable Bow of type Weapon
+  var Axe: NonPlayable = _
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Character
   var Messi: Playable = _ // We declare a variable Messi of type Character
   var Casemiro: Playable = _
@@ -16,6 +16,25 @@ class WeaponTest extends FunSuite {
     Bow = new Bow(Messi) // -Name : Arco // - Weight: 25 // - Attack: 50 // - Owner : Messi
     Axe = new Axe(Casemiro)
 
+  }
+
+  test("equals") { // Test if two references to the same character are equal
+    assertEquals(Sword, Sword)
+    assertEquals(Bow, Bow)
+    assertEquals(Axe,Axe)
+  }
+  test("NotEquals") { // Test if two references to the same character are equal
+    assertNotEquals(Bow, Sword)
+    assertNotEquals(Axe, Bow)
+    assertNotEquals(Sword,Axe)
+  }
+  test("setName") { // Test if the returned name value for a character matches the expected value
+    var name = Sword.getName // Retrieve the name value of the character Cristiano and store it in the 'name' variable
+    var name2 = Bow.getName
+    var name3 = Axe.getName
+    assertEquals(name, "Espada") // Compare the actual name value with the expected value
+    assertEquals(name2, "Arco")
+    assertEquals(name3, "Hacha")
   }
 
   test("equalsWeight") { // Test if the returned weight value for a sword matches the expected value

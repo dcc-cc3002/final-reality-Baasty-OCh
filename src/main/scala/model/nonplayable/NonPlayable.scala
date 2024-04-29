@@ -15,5 +15,6 @@ trait NonPlayable {
    * Abstract method to get the Attack Points of the non-playable entity
    */
   def getAttack: Int
+  def getOwner: {}
 }
 

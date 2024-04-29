@@ -11,6 +11,7 @@ class CharacterTest extends FunSuite {
     Cristiano = new Paladin("Cristiano")
     Casemiro = new Guerrero("Casemiro")
     Messi = new Ninja("Messi")
+
   }
   test("equals") { // Test if two references to the same character are equal
     assertEquals(Cristiano, Cristiano)
@@ -26,8 +27,11 @@ class CharacterTest extends FunSuite {
 
   test("setName") { // Test if the returned name value for a character matches the expected value
     var name = Cristiano.getName // Retrieve the name value of the character Cristiano and store it in the 'name' variable
-    val expected: String = "Cristiano" // Define the expected name value
-    assertEquals(name, expected) // Compare the actual name value with the expected value
+    var name2 = Messi.getName
+    var name3 = Casemiro.getName
+    assertEquals(name, "Cristiano") // Compare the actual name value with the expected value
+    assertEquals(name2, "Messi")
+    assertEquals(name3, "Casemiro")
   }
 
   test("NotEqualsName") { // Test if the name values of two different characters are not equal
@@ -38,8 +42,11 @@ class CharacterTest extends FunSuite {
 
   test("equalsLife") { // Test if the returned life value for a character matches the expected value
     var life = Cristiano.getHp // Retrieve the life value of the character Cristiano and store it in the 'life' variable
-    var expected: Int = 100 // Define the expected life value
-    assertEquals(life, expected) // Compare the actual life value with the expected value
+    var life2 = Messi.getHp
+    var life3 = Casemiro.getHp
+    assertEquals(life, 100) // Compare the actual life value with the expected value
+    assertEquals(life2, 80)
+    assertEquals(life3, 120)
   }
 
   test("NotEqualsLife") { // Test if the life values of two different characters are not equal
@@ -49,8 +56,11 @@ class CharacterTest extends FunSuite {
   }
   test("equalsDefence") { // Test if the returned defense value for a character matches the expected value
     var defense = Cristiano.getDp // Retrieve the defense value of the character Cristiano and store it in the 'defense' variable
-    var expected: Int = 75 // Define the expected defense value
-    assertEquals(defense, expected) // Compare the actual defense value with the expected value
+    var defense2 = Messi.getDp
+    var defense3 = Casemiro.getDp
+    assertEquals(defense, 75) // Compare the actual defense value with the expected value
+    assertEquals(defense2, 70)
+    assertEquals(defense3, 100)
   }
 
   test("NotEqualsDefence") { // Test if the defense values of two different characters are not equal
@@ -61,8 +71,11 @@ class CharacterTest extends FunSuite {
 
   test("equalsWeight") { // Test if the returned weight value for a character matches the expected value
     var weight = Cristiano.getWeight // Retrieve the weight value of the character Cristiano and store it in the 'weight' variable
-    var expected: Int = 50 // Define the expected weight value
-    assertEquals(weight, expected) // Compare the actual weight value with the expected value
+    var weight2 = Messi.getWeight
+    var weight3 = Casemiro.getWeight// Define the expected weight value
+    assertEquals(weight, 50) // Compare the actual weight value with the expected value
+    assertEquals(weight2, 30)
+    assertEquals(weight3, 70)
   }
 
   test("NotEqualsWeight") { // Test if the weight values of two different characters are not equal
@@ -72,9 +85,13 @@ class CharacterTest extends FunSuite {
   }
 
   test("zeroMana") { // Test if the returned kind value for a character matches the expected value
-    var kind = Cristiano.getMana // Retrieve the kind value of the character Cristiano and store it in the 'kind' variable
+    var mana = Cristiano.getMana // Retrieve the kind value of the character Cristiano and store it in the 'kind' variable
+    var mana2 = Messi.getMana
+    var mana3 = Casemiro.getMana
     var expected: Int = 0 // Define the expected kind value
-    assertEquals(kind, expected) // Compare the actual kind value with the expected value
+    assertEquals(mana, expected) // Compare the actual kind value with the expected value
+    assertEquals(mana2, expected)
+    assertEquals(mana3, expected)
   }
 
 
