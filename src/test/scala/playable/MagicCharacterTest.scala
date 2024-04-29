@@ -5,6 +5,7 @@ import munit.FunSuite
 class MagicCharacterTest extends FunSuite {
   var Alexis: Playable = _ // We declare a variable Alexis of type MagicCharacter
   var Vidal: Playable = _ // We declare a variable Vidal of type MagicCharacter
+  var Medel : Playable = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the Magic Character class with the specified parameters:
@@ -72,12 +73,11 @@ class MagicCharacterTest extends FunSuite {
     var expected: Int = 40 // Define the expected life value
     assertEquals(life, expected) // Compare the actual life value with the expected value
   }
-
-  test("NotEqualsMana") { // Test if the mana values of two different characters are not equal
-    var mana1 = Alexis.getMana // Retrieve the mana value of the character Alexis and store it in the 'mana1' variable
-    var mana2 = Vidal.getMana // Retrieve the mana value of the character Vidal and store it in the 'mana2' variable
-    assertNotEquals(mana1, mana2) // Assert that the mana values of Alexis and Vidal are not equal
+  test("checkWeapon"){
+    assertEquals(Alexis.haveWeapon,false)
+    assertEquals(Vidal.haveWeapon,false)
   }
+
 
 
 
