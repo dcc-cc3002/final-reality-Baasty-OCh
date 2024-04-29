@@ -14,14 +14,14 @@ import model.playable.APlayable
  */
 class Paladin(name:String, healthPoints:Int,
               defensePoints:Int, weight:Int,
-              mana:Int) extends APlayable(name, healthPoints, defensePoints,weight,mana){
+              mana:Int, armed: Boolean) extends APlayable(name, healthPoints, defensePoints,weight,mana, armed){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,100,75,50,0)
+    this(name,100,75,50,0, false)
   }
 
   override def getMana: Int = 0
@@ -39,14 +39,14 @@ class Paladin(name:String, healthPoints:Int,
  */
 class Guerrero(name:String, healthPoints:Int,
                defensePoints:Int, weight:Int,
-               mana:Int ) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+               mana:Int, armed :Boolean ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,120,100,70,0)
+    this(name,120,100,70,0, false)
   }
   override def getMana: Int = 0
 }
@@ -61,14 +61,14 @@ class Guerrero(name:String, healthPoints:Int,
  */
 class Ninja(name:String, healthPoints:Int,
             defensePoints:Int, weight:Int,
-            mana:Int ) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+            mana:Int, armed :Boolean ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,80,70,30,0)
+    this(name,80,70,30,0,false)
   }
   override def getMana: Int = 0
 }
