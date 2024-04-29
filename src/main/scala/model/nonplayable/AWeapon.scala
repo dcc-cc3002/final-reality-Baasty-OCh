@@ -4,7 +4,7 @@ import model.playable.Playable
 
 
 abstract class AWeapon(name: String, weight: Int,
-             attackPoints: Int, owner: Playable) extends NonPlayable{
+             attackPoints: Int, owner: Playable, magicAttackPoints: Int) extends NonPlayable{
   /**
    * Implementation of Method to get the name of the non-playable entity
    * @return : The name of Weapon
@@ -26,6 +26,7 @@ abstract class AWeapon(name: String, weight: Int,
    * @return The owner of the Weapon
    */
   override def getOwner: Playable = owner
+  def getMAP : Int = magicAttackPoints
 
   /**
    *
