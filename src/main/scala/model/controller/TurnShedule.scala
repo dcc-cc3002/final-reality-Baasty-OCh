@@ -17,7 +17,12 @@ class TurnShedule {
       actionBar.remove(pj)
     }
   }
-
+  def resetActionBar(pj:Playable):Unit ={
+    actionBar.get(pj) match {
+      case Some((maxActionBar,_)) =>
+    actionBar.update(pj,(maxActionBar,0))
+    }
+  }
 
 }
 
