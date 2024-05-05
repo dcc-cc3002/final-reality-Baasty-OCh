@@ -33,11 +33,18 @@ class TurnShedule {
         case Some((maxActionBar,cntBar)) =>
           val newCntBar = cntBar + n
           actionBar.update(key,(maxActionBar,newCntBar))
-          if (newCntBar == maxActionBa) {
+          if (newCntBar == maxActionBar) {
             turnos.enqueue(key)
             resetActionBar(key)
           }
       }
+    }
+  }
+  // Método para mostrar el estado actual de turnos
+  def mostrarTurnos(): Unit = {
+    println("Turnos actuales:")
+    turnos.foreach { key =>
+      println(s"- ${key.getClass.getSimpleName}")
     }
   }
 
