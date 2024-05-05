@@ -5,15 +5,17 @@ import model.playable.APlayable
 import scala.collection.mutable.Map
 
 
-class TurnShedule extends Shedule {
-  var actionBar : Map[Int, Playable] = Map()
-  def addPlayable( pj :Playable): Unit = {
-    actionBar += (pj -> 0)
+class TurnShedule {
+  val actionBar : Map[Playable, (Int,Int)] = Map()
+  def addPlayer(pj:Playable): Unit ={
+    val maxActionBar = pj.getWeight
+    var cntBar = 0
+    actionBar.put(pj,(maxActionBar,cntBar))
   }
 
-  def maxActionBar(): Unit = {
 
-  }
+
+
 
 
 
