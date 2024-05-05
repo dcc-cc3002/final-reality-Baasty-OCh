@@ -7,7 +7,7 @@ import scala.collection.mutable.Map
 // Party class to manage a group of playable characters
 class Party {
   // Map to store the allies in the party, keyed by their kind/type
-  val allies: Map[Any, Playable] = Map()
+  val allies: Map[Class[ _<: Playable], Playable] = Map()
 
   // Method to add a playable character to the party
   def addPlayable(pj: Playable): Unit = {

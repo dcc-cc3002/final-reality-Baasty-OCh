@@ -12,17 +12,11 @@ class TurnShedule {
     var cntBar = 0
     actionBar.put(pj,(maxActionBar,cntBar))
   }
-
-
-
-
-
-
-
-
-
-
-
+  def deletePlayer(pj:Playable): Unit = {
+    if(actionBar.contains(pj)) {
+      actionBar.remove(pj)
+    }
+  }
 
 
 }
