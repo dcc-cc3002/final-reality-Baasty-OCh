@@ -3,11 +3,10 @@ package model.controller
 import model.playable.Playable
 
 trait Shedule {
-  def addPlayable(pj: Playable): Unit
-  def deletePlayable(pj: Playable): Unit
-  def maxActionBar(): Unit
-  def resetActionBar(): Unit
-  def moveActionBar(n:Int): Unit
-  def nextPlayable(): Unit
+  def addPlayer(pj:Playable): Unit
+  def deletePlayer(pj:Playable): Unit
+  def resetActionBar(pj:Playable): Unit
+  def fillActionBar(n: Int): Unit
+  def showTurns(): Unit
 
 }

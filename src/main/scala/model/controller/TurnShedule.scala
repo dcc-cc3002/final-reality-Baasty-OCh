@@ -7,9 +7,9 @@ import scala.collection.mutable
 import scala.collection.mutable.{Map, Queue}
 
 
-class TurnShedule {
+class TurnShedule extends Shedule {
   val actionBar : Map[Playable, (Int,Int)] = Map()
-  val turnos: Queue[Playable] = Queue()
+  val turns: Queue[Playable] = Queue()
   def addPlayer(pj:Playable): Unit ={
     val maxActionBar = pj.getWeight
     var cntBar = 0
@@ -34,16 +34,16 @@ class TurnShedule {
           val newCntBar = cntBar + n
           actionBar.update(key,(maxActionBar,newCntBar))
           if (newCntBar == maxActionBar) {
-            turnos.enqueue(key)
+            turns.enqueue(key)
             resetActionBar(key)
           }
       }
     }
   }
   // Método para mostrar el estado actual de turnos
-  def mostrarTurnos(): Unit = {
+  def showTurns(): Unit = {
     println("Turnos actuales:")
-    turnos.foreach { key =>
+    turns.foreach { key =>
       println(s"- ${key.getClass.getSimpleName}")
     }
   }
