@@ -2,11 +2,14 @@ package model.controller
 
 import model.playable.Playable
 import model.playable.APlayable
-import scala.collection.mutable.Map
+
+import scala.collection.mutable
+import scala.collection.mutable.{Map, Queue}
 
 
 class TurnShedule {
   val actionBar : Map[Playable, (Int,Int)] = Map()
+  val turnos: Queue[Playable] = Queue()
   def addPlayer(pj:Playable): Unit ={
     val maxActionBar = pj.getWeight
     var cntBar = 0
