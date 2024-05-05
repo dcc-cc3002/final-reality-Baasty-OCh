@@ -24,5 +24,15 @@ class TurnShedule {
     }
   }
 
+  def fillActionBar(n:Int):Unit = {
+    actionBar.keys.foreach {key =>
+      actionBar.get(key) match {
+        case Some((maxActionBar,cntBar)) =>
+          val newCntBar = cntBar + n
+          actionBar.update(key,(maxActionBar,newCntBar))
+      }
+    }
+  }
+
 }
 
