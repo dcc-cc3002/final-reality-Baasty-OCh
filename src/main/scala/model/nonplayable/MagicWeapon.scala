@@ -4,8 +4,8 @@ import model.playable.APlayable
 
 // MagicWeapon class represents a non-playable entity that is a magic weapon
 class MagicWeapon(name: String, weight: Int,
-                  attack: Int, mana: Int,
-                  owner: APlayable) extends NonPlayable {
+                  attack: Int,owner: APlayable,
+                  mana: Int) extends AWeapon(name,weight, attack, owner,mana) {
 
   // Method to return the mana points required to use the magic weapon
   def sayMana(): Int ={
@@ -31,5 +31,6 @@ class MagicWeapon(name: String, weight: Int,
   def sayOwner(): APlayable = {
     owner
   }
+
 }
 

@@ -19,7 +19,7 @@ class PartyTest extends FunSuite {
   }
   test("addCharacter") { // Test the method to add a character
     Team1.addPlayable(Cristiano) // Add the character Cristiano
-    val expected: Map[Any, Playable] = Map(Cristiano.getClass -> Cristiano) // The expected variable will be a map with the type and name of the character
+    val expected: Map[Class[_<:Playable], Playable] = Map(Cristiano.getClass -> Cristiano) // The expected variable will be a map with the type and name of the character
     assertEquals(Team1.allies.toMap, expected) // Compare the result with the Map
   }
 
