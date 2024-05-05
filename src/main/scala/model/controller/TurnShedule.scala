@@ -33,6 +33,10 @@ class TurnShedule {
         case Some((maxActionBar,cntBar)) =>
           val newCntBar = cntBar + n
           actionBar.update(key,(maxActionBar,newCntBar))
+          if (newCntBar == maxActionBa) {
+            turnos.enqueue(key)
+            resetActionBar(key)
+          }
       }
     }
   }
