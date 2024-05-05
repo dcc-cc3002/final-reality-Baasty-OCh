@@ -24,6 +24,9 @@ class TurnSheduleTest extends FunSuite {
     val expected: Map[Playable, (50,0)] = Map(Cristiano -> (50,0))
     assertEquals(Team1.actionBar.toMap,expected)
   }
+  test("isEmpty"){
+    assertEquals(Team1.actionBar.isEmpty,true)
+  }
   test("deletePlayer"){
     Team1.addPlayer(Cristiano)
     Team1.deletePlayer(Cristiano)
