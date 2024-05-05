@@ -1,7 +1,6 @@
 package model.controller
 
-import model.playable.Playable
-import model.playable.APlayable
+import model.playable.{APlayable, MagoBlanco, Paladin, Playable}
 
 import scala.collection.mutable
 import scala.collection.mutable.{Map, Queue}
@@ -44,9 +43,11 @@ class TurnShedule extends Shedule {
   def showTurns(): Unit = {
     println("Turnos actuales:")
     turns.foreach { key =>
-      println(s"- ${key.getClass.getSimpleName}")
+      println(s"- ${key.getName}")
     }
   }
 
 }
+
+
 

@@ -1,6 +1,10 @@
 package model.playable
+import model.nonplayable.AWeapon
 import model.playable.Playable
 import model.playable.APlayable
+import model.nonplayable.NonPlayable
+import model.nonplayable.{Axe,Sword,Staff,Bow,Wand}
+
 
 /**
  * "A paladin is thought of as a very balanced character,
@@ -14,14 +18,14 @@ import model.playable.APlayable
  */
 class Paladin(name:String, healthPoints:Int,
               defensePoints:Int, weight:Int,
-              mana:Int, armed: Boolean) extends APlayable(name, healthPoints, defensePoints,weight,mana, armed){
+              mana:Int, armed: Option[AWeapon]) extends APlayable(name, healthPoints, defensePoints,weight,mana, armed){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,100,75,50,0, false)
+    this(name,100,75,50,0, Some(new Sword()))
   }
 
   override def getMana: Int = 0
@@ -39,14 +43,14 @@ class Paladin(name:String, healthPoints:Int,
  */
 class Guerrero(name:String, healthPoints:Int,
                defensePoints:Int, weight:Int,
-               mana:Int, armed :Boolean ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
+               mana:Int, armed :Option[AWeapon] ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,120,100,70,0, false)
+    this(name,120,100,70,0, Some(new Axe()))
   }
   override def getMana: Int = 0
 }
@@ -61,14 +65,14 @@ class Guerrero(name:String, healthPoints:Int,
  */
 class Ninja(name:String, healthPoints:Int,
             defensePoints:Int, weight:Int,
-            mana:Int, armed :Boolean ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
+            mana:Int, armed : Option[AWeapon] ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,80,70,30,0,false)
+    this(name,80,70,30,0, Some( new Bow()))
   }
   override def getMana: Int = 0
 }

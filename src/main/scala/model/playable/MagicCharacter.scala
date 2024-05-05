@@ -1,5 +1,7 @@
 package model.playable
+import model.nonplayable.AWeapon
 import model.playable.APlayable
+import model.nonplayable.{Staff,Wand}
 
 /**
  * "A Black Mage will primarily be a magical attack character, though without excessively neglecting defense."
@@ -11,14 +13,14 @@ import model.playable.APlayable
  */
 class MagoNegro(name:String, healthPoints:Int,
                 defensePoints:Int, weight:Int,
-                mana:Int, armed : Boolean ) extends APlayable(name,healthPoints, defensePoints,weight,mana, armed) {
+                mana:Int, armed : Option[AWeapon]) extends APlayable(name,healthPoints, defensePoints,weight,mana, armed) {
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,90,60,50,50, false)
+    this(name,90,60,50,50, Some(new Staff()))
   }
 }
 
@@ -32,13 +34,13 @@ class MagoNegro(name:String, healthPoints:Int,
  */
 class MagoBlanco(name:String, healthPoints:Int,
                  defensePoints:Int, weight:Int,
-                 mana:Int, armed: Boolean ) extends APlayable(name,healthPoints, defensePoints,weight,mana, armed) {
+                 mana:Int, armed: Option[AWeapon]) extends APlayable(name,healthPoints, defensePoints,weight,mana, armed) {
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,100,80,60,40, false)
+    this(name,100,80,60,40, Some( new Wand()))
   }
 }

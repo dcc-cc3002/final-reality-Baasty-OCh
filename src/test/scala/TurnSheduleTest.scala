@@ -14,7 +14,7 @@ class TurnSheduleTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Team1 = new TurnShedule() // Creates a new instance of the Party class and assigns it to the variable Team1.
     // Creates a new instance of the Character class with the specified parameters:
-    Cristiano = new Paladin("Cristiano",0,50,50,0,false)
+    Cristiano = new Paladin("Cristiano",0,50,50,0,Some( new Sword()))
     // Creates a new instance of the MagicCharacter class with the specified parameters:
     Alexis = new MagoBlanco("Alexis")// - Kind: Mago Blanco // - Weapon: false
     Messi = new Guerrero("Messi") //
@@ -47,7 +47,7 @@ class TurnSheduleTest extends FunSuite {
     val expected: Map[Playable, (Int,Int)] = Map(Cristiano -> (50,0), Alexis -> (60,12))
     assertEquals(Team1.actionBar.toMap,expected)
   }
-  test("showTurns"){
+  test("Turns"){
     Team1.addPlayer(Cristiano)
     Team1.addPlayer(Alexis)
     Team1.fillActionBar(55)
@@ -55,6 +55,7 @@ class TurnSheduleTest extends FunSuite {
     val expected: mutable.Queue[Playable] = mutable.Queue(Cristiano,Alexis)
     assertEquals(Team1.turns,expected)
   }
+
 
 
 }

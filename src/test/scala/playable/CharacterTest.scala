@@ -93,11 +93,7 @@ class CharacterTest extends FunSuite {
     assertEquals(mana2, expected)
     assertEquals(mana3, expected)
   }
-  test("checkWeapon"){
-    assertEquals(Cristiano.haveWeapon,false)
-    assertEquals(Messi.haveWeapon,false)
-    assertEquals(Casemiro.haveWeapon,false)
-  }
+
 
 
 

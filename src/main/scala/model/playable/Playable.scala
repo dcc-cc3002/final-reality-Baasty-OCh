@@ -30,5 +30,5 @@ trait Playable {
   /**
    * Abstract Method to know if Playable have a weapon or not
    */
-  def haveWeapon: Boolean
+  def haveWeapon: Any
 }
