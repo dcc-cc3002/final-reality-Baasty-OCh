@@ -1,8 +1,9 @@
+package controller
+
+import model.controller.TurnShedule
+import model.nonplayable.Sword
+import model.playable.{Guerrero, MagoBlanco, Paladin, Playable}
 import munit.FunSuite
-import model.party.Party
-import model.playable.{Guerrero, MagoBlanco, MagoNegro, Ninja, Paladin, Playable}
-import model.controller.{Shedule, TurnShedule}
-import model.nonplayable.{AWeapon, Axe, Bow, Enemy, Staff, Sword, Wand}
 
 import scala.collection.mutable
 class TurnSheduleTest extends FunSuite {

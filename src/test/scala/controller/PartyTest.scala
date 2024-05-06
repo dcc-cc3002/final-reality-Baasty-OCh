@@ -1,7 +1,9 @@
-import munit.FunSuite
+package controller
+
+import model.nonplayable.Sword
 import model.party.Party
-import model.playable.{Playable,Paladin,Guerrero,Ninja,MagoBlanco,MagoNegro}
-import model.nonplayable.{Enemy, AWeapon, Sword, Axe, Bow, Staff, Wand}
+import model.playable.{MagoBlanco, Paladin, Playable}
+import munit.FunSuite
 class PartyTest extends FunSuite {
   var Team1: Party = _ // We declare a variable Team1 of type Party
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Playable
@@ -11,7 +13,7 @@ class PartyTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Team1 = new Party() // Creates a new instance of the Party class and assigns it to the variable Team1.
     // Creates a new instance of the Character class with the specified parameters:
-    Cristiano = new Paladin("Cristiano",0,50,50,0,Some( new Sword()))
+    Cristiano = new Paladin("Cristiano",0,50,50,0,Some( new Sword(Cristiano)))
 
     // Creates a new instance of the MagicCharacter class with the specified parameters:
     Alexis = new MagoBlanco("Alexis")// - Kind: Mago Blanco // - Weapon: false
