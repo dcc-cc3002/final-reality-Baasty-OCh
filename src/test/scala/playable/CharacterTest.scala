@@ -1,6 +1,7 @@
 package playable
+import model.nonplayable.{AWeapon, NonPlayable,Sword,Staff,Wand,Bow,Axe}
 import model.playable.Playable
-import model.playable.{APlayable, Guerrero, Paladin,Ninja}
+import model.playable.{APlayable, Guerrero, Ninja, Paladin}
 import munit.FunSuite
 class CharacterTest extends FunSuite {
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Character
@@ -92,6 +93,17 @@ class CharacterTest extends FunSuite {
     assertEquals(mana, expected) // Compare the actual kind value with the expected value
     assertEquals(mana2, expected)
     assertEquals(mana3, expected)
+  }
+  test("NotHaveWeapon"){
+    assertEquals(Cristiano.haveWeapon,None)
+  }
+  test("haveWeapon"){
+    var Espada: Sword = new Sword(Cristiano)
+    Cristiano.putWeapon(Espada)
+    var expeted: Option[AWeapon] = Some(new Sword(Cristiano))
+    assertEquals(expeted,Cristiano.haveWeapon)
+
+
   }
 
 

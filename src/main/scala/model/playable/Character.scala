@@ -1,9 +1,7 @@
 package model.playable
-import model.nonplayable.AWeapon
+import model.nonplayable.{AWeapon, Axe, Bow, Enemy, NonPlayable, Staff, Sword, Wand}
 import model.playable.Playable
 import model.playable.APlayable
-import model.nonplayable.NonPlayable
-import model.nonplayable.{Axe,Sword,Staff,Bow,Wand}
 
 
 /**
@@ -18,18 +16,25 @@ import model.nonplayable.{Axe,Sword,Staff,Bow,Wand}
  */
 class Paladin(name:String, healthPoints:Int,
               defensePoints:Int, weight:Int,
-              mana:Int, armed: Option[AWeapon]) extends APlayable(name, healthPoints, defensePoints,weight,mana, armed){
+              mana:Int) extends APlayable(name, healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,100,75,50,0, None)
+    this(name,100,75,50,0)
   }
 
   override def putWeapon(a: AWeapon): Unit = {
-    var this.armed: Option[AWeapon] = Some(a)
+    arma = Some(a)
+  }
+
+  override def attackEnemy(e: Enemy): Unit = {
+    if (this.haveWeapon != None){
+      var damage = arma.getAttack - e.getDF
+
+    }
 
   }
 
@@ -48,18 +53,18 @@ class Paladin(name:String, healthPoints:Int,
  */
 class Guerrero(name:String, healthPoints:Int,
                defensePoints:Int, weight:Int,
-               mana:Int, armed :Option[AWeapon] ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
+               mana:Int) extends APlayable(name,healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,120,100,70,0, None)
+    this(name,120,100,70,0)
   }
 
   override def putWeapon(a: AWeapon): Unit = {
-    var this.armed: Option[AWeapon] = Some(a)
+    arma = Some(a)
 
   }
   override def getMana: Int = 0
@@ -75,18 +80,18 @@ class Guerrero(name:String, healthPoints:Int,
  */
 class Ninja(name:String, healthPoints:Int,
             defensePoints:Int, weight:Int,
-            mana:Int, armed : Option[AWeapon] ) extends APlayable(name,healthPoints, defensePoints,weight,mana,armed){
+            mana:Int) extends APlayable(name,healthPoints, defensePoints,weight,mana){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,80,70,30,0, None)
+    this(name,80,70,30,0)
   }
 
   override def putWeapon(a: AWeapon): Unit = {
-    var this.armed: Option[AWeapon] = Some(a)
+    arma = Some(a)
 
   }
   override def getMana: Int = 0

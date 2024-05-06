@@ -1,6 +1,6 @@
 package model.playable
 
-import model.nonplayable.AWeapon
+import model.nonplayable.{AWeapon,Enemy}
 
 trait Playable {
   /**
@@ -32,7 +32,8 @@ trait Playable {
   /**
    * Abstract Method to know if Playable have a weapon or not
    */
-  def haveWeapon: Any
+  def haveWeapon: Option[AWeapon]
 
   def putWeapon( a: AWeapon): Unit
+  def attackEnemy(e: Enemy): Unit
 }

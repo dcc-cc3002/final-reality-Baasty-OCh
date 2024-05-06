@@ -1,5 +1,5 @@
 package model.playable
-import model.nonplayable.AWeapon
+import model.nonplayable.{AWeapon, Enemy}
 import model.playable.Playable
 
 /**
@@ -11,7 +11,8 @@ import model.playable.Playable
  */
 abstract class APlayable(val name: String, var healthPoints: Int,
                          val defensePoints: Int, val weight: Int,
-                         val mana: Int, var armed: Option[AWeapon]) extends Playable {
+                         val mana: Int) extends Playable {
+  var arma: Option[AWeapon] = None
 
   /**
    * Implementation of Method to get the name of the playable entity
@@ -43,9 +44,11 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    */
   def getMana: Int = mana
 
-  def haveWeapon: Option[AWeapon] = armed
+  def haveWeapon = arma
 
   def putWeapon(a:AWeapon): Unit = {}
+
+  def attackEnemy(e: Enemy): Unit = {}
 
 
 

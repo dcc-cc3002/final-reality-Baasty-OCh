@@ -13,17 +13,17 @@ import model.nonplayable.{Staff,Wand}
  */
 class MagoNegro(name:String, healthPoints:Int,
                 defensePoints:Int, weight:Int,
-                mana:Int, armed : Option[AWeapon]) extends APlayable(name,healthPoints, defensePoints,weight,mana, armed) {
+                mana:Int) extends APlayable(name,healthPoints, defensePoints,weight,mana) {
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,90,60,50,50, None)
+    this(name,90,60,50,50)
   }
   override def putWeapon(a: AWeapon): Unit = {
-    var this.armed: Option[AWeapon] = Some(a)
+    arma = Some(a)
 
   }
 }
@@ -38,17 +38,17 @@ class MagoNegro(name:String, healthPoints:Int,
  */
 class MagoBlanco(name:String, healthPoints:Int,
                  defensePoints:Int, weight:Int,
-                 mana:Int, armed: Option[AWeapon]) extends APlayable(name,healthPoints, defensePoints,weight,mana, armed) {
+                 mana:Int) extends APlayable(name,healthPoints, defensePoints,weight,mana) {
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,100,80,60,40, None)
+    this(name,100,80,60,40)
   }
   override def putWeapon(a: AWeapon): Unit = {
-    var this.armed: Option[AWeapon] = Some(a)
+    arma = Some(a)
 
   }
 }
