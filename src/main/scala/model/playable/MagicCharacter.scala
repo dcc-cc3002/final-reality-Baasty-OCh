@@ -20,7 +20,7 @@ class MagoNegro(name:String, healthPoints:Int,
    * @param name
    */
   def this(name:String) = {
-    this(name,90,60,50,50, Some(new Staff()))
+    this(name,90,60,50,50, None)
   }
 }
 
@@ -41,6 +41,6 @@ class MagoBlanco(name:String, healthPoints:Int,
    * @param name
    */
   def this(name:String) = {
-    this(name,100,80,60,40, Some( new Wand()))
+    this(name,100,80,60,40, None)
   }
 }

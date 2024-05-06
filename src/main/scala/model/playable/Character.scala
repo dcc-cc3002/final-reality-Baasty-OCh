@@ -25,7 +25,7 @@ class Paladin(name:String, healthPoints:Int,
    * @param name
    */
   def this(name:String) = {
-    this(name,100,75,50,0, Some(new Sword()))
+    this(name,100,75,50,0, None)
   }
 
   override def getMana: Int = 0
@@ -50,7 +50,7 @@ class Guerrero(name:String, healthPoints:Int,
    * @param name
    */
   def this(name:String) = {
-    this(name,120,100,70,0, Some(new Axe()))
+    this(name,120,100,70,0, None)
   }
   override def getMana: Int = 0
 }
@@ -72,7 +72,7 @@ class Ninja(name:String, healthPoints:Int,
    * @param name
    */
   def this(name:String) = {
-    this(name,80,70,30,0, Some( new Bow()))
+    this(name,80,70,30,0, None)
   }
   override def getMana: Int = 0
 }

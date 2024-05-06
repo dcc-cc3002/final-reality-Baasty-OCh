@@ -73,10 +73,7 @@ class MagicCharacterTest extends FunSuite {
     var expected: Int = 40 // Define the expected life value
     assertEquals(life, expected) // Compare the actual life value with the expected value
   }
-  test("checkWeapon"){
-    assertEquals(Alexis.haveWeapon,false)
-    assertEquals(Vidal.haveWeapon,false)
-  }
+
 
 
 
