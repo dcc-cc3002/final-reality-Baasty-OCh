@@ -28,6 +28,11 @@ class Paladin(name:String, healthPoints:Int,
     this(name,100,75,50,0, None)
   }
 
+  override def putWeapon(a: AWeapon): Unit = {
+    var this.armed: Option[AWeapon] = Some(a)
+
+  }
+
   override def getMana: Int = 0
 }
 /**
@@ -52,6 +57,11 @@ class Guerrero(name:String, healthPoints:Int,
   def this(name:String) = {
     this(name,120,100,70,0, None)
   }
+
+  override def putWeapon(a: AWeapon): Unit = {
+    var this.armed: Option[AWeapon] = Some(a)
+
+  }
   override def getMana: Int = 0
 }
 /**
@@ -73,6 +83,11 @@ class Ninja(name:String, healthPoints:Int,
    */
   def this(name:String) = {
     this(name,80,70,30,0, None)
+  }
+
+  override def putWeapon(a: AWeapon): Unit = {
+    var this.armed: Option[AWeapon] = Some(a)
+
   }
   override def getMana: Int = 0
 }

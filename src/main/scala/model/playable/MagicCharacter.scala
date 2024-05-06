@@ -22,6 +22,10 @@ class MagoNegro(name:String, healthPoints:Int,
   def this(name:String) = {
     this(name,90,60,50,50, None)
   }
+  override def putWeapon(a: AWeapon): Unit = {
+    var this.armed: Option[AWeapon] = Some(a)
+
+  }
 }
 
 /**
@@ -42,5 +46,9 @@ class MagoBlanco(name:String, healthPoints:Int,
    */
   def this(name:String) = {
     this(name,100,80,60,40, None)
+  }
+  override def putWeapon(a: AWeapon): Unit = {
+    var this.armed: Option[AWeapon] = Some(a)
+
   }
 }

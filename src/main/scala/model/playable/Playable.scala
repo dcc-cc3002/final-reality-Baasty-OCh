@@ -1,5 +1,7 @@
 package model.playable
 
+import model.nonplayable.AWeapon
+
 trait Playable {
   /**
    * Abstract method to get the name of the playable entity
@@ -31,4 +33,6 @@ trait Playable {
    * Abstract Method to know if Playable have a weapon or not
    */
   def haveWeapon: Any
+
+  def putWeapon( a: AWeapon): Unit
 }

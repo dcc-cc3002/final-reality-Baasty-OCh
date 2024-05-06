@@ -44,6 +44,11 @@ abstract class APlayable(val name: String, var healthPoints: Int,
   def getMana: Int = mana
 
   def haveWeapon: Option[AWeapon] = armed
+
+  def putWeapon(a:AWeapon): Unit = {}
+
+
+
   override def equals(other:Any):Boolean = { // override anula la funcion por defecto y me permite escribir una nueva
     if (other.isInstanceOf[Playable]) {
       val otherCast = other.asInstanceOf[Playable]
