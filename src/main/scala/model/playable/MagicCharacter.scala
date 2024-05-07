@@ -28,6 +28,11 @@ class MagoNegro(name:String, healthPoints:Int,
     val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
     damage
   }
+
+  def wasAttacked(pain: Int): Playable = {
+    val MagoNegro: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+    MagoNegro
+  }
 }
 
 /**
@@ -55,5 +60,10 @@ class MagoBlanco(name:String, healthPoints:Int,
   override def attackEnemy(target: Enemy): Int = {
     val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
     damage
+  }
+
+  def wasAttacked(pain: Int): Playable = {
+    val MagoBlanco: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+    MagoBlanco
   }
 }

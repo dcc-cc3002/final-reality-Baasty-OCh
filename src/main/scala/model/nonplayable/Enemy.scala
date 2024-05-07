@@ -36,8 +36,7 @@ class Enemy(name: String, weight: Int,
   def getDF: Int = defence
   def attackPlayer(target:Playable): Int = {
     val damage : Int = this.attackPoints - target.getDp
-    val pj: Class[_<: Playable] = target.getClass
-    target = new pj(target.getName,target.getHp-damage,target.getDp,target.getWeight,target.getMana)
+    target.wasAttacked(damage)
     damage
   }
 

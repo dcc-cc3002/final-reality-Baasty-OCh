@@ -48,8 +48,15 @@ class Paladin(name:String, healthPoints:Int,
   }
 
   def wasAttacked(pain: Int): Playable = {
-    val Paladin: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
-    Paladin
+    if (this.healthPoints >= pain){
+      val Paladin: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+      Paladin
+    }
+    else {
+      val Paladin: Playable = new Paladin(this.name,0,this.defensePoints,this.weight,this.mana)
+      Paladin
+    }
+
   }
 
   override def getMana: Int = 0
@@ -84,6 +91,18 @@ class Guerrero(name:String, healthPoints:Int,
     val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
     damage
   }
+
+  def wasAttacked(pain: Int): Playable = {
+    if (this.healthPoints >= pain){
+      val Guerrero: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+      Guerrero
+    }
+    else {
+      val Guerrero: Playable = new Paladin(this.name,0,this.defensePoints,this.weight,this.mana)
+      Guerrero
+    }
+
+  }
   override def getMana: Int = 0
 }
 /**
@@ -113,6 +132,17 @@ class Ninja(name:String, healthPoints:Int,
   override def attackEnemy(target: Enemy): Int = {
     val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
     damage
+  }
+
+  def wasAttacked(pain: Int): Playable = {
+    if (this.healthPoints >= pain){
+      val Ninja: Playable = new Ninja(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+      Ninja
+    }
+    else{
+      val Ninja: Playable = new Ninja(this.name,0,this.defensePoints,this.weight,this.mana)
+      Ninja
+    }
   }
   override def getMana: Int = 0
 }
