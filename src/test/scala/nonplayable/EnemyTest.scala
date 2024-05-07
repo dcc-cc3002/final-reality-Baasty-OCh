@@ -35,6 +35,9 @@ class EnemyTest extends FunSuite {
   test("setOwner"){
     assertEquals(Neymar.getOwner,"The Game")
   }
+  test("setDefencePoints"){
+    assertEquals(Neymar.getDF,50)
+  }
   test("setMAP"){
     assertEquals(Neymar.getMAP,0)
   }
