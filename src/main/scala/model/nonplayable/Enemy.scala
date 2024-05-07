@@ -39,7 +39,17 @@ class Enemy(name: String, weight: Int,
     target.wasAttacked(damage)
     damage
   }
+  def wasInjure(pain: Int) = {
+    if (this.life >= pain){
+      val Enemy: NonPlayable = new Enemy(this.name, this.weight, this.attackPoints, this.life - pain, this.defence)
+      Enemy
+    }
+    else {
+      val Enemy: NonPlayable = new Enemy(this.name, this.weight, this.attackPoints, 0, this.defence)
+      Enemy
 
+    }
+  }
 
   override def getOwner: String  = {"The Game"}
   override def getMAP: Int = 0

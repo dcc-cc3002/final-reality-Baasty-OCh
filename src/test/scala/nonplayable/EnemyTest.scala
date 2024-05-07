@@ -48,6 +48,9 @@ class EnemyTest extends FunSuite {
     val expected: Int = 80 - 75
     assertEquals(daño,expected)
   }
+  test("wasInjure"){
+    assertEquals(Neymar.wasInjure(25).getLife,75)
+  }
 
 }
 
