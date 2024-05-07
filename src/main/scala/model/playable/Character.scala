@@ -17,25 +17,37 @@ import model.playable.APlayable
 class Paladin(name:String, healthPoints:Int,
               defensePoints:Int, weight:Int,
               mana:Int) extends APlayable(name, healthPoints, defensePoints,weight,mana){
+
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
+   * @return Playable
    */
   def this(name:String) = {
     this(name,100,75,50,0)
   }
 
-  override def putWeapon(a: AWeapon): Unit = {
-    arma = Some(a)
+  /**
+   *
+   * @param weapon
+   */
+
+  override def putWeapon(weapon: AWeapon): Unit = {
+    arma = Some(weapon)
   }
 
-  override def attackEnemy(e: Enemy): Unit = {
+  /**
+   *
+   * @param target
+   */
+
+  override def attackEnemy(target: Enemy): Unit = {
     if (this.haveWeapon != None){
-      var damage = arma.getAttack - e.getDF
-
+      val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
+      println(damage)
     }
-
+    else println("player is not armed yet")
   }
 
   override def getMana: Int = 0

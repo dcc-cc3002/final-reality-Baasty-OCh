@@ -1,5 +1,5 @@
 package playable
-import model.nonplayable.{AWeapon, NonPlayable,Sword,Staff,Wand,Bow,Axe}
+import model.nonplayable.{AWeapon, Axe, Bow, Enemy, NonPlayable, Staff, Sword, Wand}
 import model.playable.Playable
 import model.playable.{APlayable, Guerrero, Ninja, Paladin}
 import munit.FunSuite
@@ -7,11 +7,13 @@ class CharacterTest extends FunSuite {
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Character
   var Casemiro: Playable = _ // We declare a variable Messi of type Character
   var Messi: Playable = _ // We declare a variable Messi of type Character
+  var Neymar: NonPlayable = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     Cristiano = new Paladin("Cristiano")
     Casemiro = new Guerrero("Casemiro")
     Messi = new Ninja("Messi")
+    Neymar = Neymar = new Enemy("Neymar")
 
   }
   test("equals") { // Test if two references to the same character are equal
@@ -102,7 +104,8 @@ class CharacterTest extends FunSuite {
     Cristiano.putWeapon(Espada)
     var expeted: Option[AWeapon] = Some(new Sword(Cristiano))
     assertEquals(expeted,Cristiano.haveWeapon)
-
+  }
+  test("attack"){
 
   }
 
