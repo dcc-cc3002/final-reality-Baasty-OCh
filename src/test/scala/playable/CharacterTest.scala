@@ -13,7 +13,7 @@ class CharacterTest extends FunSuite {
     Cristiano = new Paladin("Cristiano")
     Casemiro = new Guerrero("Casemiro")
     Messi = new Ninja("Messi")
-    Neymar = Neymar = new Enemy("Neymar")
+    Neymar = new Enemy("Neymar")
 
   }
   test("equals") { // Test if two references to the same character are equal
