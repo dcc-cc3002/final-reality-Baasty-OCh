@@ -11,6 +11,7 @@ trait NonPlayable {
    */
   def getWeight: Int
   def getDF: Int
+  def getlife: Int
 
   /**
    * Abstract method to get the Attack Points of the non-playable entity

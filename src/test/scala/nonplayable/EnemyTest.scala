@@ -49,7 +49,8 @@ class EnemyTest extends FunSuite {
     assertEquals(daño,expected)
   }
   test("wasInjure"){
-    assertEquals(Neymar.wasInjure(25).getLife,75)
+    assertEquals(Neymar.wasInjure(25).getlife,225)
+    assertEquals(Neymar.wasInjure(300).getlife,0)
   }
 
 }

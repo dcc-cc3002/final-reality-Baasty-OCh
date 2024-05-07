@@ -14,6 +14,8 @@ class Axe(name: String, weight: Int,
 
   override def getMAP: Int = 0
 
+
+
 }
 class Sword(name: String, weight: Int,
             attackPoints: Int, owner: Playable,
