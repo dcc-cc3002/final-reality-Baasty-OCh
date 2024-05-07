@@ -35,5 +35,6 @@ trait Playable {
   def haveWeapon: Option[AWeapon]
 
   def putWeapon( a: AWeapon): Unit
-  def attackEnemy(e: Enemy): Unit
+  def attackEnemy(target: Enemy): Int
+  def wasAttacked(pain:Int) : Playable
 }

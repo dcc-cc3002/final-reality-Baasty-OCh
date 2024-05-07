@@ -7,7 +7,7 @@ class CharacterTest extends FunSuite {
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Character
   var Casemiro: Playable = _ // We declare a variable Messi of type Character
   var Messi: Playable = _ // We declare a variable Messi of type Character
-  var Neymar: NonPlayable = _
+  var Neymar: Enemy = _
 
   override def beforeEach(context: BeforeEach): Unit = {
     Cristiano = new Paladin("Cristiano")
@@ -106,6 +106,11 @@ class CharacterTest extends FunSuite {
     assertEquals(expeted,Cristiano.haveWeapon)
   }
   test("attack"){
+    Cristiano.putWeapon(new Sword())
+    val daño: Int = Cristiano.attackEnemy(Neymar)
+    val expected: Int = 70 - 50
+    assertEquals(daño,expected)
+
 
   }
 

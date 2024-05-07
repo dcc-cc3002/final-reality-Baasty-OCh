@@ -1,5 +1,6 @@
 package model.nonplayable
 import model.nonplayable.NonPlayable
+import model.playable.Playable
 
 /**
  * "An enemy is a type of non-playable character that represents the adversary
@@ -14,7 +15,7 @@ class Enemy(name: String, weight: Int,
             attackPoints: Int, life: Int,
             defence: Int) extends NonPlayable {
   def this(name:String) ={
-    this(name,50,50,250,50)
+    this(name,50,80,250,50)
   }
   /**
    * Implementation of Method to get the name of the non-playable entity
@@ -33,6 +34,13 @@ class Enemy(name: String, weight: Int,
   def getAttack: Int = attackPoints
   def getlife: Int = life
   def getDF: Int = defence
+  def attackPlayer(target:Playable): Int = {
+    val damage : Int = this.attackPoints - target.getDp
+    val pj: Class[_<: Playable] = target.getClass
+    target = new pj(target.getName,target.getHp-damage,target.getDp,target.getWeight,target.getMana)
+    damage
+  }
+
 
   override def getOwner: String  = {"The Game"}
   override def getMAP: Int = 0

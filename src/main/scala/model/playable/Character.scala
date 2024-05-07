@@ -42,12 +42,9 @@ class Paladin(name:String, healthPoints:Int,
    * @param target
    */
 
-  override def attackEnemy(target: Enemy): Unit = {
-    if (this.haveWeapon != None){
-      val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
-      println(damage)
-    }
-    else println("player is not armed yet")
+  override def attackEnemy(target: Enemy): Int = {
+    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
+    damage
   }
 
   override def getMana: Int = 0
@@ -77,7 +74,10 @@ class Guerrero(name:String, healthPoints:Int,
 
   override def putWeapon(a: AWeapon): Unit = {
     arma = Some(a)
-
+  }
+  override def attackEnemy(target: Enemy): Int = {
+    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
+    damage
   }
   override def getMana: Int = 0
 }
@@ -104,7 +104,10 @@ class Ninja(name:String, healthPoints:Int,
 
   override def putWeapon(a: AWeapon): Unit = {
     arma = Some(a)
-
+  }
+  override def attackEnemy(target: Enemy): Int = {
+    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
+    damage
   }
   override def getMana: Int = 0
 }

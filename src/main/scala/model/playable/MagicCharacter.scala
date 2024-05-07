@@ -1,7 +1,6 @@
 package model.playable
-import model.nonplayable.AWeapon
+import model.nonplayable.{AWeapon, Enemy, Staff, Wand}
 import model.playable.APlayable
-import model.nonplayable.{Staff,Wand}
 
 /**
  * "A Black Mage will primarily be a magical attack character, though without excessively neglecting defense."
@@ -24,7 +23,10 @@ class MagoNegro(name:String, healthPoints:Int,
   }
   override def putWeapon(a: AWeapon): Unit = {
     arma = Some(a)
-
+  }
+  override def attackEnemy(target: Enemy): Int = {
+    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
+    damage
   }
 }
 
@@ -49,6 +51,9 @@ class MagoBlanco(name:String, healthPoints:Int,
   }
   override def putWeapon(a: AWeapon): Unit = {
     arma = Some(a)
-
+  }
+  override def attackEnemy(target: Enemy): Int = {
+    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
+    damage
   }
 }
