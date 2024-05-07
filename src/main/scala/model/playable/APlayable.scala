@@ -49,6 +49,7 @@ abstract class APlayable(val name: String, var healthPoints: Int,
   def putWeapon(a:AWeapon): Unit = {}
 
   def attackEnemy(target: Enemy): Int
+  def wasAttacked(pain:Int) : Playable
 
 
 

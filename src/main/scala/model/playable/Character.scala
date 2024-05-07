@@ -47,6 +47,11 @@ class Paladin(name:String, healthPoints:Int,
     damage
   }
 
+  def wasAttacked(pain: Int): Playable = {
+    val Paladin: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+    Paladin
+  }
+
   override def getMana: Int = 0
 }
 /**
