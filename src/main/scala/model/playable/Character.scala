@@ -94,11 +94,11 @@ class Guerrero(name:String, healthPoints:Int,
 
   def wasAttacked(pain: Int): Playable = {
     if (this.healthPoints >= pain){
-      val Guerrero: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+      val Guerrero: Playable = new Guerrero(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
       Guerrero
     }
     else {
-      val Guerrero: Playable = new Paladin(this.name,0,this.defensePoints,this.weight,this.mana)
+      val Guerrero: Playable = new Guerrero(this.name,0,this.defensePoints,this.weight,this.mana)
       Guerrero
     }
 

@@ -30,8 +30,14 @@ class MagoNegro(name:String, healthPoints:Int,
   }
 
   def wasAttacked(pain: Int): Playable = {
-    val MagoNegro: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
-    MagoNegro
+    if (this.healthPoints >= pain){
+      val MagoNegro: Playable = new MagoNegro(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
+      MagoNegro
+    }
+    else{
+      val MagoNegro: Playable = new MagoNegro(this.name,0,this.defensePoints,this.weight,this.mana)
+      MagoNegro
+    }
   }
 }
 
