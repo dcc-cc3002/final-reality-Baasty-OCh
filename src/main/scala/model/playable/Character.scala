@@ -42,10 +42,7 @@ class Paladin(name:String, healthPoints:Int,
    * @param target
    */
 
-  override def attackEnemy(target: Enemy): Int = {
-    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
-    damage
-  }
+
 
   def wasAttacked(pain: Int): Playable = {
     if (this.healthPoints >= pain){
