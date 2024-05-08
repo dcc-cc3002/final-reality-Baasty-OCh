@@ -20,22 +20,21 @@ class TurnShedule extends Shedule {
     }
   }
   def resetActionBar(pj:Playable):Unit ={
-    actionBar.get(pj) match {
-      case Some((maxActionBar,_)) =>
+    actionBar.get(pj).foreach {
+      case (maxActionBar,_) =>
     actionBar.update(pj,(maxActionBar,0))
     }
   }
 
   def fillActionBar(n:Int):Unit = {
-    actionBar.keys.foreach {key =>
-      actionBar.get(key) match {
-        case Some((maxActionBar,cntBar)) =>
-          val newCntBar = cntBar + n
-          actionBar.update(key,(maxActionBar,newCntBar))
-          if (newCntBar >= maxActionBar) {
-            turns.enqueue(key)
-            resetActionBar(key)
-          }
+    actionBar.keys.foreach { key =>
+      val (maxActionBar, cntBar) = actionBar.getOrElse(key, (0, 0))
+      val newCntBar = cntBar + n
+      actionBar.update(key, (maxActionBar, newCntBar))
+      if (newCntBar >= maxActionBar) {
+        turns.enqueue(key)
+        actionBar.update(key, (maxActionBar, 0))
+
       }
     }
   }
