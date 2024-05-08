@@ -50,7 +50,11 @@ abstract class APlayable(val name: String, var healthPoints: Int,
 
   def attackEnemy(target: Enemy): Int = {
     val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
-    damage
+    if (damage >= 0) {
+      target.wasInjure(damage)
+      damage
+    }
+    else 0
   }
   def wasAttacked(pain:Int) : Playable
 
