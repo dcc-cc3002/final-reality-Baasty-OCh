@@ -1,6 +1,6 @@
 package model.nonplayable
 import model.nonplayable.AWeapon
-import model.playable.{Guerrero, MagoBlanco, MagoNegro, Ninja, Paladin, Playable}
+import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Playable}
 
 class Axe(name: String, weight: Int,
           attackPoints: Int, owner: Playable,
@@ -9,7 +9,7 @@ class Axe(name: String, weight: Int,
     this("Hacha", 50, 50, owner,0)
   }
   def this() = {
-    this ("Hacha", 50, 50, new Guerrero("Casemiro"),0)
+    this ("Hacha", 50, 50, new Warrior("Casemiro"),0)
   }
 
   override def getMAP: Int = 0
@@ -48,7 +48,7 @@ class Staff(name: String, weight: Int,
     this("Baston",70,70,owner, 40)
   }
   def this() = {
-    this("Baston",70,70, new MagoNegro("Vidal"), 40)
+    this("Baston",70,70, new BlackMagican("Vidal"), 40)
   }
 }
 
@@ -59,6 +59,6 @@ class Wand(name: String, weight: Int,
     this("Varita",40,50,owner, 30)
   }
   def this()={
-    this("Varita",40,50, new MagoBlanco("Alexis"), 30)
+    this("Varita",40,50, new WhiteMagican("Alexis"), 30)
   }
 }

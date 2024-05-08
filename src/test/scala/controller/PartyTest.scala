@@ -2,7 +2,7 @@ package controller
 
 import model.nonplayable.Sword
 import model.party.Party
-import model.playable.{MagoBlanco, Paladin, Playable}
+import model.playable.{WhiteMagican, Paladin, Playable}
 import munit.FunSuite
 class PartyTest extends FunSuite {
   var Team1: Party = _ // We declare a variable Team1 of type Party
@@ -16,7 +16,7 @@ class PartyTest extends FunSuite {
     Cristiano = new Paladin("Cristiano",0,50,50,0)
 
     // Creates a new instance of the MagicCharacter class with the specified parameters:
-    Alexis = new MagoBlanco("Alexis")// - Kind: Mago Blanco // - Weapon: false
+    Alexis = new WhiteMagican("Alexis")// - Kind: Mago Blanco // - Weapon: false
 
   }
   test("addCharacter") { // Test the method to add a character
@@ -34,7 +34,7 @@ class PartyTest extends FunSuite {
     assertEquals(Team1.isDefeated, true) // Check if they are defeated or not (a team with no health is defeated) -> true
   }
   test("isNotDefeat") { // Test if a party is not defeated
-    Alexis = new MagoBlanco("Alexis")
+    Alexis = new WhiteMagican("Alexis")
     Team1.addPlayable(Alexis) // Add that living character
     assertEquals(Team1.isDefeated, false) // Check that the team is alive (false)
   }

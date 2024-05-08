@@ -34,7 +34,23 @@ trait Playable {
    */
   def haveWeapon: Option[AWeapon]
 
+  /**
+   * Abstract Method to equip a Weapon on a Playable Entity
+   * @param Any class of Weapon
+   */
   def putWeapon( a: AWeapon): Unit
+
+  /**
+   * Abstract Method to attack an Enemy entity
+   * @param target
+   * @return damage
+   */
   def attackEnemy(target: Enemy): Int
+
+  /**
+   * Abstract Method to hurt an Playable Entity
+   * @param pain
+   * @return a new Playable
+   */
   def wasAttacked(pain:Int) : Playable
 }

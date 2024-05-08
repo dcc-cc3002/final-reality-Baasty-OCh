@@ -1,7 +1,7 @@
 package playable
 import model.nonplayable.{AWeapon, Axe, Bow, Enemy, NonPlayable, Staff, Sword, Wand}
 import model.playable.Playable
-import model.playable.{APlayable, Guerrero, Ninja, Paladin}
+import model.playable.{APlayable, Warrior, Ninja, Paladin}
 import munit.FunSuite
 class CharacterTest extends FunSuite {
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Character
@@ -11,7 +11,7 @@ class CharacterTest extends FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     Cristiano = new Paladin("Cristiano")
-    Casemiro = new Guerrero("Casemiro")
+    Casemiro = new Warrior("Casemiro")
     Messi = new Ninja("Messi")
     Neymar = new Enemy("Neymar")
 

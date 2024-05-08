@@ -2,7 +2,7 @@ package controller
 
 import model.controller.TurnShedule
 import model.nonplayable.Sword
-import model.playable.{Guerrero, MagoBlanco, Paladin, Playable}
+import model.playable.{Warrior, WhiteMagican, Paladin, Playable}
 import munit.FunSuite
 
 import scala.collection.mutable
@@ -17,8 +17,8 @@ class TurnSheduleTest extends FunSuite {
     // Creates a new instance of the Character class with the specified parameters:
     Cristiano = new Paladin("Cristiano",0,50,50,0)
     // Creates a new instance of the MagicCharacter class with the specified parameters:
-    Alexis = new MagoBlanco("Alexis")// - Kind: Mago Blanco // - Weapon: false
-    Messi = new Guerrero("Messi") //
+    Alexis = new WhiteMagican("Alexis")// - Kind: Mago Blanco // - Weapon: false
+    Messi = new Warrior("Messi") //
   }
   test("addPlayer"){
     Team1.addPlayer(Cristiano)

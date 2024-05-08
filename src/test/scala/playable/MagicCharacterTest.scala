@@ -1,6 +1,6 @@
 package playable
 import model.playable.Playable
-import model.playable.{MagoBlanco, MagoNegro}
+import model.playable.{WhiteMagican, BlackMagican}
 import munit.FunSuite
 class MagicCharacterTest extends FunSuite {
   var Alexis: Playable = _ // We declare a variable Alexis of type MagicCharacter
@@ -9,8 +9,8 @@ class MagicCharacterTest extends FunSuite {
 
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the Magic Character class with the specified parameters:
-    Alexis = new MagoBlanco("Alexis")
-    Vidal = new MagoNegro("Vidal")
+    Alexis = new WhiteMagican("Alexis")
+    Vidal = new BlackMagican("Vidal")
 
   }
   test("equals") { // Test if two references to the same character are equal
