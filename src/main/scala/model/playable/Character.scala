@@ -84,10 +84,7 @@ class Guerrero(name:String, healthPoints:Int,
   override def putWeapon(a: AWeapon): Unit = {
     arma = Some(a)
   }
-  override def attackEnemy(target: Enemy): Int = {
-    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
-    damage
-  }
+
 
   def wasAttacked(pain: Int): Playable = {
     if (this.healthPoints >= pain){
@@ -126,10 +123,7 @@ class Ninja(name:String, healthPoints:Int,
   override def putWeapon(a: AWeapon): Unit = {
     arma = Some(a)
   }
-  override def attackEnemy(target: Enemy): Int = {
-    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
-    damage
-  }
+
 
   def wasAttacked(pain: Int): Playable = {
     if (this.healthPoints >= pain){
