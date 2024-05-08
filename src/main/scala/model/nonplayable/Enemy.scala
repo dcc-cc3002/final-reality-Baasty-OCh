@@ -36,8 +36,11 @@ class Enemy(name: String, weight: Int,
   def getDF: Int = defence
   def attackPlayer(target:Playable): Int = {
     val damage : Int = this.attackPoints - target.getDp
-    target.wasAttacked(damage)
-    damage
+    if (damage >= 0) {
+      target.wasAttacked(damage)
+      damage
+    } else 0
+
   }
   def wasInjure(pain: Int) = {
     if (this.life >= pain){
