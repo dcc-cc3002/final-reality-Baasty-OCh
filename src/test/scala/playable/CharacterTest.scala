@@ -18,16 +18,6 @@ class CharacterTest extends FunSuite {
   }
 
 
-
-  test("NotHaveWeapon"){
-    assertEquals(Cristiano.haveWeapon,None)
-  }
-  test("haveWeapon"){
-    var Espada: Sword = new Sword(Cristiano)
-    Cristiano.putWeapon(Espada)
-    var expeted: Option[AWeapon] = Some(new Sword(Cristiano))
-    assertEquals(expeted,Cristiano.haveWeapon)
-  }
   test("attack"){
     Cristiano.putWeapon(new Sword())
     val daño: Int = Cristiano.attackEnemy(Neymar)

@@ -61,6 +61,12 @@ class PaladinTest extends FunSuite {
     assertEquals(mana, 0) // Compare the actual kind value with the expected value
   }
 
+  test("HaveWeapon"){
+    assertEquals(Cristiano.haveWeapon,None)
+  }
+
+
+
 
 }
 
