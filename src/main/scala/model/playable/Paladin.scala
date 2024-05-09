@@ -12,50 +12,57 @@ import model.nonplayable.AWeapon
  */
 class Paladin(name:String, healthPoints:Int,
               defensePoints:Int, weight:Int,
-              mana:Int) extends APlayable(name, healthPoints, defensePoints,weight,mana){
+              mana:Int) extends APlayable(name, healthPoints, defensePoints,weight,mana) {
 
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
+   *
    * @param name
    * @return Playable
    */
-  def this(name:String) = {
-    this(name,100,75,50,0)
+  def this(name: String) = {
+    this(name, 100, 75, 50, 0) // stats by default: HP:100 , DP:75 , Weight:50 and Mana:0 (is not a magic Character)
   }
 
   /**
+   * Equip a weapon on the playable entity.
+   * This method sets the specified weapon as the equipped weapon for the playable entity.
    *
-   * @param weapon
+   * @param weapon The weapon to be equipped.
    */
-
   override def putWeapon(weapon: AWeapon): Unit = {
+    // Set the `arma` variable to `Some(weapon)`, indicating that the playable entity is now equipped with this weapon.
     arma = Some(weapon)
   }
 
   /**
-   *
-   * @param target
+   * Implementation of abstract method from 'APlayable' class.
+   * Simulate the playable entity being attacked.
+   * This method simulates the playable entity receiving damage from an attack.
+   * @param pain The amount of damage inflicted on the playable entity.
+   * @return A new `Playable` instance representing the playable entity after being attacked.
    */
-
-
-
   def wasAttacked(pain: Int): Playable = {
-    if (this.healthPoints >= pain){
-      val Paladin: Playable = new Paladin(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
-      Paladin
+    if (this.healthPoints >= pain) {
+      // If the current health points are greater than or equal to the inflicted damage (`pain`), create a new `Playable` instance with reduced health.
+      val updatedHealth = this.healthPoints - pain
+      new Paladin(this.name, updatedHealth, this.defensePoints, this.weight, this.mana)
+    } else {
+      // If the inflicted damage (`pain`) exceeds the current health points, create a new `Playable` instance with 0 health.
+      new Paladin(this.name, 0, this.defensePoints, this.weight, this.mana)
     }
-    else {
-      val Paladin: Playable = new Paladin(this.name,0,this.defensePoints,this.weight,this.mana)
-      Paladin
-    }
-
   }
 
+  /**
+   * Get the mana points of the playable entity.
+   * This method always returns 0 mana points for the `Paladin` Character.
+   * @return The mana points of the Paladin Character (always 0).
+   */
   override def getMana: Int = 0
 }
 
- // Override equals method to compare two characters based on their attributes
+
 
 
 
