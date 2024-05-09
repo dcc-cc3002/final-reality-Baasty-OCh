@@ -18,21 +18,6 @@ class CharacterTest extends FunSuite {
   }
 
 
-
-  test("equalsLife") { // Test if the returned life value for a character matches the expected value
-    var life = Cristiano.getHp // Retrieve the life value of the character Cristiano and store it in the 'life' variable
-    var life2 = Messi.getHp
-    var life3 = Casemiro.getHp
-    assertEquals(life, 100) // Compare the actual life value with the expected value
-    assertEquals(life2, 80)
-    assertEquals(life3, 120)
-  }
-
-  test("NotEqualsLife") { // Test if the life values of two different characters are not equal
-    var life1 = Cristiano.getHp // Retrieve the life value of the character Cristiano and store it in the 'life1' variable
-    var life2 = Messi.getHp // Retrieve the life value of the character Messi and store it in the 'life2' variable
-    assertNotEquals(life1, life2) // Assert that the life values of Cristiano and Messi are not equal
-  }
   test("equalsDefence") { // Test if the returned defense value for a character matches the expected value
     var defense = Cristiano.getDp // Retrieve the defense value of the character Cristiano and store it in the 'defense' variable
     var defense2 = Messi.getDp

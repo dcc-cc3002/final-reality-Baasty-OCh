@@ -46,6 +46,10 @@ class PaladinTest extends FunSuite {
     // Compare the actual name value (`name`) with the expected value ("Cristiano").
     assertEquals(life, 100)
   }
+  test("getDefencePoints") { // Test if the returned defense value for a character matches the expected value
+    var defense = Cristiano.getDp // Retrieve the defense value of the character Cristiano and store it in the 'defense' variable
+    assertEquals(defense, 75) // Compare the actual defense value with the expected value
+    }
 
 
 }
