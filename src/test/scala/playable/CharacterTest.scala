@@ -19,12 +19,6 @@ class CharacterTest extends FunSuite {
 
 
 
-  test("attack"){
-    Cristiano.putWeapon(new Sword())
-    val daño: Int = Cristiano.attackEnemy(Neymar)
-    val expected: Int = 70 - 50
-    assertEquals(daño,expected)
-  }
   test("wasAttacked"){
     assertEquals(Cristiano.wasAttacked(25).getHp,75) // 100 de vida - 25 de daño -> 75 de vida
     assertEquals(Cristiano.wasAttacked(125).getHp,0)

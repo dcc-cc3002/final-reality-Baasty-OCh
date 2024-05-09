@@ -9,7 +9,7 @@ import munit.FunSuite
  */
 class PaladinTest extends FunSuite {
   var Cristiano: Playable = _ // Declaration of a variable `Cristiano` of type `Playable`.
-  var Pique: NonPlayable = _ // Declaration of a variable `Pele` of type `Playable`.
+  var Pique: Enemy = _ // Declaration of a variable `Pele` of type `Playable`.
 
   /**
    * Set up the test environment before each test case.
@@ -105,17 +105,31 @@ class PaladinTest extends FunSuite {
   }
   /**
    * Test case for `attackEnemy` method.
-   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Neymar`) when `Cristiano` attacks with a `Sword`.
+   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Pique`) when `Cristiano` attacks with a `Sword`.
    */
-  test("attack") {
+  test("attackEnemy") {
     // Equip `Cristiano` with a `Sword`.
     Cristiano.putWeapon(new Sword())
+
     // `Cristiano` attacks `Pique` using the `attackEnemy` method and retrieves the inflicted damage (`daño`).
     val damage: Int = Cristiano.attackEnemy(Pique)
-    // Calculate the expected damage based on `Cristiano`'s attack power (Sword's attack - `Neymar`'s defense).
+
+    // Calculate the expected damage based on `Cristiano`'s attack power (Sword's attack - `Pique`'s defense).
     val expectedDamage: Int = 70 - 50
+
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
+  }
+  /**
+   * Test case for `wasAttacked` method.
+   * This test verifies the behavior of the `wasAttacked` method in response to inflicted damage on the character `Cristiano`.
+   */
+  test("wasAttacked") {
+    // Verify if `Cristiano`'s health points (`getHp`) decrease correctly after receiving 25 damage.
+    assertEquals(Cristiano.wasAttacked(25).getHp, 75) // 100 health points - 25 damage -> 75 health points
+
+    // Verify if `Cristiano`'s health points (`getHp`) become 0 after receiving 125 damage (exceeds total health).
+    assertEquals(Cristiano.wasAttacked(125).getHp, 0) // 100 health points - 125 damage -> 0 health points
   }
 
 
@@ -124,6 +138,7 @@ class PaladinTest extends FunSuite {
 
 
 
-}
+
+  }
 
 
