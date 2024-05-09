@@ -18,29 +18,7 @@ class CharacterTest extends FunSuite {
   }
 
 
-  test("equalsDefence") { // Test if the returned defense value for a character matches the expected value
-    var defense = Cristiano.getDp // Retrieve the defense value of the character Cristiano and store it in the 'defense' variable
-    var defense2 = Messi.getDp
-    var defense3 = Casemiro.getDp
-    assertEquals(defense, 75) // Compare the actual defense value with the expected value
-    assertEquals(defense2, 70)
-    assertEquals(defense3, 100)
-  }
 
-  test("NotEqualsDefence") { // Test if the defense values of two different characters are not equal
-    var defense1 = Cristiano.getDp // Retrieve the defense value of the character Cristiano and store it in the 'defense1' variable
-    var defense2 = Messi.getDp // Retrieve the defense value of the character Messi and store it in the 'defense2' variable
-    assertNotEquals(defense1, defense2) // Assert that the defense values of Cristiano and Messi are not equal
-  }
-
-  test("equalsWeight") { // Test if the returned weight value for a character matches the expected value
-    var weight = Cristiano.getWeight // Retrieve the weight value of the character Cristiano and store it in the 'weight' variable
-    var weight2 = Messi.getWeight
-    var weight3 = Casemiro.getWeight// Define the expected weight value
-    assertEquals(weight, 50) // Compare the actual weight value with the expected value
-    assertEquals(weight2, 30)
-    assertEquals(weight3, 70)
-  }
 
   test("NotEqualsWeight") { // Test if the weight values of two different characters are not equal
     var weight1 = Cristiano.getWeight // Retrieve the weight value of the character Cristiano and store it in the 'weight1' variable

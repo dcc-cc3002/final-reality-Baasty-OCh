@@ -51,6 +51,11 @@ class PaladinTest extends FunSuite {
     assertEquals(defense, 75) // Compare the actual defense value with the expected value
     }
 
+  test("getWeight") { // Test if the returned weight value for a character matches the expected value
+    var weight = Cristiano.getWeight // Retrieve the weight value of the character Cristiano and store it in the 'weight' variable
+    assertEquals(weight, 50) // Compare the actual weight value with the expected value
+  }
+
 
 }
 
