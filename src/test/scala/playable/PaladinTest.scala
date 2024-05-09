@@ -40,30 +40,71 @@ class PaladinTest extends FunSuite {
     // Compare the actual name value (`name`) with the expected value ("Cristiano").
     assertEquals(name, "Cristiano")
   }
+  /**
+   * Test case for `getHp` method.
+   * This test verifies if the returned health points (`hp`) value for the character `Cristiano` matches the expected value (`100`).
+   */
   test("getHealthPoints") {
-    // Retrieve the name value of the character `Cristiano` and store it in the `name` variable.
+    // Retrieve the health points (`hp`) value of the character `Cristiano` and store it in the `life` variable.
     var life = Cristiano.getHp
-    // Compare the actual name value (`name`) with the expected value ("Cristiano").
+    // Compare the actual health points value (`life`) with the expected value (`100`).
     assertEquals(life, 100)
   }
-  test("getDefencePoints") { // Test if the returned defense value for a character matches the expected value
-    var defense = Cristiano.getDp // Retrieve the defense value of the character Cristiano and store it in the 'defense' variable
-    assertEquals(defense, 75) // Compare the actual defense value with the expected value
-    }
 
-  test("getWeight") { // Test if the returned weight value for a character matches the expected value
-    var weight = Cristiano.getWeight // Retrieve the weight value of the character Cristiano and store it in the 'weight' variable
-    assertEquals(weight, 50) // Compare the actual weight value with the expected value
+  /**
+   * Test case for `getDp` method.
+   * This test verifies if the returned defense points (`dp`) value for the character `Cristiano` matches the expected value (`75`).
+   */
+  test("getDefencePoints") {
+    // Retrieve the defense points (`dp`) value of the character `Cristiano` and store it in the `defense` variable.
+    var defense = Cristiano.getDp
+    // Compare the actual defense points value (`defense`) with the expected value (`75`).
+    assertEquals(defense, 75)
   }
 
-  test("getMana") { // Test if the returned kind value for a character matches the expected value
-    var mana = Cristiano.getMana // Retrieve the kind value of the character Cristiano and store it in the 'kind' variable
-    assertEquals(mana, 0) // Compare the actual kind value with the expected value
+  /**
+   * Test case for `getWeight` method.
+   * This test verifies if the returned weight value for the character `Cristiano` matches the expected value (`50`).
+   */
+  test("getWeight") {
+    // Retrieve the weight value of the character `Cristiano` and store it in the `weight` variable.
+    var weight = Cristiano.getWeight
+    // Compare the actual weight value (`weight`) with the expected value (`50`).
+    assertEquals(weight, 50)
   }
 
-  test("HaveWeapon"){
-    assertEquals(Cristiano.haveWeapon,None)
+  /**
+   * Test case for `getMana` method.
+   * This test verifies if the returned mana value for the character `Cristiano` matches the expected value (`0`).
+   */
+  test("getMana") {
+    // Retrieve the mana value of the character `Cristiano` and store it in the `mana` variable.
+    var mana = Cristiano.getMana
+    // Compare the actual mana value (`mana`) with the expected value (`0`).
+    assertEquals(mana, 0)
   }
+
+  /**
+   * Test case for `haveWeapon` method.
+   * This test verifies if the playable entity `Cristiano` does not have a weapon (returns `None`).
+   */
+  test("HaveWeapon") {
+    assertEquals(Cristiano.haveWeapon, None)
+  }
+  /**
+   * Test case for `putWeapon` method.
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Espada`) on the character `Cristiano`.
+   */
+  test("putWeapon") {
+    // Create a new `Sword` instance (`Espada`) associated with `Cristiano`.
+    var Espada: Sword = new Sword(Cristiano)
+    // Equip the `Espada` weapon on the character `Cristiano` using the `putWeapon` method.
+    Cristiano.putWeapon(Espada)
+    // Verify if the character `Cristiano` now has the `Espada` weapon equipped (returns `Some(Espada)`).
+    assertEquals(Cristiano.haveWeapon, Some(Espada))
+  }
+
+
 
 
 
