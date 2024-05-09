@@ -40,6 +40,13 @@ class PaladinTest extends FunSuite {
     // Compare the actual name value (`name`) with the expected value ("Cristiano").
     assertEquals(name, "Cristiano")
   }
+  test("getHealthPoints") {
+    // Retrieve the name value of the character `Cristiano` and store it in the `name` variable.
+    var life = Cristiano.getHp
+    // Compare the actual name value (`name`) with the expected value ("Cristiano").
+    assertEquals(life, 100)
+  }
+
 
 }
 
