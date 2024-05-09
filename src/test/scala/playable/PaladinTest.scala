@@ -40,6 +40,7 @@ class PaladinTest extends FunSuite {
     // Compare the actual name value (`name`) with the expected value ("Cristiano").
     assertEquals(name, "Cristiano")
   }
+
 }
 
 

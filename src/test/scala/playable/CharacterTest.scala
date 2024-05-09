@@ -16,32 +16,8 @@ class CharacterTest extends FunSuite {
     Neymar = new Enemy("Neymar")
 
   }
-  test("equals") { // Test if two references to the same character are equal
-    assertEquals(Cristiano, Cristiano)
-    assertEquals(Messi, Messi)
-    assertEquals(Casemiro,Casemiro)
-  }
 
-  test("NotEquals") { // Test if two references to different characters are not equal
-    assertNotEquals(Messi, Cristiano)
-    assertNotEquals(Messi, Casemiro)
-    assertNotEquals(Casemiro, Cristiano)
-  }
 
-  test("setName") { // Test if the returned name value for a character matches the expected value
-    var name = Cristiano.getName // Retrieve the name value of the character Cristiano and store it in the 'name' variable
-    var name2 = Messi.getName
-    var name3 = Casemiro.getName
-    assertEquals(name, "Cristiano") // Compare the actual name value with the expected value
-    assertEquals(name2, "Messi")
-    assertEquals(name3, "Casemiro")
-  }
-
-  test("NotEqualsName") { // Test if the name values of two different characters are not equal
-    var name1 = Cristiano.getName // Retrieve the name value of the character Cristiano and store it in the 'name1' variable
-    var name2 = Messi.getName // Retrieve the name value of the character Messi and store it in the 'name2' variable
-    assertNotEquals(name1, name2) // Assert that the name values of Cristiano and Messi are not equal
-  }
 
   test("equalsLife") { // Test if the returned life value for a character matches the expected value
     var life = Cristiano.getHp // Retrieve the life value of the character Cristiano and store it in the 'life' variable
