@@ -56,6 +56,11 @@ class PaladinTest extends FunSuite {
     assertEquals(weight, 50) // Compare the actual weight value with the expected value
   }
 
+  test("getMana") { // Test if the returned kind value for a character matches the expected value
+    var mana = Cristiano.getMana // Retrieve the kind value of the character Cristiano and store it in the 'kind' variable
+    assertEquals(mana, 0) // Compare the actual kind value with the expected value
+  }
+
 
 }
 

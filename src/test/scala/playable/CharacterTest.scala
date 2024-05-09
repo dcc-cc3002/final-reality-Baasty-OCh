@@ -19,22 +19,6 @@ class CharacterTest extends FunSuite {
 
 
 
-
-  test("NotEqualsWeight") { // Test if the weight values of two different characters are not equal
-    var weight1 = Cristiano.getWeight // Retrieve the weight value of the character Cristiano and store it in the 'weight1' variable
-    var weight2 = Messi.getWeight // Retrieve the weight value of the character Messi and store it in the 'weight2' variable
-    assertNotEquals(weight1, weight2) // Assert that the weight values of Cristiano and Messi are not equal
-  }
-
-  test("zeroMana") { // Test if the returned kind value for a character matches the expected value
-    var mana = Cristiano.getMana // Retrieve the kind value of the character Cristiano and store it in the 'kind' variable
-    var mana2 = Messi.getMana
-    var mana3 = Casemiro.getMana
-    var expected: Int = 0 // Define the expected kind value
-    assertEquals(mana, expected) // Compare the actual kind value with the expected value
-    assertEquals(mana2, expected)
-    assertEquals(mana3, expected)
-  }
   test("NotHaveWeapon"){
     assertEquals(Cristiano.haveWeapon,None)
   }
