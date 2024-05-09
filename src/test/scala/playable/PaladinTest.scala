@@ -9,7 +9,7 @@ import munit.FunSuite
  */
 class PaladinTest extends FunSuite {
   var Cristiano: Playable = _ // Declaration of a variable `Cristiano` of type `Playable`.
-  var Pele: Playable = _ // Declaration of a variable `Pele` of type `Playable`.
+  var Pique: NonPlayable = _ // Declaration of a variable `Pele` of type `Playable`.
 
   /**
    * Set up the test environment before each test case.
@@ -19,7 +19,7 @@ class PaladinTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Cristiano` and `Pele` with new instances of `Paladin`.
     Cristiano = new Paladin("Cristiano")
-    Pele = new Paladin("Pele", 30, 50, 90, 0)
+    Pique = new Enemy("Pique")
   }
 
   /**
@@ -103,6 +103,21 @@ class PaladinTest extends FunSuite {
     // Verify if the character `Cristiano` now has the `Espada` weapon equipped (returns `Some(Espada)`).
     assertEquals(Cristiano.haveWeapon, Some(Espada))
   }
+  /**
+   * Test case for `attackEnemy` method.
+   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Neymar`) when `Cristiano` attacks with a `Sword`.
+   */
+  test("attack") {
+    // Equip `Cristiano` with a `Sword`.
+    Cristiano.putWeapon(new Sword())
+    // `Cristiano` attacks `Pique` using the `attackEnemy` method and retrieves the inflicted damage (`daño`).
+    val damage: Int = Cristiano.attackEnemy(Pique)
+    // Calculate the expected damage based on `Cristiano`'s attack power (Sword's attack - `Neymar`'s defense).
+    val expectedDamage: Int = 70 - 50
+    // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
+    assertEquals(damage, expectedDamage)
+  }
+
 
 
 
