@@ -1,5 +1,6 @@
 package model.playable
-import model.nonplayable.AWeapon
+
+import model.nonplayable.weapons.AWeapon
 /**
  * "A paladin is thought of as a very balanced character,
  * not excelling excessively in any attribute but also

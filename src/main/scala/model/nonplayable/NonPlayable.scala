@@ -1,4 +1,7 @@
 package model.nonplayable
+
+import model.playable.Playable
+
 // Trait to represent non-playable entities
 trait NonPlayable {
   /**
@@ -36,12 +39,6 @@ trait NonPlayable {
    */
   def getAttack: Int
 
-  /**
-   * Abstract method to get the owner of the non-playable entity
-   *
-   * @return The owner of the non-playable entity (type should be specified)
-   */
-  def getOwner: Unit
 
   /**
    * Abstract method to get the mana points of the non-playable entity

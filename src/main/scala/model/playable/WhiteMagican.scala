@@ -1,5 +1,7 @@
 package model.playable
-import model.nonplayable.{AWeapon, Enemy, Staff, Wand}
+
+import model.nonplayable.weapons.AWeapon
+import model.nonplayable.{Enemy, Staff, Wand}
 import model.playable.APlayable
 
 /**

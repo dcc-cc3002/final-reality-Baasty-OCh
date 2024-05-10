@@ -1,6 +1,6 @@
 package model.playable
 
-import model.nonplayable.AWeapon
+import model.nonplayable.weapons.AWeapon
 
 /**
  * "A Black Mage will primarily be a magical attack character, though without excessively neglecting defense."

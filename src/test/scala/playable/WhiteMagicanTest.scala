@@ -1,5 +1,7 @@
 package playable
-import model.nonplayable.{AWeapon, Axe, Bow, Enemy, NonPlayable, Staff, Sword, Wand}
+
+import model.nonplayable.weapons.{AWeapon, Axe}
+import model.nonplayable.{Bow, Enemy, NonPlayable, Staff, Sword, Wand}
 import model.playable.{APlayable, Ninja, Paladin, Playable, Warrior, WhiteMagican}
 import munit.FunSuite
 /**

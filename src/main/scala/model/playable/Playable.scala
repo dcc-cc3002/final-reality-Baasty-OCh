@@ -1,6 +1,7 @@
 package model.playable
 
-import model.nonplayable.{AWeapon,Enemy}
+import model.nonplayable.Enemy
+import model.nonplayable.weapons.AWeapon
 
 trait Playable {
   /**

@@ -1,6 +1,7 @@
 package nonplayable
 
-import model.nonplayable.{NonPlayable,Sword,Axe,Bow}
+import model.nonplayable.weapons.Axe
+import model.nonplayable.{NonPlayable,Sword,Bow}
 import model.playable.Playable
 import munit.FunSuite
 class WeaponTest extends FunSuite {

@@ -1,6 +1,6 @@
 package model.playable
 
-import model.nonplayable.AWeapon
+import model.nonplayable.weapons.AWeapon
 
 /**
  * "The warrior is a character designed
