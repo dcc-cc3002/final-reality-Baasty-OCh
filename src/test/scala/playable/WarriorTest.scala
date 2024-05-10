@@ -116,7 +116,8 @@ class WarriorTest extends FunSuite {
 
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
-  }  /**
+  }
+  /**
    * Test case for `wasAttacked` method.
    * This test verifies the behavior of the `wasAttacked` method in response to inflicted damage on the character `Casemiro`.
    */

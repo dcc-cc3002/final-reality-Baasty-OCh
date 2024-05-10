@@ -115,6 +115,17 @@ class NinjaTest extends FunSuite {
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
   }
+  /**
+   * Test case for `wasAttacked` method.
+   * This test verifies the behavior of the `wasAttacked` method in response to inflicted damage on the character `Modric`.
+   */
+  test("wasAttacked") {
+    // Verify if `Modric`'s health points (`getHp`) decrease correctly after receiving 5 damage.
+    assertEquals(Modric.wasAttacked(5).getHp, 75) // 80 health points - 5 damage -> 75 health points
+
+    // Verify if `Modric`'s health points (`getHp`) become 0 after receiving 100 damage (exceeds total health).
+    assertEquals(Modric.wasAttacked(100).getHp, 0) // 80 health points - 100 damage -> 0 health points
+  }
 
 
 
