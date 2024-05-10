@@ -69,5 +69,15 @@ class WhiteMagicanTest extends FunSuite {
     // Compare the actual weight value (`weight`) with the expected value (`60`).
     assertEquals(weight, 60)
   }
+  /**
+   * Test case for `getMana` method.
+   * This test verifies if the returned mana value for the character `Benzema` matches the expected value (`40`).
+   */
+  test("getMana") {
+    // Retrieve the mana value of the character `Benzema` and store it in the `mana` variable.
+    var mana = Benzema.getMana
+    // Compare the actual mana value (`mana`) with the expected value (`40`).
+    assertEquals(mana, 40)
+  }
 
 }
