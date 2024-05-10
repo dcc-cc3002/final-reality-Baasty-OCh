@@ -32,4 +32,14 @@ class WarriorTest extends FunSuite {
     assertEquals(Casemiro, Casemiro)
   }
 
+  /**
+   * Test case for `getName` method.
+   * This test verifies if the returned name value for a character (`Cristiano`) matches the expected value.
+   */
+  test("getName") {
+    // Retrieve the name value of the character `Cristiano` and store it in the `name` variable.
+    var name = Casemiro.getName
+    // Compare the actual name value (`name`) with the expected value ("Cristiano").
+    assertEquals(name, "Casemiro")
+  }
 }
