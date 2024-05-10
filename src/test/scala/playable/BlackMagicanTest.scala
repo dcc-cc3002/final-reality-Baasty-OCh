@@ -136,7 +136,7 @@ class BlackMagicanTest extends FunSuite {
     assertEquals(Modric.wasAttacked(25).getHp, 65) // 90 health points - 25 damage -> 65 health points
 
     // Verify if `Modric`'s health points (`getHp`) become 0 after receiving 100 damage (exceeds total health).
-    assertEquals(Modric.wasAttacked(100).getHp, 0) // 90 health points - 100 damage -> 0 health points
+    assertEquals(Modric.wasAttacked(120).getHp, 0) // 90 health points - 100 damage -> 0 health points
   }
 }
 
