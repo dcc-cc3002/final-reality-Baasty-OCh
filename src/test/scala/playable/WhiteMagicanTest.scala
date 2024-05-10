@@ -22,4 +22,12 @@ class WhiteMagicanTest extends FunSuite {
     // Initialize `Ter_Stegen` with new instances of `Enemy`.
     Ter_Stegen = new Enemy("Ter_Stegen")
   }
+  /**
+   * Test case for `equals` method.
+   * This test verifies if two references to the same character (`Benzema`) are considered equal.
+   */
+  test("equals") {
+    assertEquals(Benzema, Benzema)
+  }
+
 }
