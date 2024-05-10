@@ -19,7 +19,7 @@ class NinjaTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Modric` with new instances of `Ninja`.
-    Modric = new Warrior("Modric")
+    Modric = new Ninja("Modric")
     // Initialize `Rakitic` with new instances of `Enemy`.
     Rakitic = new Enemy("Rakitic")
   }
@@ -39,7 +39,17 @@ class NinjaTest extends FunSuite {
     var name = Modric.getName
     // Compare the actual name value (`name`) with the expected value ("Modric").
     assertEquals(name, "Modric")
+  }  /**
+   * Test case for `getHp` method.
+   * This test verifies if the returned health points (`hp`) value for the character `Modric` matches the expected value (`80`).
+   */
+  test("getHealthPoints") {
+    // Retrieve the health points (`hp`) value of the character `Modric` and store it in the `life` variable.
+    var life = Modric.getHp
+    // Compare the actual health points value (`life`) with the expected value (`80`).
+    assertEquals(life, 80)
   }
+
 
 
 }
