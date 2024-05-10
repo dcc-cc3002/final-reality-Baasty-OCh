@@ -72,5 +72,16 @@ class WarriorTest extends FunSuite {
     // Compare the actual weight value (`weight`) with the expected value (`70`).
     assertEquals(weight, 70)
   }
+  /**
+   * Test case for `getMana` method.
+   * This test verifies if the returned mana value for the character `Casemiro` matches the expected value (`0`).
+   */
+  test("getMana") {
+    // Retrieve the mana value of the character `Casemiro` and store it in the `mana` variable.
+    var mana = Casemiro.getMana
+    // Compare the actual mana value (`mana`) with the expected value (`0`).
+    assertEquals(mana, 0)
+  }
+
 
 }
