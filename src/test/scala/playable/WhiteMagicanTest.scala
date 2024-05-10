@@ -59,5 +59,15 @@ class WhiteMagicanTest extends FunSuite {
     // Compare the actual defense points value (`defense`) with the expected value (`80`).
     assertEquals(defense, 80)
   }
+  /**
+   * Test case for `getWeight` method.
+   * This test verifies if the returned weight value for the character `Benzema` matches the expected value (`60`).
+   */
+  test("getWeight") {
+    // Retrieve the weight value of the character `Benzema` and store it in the `weight` variable.
+    var weight = Benzema.getWeight
+    // Compare the actual weight value (`weight`) with the expected value (`60`).
+    assertEquals(weight, 60)
+  }
 
 }
