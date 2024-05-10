@@ -90,5 +90,13 @@ class WhiteMagicanTest extends FunSuite {
    * Test case for `putWeapon` method.
    * This test verifies if the `putWeapon` method successfully equips a weapon (`Staff`) on the character `Benzema`.
    */
+  test("putWeapon") {
+    // Create a new `Staff` instance (`Baston`) associated with `Benzema`.
+    var Baston: Staff = new Staff(Benzema)
+    // Equip the `Arco` weapon on the character `Benzema` using the `putWeapon` method.
+    Benzema.putWeapon(Baston)
+    // Verify if the character `Benzema` now has the `Baston` weapon equipped (returns `Some(Baston)`).
+    assertEquals(Benzema.haveWeapon, Some(Baston))
+  }
 
 }
