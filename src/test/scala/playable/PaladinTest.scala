@@ -133,13 +133,6 @@ class PaladinTest extends FunSuite {
     assertEquals(Cristiano.wasAttacked(125).getHp, 0) // 100 health points - 125 damage -> 0 health points
   }
 
-
-
-
-
-
-
-
-  }
+}
 
 

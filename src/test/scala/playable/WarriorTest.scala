@@ -8,7 +8,7 @@ import munit.FunSuite
  * This class contains tests for various functionalities of the `Paladin` class.
  */
 class WarriorTest extends FunSuite {
-  var Casemiro: Playable = _ // Declaration of a variable `Cristiano` of type `Playable`.
+  var Casemiro: Playable = _ // Declaration of a variable `Casemiro` of type `Playable`.
   var Busquets: Enemy = _ // Declaration of a variable `Busquets` of type `Enemy`.
 
   /**
@@ -126,10 +126,4 @@ class WarriorTest extends FunSuite {
     // Verify if `Casemiro`'s health points (`getHp`) become 0 after receiving 145 damage (exceeds total health).
     assertEquals(Casemiro.wasAttacked(145).getHp, 0) // 120 health points - 145 damage -> 0 health points
   }
-
-
-
-
-
-
 }
