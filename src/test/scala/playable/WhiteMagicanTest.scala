@@ -98,5 +98,22 @@ class WhiteMagicanTest extends FunSuite {
     // Verify if the character `Benzema` now has the `Baston` weapon equipped (returns `Some(Baston)`).
     assertEquals(Benzema.haveWeapon, Some(Baston))
   }
+  /**
+   * Test case for `attackEnemy` method.
+   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Modric` attacks with a `Bow`.
+   */
+  test("attackEnemy") {
+    // Equip `Benzema` with a `Staff`.
+    Benzema.putWeapon(new Staff(Benzema))
+
+    // `Benzema` attacks `Ter_Stegen` using the `attackEnemy` method and retrieves the inflicted damage (`daño`).
+    val damage: Int = Benzema.attackEnemy(Ter_Stegen)
+
+    // Calculate the expected damage based on `Benzema`'s attack power (Baston's attack - `Ter_Stegen`'s defense).
+    val expectedDamage: Int = 70 - 50
+
+    // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
+    assertEquals(damage, expectedDamage)
+  }
 
 }
