@@ -99,7 +99,24 @@ class WarriorTest extends FunSuite {
     Casemiro.putWeapon(Hacha)
     // Verify if the character `Casemiro` now has the `Hacha` weapon equipped (returns `Some(Hacha)`).
     assertEquals(Casemiro.haveWeapon, Some(Hacha))
+  }  /**
+   * Test case for `attackEnemy` method.
+   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Busquets`) when `Casemiro` attacks with a `Axe`.
+   */
+  test("attackEnemy") {
+    // Equip `Casemiro` with a `Axe`.
+    Casemiro.putWeapon(new Axe())
+
+    // `Casemiro` attacks `Busquets` using the `attackEnemy` method and retrieves the inflicted damage (`daño`).
+    val damage: Int = Casemiro.attackEnemy(Busquets)
+
+    // Calculate the expected damage based on `Casemiro`'s attack power (Axe's attack - `Busquets`'s defense).
+    val expectedDamage: Int = 50 - 50
+
+    // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
+    assertEquals(damage, expectedDamage)
   }
+
 
 
 
