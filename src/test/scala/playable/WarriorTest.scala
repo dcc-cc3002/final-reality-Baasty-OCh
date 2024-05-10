@@ -82,6 +82,14 @@ class WarriorTest extends FunSuite {
     // Compare the actual mana value (`mana`) with the expected value (`0`).
     assertEquals(mana, 0)
   }
+  /**
+   * Test case for `haveWeapon` method.
+   * This test verifies if the playable entity `Casemiro` does not have a weapon (returns `None`).
+   */
+  test("HaveWeapon") {
+    assertEquals(Casemiro.haveWeapon, None)
+  }
+
 
 
 }
