@@ -49,6 +49,17 @@ class NinjaTest extends FunSuite {
     // Compare the actual health points value (`life`) with the expected value (`80`).
     assertEquals(life, 80)
   }
+  /**
+   * Test case for `getDp` method.
+   * This test verifies if the returned defense points (`dp`) value for the character `Modric` matches the expected value (`70`).
+   */
+  test("getDefencePoints") {
+    // Retrieve the defense points (`dp`) value of the character `Modric` and store it in the `defense` variable.
+    var defense = Modric.getDp
+    // Compare the actual defense points value (`defense`) with the expected value (`70`).
+    assertEquals(defense, 70)
+  }
+
 
 
 
