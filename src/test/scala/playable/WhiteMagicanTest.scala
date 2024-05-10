@@ -79,5 +79,16 @@ class WhiteMagicanTest extends FunSuite {
     // Compare the actual mana value (`mana`) with the expected value (`40`).
     assertEquals(mana, 40)
   }
+  /**
+   * Test case for `haveWeapon` method.
+   * This test verifies if the playable entity `Benzema` does not have a weapon (returns `None`).
+   */
+  test("HaveWeapon") {
+    assertEquals(Benzema.haveWeapon, None)
+  }
+  /**
+   * Test case for `putWeapon` method.
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Staff`) on the character `Benzema`.
+   */
 
 }
