@@ -100,7 +100,8 @@ class WarriorTest extends FunSuite {
     Casemiro.putWeapon(Hacha)
     // Verify if the character `Casemiro` now has the `Hacha` weapon equipped (returns `Some(Hacha)`).
     assertEquals(Casemiro.haveWeapon, Some(Hacha))
-  }  /**
+  }
+  /**
    * Test case for `attackEnemy` method.
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Busquets`) when `Casemiro` attacks with a `Axe`.
    */

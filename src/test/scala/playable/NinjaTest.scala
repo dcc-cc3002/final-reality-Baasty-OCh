@@ -86,6 +86,18 @@ class NinjaTest extends FunSuite {
   test("HaveWeapon") {
     assertEquals(Modric.haveWeapon, None)
   }
+  /**
+   * Test case for `putWeapon` method.
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Bow`) on the character `Modric`.
+   */
+  test("putWeapon") {
+    // Create a new `Bow` instance (`Arco`) associated with `Modric`.
+    var Arco: Bow = new Bow(Modric)
+    // Equip the `Arco` weapon on the character `Modric` using the `putWeapon` method.
+    Modric.putWeapon(Arco)
+    // Verify if the character `Modric` now has the `Arco` weapon equipped (returns `Some(Arco)`).
+    assertEquals(Modric.haveWeapon, Some(Arco))
+  }
 
 
 
