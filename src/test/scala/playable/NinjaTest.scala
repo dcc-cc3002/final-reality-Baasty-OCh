@@ -69,6 +69,17 @@ class NinjaTest extends FunSuite {
     // Compare the actual weight value (`weight`) with the expected value (`30`).
     assertEquals(weight, 30)
   }
+  /**
+   * Test case for `getMana` method.
+   * This test verifies if the returned mana value for the character `Modric` matches the expected value (`0`).
+   */
+  test("getMana") {
+    // Retrieve the mana value of the character `Modric` and store it in the `mana` variable.
+    var mana = Modric.getMana
+    // Compare the actual mana value (`mana`) with the expected value (`0`).
+    assertEquals(mana, 0)
+  }
+
 
 
 
