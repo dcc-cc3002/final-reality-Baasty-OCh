@@ -26,7 +26,7 @@ class WarriorTest extends FunSuite {
 
   /**
    * Test case for `equals` method.
-   * This test verifies if two references to the same character (`Cristiano`) are considered equal.
+   * This test verifies if two references to the same character (`Casemiro`) are considered equal.
    */
   test("equals") {
     assertEquals(Casemiro, Casemiro)
@@ -51,5 +51,15 @@ class WarriorTest extends FunSuite {
     var life = Casemiro.getHp
     // Compare the actual health points value (`life`) with the expected value (`100`).
     assertEquals(life, 120)
+  }
+  /**
+   * Test case for `getDp` method.
+   * This test verifies if the returned defense points (`dp`) value for the character `Casemiro` matches the expected value (`100`).
+   */
+  test("getDefencePoints") {
+    // Retrieve the defense points (`dp`) value of the character `Casemiro` and store it in the `defense` variable.
+    var defense = Casemiro.getDp
+    // Compare the actual defense points value (`defense`) with the expected value (`100`).
+    assertEquals(defense, 100)
   }
 }
