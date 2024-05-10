@@ -23,5 +23,13 @@ class NinjaTest extends FunSuite {
     // Initialize `Rakitic` with new instances of `Enemy`.
     Rakitic = new Enemy("Rakitic")
   }
+  /**
+   * Test case for `equals` method.
+   * This test verifies if two references to the same character (`Modric`) are considered equal.
+   */
+  test("equals") {
+    assertEquals(Modric, Modric)
+  }
+
 }
 
