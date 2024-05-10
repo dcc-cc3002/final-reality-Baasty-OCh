@@ -62,4 +62,15 @@ class WarriorTest extends FunSuite {
     // Compare the actual defense points value (`defense`) with the expected value (`100`).
     assertEquals(defense, 100)
   }
+  /**
+   * Test case for `getWeight` method.
+   * This test verifies if the returned weight value for the character `Casemiro` matches the expected value (`70`).
+   */
+  test("getWeight") {
+    // Retrieve the weight value of the character `Casemiro` and store it in the `weight` variable.
+    var weight = Casemiro.getWeight
+    // Compare the actual weight value (`weight`) with the expected value (`70`).
+    assertEquals(weight, 70)
+  }
+
 }
