@@ -20,7 +20,7 @@ class WeaponTest extends FunSuite {
   }
 
   test("equals") { // Test if two references to the same character are equal
-    assertEquals(Sword, Sword)
+    assertEquals(Sword, Bow)
     assertEquals(Bow, Bow)
     assertEquals(Axe,Axe)
   }
