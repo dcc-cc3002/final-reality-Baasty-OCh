@@ -34,12 +34,22 @@ class WarriorTest extends FunSuite {
 
   /**
    * Test case for `getName` method.
-   * This test verifies if the returned name value for a character (`Cristiano`) matches the expected value.
+   * This test verifies if the returned name value for a character (`Casemiro`) matches the expected value.
    */
   test("getName") {
-    // Retrieve the name value of the character `Cristiano` and store it in the `name` variable.
+    // Retrieve the name value of the character `Casemiro` and store it in the `name` variable.
     var name = Casemiro.getName
-    // Compare the actual name value (`name`) with the expected value ("Cristiano").
+    // Compare the actual name value (`name`) with the expected value ("Casemiro").
     assertEquals(name, "Casemiro")
+  }
+  /**
+   * Test case for `getHp` method.
+   * This test verifies if the returned health points (`hp`) value for the character `Casemiro` matches the expected value (`120`).
+   */
+  test("getHealthPoints") {
+    // Retrieve the health points (`hp`) value of the character `Casemiro` and store it in the `life` variable.
+    var life = Casemiro.getHp
+    // Compare the actual health points value (`life`) with the expected value (`100`).
+    assertEquals(life, 120)
   }
 }
