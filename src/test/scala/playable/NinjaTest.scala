@@ -126,12 +126,5 @@ class NinjaTest extends FunSuite {
     // Verify if `Modric`'s health points (`getHp`) become 0 after receiving 100 damage (exceeds total health).
     assertEquals(Modric.wasAttacked(100).getHp, 0) // 80 health points - 100 damage -> 0 health points
   }
-
-
-
-
-
-
-
- }
+}
 
