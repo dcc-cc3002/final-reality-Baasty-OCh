@@ -115,5 +115,16 @@ class WhiteMagicanTest extends FunSuite {
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
   }
+  /**
+   * Test case for `wasAttacked` method.
+   * This test verifies the behavior of the `wasAttacked` method in response to inflicted damage on the character `Benzema`.
+   */
+  test("wasAttacked") {
+    // Verify if `Benzema`'s health points (`getHp`) decrease correctly after receiving 5 damage.
+    assertEquals(Benzema.wasAttacked(25).getHp, 75) // 100 health points - 25 damage -> 75 health points
+
+    // Verify if `Benzema`'s health points (`getHp`) become 0 after receiving 120 damage (exceeds total health).
+    assertEquals(Benzema.wasAttacked(100).getHp, 0) // 100 health points - 125 damage -> 0 health points
+  }
 
 }
