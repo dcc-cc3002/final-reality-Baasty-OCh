@@ -71,7 +71,7 @@ abstract class APlayable(val name: String, var healthPoints: Int,
       target.wasInjure(damage)
       damage
     }
-    else 0
+    else damage
   }
 
   /**

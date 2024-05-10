@@ -98,6 +98,23 @@ class NinjaTest extends FunSuite {
     // Verify if the character `Modric` now has the `Arco` weapon equipped (returns `Some(Arco)`).
     assertEquals(Modric.haveWeapon, Some(Arco))
   }
+  /**
+   * Test case for `attackEnemy` method.
+   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Modric` attacks with a `Bow`.
+   */
+  test("attackEnemy") {
+    // Equip `Modric` with a `Bow`.
+    Modric.putWeapon(new Bow(Modric))
+
+    // `Modric` attacks `Rakitic` using the `attackEnemy` method and retrieves the inflicted damage (`daño`).
+    val damage: Int = Modric.attackEnemy(Rakitic)
+
+    // Calculate the expected damage based on `Modric`'s attack power (Bow's attack - `Rakitic`'s defense).
+    val expectedDamage: Int = 40 - 50
+
+    // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
+    assertEquals(damage, expectedDamage)
+  }
 
 
 
