@@ -39,7 +39,8 @@ class NinjaTest extends FunSuite {
     var name = Modric.getName
     // Compare the actual name value (`name`) with the expected value ("Modric").
     assertEquals(name, "Modric")
-  }  /**
+  }
+  /**
    * Test case for `getHp` method.
    * This test verifies if the returned health points (`hp`) value for the character `Modric` matches the expected value (`80`).
    */
