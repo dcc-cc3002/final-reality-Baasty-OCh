@@ -59,6 +59,17 @@ class NinjaTest extends FunSuite {
     // Compare the actual defense points value (`defense`) with the expected value (`70`).
     assertEquals(defense, 70)
   }
+  /**
+   * Test case for `getWeight` method.
+   * This test verifies if the returned weight value for the character `Modric` matches the expected value (`30`).
+   */
+  test("getWeight") {
+    // Retrieve the weight value of the character `Modric` and store it in the `weight` variable.
+    var weight = Modric.getWeight
+    // Compare the actual weight value (`weight`) with the expected value (`30`).
+    assertEquals(weight, 30)
+  }
+
 
 
 
