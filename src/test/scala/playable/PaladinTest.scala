@@ -9,7 +9,7 @@ import munit.FunSuite
  */
 class PaladinTest extends FunSuite {
   var Cristiano: Playable = _ // Declaration of a variable `Cristiano` of type `Playable`.
-  var Pique: Enemy = _ // Declaration of a variable `Pele` of type `Playable`.
+  var Pique: Enemy = _ // Declaration of a variable `Pique` of type `Enemy`.
 
   /**
    * Set up the test environment before each test case.
@@ -17,8 +17,9 @@ class PaladinTest extends FunSuite {
    * @param context The context provided by the test framework (`BeforeEach`).
    */
   override def beforeEach(context: BeforeEach): Unit = {
-    // Initialize `Cristiano` and `Pele` with new instances of `Paladin`.
+    // Initialize `Cristiano` with new instances of `Paladin`.
     Cristiano = new Paladin("Cristiano")
+    // Initialize `Pique` with new instances of `Enemy`.
     Pique = new Enemy("Pique")
   }
 

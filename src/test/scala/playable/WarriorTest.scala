@@ -24,4 +24,12 @@ class WarriorTest extends FunSuite {
     Busquets = new Enemy("Busquets")
   }
 
+  /**
+   * Test case for `equals` method.
+   * This test verifies if two references to the same character (`Cristiano`) are considered equal.
+   */
+  test("equals") {
+    assertEquals(Casemiro, Casemiro)
+  }
+
 }
