@@ -6,7 +6,7 @@ import munit.FunSuite
  * Test suite for the `WhiteMagican` class.
  * This class contains tests for various functionalities of the `WhiteMagican` class.
  */
-class WhiteMagicanTestTest extends FunSuite {
+class WhiteMagicanTest extends FunSuite {
   var Benzema: Playable = _ // Declaration of a variable `Benzema` of type `Playable`.
   var Ter_Stegen: Enemy = _ // Declaration of a variable `Ter_Stegen` of type `Enemy`.
 
