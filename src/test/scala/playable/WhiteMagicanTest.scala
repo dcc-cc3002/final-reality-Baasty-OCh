@@ -49,5 +49,15 @@ class WhiteMagicanTest extends FunSuite {
     // Compare the actual health points value (`life`) with the expected value (`100`).
     assertEquals(life, 100)
   }
+  /**
+   * Test case for `getDp` method.
+   * This test verifies if the returned defense points (`dp`) value for the character `Benzema` matches the expected value (`80`).
+   */
+  test("getDefencePoints") {
+    // Retrieve the defense points (`dp`) value of the character `Benzema` and store it in the `defense` variable.
+    var defense = Benzema.getDp
+    // Compare the actual defense points value (`defense`) with the expected value (`80`).
+    assertEquals(defense, 80)
+  }
 
 }
