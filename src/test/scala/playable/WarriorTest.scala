@@ -88,7 +88,19 @@ class WarriorTest extends FunSuite {
    */
   test("HaveWeapon") {
     assertEquals(Casemiro.haveWeapon, None)
+  }  /**
+   * Test case for `putWeapon` method.
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Axe`) on the character `Casemiro`.
+   */
+  test("putWeapon") {
+    // Create a new `Sword` instance (`Espada`) associated with `Cristiano`.
+    var Hacha: Axe = new Axe(Casemiro)
+    // Equip the `Hacha` weapon on the character `Casemiro` using the `putWeapon` method.
+    Casemiro.putWeapon(Hacha)
+    // Verify if the character `Casemiro` now has the `Hacha` weapon equipped (returns `Some(Hacha)`).
+    assertEquals(Casemiro.haveWeapon, Some(Hacha))
   }
+
 
 
 
