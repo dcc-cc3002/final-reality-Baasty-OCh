@@ -14,6 +14,7 @@ import munit.FunSuite
 class WarriorTest extends FunSuite {
   var Casemiro: Playable = _ // Declaration of a variable `Casemiro` of type `Playable`.
   var Busquets: Enemy = _ // Declaration of a variable `Busquets` of type `Enemy`.
+  var Ramos: Playable = _
 
   /**
    * Set up the test environment before each test case.
@@ -24,6 +25,7 @@ class WarriorTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Casemiro` with new instances of `Warrior`.
     Casemiro = new Warrior("Casemiro")
+    Ramos = new Warrior("Ramos",50,70,99,20)
     // Initialize `Busquets` with new instances of `Enemy`.
     Busquets = new Enemy("Busquets")
   }
@@ -33,7 +35,9 @@ class WarriorTest extends FunSuite {
    * This test verifies if two references to the same character (`Casemiro`) are considered equal.
    */
   test("equals") {
-    assertEquals(Casemiro, Casemiro)
+    assertEquals(Casemiro.equals(Casemiro),true)
+    assertEquals(Casemiro.equals(Ramos),false)
+    assertEquals(Casemiro.equals(Busquets),false)
   }
 
   /**

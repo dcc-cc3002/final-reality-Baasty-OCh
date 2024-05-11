@@ -2,10 +2,10 @@ package playable
 
 import model.nonplayable.weapons.AWeapon
 import model.nonplayable.NonPlayable
-import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
+import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
 import model.nonplayable.Enemy
 import model.playable.{APlayable, Ninja, Paladin, Playable, Warrior, WhiteMagican}
-import munit.FunSuite
+import munit.{FunSuite, Only}
 /**
  * Test suite for the `WhiteMagican` class.
  * This class contains tests for various functionalities of the `WhiteMagican` class.
@@ -13,6 +13,7 @@ import munit.FunSuite
 class WhiteMagicanTest extends FunSuite {
   var Benzema: Playable = _ // Declaration of a variable `Benzema` of type `Playable`.
   var Ter_Stegen: Enemy = _ // Declaration of a variable `Ter_Stegen` of type `Enemy`.
+  var Ozil: Playable = _
 
   /**
    * Set up the test environment before each test case.
@@ -23,6 +24,7 @@ class WhiteMagicanTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Modric` with new instances of `Ninja`.
     Benzema = new WhiteMagican("Benzema")
+    Ozil = new WhiteMagican("Ozil",55,90,32,90)
     // Initialize `Ter_Stegen` with new instances of `Enemy`.
     Ter_Stegen = new Enemy("Ter_Stegen")
   }
@@ -31,7 +33,9 @@ class WhiteMagicanTest extends FunSuite {
    * This test verifies if two references to the same character (`Benzema`) are considered equal.
    */
   test("equals") {
-    assertEquals(Benzema, Benzema)
+    assertEquals(Benzema.equals(Benzema),true)
+    assertEquals(Benzema.equals(Ozil),false)
+    assertEquals(Benzema.equals(Ter_Stegen),false)
   }
   /**
    * Test case for `getName` method.

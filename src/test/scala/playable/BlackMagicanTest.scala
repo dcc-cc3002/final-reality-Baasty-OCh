@@ -2,10 +2,10 @@ package playable
 
 import model.nonplayable.weapons.{AWeapon, Axe}
 import model.nonplayable.NonPlayable
-import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
+import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
 import model.nonplayable.Enemy
 import model.playable.{APlayable, BlackMagican, Ninja, Paladin, Playable, Warrior, WhiteMagican}
-import munit.FunSuite
+import munit.{FunSuite, Ignore}
 
 /**
  * Test suite for the `WhiteMagican` class.
@@ -14,6 +14,7 @@ import munit.FunSuite
 class BlackMagicanTest extends FunSuite {
   var Modric: Playable = _ // Declaration of a variable `Modric` of type `Playable`.
   var Iniesta: Enemy = _ // Declaration of a variable `Iniesta` of type `Enemy`.
+  var James: Playable = _
 
   /**
    * Set up the test environment before each test case.
@@ -24,6 +25,7 @@ class BlackMagicanTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Modric` with new instances of `Ninja`.
     Modric = new BlackMagican("Modric")
+    James = new BlackMagican("James",50,60,80,21)
     // Initialize `Iniesta` with new instances of `Enemy`.
     Iniesta = new Enemy("Iniesta")
   }
@@ -33,7 +35,10 @@ class BlackMagicanTest extends FunSuite {
    * This test verifies if two references to the same character (`Modric`) are considered equal.
    */
   test("equals") {
-    assertEquals(Modric, Modric)
+    assertEquals(Modric.equals(Modric),true)
+    assertEquals(Modric.equals(James),false)
+    assertEquals(Modric.equals(Iniesta),false)
+
   }
 
   /**
