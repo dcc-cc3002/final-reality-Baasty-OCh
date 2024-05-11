@@ -1,6 +1,7 @@
 package model.playable
 
 import model.nonplayable.weapons.AWeapon
+import model.playable.APlayable
 
 /**
  * "The warrior is a character designed
@@ -40,7 +41,6 @@ class Warrior(name:String, healthPoints:Int,
       val Warrior: Playable = new Warrior(this.name,0,this.defensePoints,this.weight,this.mana)
       Warrior
     }
-
   }
   override def getMana: Int = 0
 }

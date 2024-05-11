@@ -52,7 +52,7 @@ class BowTest extends FunSuite {
     // Retrieve the weight value of the bow `Arco` and store it in the `weight` variable.
     var weight = Arco.getWeight
     // Define the expected weight value.
-    var expected: Int = 25
+    var expected: Int = 30
     // Compare the actual weight value (`weight`) with the expected value (`expected`).
     assertEquals(weight, expected)
   }
@@ -65,7 +65,7 @@ class BowTest extends FunSuite {
     // Retrieve the attack value of the bow `Arco` and store it in the `attack` variable.
     var attack = Arco.getAttack
     // Define the expected attack value.
-    var expected: Int = 50
+    var expected: Int = 40
     // Compare the actual attack value (`attack`) with the expected value (`expected`).
     assertEquals(attack, expected)
   }

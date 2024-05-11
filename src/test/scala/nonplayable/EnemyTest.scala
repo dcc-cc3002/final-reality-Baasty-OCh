@@ -34,9 +34,7 @@ class EnemyTest extends FunSuite {
     var attack = Neymar.getAttack // Retrieve the weight value of the sword and store it in the 'weight' variable
     assertEquals(attack, 80) // Compare the actual weight value with the expected value
   }
-  test("setOwner"){
-    assertEquals(Neymar.getOwner,"The Game")
-  }
+
   test("setDefencePoints"){
     assertEquals(Neymar.getDF,50)
   }
@@ -52,8 +50,8 @@ class EnemyTest extends FunSuite {
     assertEquals(daño2,0)
   }
   test("wasInjure"){
-    assertEquals(Neymar.wasInjure(25).getlife,225)
-    assertEquals(Neymar.wasInjure(300).getlife,0)
+    assertEquals(Neymar.wasInjure(25).getLife,225)
+    assertEquals(Neymar.wasInjure(300).getLife,0)
   }
 
 }

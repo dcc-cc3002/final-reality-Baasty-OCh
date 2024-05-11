@@ -1,7 +1,7 @@
 package controller
 
 import model.controller.TurnShedule
-import model.nonplayable.Sword
+import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
 import model.playable.{Warrior, WhiteMagican, Paladin, Playable}
 import munit.FunSuite
 

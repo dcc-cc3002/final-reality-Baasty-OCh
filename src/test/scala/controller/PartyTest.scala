@@ -1,6 +1,6 @@
 package controller
 
-import model.nonplayable.Sword
+import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
 import model.party.Party
 import model.playable.{WhiteMagican, Paladin, Playable}
 import munit.FunSuite

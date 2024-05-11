@@ -23,13 +23,7 @@ class Bow(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAt
     this("Arco", 30, 40, owner, 0)
   }
 
-  /**
-   * Constructs a Bow with default parameters and a default owner (Ninja).
-   * This is a convenience constructor for testing purposes.
-   */
-  def this() = {
-    this("Arco", 30, 40, new Ninja("Messi"), 0)
-  }
+
 
   /**
    * Implementation of Method to get the magic attack points of the bow.

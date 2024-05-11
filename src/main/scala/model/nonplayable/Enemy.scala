@@ -32,7 +32,7 @@ class Enemy(name: String, weight: Int,
    * @return The attack points of non-playable entity
    */
   def getAttack: Int = attackPoints
-  def getlife: Int = life
+  def getLife: Int = life
   def getDF: Int = defence
   def attackPlayer(target:Playable): Int = {
     val damage : Int = this.attackPoints - target.getDp
@@ -54,7 +54,7 @@ class Enemy(name: String, weight: Int,
     }
   }
 
-  override def getOwner: String  = {"The Game"}
+
   override def getMAP: Int = 0
 }
 

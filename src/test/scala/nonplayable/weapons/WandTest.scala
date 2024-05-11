@@ -11,7 +11,7 @@ import munit.FunSuite
  * This class contains tests for various functionalities of the `Wand` class.
  */
 class WandTest extends FunSuite {
-  var Barita: Bow = _ // Declaration of a variable `Barita` of type `Bow`.
+  var Varita: Wand = _ // Declaration of a variable `Barita` of type `Bow`.
   var Modric: Playable = _ // Declaration of a variable `Modric` of type `Playable`.
 
   /**
@@ -22,7 +22,7 @@ class WandTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
-    Barita = new Bow(Modric) // - Name: Barita // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Varita = new Wand(Modric) // - Name: Barita // - Weight: 25 // - Attack: 50 // - Owner: Modric
   }
 
   /**
@@ -30,7 +30,7 @@ class WandTest extends FunSuite {
    * This test verifies if two references to the same wand (`Barita`) are considered equal.
    */
   test("equals") {
-    assertEquals(Barita, Barita)
+    assertEquals(Varita, Varita)
   }
 
   /**
@@ -39,9 +39,9 @@ class WandTest extends FunSuite {
    */
   test("getName") {
     // Retrieve the name value of the wand `Barita` and store it in the `name2` variable.
-    var name2 = Barita.getName
+    var name = Varita.getName
     // Compare the actual name value (`name2`) with the expected value ("Barita").
-    assertEquals(name2, "Barita")
+    assertEquals(name, "Varita")
   }
 
   /**
@@ -50,9 +50,9 @@ class WandTest extends FunSuite {
    */
   test("getWeight") {
     // Retrieve the weight value of the wand `Barita` and store it in the `weight` variable.
-    var weight = Barita.getWeight
+    var weight = Varita.getWeight
     // Define the expected weight value.
-    var expected: Int = 25
+    var expected: Int = 40
     // Compare the actual weight value (`weight`) with the expected value (`expected`).
     assertEquals(weight, expected)
   }
@@ -63,7 +63,7 @@ class WandTest extends FunSuite {
    */
   test("getAttack") {
     // Retrieve the attack value of the wand `Barita` and store it in the `attack` variable.
-    var attack = Barita.getAttack
+    var attack = Varita.getAttack
     // Define the expected attack value.
     var expected: Int = 50
     // Compare the actual attack value (`attack`) with the expected value (`expected`).
@@ -76,7 +76,7 @@ class WandTest extends FunSuite {
    */
   test("getOwner") {
     // Retrieve the owner character of the wand `Barita` and store it in the `owner` variable.
-    var owner: Any = Barita.getOwner
+    var owner: Any = Varita.getOwner
     // Define the expected owner character.
     var expected: Playable = Modric
     // Compare the actual owner character (`owner`) with the expected character (`expected`).
@@ -88,7 +88,7 @@ class WandTest extends FunSuite {
    * This test verifies if the returned magic attack points value for a wand (`Barita`) matches the expected value (`0`).
    */
   test("getMAP") {
-    assertEquals(Barita.getMAP, 0)
+    assertEquals(Varita.getMAP, 30)
   }
 
 }

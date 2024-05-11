@@ -2,7 +2,7 @@ package nonplayable.weapons
 
 import model.nonplayable.weapons.Staff
 import model.nonplayable.NonPlayable
-import model.playable.Playable
+import model.playable.{Playable, WhiteMagican}
 import model.nonplayable.weapons.Bow
 import munit.FunSuite
 
@@ -11,7 +11,7 @@ import munit.FunSuite
  * This class contains tests for various functionalities of the `Staff` class.
  */
 class StaffTest extends FunSuite {
-  var Baston: Bow = _ // Declaration of a variable `Baston` of type `Bow`.
+  var Baston: Staff = _ // Declaration of a variable `Baston` of type `Bow`.
   var Benzema: Playable = _ // Declaration of a variable `Benzema` of type `Playable`.
 
   /**
@@ -22,7 +22,7 @@ class StaffTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
-    Baston = new Bow(Benzema) // - Name: Baston // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Baston  = new Staff(Benzema) // - Name: Baston // - Weight: 25 // - Attack: 50 // - Owner: Modric
   }
 
   /**
@@ -52,7 +52,7 @@ class StaffTest extends FunSuite {
     // Retrieve the weight value of the staff `Baston` and store it in the `weight` variable.
     var weight = Baston.getWeight
     // Define the expected weight value.
-    var expected: Int = 25
+    var expected: Int = 70
     // Compare the actual weight value (`weight`) with the expected value (`expected`).
     assertEquals(weight, expected)
   }
@@ -65,7 +65,7 @@ class StaffTest extends FunSuite {
     // Retrieve the attack value of the staff `Baston` and store it in the `attack` variable.
     var attack = Baston.getAttack
     // Define the expected attack value.
-    var expected: Int = 50
+    var expected: Int = 70
     // Compare the actual attack value (`attack`) with the expected value (`expected`).
     assertEquals(attack, expected)
   }
@@ -88,7 +88,7 @@ class StaffTest extends FunSuite {
    * This test verifies if the returned magic attack points value for a staff (`Baston`) matches the expected value (`0`).
    */
   test("getMAP") {
-    assertEquals(Baston.getMAP, 0)
+    assertEquals(Baston.getMAP, 40)
   }
 }
 

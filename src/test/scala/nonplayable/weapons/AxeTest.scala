@@ -52,7 +52,7 @@ class AxeTest extends FunSuite {
     // Retrieve the weight value of the axe `Hacha` and store it in the `weight` variable.
     var weight = Hacha.getWeight
     // Define the expected weight value.
-    var expected: Int = 25
+    var expected: Int = 50
     // Compare the actual weight value (`weight`) with the expected value (`expected`).
     assertEquals(weight, expected)
   }

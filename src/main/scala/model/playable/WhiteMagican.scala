@@ -1,8 +1,9 @@
 package model.playable
 
 import model.nonplayable.weapons.AWeapon
-import model.nonplayable.{Enemy, Staff, Wand}
+import model.nonplayable.Enemy
 import model.playable.APlayable
+import model.nonplayable.weapons.{Bow,Staff,Sword,Axe,Wand}
 
 /**
  * "A White Mage will predominantly have defensive qualities but with certain magical attributes."

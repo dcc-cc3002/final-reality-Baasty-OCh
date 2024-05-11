@@ -11,7 +11,7 @@ import munit.FunSuite
  * This class contains tests for various functionalities of the `Sword` class.
  */
 class SwordTest extends FunSuite {
-  var Espada: Bow = _ // Declaration of a variable `Espada` of type `Bow`.
+  var Espada: Sword = _ // Declaration of a variable `Espada` of type `Bow`.
   var Cristiano: Playable = _ // Declaration of a variable `Cristiano` of type `Playable`.
 
   /**
@@ -22,7 +22,7 @@ class SwordTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
-    Espada = new Bow(Cristiano) // - Name: Espada // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Espada = new Sword(Cristiano) // - Name: Espada // - Weight: 25 // - Attack: 50 // - Owner: Modric
   }
 
   /**
@@ -52,7 +52,7 @@ class SwordTest extends FunSuite {
     // Retrieve the weight value of the sword `Espada` and store it in the `weight` variable.
     var weight = Espada.getWeight
     // Define the expected weight value.
-    var expected: Int = 25
+    var expected: Int = 70
     // Compare the actual weight value (`weight`) with the expected value (`expected`).
     assertEquals(weight, expected)
   }
@@ -65,7 +65,7 @@ class SwordTest extends FunSuite {
     // Retrieve the attack value of the sword `Espada` and store it in the `attack` variable.
     var attack = Espada.getAttack
     // Define the expected attack value.
-    var expected: Int = 50
+    var expected: Int = 70
     // Compare the actual attack value (`attack`) with the expected value (`expected`).
     assertEquals(attack, expected)
   }

@@ -25,14 +25,6 @@ class Axe(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAt
   }
 
   /**
-   * Constructs an Axe with default parameters and a default owner (Warrior).
-   * This is a convenience constructor for testing purposes.
-   */
-  def this() = {
-    this("Hacha", 50, 50, new Warrior("Casemiro"), 0)
-  }
-
-  /**
    * Implementation of Method to get the magic attack points of the axe.
    * Since this is a non-magic axe, it always returns 0.
    *

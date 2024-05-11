@@ -14,7 +14,7 @@ import model.playable.Playable
  */
 abstract class APlayable(val name: String, var healthPoints: Int,
                          val defensePoints: Int, val weight: Int,
-                         val mana: Int) extends Playable {
+                         var mana: Int) extends Playable {
   /**
    * variable to represent a weapon in an APlayable Entity
    */
@@ -49,6 +49,9 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * @return The mana of playable entity
    */
   def getMana: Int = mana
+  //def setMana(m:Int): Unit = {
+    //this.mana = m
+  //}
 
   /**
    * Implementation of Method to know if a Playable Entity has or not a weapon

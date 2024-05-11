@@ -47,8 +47,7 @@ class Paladin(name:String, healthPoints:Int,
   def wasAttacked(pain: Int): Playable = {
     if (this.healthPoints >= pain) {
       // If the current health points are greater than or equal to the inflicted damage (`pain`), create a new `Playable` instance with reduced health.
-      val updatedHealth = this.healthPoints - pain
-      new Paladin(this.name, updatedHealth, this.defensePoints, this.weight, this.mana)
+      new Paladin(this.name, this.healthPoints - pain, this.defensePoints, this.weight, this.mana)
     } else {
       // If the inflicted damage (`pain`) exceeds the current health points, create a new `Playable` instance with 0 health.
       new Paladin(this.name, 0, this.defensePoints, this.weight, this.mana)

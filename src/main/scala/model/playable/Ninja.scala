@@ -1,6 +1,7 @@
 package model.playable
 
 import model.nonplayable.weapons.AWeapon
+import model.playable.APlayable
 
 
 /**
