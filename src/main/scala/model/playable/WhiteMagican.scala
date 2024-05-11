@@ -38,4 +38,22 @@ class WhiteMagican(name:String, healthPoints:Int,
       WhiteMagican
     }
   }
+  /**
+   * Checks if this WhiteMagican is equal to another WhiteMagican.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[WhiteMagican]) {
+      val otherCast = other.asInstanceOf[WhiteMagican]
+      (getClass() == otherCast.getClass() &&
+        getName == otherCast.getName &&
+        getWeight == otherCast.getWeight &&
+        getHp == otherCast.getHp &&
+        getDp == otherCast.getDp &&
+        getMana == otherCast.getMana)
+
+    } else false
+  }
 }
