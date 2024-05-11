@@ -23,12 +23,5 @@ class Wand(name: String, weight: Int, attackPoints: Int, owner: Playable, magicA
     this("Varita", 40, 50, owner, 30)
   }
 
-  /**
-   * Constructs a Wand with default parameters and a default owner (WhiteMagican).
-   * This is a convenience constructor for testing purposes.
-   */
-  def this() = {
-    this("Varita", 40, 50, new WhiteMagican("Alexis"), 30)
-  }
 }
 

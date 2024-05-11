@@ -23,7 +23,6 @@ class Sword(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
     this("Espada", 70, 70, owner, 0)
   }
 
-
   /**
    * Implementation of Method to get the magic attack points of the sword.
    * Since this is a non-magic sword, it always returns 0.

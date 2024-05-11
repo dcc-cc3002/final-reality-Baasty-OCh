@@ -23,11 +23,4 @@ class Staff(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
     this("Baston", 70, 70, owner, 40)
   }
 
-  /**
-   * Constructs a Staff with default parameters and a default owner (BlackMagican).
-   * This is a convenience constructor for testing purposes.
-   */
-  def this() = {
-    this("Baston", 70, 70, new BlackMagican("Vidal"), 40)
-  }
 }
