@@ -13,6 +13,8 @@ import munit.FunSuite
 class BowTest extends FunSuite {
   var Arco: Bow = _ // Declaration of a variable `Arco` of type `Bow`.
   var Kroos: Playable = _ // Declaration of a variable `Kroos` of type `Playable`.
+  var Arco2: Bow = _
+  var Hacha: Axe = _
 
   /**
    * Set up the test environment before each test case.
@@ -23,6 +25,8 @@ class BowTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
     Arco = new Bow(Kroos) // - Name: Arco // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Arco2 = new Bow("Arco2",80,80,Kroos,0)
+    Hacha = new Axe(Kroos)
   }
 
   /**
@@ -30,7 +34,9 @@ class BowTest extends FunSuite {
    * This test verifies if two references to the same bow (`Arco`) are considered equal.
    */
   test("equals") {
-    assertEquals(Arco, Arco)
+    assertEquals(Arco.equals(Arco),true)
+    assertEquals(Arco.equals(Arco2),false)
+    assertEquals(Arco.equals(Hacha),false)
   }
 
   /**
