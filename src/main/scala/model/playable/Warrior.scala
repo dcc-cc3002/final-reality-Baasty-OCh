@@ -32,17 +32,8 @@ class Warrior(name:String, healthPoints:Int,
   }
 
 
-  def wasAttacked(pain: Int): Playable = {
-    if (this.healthPoints >= pain){
-      val Warrior: Playable = new Warrior(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
-      Warrior
-    }
-    else {
-      val Warrior: Playable = new Warrior(this.name,0,this.defensePoints,this.weight,this.mana)
-      Warrior
-    }
-  }
-  override def getMana: Int = 0
+  override def setMana(m:Int) : Unit = {}
+
   /**
    * Checks if this Warrior is equal to another Warrior .
    *

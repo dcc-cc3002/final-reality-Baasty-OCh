@@ -53,5 +53,5 @@ trait Playable {
    * @param pain
    * @return a new Playable
    */
-  def wasAttacked(pain:Int) : Playable
+  def wasAttacked(pain:Int) : Unit
 }

@@ -12,9 +12,9 @@ import munit.{FunSuite, Ignore}
  * This class contains tests for various functionalities of the `WhiteMagican` class.
  */
 class BlackMagicanTest extends FunSuite {
-  var Modric: Playable = _ // Declaration of a variable `Modric` of type `Playable`.
+  var Modric: BlackMagican = _ // Declaration of a variable `Modric` of type `Playable`.
   var Iniesta: Enemy = _ // Declaration of a variable `Iniesta` of type `Enemy`.
-  var James: Playable = _
+  var James: BlackMagican = _
 
   /**
    * Set up the test environment before each test case.
@@ -62,6 +62,10 @@ class BlackMagicanTest extends FunSuite {
     // Compare the actual health points value (`life`) with the expected value (`100`).
     assertEquals(life, 90)
   }
+  test("setHp"){
+    Modric.setHp(45)
+    assertEquals(Modric.getHp,45)
+  }
 
   /**
    * Test case for `getDp` method.
@@ -94,6 +98,10 @@ class BlackMagicanTest extends FunSuite {
     var mana = Modric.getMana
     // Compare the actual mana value (`mana`) with the expected value (`40`).
     assertEquals(mana, 50)
+  }
+  test("setMana"){
+    Modric.setMana(90)
+    assertEquals(Modric.getMana,90)
   }
 
   /**
@@ -134,17 +142,12 @@ class BlackMagicanTest extends FunSuite {
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
   }
-
-  /**
-   * Test case for `wasAttacked` method.
-   * This test verifies the behavior of the `wasAttacked` method in response to inflicted damage on the character `Modric`.
-   */
-  test("wasAttacked") {
-    // Verify if `Modric`'s health points (`getHp`) decrease correctly after receiving 25 damage.
-    assertEquals(Modric.wasAttacked(25).getHp, 65) // 90 health points - 25 damage -> 65 health points
-
-    // Verify if `Modric`'s health points (`getHp`) become 0 after receiving 100 damage (exceeds total health).
-    assertEquals(Modric.wasAttacked(120).getHp, 0) // 90 health points - 100 damage -> 0 health points
+  test("wasAttacked"){
+    Modric.wasAttacked(45)
+    assertEquals(Modric.getHp,45)
+    Modric.wasAttacked(200)
+    assertEquals(Modric.getHp,0)
   }
+
 }
 

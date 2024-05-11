@@ -28,16 +28,7 @@ class WhiteMagican(name:String, healthPoints:Int,
     arma = Some(a)
   }
 
-  def wasAttacked(pain: Int): Playable = {
-    if (this.healthPoints >= pain) {
-      val WhiteMagican: Playable = new WhiteMagican(this.name, this.healthPoints - pain, this.defensePoints, this.weight, this.mana)
-      WhiteMagican
-    }
-    else {
-      val WhiteMagican: Playable = new WhiteMagican(this.name, 0, this.defensePoints, this.weight, this.mana)
-      WhiteMagican
-    }
-  }
+
   /**
    * Checks if this WhiteMagican is equal to another WhiteMagican.
    *

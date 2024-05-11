@@ -125,15 +125,5 @@ class WarriorTest extends FunSuite {
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
   }
-  /**
-   * Test case for `wasAttacked` method.
-   * This test verifies the behavior of the `wasAttacked` method in response to inflicted damage on the character `Casemiro`.
-   */
-  test("wasAttacked") {
-    // Verify if `Casemiro`'s health points (`getHp`) decrease correctly after receiving 45 damage.
-    assertEquals(Casemiro.wasAttacked(45).getHp, 75) // 120 health points - 45 damage -> 75 health points
 
-    // Verify if `Casemiro`'s health points (`getHp`) become 0 after receiving 145 damage (exceeds total health).
-    assertEquals(Casemiro.wasAttacked(145).getHp, 0) // 120 health points - 145 damage -> 0 health points
-  }
 }

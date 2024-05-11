@@ -38,23 +38,6 @@ class Paladin(name:String, healthPoints:Int,
   }
 
   /**
-   * Implementation of abstract method from 'APlayable' class.
-   * Simulate the playable entity being attacked.
-   * This method simulates the playable entity receiving damage from an attack.
-   * @param pain The amount of damage inflicted on the playable entity.
-   * @return A new `Playable` instance representing the playable entity after being attacked.
-   */
-  def wasAttacked(pain: Int): Playable = {
-    if (this.healthPoints >= pain) {
-      // If the current health points are greater than or equal to the inflicted damage (`pain`), create a new `Playable` instance with reduced health.
-      new Paladin(this.name, this.healthPoints - pain, this.defensePoints, this.weight, this.mana)
-    } else {
-      // If the inflicted damage (`pain`) exceeds the current health points, create a new `Playable` instance with 0 health.
-      new Paladin(this.name, 0, this.defensePoints, this.weight, this.mana)
-    }
-  }
-
-  /**
    * Get the mana points of the playable entity.
    * This method always returns 0 mana points for the `Paladin` Character.
    * @return The mana points of the Paladin Character (always 0).

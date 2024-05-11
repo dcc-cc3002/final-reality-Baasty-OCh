@@ -14,7 +14,7 @@ import model.playable.Playable
  */
 abstract class APlayable(val name: String, var healthPoints: Int,
                          val defensePoints: Int, val weight: Int,
-                         var mana: Int) extends Playable {
+                         var mana: Int = 0) extends Playable {
   /**
    * variable to represent a weapon in an APlayable Entity
    */
@@ -31,6 +31,9 @@ abstract class APlayable(val name: String, var healthPoints: Int,
     * @return The health points of playable entity
    */
   def getHp: Int = healthPoints
+  def setHp(newHp: Int): Unit ={
+    this.healthPoints = newHp
+  }
 
   /**
    * Implementation of Method to get the defense points of the playable entity
@@ -49,9 +52,9 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * @return The mana of playable entity
    */
   def getMana: Int = mana
-  //def setMana(m:Int): Unit = {
-    //this.mana = m
-  //}
+  def setMana(newMana:Int): Unit = {
+    this.mana = newMana
+  }
 
   /**
    * Implementation of Method to know if a Playable Entity has or not a weapon
@@ -84,7 +87,15 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * @param pain The amount of damage inflicted on the playable entity.
    *  @return A new `Playable` instance representing the entity after being hurt.
    */
-  def wasAttacked(pain:Int) : Playable
+
+  def wasAttacked(pain: Int): Unit = {
+    if (this.healthPoints >= pain){
+      this.setHp(this.healthPoints-pain)
+    }
+    else {
+      this.setHp(0)
+    }
+  }
 
 
 }

@@ -125,17 +125,7 @@ class PaladinTest extends FunSuite {
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
   }
-  /**
-   * Test case for `wasAttacked` method.
-   * This test verifies the behavior of the `wasAttacked` method in response to inflicted damage on the character `Cristiano`.
-   */
-  test("wasAttacked") {
-    // Verify if `Cristiano`'s health points (`getHp`) decrease correctly after receiving 25 damage.
-    assertEquals(Cristiano.wasAttacked(25).getHp, 75) // 100 health points - 25 damage -> 75 health points
 
-    // Verify if `Cristiano`'s health points (`getHp`) become 0 after receiving 125 damage (exceeds total health).
-    assertEquals(Cristiano.wasAttacked(125).getHp, 0) // 100 health points - 125 damage -> 0 health points
-  }
 
 }
 

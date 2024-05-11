@@ -31,16 +31,7 @@ class Ninja(name:String, healthPoints:Int,
   }
 
 
-  def wasAttacked(pain: Int): Playable = {
-    if (this.healthPoints >= pain){
-      val Ninja: Playable = new Ninja(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
-      Ninja
-    }
-    else{
-      val Ninja: Playable = new Ninja(this.name,0,this.defensePoints,this.weight,this.mana)
-      Ninja
-    }
-  }
+
   override def getMana: Int = 0
   /**
    * Checks if this Ninja is equal to another Ninja.

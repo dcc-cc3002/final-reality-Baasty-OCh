@@ -27,16 +27,6 @@ class BlackMagican(name:String, healthPoints:Int,
   }
 
 
-  def wasAttacked(pain: Int): Playable = {
-    if (this.healthPoints >= pain){
-      val BlackMagican: Playable = new BlackMagican(this.name,this.healthPoints-pain,this.defensePoints,this.weight,this.mana)
-      BlackMagican
-    }
-    else{
-      val BlackMagican: Playable = new BlackMagican(this.name,0,this.defensePoints,this.weight,this.mana)
-      BlackMagican
-    }
-  }
 
   /**
    * Checks if this BlackMagican is equal to another BlackMagican.
