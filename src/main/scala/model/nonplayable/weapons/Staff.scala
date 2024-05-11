@@ -23,4 +23,12 @@ class Staff(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
     this("Baston", 70, 70, owner, 40)
   }
 
+  /**
+   * Implementation of Method to get the magic attack points of the staff.
+   * Since this is a magic staff, it returns magic attack points(MAP).
+   *
+   * @return The magic attack points of the staff
+   */
+  override def getMAP: Int = magicAttackPoints
+
 }

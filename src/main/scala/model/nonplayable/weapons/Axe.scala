@@ -24,11 +24,5 @@ class Axe(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAt
     this("Hacha", 50, 50, owner, 0)
   }
 
-  /**
-   * Implementation of Method to get the magic attack points of the axe.
-   * Since this is a non-magic axe, it always returns 0.
-   *
-   * @return The magic attack points of the axe (always 0 for this type of weapon)
-   */
-  override def getMAP: Int = 0
+
 }

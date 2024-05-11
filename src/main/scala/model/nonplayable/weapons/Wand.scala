@@ -23,5 +23,13 @@ class Wand(name: String, weight: Int, attackPoints: Int, owner: Playable, magicA
     this("Varita", 40, 50, owner, 30)
   }
 
+  /**
+   * Implementation of Method to get the magic attack points of the wand.
+   * Since this is a magic wand, it returns magic attack points(MAP).
+   *
+   * @return The magic attack points of the wand
+   */
+  override def getMAP: Int = magicAttackPoints
+
 }
 
