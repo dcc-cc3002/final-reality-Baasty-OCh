@@ -23,6 +23,18 @@ class Axe(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAt
   def this(owner: Playable) = {
     this("Hacha", 50, 50, owner, 0)
   }
+  /**
+   * Checks if this Axe is equal to another axe.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Axe]) {
+      val otherCast = other.asInstanceOf[Axe]
+      getClass() == otherCast.getClass()
+    } else false
+  }
 
 
 }
