@@ -22,6 +22,18 @@ class Bow(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAt
   def this(owner: Playable) = {
     this("Arco", 30, 40, owner, 0)
   }
+  /**
+   * Checks if this Bow is equal to another bow.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Bow]) {
+      val otherCast = other.asInstanceOf[Bow]
+      getClass() == otherCast.getClass()
+    } else false
+  }
 
 
 
