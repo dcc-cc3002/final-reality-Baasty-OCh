@@ -25,11 +25,4 @@ class Bow(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAt
 
 
 
-  /**
-   * Implementation of Method to get the magic attack points of the bow.
-   * Since this is a non-magic bow, it always returns 0.
-   *
-   * @return The magic attack points of the bow (always 0 for this type of weapon)
-   */
-  override def getMAP: Int = 0
 }

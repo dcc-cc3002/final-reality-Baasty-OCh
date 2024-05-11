@@ -60,7 +60,7 @@ abstract class AWeapon(name: String, weight: Int, attackPoints: Int, owner: Play
    *
    * @return The magic attack points of the weapon (if it's a magic weapon)
    */
-  def getMAP: Int = magicAttackPoints
+  def getMAP: Int = 0
 
   /**
    * Checks if this weapon is equal to another object.
