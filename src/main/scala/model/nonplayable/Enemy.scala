@@ -13,42 +13,18 @@ import model.playable.Playable
  */
 class Enemy(name: String, weight: Int,
             attackPoints: Int, life: Int,
-            defence: Int) extends NonPlayable {
+            defence: Int) extends ANonPlayable(name, weight, attackPoints, life, defence) {
   def this(name:String) ={
     this(name,50,80,250,50)
   }
-  /**
-   * Implementation of Method to get the name of the non-playable entity
-   * @return : The name of non-playable entity
-   */
-  def getName: String = name
-  /**
-   * Implementation of Method to get the weight of the non-playable entity
-   * @return The weight of non-playable entity
-   */
-  def getWeight: Int = weight
-  /**
-   * Implementation of Method to get the attack points of the non-playable entity
-   * @return The attack points of non-playable entity
-   */
-  def getAttack: Int = attackPoints
-  def getLife: Int = life
-  def getDF: Int = defence
-  def attackPlayer(target:Playable): Int = {
-    val damage : Int = this.attackPoints - target.getDp
-    if (damage >= 0) {
-      target.wasAttacked(damage)
-      damage
-    } else 0
 
-  }
-  def wasInjure(pain: Int) = {
+  def wasInjure(pain: Int): Enemy = {
     if (this.life >= pain){
-      val Enemy: NonPlayable = new Enemy(this.name, this.weight, this.attackPoints, this.life - pain, this.defence)
+      val Enemy: Enemy = new Enemy(this.name, this.weight, this.attackPoints, this.life - pain, this.defence)
       Enemy
     }
     else {
-      val Enemy: NonPlayable = new Enemy(this.name, this.weight, this.attackPoints, 0, this.defence)
+      val Enemy: Enemy = new Enemy(this.name, this.weight, this.attackPoints, 0, this.defence)
       Enemy
 
     }

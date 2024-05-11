@@ -39,12 +39,11 @@ class TurnShedule extends Shedule {
     }
   }
   // Método para mostrar el estado actual de turnos
-  def showTurns(): Unit = {
-    println("Turnos actuales:")
-    turns.foreach { key =>
-      println(s"- ${key.getName}")
+  def CanPlay(q:Queue[Playable]): Playable = {
+    val Player1: Playable = q.head
+    q.removeHead()
+    Player1
     }
-  }
 
 }
 

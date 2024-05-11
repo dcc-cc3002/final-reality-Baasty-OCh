@@ -128,7 +128,7 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.wasAttacked(25).getHp, 75) // 100 health points - 25 damage -> 75 health points
 
     // Verify if `Benzema`'s health points (`getHp`) become 0 after receiving 120 damage (exceeds total health).
-    assertEquals(Benzema.wasAttacked(100).getHp, 0) // 100 health points - 125 damage -> 0 health points
+    assertEquals(Benzema.wasAttacked(120).getHp, 0) // 100 health points - 125 damage -> 0 health points
   }
 
 }

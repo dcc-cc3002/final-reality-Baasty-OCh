@@ -86,20 +86,6 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    */
   def wasAttacked(pain:Int) : Playable
 
-  /**
-   * Custom implementation of the `equals` method to compare objects for class equality.
-   * This method overrides the default `equals` method inherited from the `Any` class.
-   * @param other The object to compare with.
-   * @return `true` if the current object's class is the same as `other`'s class (if `other` is an instance of `Playable`), otherwise `false`.
-   */
-  override def equals(other:Any):Boolean = { // override anula la funcion por defecto y me permite escribir una nueva
-    if (other.isInstanceOf[Playable]) {
-      val otherCast = other.asInstanceOf[Playable]
-      getClass() == otherCast.getClass()
-    } else false
-  }
-
-
 
 }
 

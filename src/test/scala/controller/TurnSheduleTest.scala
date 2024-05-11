@@ -30,6 +30,7 @@ class TurnSheduleTest extends FunSuite {
   }
   test("deletePlayer"){
     Team1.addPlayer(Cristiano)
+    assertEquals(Team1.actionBar.isEmpty,false)
     Team1.deletePlayer(Cristiano)
     assertEquals(Team1.actionBar.isEmpty,true)
   }
@@ -55,6 +56,16 @@ class TurnSheduleTest extends FunSuite {
     Team1.fillActionBar(20)
     val expected: mutable.Queue[Playable] = mutable.Queue(Cristiano,Alexis)
     assertEquals(Team1.turns,expected)
+  }
+  test("canPlay"){
+    Team1.addPlayer(Cristiano)
+    Team1.addPlayer(Alexis)
+    Team1.fillActionBar(55)
+    Team1.fillActionBar(20)
+    val expected: Playable = Team1.CanPlay(Team1.turns)
+    val expected2: Playable = Team1.CanPlay(Team1.turns)
+    assertEquals(Cristiano,expected)
+    assertEquals(Alexis,expected2)
   }
 
 
