@@ -1,6 +1,7 @@
 package model.nonplayable.weapons
+import model.nonplayable.NonPlayable
 import model.nonplayable.weapons.AWeapon
-import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Playable}
+import model.playable.{BlackMagican, Ninja, Paladin, Playable, Warrior, WhiteMagican}
 
 /**
  * Class representing a Sword, which is a type of non-playable weapon.
@@ -21,6 +22,19 @@ class Sword(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
    */
   def this(owner: Playable) = {
     this("Espada", 70, 70, owner, 0)
+  }
+
+  /**
+   * Checks if this sword is equal to another sword.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Sword]) {
+      val otherCast = other.asInstanceOf[Sword]
+      getClass() == otherCast.getClass()
+    } else false
   }
 
 

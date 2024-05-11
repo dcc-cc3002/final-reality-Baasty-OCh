@@ -62,18 +62,6 @@ abstract class AWeapon(name: String, weight: Int, attackPoints: Int, owner: Play
    */
   def getMAP: Int = 0
 
-  /**
-   * Checks if this weapon is equal to another object.
-   *
-   * @param other The object to compare against
-   * @return `true` if the objects are of the same class, `false` otherwise
-   */
-  override def equals(other: Any): Boolean = {
-    if (other.isInstanceOf[NonPlayable]) {
-      val otherCast = other.asInstanceOf[NonPlayable]
-      getClass() == otherCast.getClass()
-    } else false
-  }
 }
 
 
