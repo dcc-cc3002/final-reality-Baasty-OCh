@@ -14,6 +14,7 @@ import munit.FunSuite
 class PaladinTest extends FunSuite {
   var Cristiano: Playable = _ // Declaration of a variable `Cristiano` of type `Playable`.
   var Pique: Enemy = _ // Declaration of a variable `Pique` of type `Enemy`.
+  var Bale: Playable = _
 
   /**
    * Set up the test environment before each test case.
@@ -23,8 +24,10 @@ class PaladinTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Cristiano` with new instances of `Paladin`.
     Cristiano = new Paladin("Cristiano")
+    Bale = new Paladin("Bale",25,34,56,0)
     // Initialize `Pique` with new instances of `Enemy`.
     Pique = new Enemy("Pique")
+
   }
 
   /**
@@ -32,7 +35,9 @@ class PaladinTest extends FunSuite {
    * This test verifies if two references to the same character (`Cristiano`) are considered equal.
    */
   test("equals") {
-    assertEquals(Cristiano, Cristiano)
+    assertEquals(Cristiano.equals(Cristiano),true)
+    assertEquals(Cristiano.equals(Bale),false)
+    assertEquals(Cristiano.equals(Pique),false)
   }
 
   /**

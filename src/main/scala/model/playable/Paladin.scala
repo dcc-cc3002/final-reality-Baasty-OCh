@@ -37,12 +37,7 @@ class Paladin(name:String, healthPoints:Int,
     arma = Some(weapon)
   }
 
-  /**
-   * Get the mana points of the playable entity.
-   * This method always returns 0 mana points for the `Paladin` Character.
-   * @return The mana points of the Paladin Character (always 0).
-   */
-  override def getMana: Int = 0
+  override def setMana(m:Int) : Unit = {}
   /**
    * Checks if this Paladin is equal to another Paladin.
    *

@@ -97,6 +97,5 @@ abstract class APlayable(val name: String, var healthPoints: Int,
     }
   }
 
-
 }
 

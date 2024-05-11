@@ -1,44 +1,17 @@
 package model.playable
-
 import model.nonplayable.weapons.AWeapon
 import model.playable.APlayable
 
-
-/**
- *"A ninja is a key character in any game;
- * they may not excel in defensive arts but can be decisive due to their high attack speed."
- *
- * @param name The name of the character.
- * @param healthPoints The health points of the character.
- * @param defensePoints The defense points of the character.
- * @param weight The weight of the character.
- * @param mana is zero for no magic characters
- */
-class Ninja(name:String, healthPoints:Int,
-            defensePoints:Int, weight:Int,
-            mana:Int) extends APlayable(name,healthPoints, defensePoints,weight,mana){
-  /**
-   * "The auxiliary builder receives the name that the user chooses for their character
-   * and sets the other statistics according to the chosen class."
-   * @param name
-   */
+class Ninja(name:String, healthPoints: Int,
+            defensePoints: Int, weight: Int,
+            mana: Int) extends APlayable(name, healthPoints, defensePoints, weight, mana){
   def this(name:String) = {
     this(name,80,70,30,0)
   }
-
   override def putWeapon(a: AWeapon): Unit = {
     arma = Some(a)
   }
-
-
-
-  override def getMana: Int = 0
-  /**
-   * Checks if this Ninja is equal to another Ninja.
-   *
-   * @param other The object to compare against
-   * @return `true` if the objects are of the same class, `false` otherwise
-   */
+  override def setMana(m:Int) : Unit = {}
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Ninja]) {
       val otherCast = other.asInstanceOf[Ninja]
@@ -51,5 +24,5 @@ class Ninja(name:String, healthPoints:Int,
 
     } else false
   }
-}
 
+}

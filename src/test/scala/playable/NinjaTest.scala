@@ -15,6 +15,7 @@ import munit.FunSuite
 class NinjaTest extends FunSuite {
   var Kroos: Playable = _ // Declaration of a variable `Kroos` of type `Playable`.
   var Rakitic: Enemy = _ // Declaration of a variable `Rakitic` of type `Enemy`.
+  var Alonso: Playable = _
 
   /**
    * Set up the test environment before each test case.
@@ -25,6 +26,7 @@ class NinjaTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Kroos` with new instances of `Ninja`.
     Kroos = new Ninja("Kroos")
+    Alonso = new Ninja("Alonso",100,50,12,0)
     // Initialize `Rakitic` with new instances of `Enemy`.
     Rakitic = new Enemy("Rakitic")
   }
@@ -34,7 +36,9 @@ class NinjaTest extends FunSuite {
    * This test verifies if two references to the same character (`Kroos`) are considered equal.
    */
   test("equals") {
-    assertEquals(Kroos, Kroos)
+    assertEquals(Kroos.equals(Kroos),true)
+    assertEquals(Kroos.equals(Alonso),false)
+    assertEquals(Kroos.equals(Rakitic),false)
   }
 
 
