@@ -60,6 +60,24 @@ class Paladin(name:String, healthPoints:Int,
    * @return The mana points of the Paladin Character (always 0).
    */
   override def getMana: Int = 0
+  /**
+   * Checks if this Paladin is equal to another Paladin.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Paladin]) {
+      val otherCast = other.asInstanceOf[Paladin]
+      (getClass() == otherCast.getClass() &&
+        getName == otherCast.getName &&
+        getWeight == otherCast.getWeight &&
+        getHp == otherCast.getHp &&
+        getDp == otherCast.getDp &&
+        getMana == otherCast.getMana)
+
+    } else false
+  }
 }
 
 
