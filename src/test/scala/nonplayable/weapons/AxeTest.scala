@@ -1,9 +1,8 @@
 package nonplayable.weapons
 
-import model.nonplayable.weapons.Axe
+import model.nonplayable.weapons.{Axe, Bow, Sword}
 import model.nonplayable.NonPlayable
-import model.playable.Playable
-import model.nonplayable.weapons.Bow
+import model.playable.{Playable, Warrior}
 import munit.FunSuite
 
 /**
@@ -13,7 +12,9 @@ import munit.FunSuite
 class AxeTest extends FunSuite {
   var Hacha: Axe = _ // Declaration of a variable `Hacha` of type `Axe`.
   var Casemiro: Playable = _ // Declaration of a variable `Casemiro` of type `Playable`.
-
+  var Isco: Playable = _
+  var Hacha2: Axe = _
+  var Espada: Sword = _
   /**
    * Set up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
@@ -23,6 +24,8 @@ class AxeTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Axe` class with the specified parameters:
     Hacha = new Axe(Casemiro) // - Name: Hacha // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Hacha2 = new Axe("Hacha2", 50,50,Isco,0)
+    Espada = new Sword(Casemiro)
   }
 
   /**
@@ -30,7 +33,9 @@ class AxeTest extends FunSuite {
    * This test verifies if two references to the same axe (`Hacha`) are considered equal.
    */
   test("equals") {
-    assertEquals(Hacha, Hacha)
+    assertEquals(Hacha.equals(Hacha),true)
+    assertEquals(Hacha.equals(Hacha2),false)
+    assertEquals(Hacha.equals(Espada),false)
   }
 
   /**
