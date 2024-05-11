@@ -31,4 +31,17 @@ class Staff(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
    */
   override def getMAP: Int = magicAttackPoints
 
+  /**
+   * Checks if this Staff is equal to another staff.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Staff]) {
+      val otherCast = other.asInstanceOf[Staff]
+      getClass() == otherCast.getClass()
+    } else false
+  }
+
 }
