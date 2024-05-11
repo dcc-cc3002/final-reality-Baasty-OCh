@@ -40,7 +40,13 @@ class Staff(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Staff]) {
       val otherCast = other.asInstanceOf[Staff]
-      getClass() == otherCast.getClass()
+      (getClass() == otherCast.getClass() &&
+        getName == otherCast.getName &&
+        getWeight == otherCast.getWeight &&
+        getAttack == otherCast.getAttack &&
+        getOwner == otherCast.getOwner &&
+        getMAP == otherCast.getMAP)
+
     } else false
   }
 

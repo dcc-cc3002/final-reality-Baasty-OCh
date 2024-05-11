@@ -39,7 +39,13 @@ class Wand(name: String, weight: Int, attackPoints: Int, owner: Playable, magicA
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Wand]) {
       val otherCast = other.asInstanceOf[Wand]
-      getClass() == otherCast.getClass()
+      (getClass() == otherCast.getClass() &&
+        getName == otherCast.getName &&
+        getWeight == otherCast.getWeight &&
+        getAttack == otherCast.getAttack &&
+        getOwner == otherCast.getOwner &&
+        getMAP == otherCast.getMAP)
+
     } else false
   }
 

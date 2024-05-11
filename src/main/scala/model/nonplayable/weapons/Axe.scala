@@ -42,5 +42,4 @@ class Axe(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAt
     } else false
   }
 
-
 }

@@ -33,7 +33,13 @@ class Sword(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Sword]) {
       val otherCast = other.asInstanceOf[Sword]
-      getClass() == otherCast.getClass()
+      (getClass() == otherCast.getClass() &&
+        getName == otherCast.getName &&
+        getWeight == otherCast.getWeight &&
+        getAttack == otherCast.getAttack &&
+        getOwner == otherCast.getOwner &&
+        getMAP == otherCast.getMAP)
+
     } else false
   }
 

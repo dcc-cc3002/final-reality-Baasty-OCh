@@ -1,9 +1,8 @@
 package nonplayable.weapons
 
-import model.nonplayable.weapons.Wand
+import model.nonplayable.weapons.{Bow, Staff, Wand}
 import model.nonplayable.NonPlayable
 import model.playable.Playable
-import model.nonplayable.weapons.Bow
 import munit.FunSuite
 
 /**
@@ -13,7 +12,8 @@ import munit.FunSuite
 class WandTest extends FunSuite {
   var Varita: Wand = _ // Declaration of a variable `Barita` of type `Bow`.
   var Modric: Playable = _ // Declaration of a variable `Modric` of type `Playable`.
-
+  var Varita2: Wand = _
+  var Baston: Staff = _
   /**
    * Set up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
@@ -23,6 +23,8 @@ class WandTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
     Varita = new Wand(Modric) // - Name: Barita // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Varita2 = new Wand("Varita",100,100,Modric,50)
+    Baston = new Staff(Modric)
   }
 
   /**
@@ -30,7 +32,9 @@ class WandTest extends FunSuite {
    * This test verifies if two references to the same wand (`Barita`) are considered equal.
    */
   test("equals") {
-    assertEquals(Varita, Varita)
+    assertEquals(Varita.equals(Varita),true)
+    assertEquals(Varita.equals(Varita2),false)
+    assertEquals(Varita.equals(Baston),false)
   }
 
   /**
