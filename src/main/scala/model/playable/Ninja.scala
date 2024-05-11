@@ -42,5 +42,23 @@ class Ninja(name:String, healthPoints:Int,
     }
   }
   override def getMana: Int = 0
+  /**
+   * Checks if this Ninja is equal to another Ninja.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Ninja]) {
+      val otherCast = other.asInstanceOf[Ninja]
+      (getClass() == otherCast.getClass() &&
+        getName == otherCast.getName &&
+        getWeight == otherCast.getWeight &&
+        getHp == otherCast.getHp &&
+        getDp == otherCast.getDp &&
+        getMana == otherCast.getMana)
+
+    } else false
+  }
 }
 
