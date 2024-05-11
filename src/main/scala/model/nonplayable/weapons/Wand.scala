@@ -30,6 +30,18 @@ class Wand(name: String, weight: Int, attackPoints: Int, owner: Playable, magicA
    * @return The magic attack points of the wand
    */
   override def getMAP: Int = magicAttackPoints
+  /**
+   * Checks if this Wand is equal to another wand.
+   *
+   * @param other The object to compare against
+   * @return `true` if the objects are of the same class, `false` otherwise
+   */
+  override def equals(other: Any): Boolean = {
+    if (other.isInstanceOf[Wand]) {
+      val otherCast = other.asInstanceOf[Wand]
+      getClass() == otherCast.getClass()
+    } else false
+  }
 
 }
 
