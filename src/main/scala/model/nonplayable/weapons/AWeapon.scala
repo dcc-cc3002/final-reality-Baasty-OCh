@@ -42,20 +42,6 @@ abstract class AWeapon(name: String, weight: Int, attackPoints: Int, owner: Play
   def getOwner: Playable = owner
 
   /**
-   * Implementation of Method to get the defense points of the non-playable entity.
-   *
-   * @return The defense points of the weapon (always returns 0 for a weapon)
-   */
-  override def getDF: Int = 0
-
-  /**
-   * Implementation of Method to get the life points of the non-playable entity.
-   *
-   * @return The life points of the weapon (always returns 0 for a weapon)
-   */
-  def getLife: Int = 0
-
-  /**
    * Implementation for method to get the magic attack points of a magic weapon entity.
    *
    * @return The magic attack points of the weapon (if it's a magic weapon)

@@ -54,8 +54,6 @@ class Enemy(name: String, weight: Int,
     }
   }
 
-
-  override def getMAP: Int = 0
 }
 
 

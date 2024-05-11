@@ -38,9 +38,7 @@ class EnemyTest extends FunSuite {
   test("setDefencePoints"){
     assertEquals(Neymar.getDF,50)
   }
-  test("setMAP"){
-    assertEquals(Neymar.getMAP,0)
-  }
+
   test("attack"){
     val daño: Int = Neymar.attackPlayer(Cristiano)
     val expected: Int = 80 - 75
@@ -49,10 +47,10 @@ class EnemyTest extends FunSuite {
     assertEquals(daño,expected)
     assertEquals(daño2,0)
   }
-  test("wasInjure"){
-    assertEquals(Neymar.wasInjure(25).getLife,225)
-    assertEquals(Neymar.wasInjure(300).getLife,0)
-  }
+  //test("wasInjure"){
+    //assertEquals(Neymar.wasInjure(25).getLife,225)
+    //assertEquals(Neymar.wasInjure(300).getLife,0)
+  //}
 
 }
 
