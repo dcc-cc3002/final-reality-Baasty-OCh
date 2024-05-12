@@ -19,14 +19,11 @@ class WarriorTest extends FunSuite {
   /**
    * Set up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
-   *
    * @param context The context provided by the test framework (`BeforeEach`).
    */
   override def beforeEach(context: BeforeEach): Unit = {
-    // Initialize `Casemiro` with new instances of `Warrior`.
     Casemiro = new Warrior("Casemiro")
-    Ramos = new Warrior("Ramos",50,70,99,20)
-    // Initialize `Busquets` with new instances of `Enemy`.
+    Ramos = new Warrior("Ramos",50,70,99)
     Busquets = new Enemy("Busquets")
   }
 
@@ -45,51 +42,51 @@ class WarriorTest extends FunSuite {
    * This test verifies if the returned name value for a character (`Casemiro`) matches the expected value.
    */
   test("getName") {
-    // Retrieve the name value of the character `Casemiro` and store it in the `name` variable.
-    var name = Casemiro.getName
-    // Compare the actual name value (`name`) with the expected value ("Casemiro").
-    assertEquals(name, "Casemiro")
+    assertEquals(Casemiro.getName, "Casemiro")
   }
+
   /**
    * Test case for `getHp` method.
    * This test verifies if the returned health points (`hp`) value for the character `Casemiro` matches the expected value (`120`).
    */
   test("getHealthPoints") {
-    // Retrieve the health points (`hp`) value of the character `Casemiro` and store it in the `life` variable.
-    var life = Casemiro.getHp
-    // Compare the actual health points value (`life`) with the expected value (`100`).
-    assertEquals(life, 120)
+    assertEquals(Casemiro.getHp, 120)
   }
+
   /**
    * Test case for `getDp` method.
    * This test verifies if the returned defense points (`dp`) value for the character `Casemiro` matches the expected value (`100`).
    */
   test("getDefencePoints") {
-    // Retrieve the defense points (`dp`) value of the character `Casemiro` and store it in the `defense` variable.
-    var defense = Casemiro.getDp
-    // Compare the actual defense points value (`defense`) with the expected value (`100`).
-    assertEquals(defense, 100)
+    assertEquals(Casemiro.getDp, 100)
   }
+
   /**
    * Test case for `getWeight` method.
    * This test verifies if the returned weight value for the character `Casemiro` matches the expected value (`70`).
    */
   test("getWeight") {
-    // Retrieve the weight value of the character `Casemiro` and store it in the `weight` variable.
-    var weight = Casemiro.getWeight
-    // Compare the actual weight value (`weight`) with the expected value (`70`).
-    assertEquals(weight, 70)
+    assertEquals(Casemiro.getWeight, 70)
   }
+
   /**
    * Test case for `getMana` method.
    * This test verifies if the returned mana value for the character `Casemiro` matches the expected value (`0`).
    */
   test("getMana") {
-    // Retrieve the mana value of the character `Casemiro` and store it in the `mana` variable.
-    var mana = Casemiro.getMana
-    // Compare the actual mana value (`mana`) with the expected value (`0`).
-    assertEquals(mana, 0)
+    assertEquals(Casemiro.getMana, 0)
   }
+
+  /**
+   * Test case for 'setMana' method.
+   * This test verifies if the set mana method do 'nothing' in the amount of mana points in this character
+   */
+  test("setMana"){
+    Casemiro.setMana(55)
+
+    assertEquals(Casemiro.getMana,0)
+  }
+
   /**
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Casemiro` does not have a weapon (returns `None`).
@@ -97,33 +94,44 @@ class WarriorTest extends FunSuite {
   test("HasWeapon") {
     assertEquals(Casemiro.hasWeapon, None)
   }
+
   /**
    * Test case for `putWeapon` method.
    * This test verifies if the `putWeapon` method successfully equips a weapon (`Axe`) on the character `Casemiro`.
    */
   test("putWeapon") {
-    // Create a new `Sword` instance (`Espada`) associated with `Cristiano`.
     var Hacha: Axe = new Axe(Casemiro)
-    // Equip the `Hacha` weapon on the character `Casemiro` using the `putWeapon` method.
     Casemiro.putWeapon(Hacha)
-    // Verify if the character `Casemiro` now has the `Hacha` weapon equipped (returns `Some(Hacha)`).
+
     assertEquals(Casemiro.hasWeapon, Some(Hacha))
-  }  /**
+  }
+
+  /**
    * Test case for `attackEnemy` method.
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Busquets`) when `Casemiro` attacks with a `Axe`.
    */
   test("attackEnemy") {
-    // Equip `Casemiro` with a `Axe`.
     Casemiro.putWeapon(new Axe(Casemiro))
-
-    // `Casemiro` attacks `Busquets` using the `attackEnemy` method and retrieves the inflicted damage (`daño`).
     val damage: Int = Casemiro.attackEnemy(Busquets)
-
-    // Calculate the expected damage based on `Casemiro`'s attack power (Axe's attack - `Busquets`'s defense).
     val expectedDamage: Int = 50 - 50
 
-    // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
   }
+
+  /**
+   * Test case when a 'Warrior' was attack by other entity
+   * This test verifies if the 'wasAttacked' method inflicts the correct damage on the Warrior 'Casemiro' when is attacked by entity with 45 points of power
+   * and when the power is 200
+   */
+  test("wasAttacked"){
+    Casemiro.wasAttacked(45)
+
+    assertEquals(Casemiro.getHp,75)
+
+    Casemiro.wasAttacked(200)
+
+    assertEquals(Casemiro.getHp,0)
+  }
+
 
 }

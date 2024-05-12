@@ -13,28 +13,29 @@ import model.playable.APlayable
  * @param healthPoints The health points of the character.
  * @param defensePoints The defense points of the character.
  * @param weight The weight of the character.
- * @param mana is zero for no magic characters
  */
 class Warrior(name:String, healthPoints:Int,
                defensePoints:Int, weight:Int,
-               mana:Int) extends APlayable(name,healthPoints, defensePoints,weight,mana){
+               ) extends APlayable(name,healthPoints, defensePoints,weight,0){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
    * @param name
    */
   def this(name:String) = {
-    this(name,120,100,70,0)
+    this(name,120,100,70)
   }
 
-
-  override def setMana(m:Int) : Unit = {}
+  /**
+   * Re-Implementation of a method to set the mana points, to non-magic character just do 'nothing'
+   * @param newMana represent the new mana points of the playable entity
+   */
+  override def setMana(newMana:Int) : Unit = {}
 
   /**
    * Checks if this Warrior is equal to another Warrior .
-   *
    * @param other The object to compare against
-   * @return `true` if the objects are of the same class, `false` otherwise
+   * @return `true` if the objects are of the same class, Name, Weight, Hp and Dp, `false` otherwise
    */
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Warrior]) {
@@ -43,8 +44,7 @@ class Warrior(name:String, healthPoints:Int,
         getName == otherCast.getName &&
         getWeight == otherCast.getWeight &&
         getHp == otherCast.getHp &&
-        getDp == otherCast.getDp &&
-        getMana == otherCast.getMana)
+        getDp == otherCast.getDp )
 
     } else false
   }

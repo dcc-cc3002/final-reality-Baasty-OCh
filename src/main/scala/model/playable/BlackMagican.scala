@@ -3,8 +3,8 @@ package model.playable
 import model.nonplayable.weapons.AWeapon
 
 /**
- * "A Black Mage will primarily be a magical attack character, though without excessively neglecting defense."
- *
+ * "A Black Mage will primarily be a magical attack character,
+ * though without excessively neglecting defense."
  * @param name The name of the character.
  * @param healthPoints The health points of the character.
  * @param defensePoints The defense points of the character.
@@ -26,7 +26,6 @@ class BlackMagican(name:String, healthPoints:Int,
 
   /**
    * Checks if this BlackMagican is equal to another BlackMagican.
-   *
    * @param other The object to compare against
    * @return `true` if the objects are of the same class, `false` otherwise
    */

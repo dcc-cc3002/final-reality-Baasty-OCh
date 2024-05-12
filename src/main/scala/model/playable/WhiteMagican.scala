@@ -25,11 +25,8 @@ class WhiteMagican(name:String, healthPoints:Int,
     this(name,100,80,60,40)
   }
 
-
-
   /**
    * Checks if this WhiteMagican is equal to another WhiteMagican.
-   *
    * @param other The object to compare against
    * @return `true` if the objects are of the same class, `false` otherwise
    */

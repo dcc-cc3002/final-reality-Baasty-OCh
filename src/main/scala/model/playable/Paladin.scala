@@ -9,7 +9,6 @@ import model.nonplayable.weapons.AWeapon
  * @param healthPoints The health points of the character.
  * @param defensePoints The defense points of the character.
  * @param weight The weight of the character.
- * @param mana is zero for no magic characters
  */
 class Paladin(name:String, healthPoints:Int,
                       defensePoints:Int, weight:Int,
@@ -25,7 +24,12 @@ class Paladin(name:String, healthPoints:Int,
     this(name, 100, 75, 50) // stats by default: HP:100 , DP:75 , Weight:50
   }
 
+  /**
+   * Re-Implementation of a method to set the mana points, to non-magic character just do 'nothing'
+   * @param newMana represent the new mana points of the playable entity
+   */
   override def setMana(newMana: Int): Unit = {}
+
   /**
    * Checks if this Paladin is equal to another Paladin.
    * @param other The object to compare against

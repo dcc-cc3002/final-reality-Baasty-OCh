@@ -1,19 +1,19 @@
 package controller
 
-import model.controller.TurnShedule
+import model.controller.TurnSchedule
 import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
 import model.playable.{Warrior, WhiteMagican, Paladin, Playable}
 import munit.FunSuite
 
 import scala.collection.mutable
 class TurnSheduleTest extends FunSuite {
-  var Team1: TurnShedule = _ // We declare a variable Team1 of type Party
+  var Team1: TurnSchedule = _ // We declare a variable Team1 of type Party
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Playable
   var Alexis: Playable = _ // We declare a variable Alexis of type Playable
   var Messi: Playable = _ // We declare a variable Messi of type Playable
 
   override def beforeEach(context: BeforeEach): Unit = {
-    Team1 = new TurnShedule() // Creates a new instance of the Party class and assigns it to the variable Team1.
+    Team1 = new TurnSchedule() // Creates a new instance of the Party class and assigns it to the variable Team1.
     // Creates a new instance of the Character class with the specified parameters:
     Cristiano = new Paladin("Cristiano",0,50,50)
     // Creates a new instance of the MagicCharacter class with the specified parameters:
