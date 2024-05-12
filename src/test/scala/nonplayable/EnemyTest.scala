@@ -42,7 +42,7 @@ class EnemyTest extends FunSuite {
   test("attack"){
     val daño: Int = Neymar.attackPlayer(Cristiano)
     val expected: Int = 80 - 75
-    val Ronaldo: Playable = new Paladin("Ronaldo",100,200,50,0)
+    val Ronaldo: Playable = new Paladin("Ronaldo",100,200,50)
     val daño2: Int = Neymar.attackPlayer(Ronaldo)
     assertEquals(daño,expected)
     assertEquals(daño2,0)

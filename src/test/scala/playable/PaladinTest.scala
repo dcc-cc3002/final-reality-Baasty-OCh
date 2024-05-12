@@ -24,7 +24,7 @@ class PaladinTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Initialize `Cristiano` with new instances of `Paladin`.
     Cristiano = new Paladin("Cristiano")
-    Bale = new Paladin("Bale",25,34,56,0)
+    Bale = new Paladin("Bale",25,34,56)
     // Initialize `Pique` with new instances of `Enemy`.
     Pique = new Enemy("Pique")
 
@@ -49,16 +49,22 @@ class PaladinTest extends FunSuite {
     var name = Cristiano.getName
     // Compare the actual name value (`name`) with the expected value ("Cristiano").
     assertEquals(name, "Cristiano")
+    assertEquals(Bale.getName,"Bale")
   }
   /**
    * Test case for `getHp` method.
    * This test verifies if the returned health points (`hp`) value for the character `Cristiano` matches the expected value (`100`).
    */
   test("getHealthPoints") {
-    // Retrieve the health points (`hp`) value of the character `Cristiano` and store it in the `life` variable.
-    var life = Cristiano.getHp
     // Compare the actual health points value (`life`) with the expected value (`100`).
-    assertEquals(life, 100)
+    assertEquals(Cristiano.getHp, 100)
+    assertEquals(Bale.getHp,25)
+  }
+  test("setHp"){
+    Cristiano.setHp(125)
+    Bale.setHp(250)
+    assertEquals(Cristiano.getHp,125)
+    assertEquals(Bale.getHp,250)
   }
 
   /**
@@ -70,6 +76,7 @@ class PaladinTest extends FunSuite {
     var defense = Cristiano.getDp
     // Compare the actual defense points value (`defense`) with the expected value (`75`).
     assertEquals(defense, 75)
+    assertEquals(Bale.getDp,34)
   }
 
   /**
@@ -77,10 +84,9 @@ class PaladinTest extends FunSuite {
    * This test verifies if the returned weight value for the character `Cristiano` matches the expected value (`50`).
    */
   test("getWeight") {
-    // Retrieve the weight value of the character `Cristiano` and store it in the `weight` variable.
-    var weight = Cristiano.getWeight
     // Compare the actual weight value (`weight`) with the expected value (`50`).
-    assertEquals(weight, 50)
+    assertEquals(Cristiano.getWeight, 50)
+    assertEquals(Bale.getWeight,56)
   }
 
   /**
@@ -88,18 +94,28 @@ class PaladinTest extends FunSuite {
    * This test verifies if the returned mana value for the character `Cristiano` matches the expected value (`0`).
    */
   test("getMana") {
-    // Retrieve the mana value of the character `Cristiano` and store it in the `mana` variable.
-    var mana = Cristiano.getMana
     // Compare the actual mana value (`mana`) with the expected value (`0`).
-    assertEquals(mana, 0)
+    assertEquals(Cristiano.getMana, 0)
+    assertEquals(Bale.getMana,0)
   }
 
+  /**
+   * Test case for 'setMana' method.
+   * This test verifies if the set mana method do 'nothing' in the amount of mana points in this character
+   */
+  test("setMana"){
+    Cristiano.setMana(55)
+    Bale.setMana(450)
+    assertEquals(Cristiano.getMana,0)
+    assertEquals(Bale.getMana,0)
+  }
   /**
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Cristiano` does not have a weapon (returns `None`).
    */
   test("HasWeapon") {
     assertEquals(Cristiano.hasWeapon, None)
+    assertEquals(Bale.hasWeapon,None)
   }
   /**
    * Test case for `putWeapon` method.
@@ -108,10 +124,13 @@ class PaladinTest extends FunSuite {
   test("putWeapon") {
     // Create a new `Sword` instance (`Espada`) associated with `Cristiano`.
     var Espada: Sword = new Sword(Cristiano)
+    var Hacha: Axe = new Axe(Bale)
     // Equip the `Espada` weapon on the character `Cristiano` using the `putWeapon` method.
     Cristiano.putWeapon(Espada)
+    Bale.putWeapon(Hacha)
     // Verify if the character `Cristiano` now has the `Espada` weapon equipped (returns `Some(Espada)`).
     assertEquals(Cristiano.hasWeapon, Some(Espada))
+    assertEquals(Bale.hasWeapon,Some(Hacha))
   }
   /**
    * Test case for `attackEnemy` method.
@@ -120,16 +139,17 @@ class PaladinTest extends FunSuite {
   test("attackEnemy") {
     // Equip `Cristiano` with a `Sword`.
     Cristiano.putWeapon(new Sword(Cristiano))
-
+    Bale.putWeapon((new Axe(Bale)))
     // `Cristiano` attacks `Pique` using the `attackEnemy` method and retrieves the inflicted damage (`daño`).
     val damage: Int = Cristiano.attackEnemy(Pique)
-
+    val damage2: Int = Bale.attackEnemy(Pique)
     // Calculate the expected damage based on `Cristiano`'s attack power (Sword's attack - `Pique`'s defense).
     val expectedDamage: Int = 70 - 50
+    val expectedDamage2: Int = 0
 
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
-
+    assertEquals(damage2,expectedDamage2)
   }
 
 

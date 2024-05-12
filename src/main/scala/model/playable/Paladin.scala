@@ -12,34 +12,24 @@ import model.nonplayable.weapons.AWeapon
  * @param mana is zero for no magic characters
  */
 class Paladin(name:String, healthPoints:Int,
-              defensePoints:Int, weight:Int,
-              mana:Int) extends APlayable(name, healthPoints, defensePoints,weight,mana) {
+                      defensePoints:Int, weight:Int,
+                      ) extends APlayable(name, healthPoints, defensePoints,weight,0) {
 
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
-   *
    * @param name
    * @return Playable
    */
   def this(name: String) = {
-    this(name, 100, 75, 50, 0) // stats by default: HP:100 , DP:75 , Weight:50 and Mana:0 (is not a magic Character)
+    this(name, 100, 75, 50) // stats by default: HP:100 , DP:75 , Weight:50
   }
 
-  /**
-   * Equip a weapon on the playable entity.
-   * This method sets the specified weapon as the equipped weapon for the playable entity.
-   *
-   * @param weapon The weapon to be equipped.
-   */
-
-
-  override def setMana(m:Int) : Unit = {}
+  override def setMana(newMana: Int): Unit = {}
   /**
    * Checks if this Paladin is equal to another Paladin.
-   *
    * @param other The object to compare against
-   * @return `true` if the objects are of the same class, `false` otherwise
+   * @return `true` if the objects are of the same class, Name, Weight, Hp and Dp, `false` otherwise
    */
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Paladin]) {
@@ -48,8 +38,7 @@ class Paladin(name:String, healthPoints:Int,
         getName == otherCast.getName &&
         getWeight == otherCast.getWeight &&
         getHp == otherCast.getHp &&
-        getDp == otherCast.getDp &&
-        getMana == otherCast.getMana)
+        getDp == otherCast.getDp )
 
     } else false
   }

@@ -23,6 +23,7 @@ class BlackMagican(name:String, healthPoints:Int,
     this(name,90,60,50,50)
   }
 
+
   /**
    * Checks if this BlackMagican is equal to another BlackMagican.
    *

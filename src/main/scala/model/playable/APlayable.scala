@@ -14,7 +14,7 @@ import model.playable.Playable
  */
 protected abstract class APlayable(val name: String, var healthPoints: Int,
                                    val defensePoints: Int, val weight: Int,
-                                   var mana: Int = 0) extends Playable {
+                                   var mana: Int) extends Playable {
   /**
    * variable to represent a weapon in an APlayable Entity
    */
@@ -74,16 +74,16 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   /**
    * Implementation of Method to equip a Weapon on a Playable Entity
-   * @param Any class of Weapon
+   * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
    */
-  def putWeapon(a: AWeapon): Unit = {
-    arma = Some(a)
+  def putWeapon(weapon: AWeapon): Unit = {
+    arma = Some(weapon)
   }
 
   /**
    * Implementation of Method to attack an Enemy entity
-   * @param target
-   * @return damage
+   * @param target represent an object of Enemy class and is our objective
+   * @return damage represent the amount of damage inflicted on the target
    */
   def attackEnemy(target: Enemy): Int = {
     val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
@@ -97,7 +97,6 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.
-   *  @return A new `Playable` instance representing the entity after being hurt.
    */
 
   def wasAttacked(pain: Int): Unit = {
