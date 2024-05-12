@@ -27,10 +27,6 @@ class Warrior(name:String, healthPoints:Int,
     this(name,120,100,70,0)
   }
 
-  override def putWeapon(a: AWeapon): Unit = {
-    arma = Some(a)
-  }
-
 
   override def setMana(m:Int) : Unit = {}
 

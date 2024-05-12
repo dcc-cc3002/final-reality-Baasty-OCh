@@ -108,8 +108,8 @@ class BlackMagicanTest extends FunSuite {
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Modric` does not have a weapon (returns `None`).
    */
-  test("HaveWeapon") {
-    assertEquals(Modric.haveWeapon, None)
+  test("HasWeapon") {
+    assertEquals(Modric.hasWeapon, None)
   }
 
   /**
@@ -122,7 +122,7 @@ class BlackMagicanTest extends FunSuite {
     // Equip the `Baston` weapon on the character `Modric` using the `putWeapon` method.
     Modric.putWeapon(Baston)
     // Verify if the character `Modric` now has the `Baston` weapon equipped (returns `Some(Baston)`).
-    assertEquals(Modric.haveWeapon, Some(Baston))
+    assertEquals(Modric.hasWeapon, Some(Baston))
   }
 
   /**

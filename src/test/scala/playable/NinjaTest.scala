@@ -101,8 +101,8 @@ class NinjaTest extends FunSuite {
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Kroos` does not have a weapon (returns `None`).
    */
-  test("HaveWeapon") {
-    assertEquals(Kroos.haveWeapon, None)
+  test("HasWeapon") {
+    assertEquals(Kroos.hasWeapon, None)
   }
 
   /**
@@ -115,7 +115,7 @@ class NinjaTest extends FunSuite {
     // Equip the `Arco` weapon on the character `Kroos` using the `putWeapon` method.
     Kroos.putWeapon(Arco)
     // Verify if the character `Kroos` now has the `Arco` weapon equipped (returns `Some(Arco)`).
-    assertEquals(Kroos.haveWeapon, Some(Arco))
+    assertEquals(Kroos.hasWeapon, Some(Arco))
   }
 
   /**

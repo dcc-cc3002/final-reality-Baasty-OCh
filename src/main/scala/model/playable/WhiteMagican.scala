@@ -24,9 +24,7 @@ class WhiteMagican(name:String, healthPoints:Int,
   def this(name:String) = {
     this(name,100,80,60,40)
   }
-  override def putWeapon(a: AWeapon): Unit = {
-    arma = Some(a)
-  }
+
 
 
   /**

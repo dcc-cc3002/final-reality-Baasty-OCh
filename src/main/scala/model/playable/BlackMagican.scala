@@ -22,11 +22,6 @@ class BlackMagican(name:String, healthPoints:Int,
   def this(name:String) = {
     this(name,90,60,50,50)
   }
-  override def putWeapon(a: AWeapon): Unit = {
-    arma = Some(a)
-  }
-
-
 
   /**
    * Checks if this BlackMagican is equal to another BlackMagican.

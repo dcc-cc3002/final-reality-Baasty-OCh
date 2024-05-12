@@ -33,7 +33,7 @@ trait Playable {
   /**
    * Abstract Method to know if Playable have a weapon or not
    */
-  def haveWeapon: Option[AWeapon]
+  def hasWeapon: Option[AWeapon]
 
   /**
    * Abstract Method to equip a Weapon on a Playable Entity

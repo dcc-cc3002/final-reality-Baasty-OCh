@@ -8,7 +8,7 @@ import model.playable.Playable
  * @param weight
  * @param attackPoints
  */
-abstract class ANonPlayable(name: String, weight: Int,
+protected abstract class ANonPlayable(name: String, weight: Int,
                             attackPoints: Int, life: Int,
                             defence: Int) extends NonPlayable {
   /**
@@ -27,6 +27,8 @@ abstract class ANonPlayable(name: String, weight: Int,
    */
   def getAttack: Int = attackPoints
   def getLife: Int = life
+
+
   def getDF: Int = defence
   def attackPlayer(target:Playable): Int = {
     val damage : Int = this.attackPoints - target.getDp

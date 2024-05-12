@@ -8,9 +8,7 @@ class Ninja(name:String, healthPoints: Int,
   def this(name:String) = {
     this(name,80,70,30,0)
   }
-  override def putWeapon(a: AWeapon): Unit = {
-    arma = Some(a)
-  }
+
   override def setMana(m:Int) : Unit = {}
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Ninja]) {

@@ -98,8 +98,8 @@ class PaladinTest extends FunSuite {
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Cristiano` does not have a weapon (returns `None`).
    */
-  test("HaveWeapon") {
-    assertEquals(Cristiano.haveWeapon, None)
+  test("HasWeapon") {
+    assertEquals(Cristiano.hasWeapon, None)
   }
   /**
    * Test case for `putWeapon` method.
@@ -111,7 +111,7 @@ class PaladinTest extends FunSuite {
     // Equip the `Espada` weapon on the character `Cristiano` using the `putWeapon` method.
     Cristiano.putWeapon(Espada)
     // Verify if the character `Cristiano` now has the `Espada` weapon equipped (returns `Some(Espada)`).
-    assertEquals(Cristiano.haveWeapon, Some(Espada))
+    assertEquals(Cristiano.hasWeapon, Some(Espada))
   }
   /**
    * Test case for `attackEnemy` method.
@@ -129,6 +129,7 @@ class PaladinTest extends FunSuite {
 
     // Verify if the inflicted damage (`damage`) matches the expected damage (`expectedDamage`).
     assertEquals(damage, expectedDamage)
+
   }
 
 

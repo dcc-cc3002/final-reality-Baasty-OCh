@@ -18,6 +18,7 @@ class Enemy(name: String, weight: Int,
     this(name,50,80,250,50)
   }
 
+
   def wasInjure(pain: Int): Enemy = {
     if (this.life >= pain){
       val Enemy: Enemy = new Enemy(this.name, this.weight, this.attackPoints, this.life - pain, this.defence)

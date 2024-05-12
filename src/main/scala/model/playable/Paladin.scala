@@ -32,10 +32,7 @@ class Paladin(name:String, healthPoints:Int,
    *
    * @param weapon The weapon to be equipped.
    */
-  override def putWeapon(weapon: AWeapon): Unit = {
-    // Set the `arma` variable to `Some(weapon)`, indicating that the playable entity is now equipped with this weapon.
-    arma = Some(weapon)
-  }
+
 
   override def setMana(m:Int) : Unit = {}
   /**

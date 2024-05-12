@@ -12,13 +12,13 @@ import model.playable.Playable
  * @param weight The weight of the character.
  * @param mana The mana of the character.
  */
-abstract class APlayable(val name: String, var healthPoints: Int,
-                         val defensePoints: Int, val weight: Int,
-                         var mana: Int = 0) extends Playable {
+protected abstract class APlayable(val name: String, var healthPoints: Int,
+                                   val defensePoints: Int, val weight: Int,
+                                   var mana: Int = 0) extends Playable {
   /**
    * variable to represent a weapon in an APlayable Entity
    */
-  var arma: Option[AWeapon] = None
+  private var arma: Option[AWeapon] = None
 
   /**
    * Implementation of Method to get the name of the playable entity
@@ -31,7 +31,12 @@ abstract class APlayable(val name: String, var healthPoints: Int,
     * @return The health points of playable entity
    */
   def getHp: Int = healthPoints
-  def setHp(newHp: Int): Unit ={
+
+  /**
+   * Implementation of Method to set the health points of the playable entity
+   * @param newHp represent the new health points of the playable entity
+   */
+  def setHp(newHp: Int): Unit = {
     this.healthPoints = newHp
   }
 
@@ -52,6 +57,11 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * @return The mana of playable entity
    */
   def getMana: Int = mana
+
+  /**
+   * Implementation of Method to set the mana points of the playable entity
+   * @param newMana represent the new mana points of the playable entity
+   */
   def setMana(newMana:Int): Unit = {
     this.mana = newMana
   }
@@ -60,13 +70,15 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * Implementation of Method to know if a Playable Entity has or not a weapon
    * @return The Weapon of the Character or None
    */
-  def haveWeapon = arma
+  def hasWeapon = arma
 
   /**
    * Implementation of Method to equip a Weapon on a Playable Entity
    * @param Any class of Weapon
    */
-  def putWeapon(a:AWeapon): Unit = {}
+  def putWeapon(a: AWeapon): Unit = {
+    arma = Some(a)
+  }
 
   /**
    * Implementation of Method to attack an Enemy entity

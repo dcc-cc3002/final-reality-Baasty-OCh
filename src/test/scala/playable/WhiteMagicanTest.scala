@@ -91,8 +91,8 @@ class WhiteMagicanTest extends FunSuite {
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Benzema` does not have a weapon (returns `None`).
    */
-  test("HaveWeapon") {
-    assertEquals(Benzema.haveWeapon, None)
+  test("HasWeapon") {
+    assertEquals(Benzema.hasWeapon, None)
   }
   /**
    * Test case for `putWeapon` method.
@@ -104,7 +104,7 @@ class WhiteMagicanTest extends FunSuite {
     // Equip the `Arco` weapon on the character `Benzema` using the `putWeapon` method.
     Benzema.putWeapon(Baston)
     // Verify if the character `Benzema` now has the `Baston` weapon equipped (returns `Some(Baston)`).
-    assertEquals(Benzema.haveWeapon, Some(Baston))
+    assertEquals(Benzema.hasWeapon, Some(Baston))
   }
   /**
    * Test case for `attackEnemy` method.
