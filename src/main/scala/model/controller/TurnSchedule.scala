@@ -21,7 +21,6 @@ class TurnSchedule extends Schedule {
   val turns: Queue[Playable] = Queue()
 
   /** Adds a playable character to the turn schedule.
-   *
    * @param pj The playable character to add.
    */
   def addPlayer(pj: Playable): Unit = {
@@ -31,7 +30,6 @@ class TurnSchedule extends Schedule {
   }
 
   /** Deletes a playable character from the turn schedule.
-   *
    * @param pj The playable character to delete.
    */
   def deletePlayer(pj: Playable): Unit = {
@@ -41,7 +39,6 @@ class TurnSchedule extends Schedule {
   }
 
   /** Resets the action bar of a playable character to its initial state.
-   *
    * @param pj The playable character whose action bar to reset.
    */
   def resetActionBar(pj: Playable): Unit = {
@@ -53,7 +50,6 @@ class TurnSchedule extends Schedule {
 
   /** Fills the action bar of all playable characters in the schedule.
    * Increases the current action bar value by the specified amount and handles turn queueing.
-   *
    * @param n The amount to increase the action bar by for each playable character.
    */
   def fillActionBar(n: Int): Unit = {
@@ -70,7 +66,6 @@ class TurnSchedule extends Schedule {
 
   /** Determines if a playable character from the specified queue can play.
    * Removes and returns the first playable character from the queue.
-   *
    * @param q The queue of playable characters.
    * @return The first playable character from the queue.
    */

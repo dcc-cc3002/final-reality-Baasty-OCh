@@ -11,12 +11,13 @@ import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Play
  * @param owner            The playable entity that owns this staff
  * @param magicAttackPoints The magic attack points of the staff
  */
-class Staff(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAttackPoints: Int)
-  extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
+class Staff(name: String, weight: Int,
+            attackPoints: Int, owner: Playable,
+            magicAttackPoints: Int)
+            extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
 
   /**
    * Constructs a Staff with specified parameters and a specified owner.
-   *
    * @param owner The playable entity that will own this staff
    */
   def this(owner: Playable) = {
@@ -26,7 +27,6 @@ class Staff(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
   /**
    * Implementation of Method to get the magic attack points of the staff.
    * Since this is a magic staff, it returns magic attack points(MAP).
-   *
    * @return The magic attack points of the staff
    */
   override def getMAP: Int = magicAttackPoints

@@ -12,12 +12,13 @@ import model.playable.{BlackMagican, Ninja, Paladin, Playable, Warrior, WhiteMag
  * @param owner            The playable entity that owns this sword
  * @param magicAttackPoints The magic attack points of the sword (if it's a magic weapon)
  */
-class Sword(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAttackPoints: Int)
-  extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
+class Sword(name: String, weight: Int,
+            attackPoints: Int, owner: Playable,
+            magicAttackPoints: Int)
+            extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
 
   /**
    * Constructs a Sword with specified parameters and a specified owner.
-   *
    * @param owner The playable entity that will own this sword
    */
   def this(owner: Playable) = {
@@ -26,7 +27,6 @@ class Sword(name: String, weight: Int, attackPoints: Int, owner: Playable, magic
 
   /**
    * Checks if this sword is equal to another sword.
-   *
    * @param other The object to compare against
    * @return `true` if the objects are of the same class, `false` otherwise
    */

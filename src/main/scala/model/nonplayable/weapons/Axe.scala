@@ -12,20 +12,21 @@ import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Play
  * @param owner            The playable entity that owns this axe
  * @param magicAttackPoints The magic attack points of the axe (if it's a magic weapon)
  */
-class Axe(name: String, weight: Int, attackPoints: Int, owner: Playable, magicAttackPoints: Int)
-  extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
+class Axe(name: String, weight: Int,
+          attackPoints: Int, owner: Playable,
+          magicAttackPoints: Int)
+          extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
 
   /**
    * Constructs an Axe with default parameters and a specified owner.
-   *
    * @param owner The playable entity that will own this axe
    */
   def this(owner: Playable) = {
     this("Hacha", 50, 50, owner, 0)
   }
+
   /**
    * Checks if this Axe is equal to another axe.
-   *
    * @param other The object to compare against
    * @return `true` if the objects are of the same class, `false` otherwise
    */

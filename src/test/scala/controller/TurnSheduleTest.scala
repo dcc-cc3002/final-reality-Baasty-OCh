@@ -23,30 +23,40 @@ class TurnSheduleTest extends FunSuite {
   test("addPlayer"){
     Team1.addPlayer(Cristiano)
     val expected: Map[Playable, (50,0)] = Map(Cristiano -> (50,0))
+
     assertEquals(Team1.actionBar.toMap,expected)
   }
+
   test("isEmpty"){
     assertEquals(Team1.actionBar.isEmpty,true)
   }
+
   test("deletePlayer"){
     Team1.addPlayer(Cristiano)
+
     assertEquals(Team1.actionBar.isEmpty,false)
+
     Team1.deletePlayer(Cristiano)
+
     assertEquals(Team1.actionBar.isEmpty,true)
   }
+
   test("fillActionBar"){
     Team1.addPlayer(Cristiano)
     Team1.addPlayer(Alexis)
     Team1.fillActionBar(12)
     val expected: Map[Playable, (Int,Int)] = Map(Cristiano -> (50,12), Alexis -> (60,12))
+
     assertEquals(Team1.actionBar.toMap,expected)
   }
+
   test("resetActionBar"){
     Team1.addPlayer(Cristiano)
     Team1.addPlayer(Alexis)
     Team1.fillActionBar(12)
     Team1.resetActionBar(Cristiano)
     val expected: Map[Playable, (Int,Int)] = Map(Cristiano -> (50,0), Alexis -> (60,12))
+
     assertEquals(Team1.actionBar.toMap,expected)
   }
   test("Turns"){
@@ -55,6 +65,7 @@ class TurnSheduleTest extends FunSuite {
     Team1.fillActionBar(55)
     Team1.fillActionBar(20)
     val expected: mutable.Queue[Playable] = mutable.Queue(Cristiano,Alexis)
+
     assertEquals(Team1.turns,expected)
   }
   test("canPlay"){
@@ -64,6 +75,7 @@ class TurnSheduleTest extends FunSuite {
     Team1.fillActionBar(20)
     val expected: Playable = Team1.CanPlay(Team1.turns)
     val expected2: Playable = Team1.CanPlay(Team1.turns)
+
     assertEquals(Cristiano,expected)
     assertEquals(Alexis,expected2)
   }
