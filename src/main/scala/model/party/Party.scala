@@ -4,17 +4,32 @@ import model.playable.{Playable}
 
 import scala.collection.mutable.Map
 
-// Party class to manage a group of playable characters
-protected class Party {
-  // Map to store the allies in the party, keyed by their kind/type
+
+/**
+ * Represents a party of playable characters.
+ */
+protected class Party extends {
+
+  /**
+   * A mutable map to store the allies in the party, keyed by their class (type) for efficient retrieval.
+   */
   val allies: Map[Class[ _<: Playable], Playable] = Map()
 
-  // Method to add a playable character to the party
+  /**
+   * Adds a playable character to the party.
+   * @param pj The playable character to be added.
+   */
   def addPlayable(pj: Playable): Unit = {
     allies.put(pj.getClass, pj) // Adds the playable character to the allies map with their kind as the key
   }
 
-  // Method to check if the party is defeated
+  /**
+   * Checks if the party is defeated.
+   * A party is considered defeated if:
+   *   - The party is empty (no allies)
+   *   - All allies have 0 health points (HP)
+   * @return True if the party is defeated, False otherwise.
+   */
   def isDefeated(): Boolean = {
     if (allies.isEmpty) {
       // Print a message if the party is empty

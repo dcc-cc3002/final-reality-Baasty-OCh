@@ -15,6 +15,11 @@ import model.playable.Playable
 protected abstract class APlayable(val name: String, var healthPoints: Int,
                                    val defensePoints: Int, val weight: Int,
                                    var mana: Int) extends Playable {
+  require(healthPoints >=0)
+  require(defensePoints >=0)
+  require(weight >=0)
+  require(mana >=0)
+
   /**
    * variable to represent a weapon in an APlayable Entity
    */
