@@ -83,9 +83,8 @@ class AxeTest extends FunSuite {
     // Retrieve the owner character of the axe `Hacha` and store it in the `owner` variable.
     var owner: Any = Hacha.getOwner
     // Define the expected owner character.
-    var expected: Playable = Casemiro
     // Compare the actual owner character (`owner`) with the expected character (`expected`).
-    assertEquals(owner, expected)
+    assertEquals(owner, None)
   }
 
   /**

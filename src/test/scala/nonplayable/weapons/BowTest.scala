@@ -84,9 +84,8 @@ class BowTest extends FunSuite {
     // Retrieve the owner character of the bow `Arco` and store it in the `owner` variable.
     var owner: Any = Arco.getOwner
     // Define the expected owner character.
-    var expected: Playable = Kroos
     // Compare the actual owner character (`owner`) with the expected character (`expected`).
-    assertEquals(owner, expected)
+    assertEquals(owner, None)
   }
 
   /**

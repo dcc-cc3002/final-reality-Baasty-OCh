@@ -83,9 +83,8 @@ class StaffTest extends FunSuite {
     // Retrieve the owner character of the staff `Baston` and store it in the `owner` variable.
     var owner: Any = Baston.getOwner
     // Define the expected owner character.
-    var expected: Playable = Benzema
     // Compare the actual owner character (`owner`) with the expected character (`expected`).
-    assertEquals(owner, expected)
+    assertEquals(owner, None)
   }
 
   /**

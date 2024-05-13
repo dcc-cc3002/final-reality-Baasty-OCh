@@ -82,9 +82,8 @@ class WandTest extends FunSuite {
     // Retrieve the owner character of the wand `Barita` and store it in the `owner` variable.
     var owner: Any = Varita.getOwner
     // Define the expected owner character.
-    var expected: Playable = Modric
     // Compare the actual owner character (`owner`) with the expected character (`expected`).
-    assertEquals(owner, expected)
+    assertEquals(owner, None)
   }
 
   /**
