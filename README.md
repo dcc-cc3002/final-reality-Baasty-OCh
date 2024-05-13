@@ -1,88 +1,87 @@
 # Final Reality
 
-## Introducción
+## Introduction
 
-Final Reality es una versión simplificada del popular juego Final Fantasy. Su objetivo principal es servir como herramienta educativa, diseñada para enseñar los conceptos fundamentales de programación.
+Final Reality is a simplified version of the popular game Final Fantasy. Its main objective is to serve as an educational tool designed to teach fundamental programming concepts.
 
-## Decisiones de Diseño
+## Design Decisions
 
-### Personajes y Enemigos
+### Characters and Enemies
 
-#### Clases abstractas: 
-Se utilizan clases abstractas para representar personajes y enemigos, permitiendo la reutilización de código y la flexibilidad para definir comportamientos específicos en subclases. 
+#### Abstract Classes:
+Abstract classes are used to represent characters and enemies, allowing code reuse and flexibility to define specific behaviors in subclasses.
 
-El diagrama de clases muestra la jerarquía de clases para personajes y enemigos:
-En el trait 'Playable' se definene metodos getters y setters uitles para las implementaciones futuras
+The class diagram shows the hierarchy of classes for characters and enemies:
+The 'Playable' trait defines useful getters and setters for future implementations.
 
-[Playable] --> A[APlayable] |En la clase abstracta 'APlayable' se implementan los metodos del trait, ademas de definir nuevos metodos especificos para el desarrollo de los metodos de cada personaje y sus acciones en el juego, como atacar, ser atacados, etc
+[Playable] --> A[APlayable] | The abstract class 'APlayable' implements the trait methods and defines new methods specific to character development and actions in the game, such as attacking, being attacked, etc.
 
-A[APlayable] -->B{Paladin} | Un 'Paladin' quedó definido como el personaje mas simple del jeugo, aquel que tiene atributos equilibrados , el favortio de los proncipiantes
+A[APlayable] --> B{Paladin} | A 'Paladin' is defined as the simplest character in the game, with balanced attributes, favored by beginners.
 
-A --> C{Warrior} | Un 'Warrior' sera el conocido pór los gamers como el tanque, aque con mucha vida, lento pero muy fuerte, puede ser un gran alaidado en el contexto adecuado
+A --> C{Warrior} | A 'Warrior' is known as the tank, with high health, slow but very strong, and can be a great ally in the right context.
 
-A --> D{Ninja} | El 'Ninja' sera el favorito de los mas frikis del juego, aquel que parece debil, parece poco util, pero que solo aquellos que logren enetder sus atributos podran dominar
+A --> D{Ninja} | The 'Ninja' is favored by game enthusiasts, appearing weak and less useful, but only those who understand its attributes can master it.
 
-A --> E{BlackMage} | 
+A --> E{BlackMage} | The 'Black Mage' is a magically specialized attacking character, fast and with high mana.
 
-A --> F{WhiteMage} |
+A --> F{WhiteMage} | The 'White Mage' is magically focused on defense, with high health and defense.
 
-El trait 'NonPlayable' se definene metodos getters y setters uitles para las implementaciones futuras
+The 'NonPlayable' trait defines useful getters and setters for future implementations.
 
-[NonPlayable] --> G[ANonPlayable] | En la clase abstracta 'ANonPlayable' se implementan los metodos del trait, ademas de definir nuevos metodos especificos para el desarrollo de los metodos de cada enemigo y sus acciones en el juego, como atacar, ser atacados, etc
+[NonPlayable] --> G[ANonPlayable] | The abstract class 'ANonPlayable' implements the trait methods and defines new methods specific to enemy development and actions in the game, such as attacking, being attacked, etc.
 
-G[ANonPlayable] --> H{Enemy} | un 'Enemigo' sera aquel pobejeto dentro dle jeugo que representa al adversior el cual nuetros personajes deben derrotar
+G[ANonPlayable] --> H{Enemy} | An 'Enemy' is an object in the game representing the adversary that our characters must defeat.
 
+#### Character Types:
+Characters are divided into different classes (Paladin, Warrior, Ninja, Black Mage, White Mage) to reflect their different abilities and attributes in the game. Each class has its own unique characteristics, such as health points, attack, defense, and mana (for magic users).
 
-#### Tipos de personajes:
-Los personajes se dividen en diferentes clases (Paladín, Guerrero, Ninja, Mago Negro, Mago Blanco) para reflejar las distintas habilidades y atributos que poseen en el juego. Cada clase tiene sus propias características únicas, como puntos de vida, ataque, defensa y mana (en el caso de los magicos).
+#### Enemies:
+Enemies are modeled as a separate class due to their unique characteristics and behaviors compared to player-controlled characters. Enemies have their own attributes, such as health points, attack, defense, and attack behaviors.
 
-#### Enemigos: 
-Los enemigos se modelan como una clase separada debido a sus características y comportamientos únicos en comparación con los personajes controlados por el jugador. Los enemigos tienen sus propios atributos, como puntos de vida, ataque, defensa y comportamientos de ataque.
+#### Weapons
 
-#### Armas
+#### Abstract and Concrete Classes:
+Abstract and concrete classes were implemented to represent common and magical weapons. The class diagram shows the hierarchy of classes for weapons:
+[NonPlayable] --> A[AWeapon] | The abstract class 'AWeapon' implements trait methods and adds new ones useful for each weapon.
 
-#### Clases abstractas y concretas: Se implementaron clases abstractas y concretas para representar armas comunes y mágicas. El diagrama de clases muestra la jerarquía de clases para armas:
-[NonPlayable] --> A[AWeapon] | la clase abstracta 'AWeapon' implementa los metodos del trait ademas de agregar nuevos utiles para cada weapon
+A[AWeapon] -->
 
-A[AWeapon] --> 
+A --> B{Sword} | 'Sword' is the most balanced weapon in the game in terms of attack-weight ratio.
 
-A --> B{Sword} | 'Espada' es sea la arma mas equilibrada del juego, en terminos de ataque-peso
+A --> C{Axe} | 'Axe' is a heavy but powerful weapon.
 
-A --> C{Axe} | 'Hacha' es un arma pesada pero poderosa
+A --> D{Bow} | 'Bow' is a lightweight and less powerful weapon.
 
-A --> D{Bow} | 'Arco' es un arma liviana y poco poderosa
+A --> E{Staff} | 'Staff' is a heavier, powerful weapon that magic users can wield.
 
-A --> E{Staff} | 
+A --> F{Wand} | 'Wand' is the opposite of the staff, a fast weapon with less damage but can be very useful for a skilled magic user.
 
-A --> F{Wand}
+#### Weapon Attributes:
+Each weapon has attributes such as name, attack points, weight, and a possible owner, reflecting the game rules on weapon equipment by characters. Common weapons have basic attributes, while magical weapons have additional attributes like magic power and type of magic.
 
-#### Atributos de armas: 
-Cada arma tiene atributos como nombre, puntos de ataque, peso y un posible propietario, lo que refleja las reglas del juego sobre el equipamiento de armas por parte de los personajes. Las armas comunes tienen atributos básicos, mientras que las armas mágicas tienen atributos adicionales como poder mágico y tipo de magia.
+### Code Structure
 
-### Estructura del Código
+The code is organized into packages for better modularity and readability:
 
-El código está organizado en paquetes para una mejor modularidad y legibilidad:
+#### Model Package:
+Contains classes representing game elements such as characters, enemies, and weapons.
 
-#### Paquete model: 
-Contiene las clases que representan los elementos del juego, como personajes, enemigos y armas.
-#### Paquete controller: 
-Contiene las clases que controlan el flujo del juego, como la gestión de turnos y la batalla.
+#### Controller Package:
+Contains classes that control the game flow, such as turn management and battle.
 
-#### Paquete test: 
-Contiene las pruebas unitarias para verificar el correcto funcionamiento del código.
+#### Test Package:
+Contains unit tests to verify the correct functioning of the code.
 
-### Patrones de Diseño Utilizados
+### Design Patterns Used
 
-#### Herencia: 
-Se utiliza para modelar la relación entre clases abstractas y concretas, permitiendo la reutilización de código y la especialización de comportamientos.
-#### Traits: 
-Se utilizan para definir funcionalidades comunes que se pueden compartir entre múltiples clases, promoviendo la reutilización del código y la modularidad.
+#### Inheritance:
+Used to model the relationship between abstract and concrete classes, allowing code reuse and behavior specialization.
 
-### Conclusión
+#### Traits:
+Used to define common functionalities that can be shared among multiple classes, promoting code reuse and modularity.
 
-Final Reality es un proyecto educativo que utiliza conceptos de programación para crear un juego simplificado. La organización del código en paquetes y la utilización de patrones de diseño como herencia y traits hacen que el código sea modular, legible y fácil de mantener.
+### Conclusion
 
-
-
+Final Reality is an educational project that uses programming concepts to create a simplified game. The organization of code into packages and the use of design patterns such as inheritance and traits make the code modular, readable, and easy to maintain.
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
