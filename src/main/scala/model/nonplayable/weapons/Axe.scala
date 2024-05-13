@@ -13,16 +13,19 @@ import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Play
  * @param magicAttackPoints The magic attack points of the axe (if it's a magic weapon)
  */
 class Axe(name: String, weight: Int,
-          attackPoints: Int, owner: Playable,
-          magicAttackPoints: Int)
-          extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
+          attackPoints: Int, magicAttackPoints: Int)
+          extends AWeapon(name, weight, attackPoints, magicAttackPoints) {
 
   /**
    * Constructs an Axe with default parameters and a specified owner.
    * @param owner The playable entity that will own this axe
    */
-  def this(owner: Playable) = {
-    this("Hacha", 50, 50, owner, 0)
+  def this() = {
+    this("Hacha", 50, 50, 0)
+  }
+
+  def setOwner(newOwner:Option[Playable]) : Unit = {
+    this.owner = newOwner
   }
 
   /**

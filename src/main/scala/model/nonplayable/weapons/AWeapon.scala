@@ -13,11 +13,13 @@ import model.playable.Playable
  * @param magicAttackPoints The magic attack points of the weapon (if it's a magic weapon)
  */
 abstract class AWeapon(name: String, weight: Int,
-                       attackPoints: Int, owner: Playable,
+                       attackPoints: Int,
                        magicAttackPoints: Int) extends NonPlayable {
   require(weight >=0)
   require(attackPoints >=0)
   require(magicAttackPoints >=0)
+
+  var owner : Option[Playable] = None
   /**
    * Implementation of Method to get the name of the non-playable entity.
    * @return The name of the weapon
