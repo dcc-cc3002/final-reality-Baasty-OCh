@@ -11,16 +11,15 @@ import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Play
  * @param magicAttackPoints The magic attack points of the bow (if it's a magic weapon)
  */
 class Bow(name: String, weight: Int,
-          attackPoints: Int, owner: Playable,
-          magicAttackPoints: Int)
-          extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
+          attackPoints: Int, magicAttackPoints: Int)
+          extends AWeapon(name, weight, attackPoints,magicAttackPoints) {
 
   /**
    * Constructs a Bow with specified parameters and a specified owner.
    * @param owner The playable entity that will own this bow
    */
-  def this(owner: Playable) = {
-    this("Arco", 30, 40, owner, 0)
+  def this() = {
+    this("Arco", 30, 40, 0)
   }
 
   /**

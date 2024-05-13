@@ -24,9 +24,9 @@ class BowTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
-    Arco = new Bow(Kroos) // - Name: Arco // - Weight: 25 // - Attack: 50 // - Owner: Modric
-    Arco2 = new Bow("Arco2",80,80,Kroos,0)
-    Hacha = new Axe(Kroos)
+    Arco = new Bow() // - Name: Arco // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Arco2 = new Bow("Arco2",80,80,0)
+    Hacha = new Axe()
   }
 
   /**

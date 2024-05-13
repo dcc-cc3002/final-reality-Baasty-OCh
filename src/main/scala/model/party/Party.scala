@@ -8,7 +8,7 @@ import scala.collection.mutable.Map
 /**
  * Represents a party of playable characters.
  */
-protected class Party extends {
+class Party extends {
 
   /**
    * A mutable map to store the allies in the party, keyed by their class (type) for efficient retrieval.

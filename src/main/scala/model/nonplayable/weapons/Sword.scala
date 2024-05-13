@@ -13,16 +13,15 @@ import model.playable.{BlackMagican, Ninja, Paladin, Playable, Warrior, WhiteMag
  * @param magicAttackPoints The magic attack points of the sword (if it's a magic weapon)
  */
 class Sword(name: String, weight: Int,
-            attackPoints: Int, owner: Playable,
-            magicAttackPoints: Int)
-            extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
+            attackPoints: Int, magicAttackPoints: Int)
+            extends AWeapon(name, weight, attackPoints, magicAttackPoints) {
 
   /**
    * Constructs a Sword with specified parameters and a specified owner.
    * @param owner The playable entity that will own this sword
    */
-  def this(owner: Playable) = {
-    this("Espada", 70, 70, owner, 0)
+  def this() = {
+    this("Espada", 70, 70, 0)
   }
 
   /**

@@ -121,8 +121,8 @@ class PaladinTest extends FunSuite {
    * This test verifies if the `putWeapon` method successfully equips a weapon (`Espada`) on the character `Cristiano`.
    */
   test("putWeapon") {
-    var Espada: Sword = new Sword(Cristiano)
-    var Hacha: Axe = new Axe(Bale)
+    var Espada: Sword = new Sword()
+    var Hacha: Axe = new Axe()
     Cristiano.putWeapon(Espada)
     Bale.putWeapon(Hacha)
 
@@ -135,8 +135,8 @@ class PaladinTest extends FunSuite {
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Pique`) when `Cristiano` attacks with a `Sword`.
    */
   test("attackEnemy") {
-    Cristiano.putWeapon(new Sword(Cristiano))
-    Bale.putWeapon((new Axe(Bale)))
+    Cristiano.putWeapon(new Sword())
+    Bale.putWeapon((new Axe()))
     val damage: Int = Cristiano.attackEnemy(Pique)
     val damage2: Int = Bale.attackEnemy(Pique)
     val expectedDamage: Int = 70 - 50

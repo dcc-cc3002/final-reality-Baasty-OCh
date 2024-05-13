@@ -14,7 +14,7 @@ import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Play
 class Staff(name: String, weight: Int,
             attackPoints: Int, owner: Playable,
             magicAttackPoints: Int)
-            extends AWeapon(name, weight, attackPoints, owner, magicAttackPoints) {
+            extends AWeapon(name, weight, attackPoints,magicAttackPoints) {
 
   /**
    * Constructs a Staff with specified parameters and a specified owner.

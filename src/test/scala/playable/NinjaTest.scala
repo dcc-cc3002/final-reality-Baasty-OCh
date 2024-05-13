@@ -101,7 +101,7 @@ class NinjaTest extends FunSuite {
    * This test verifies if the `putWeapon` method successfully equips a weapon (`Bow`) on the character `Kroos`.
    */
   test("putWeapon") {
-    var Arco: Bow = new Bow(Kroos)
+    var Arco: Bow = new Bow()
     Kroos.putWeapon(Arco)
 
     assertEquals(Kroos.hasWeapon, Some(Arco))
@@ -112,7 +112,7 @@ class NinjaTest extends FunSuite {
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Kroos` attacks with a `Bow`.
    */
   test("attackEnemy") {
-    Kroos.putWeapon(new Bow(Kroos))
+    Kroos.putWeapon(new Bow())
     val damage: Int = Kroos.attackEnemy(Rakitic)
     val expectedDamage: Int = 40 - 50
 

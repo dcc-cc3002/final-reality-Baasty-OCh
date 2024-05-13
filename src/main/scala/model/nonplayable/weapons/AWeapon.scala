@@ -42,7 +42,7 @@ abstract class AWeapon(name: String, weight: Int,
    * Implementation of Method to get the owner of the non-playable entity.
    * @return The owner (a playable entity) of the weapon
    */
-  def getOwner: Playable = owner
+  def getOwner: Option[Playable] = owner
 
   /**
    * Implementation for method to get the magic attack points of a magic weapon entity.
