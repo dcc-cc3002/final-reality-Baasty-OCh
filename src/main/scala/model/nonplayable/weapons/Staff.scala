@@ -24,6 +24,9 @@ class Staff(name: String, weight: Int,
     this("Baston", 70, 70, owner, 40)
   }
 
+  override def canBeEquippedBy(player: Playable): Boolean = p.canEquip(this)
+
+
   /**
    * Implementation of Method to get the magic attack points of the staff.
    * Since this is a magic staff, it returns magic attack points(MAP).

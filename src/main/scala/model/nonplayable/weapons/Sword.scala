@@ -24,6 +24,9 @@ class Sword(name: String, weight: Int,
     this("Espada", 70, 70, 0)
   }
 
+  override def canBeEquippedBy(player: Playable): Boolean = p.canEquip(this)
+
+
   /**
    * Checks if this sword is equal to another sword.
    * @param other The object to compare against

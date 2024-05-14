@@ -24,6 +24,8 @@ class Axe(name: String, weight: Int,
     this("Hacha", 50, 50, 0)
   }
 
+  override def canBeEquippedBy(player: Playable): Boolean = p.canEquip(this)
+
 
   /**
    * Checks if this Axe is equal to another axe.

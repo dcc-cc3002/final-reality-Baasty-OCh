@@ -23,6 +23,9 @@ class Wand(name: String, weight: Int,
     this("Varita", 40, 50, owner, 30)
   }
 
+  override def canBeEquippedBy(player: Playable): Boolean = p.canEquip(this)
+
+
   /**
    * Implementation of Method to get the magic attack points of the wand.
    * Since this is a magic wand, it returns magic attack points(MAP).
