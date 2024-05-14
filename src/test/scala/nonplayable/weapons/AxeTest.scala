@@ -92,7 +92,7 @@ class AxeTest extends FunSuite {
    * This test verifies if the returned owner character for an axe ('Hacha') matches with the playable who was previous set ('Casemiro')
    */
   test("setOwner"){
-    Hacha.setOwner(Some(Casemiro))
+    Hacha.setOwner(Casemiro)
     assertEquals(Hacha.getOwner,Some(Casemiro))
   }
 

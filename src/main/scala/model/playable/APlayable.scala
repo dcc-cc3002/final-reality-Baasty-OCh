@@ -82,7 +82,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
    */
   def putWeapon(weapon: AWeapon): Unit = {
-    weapon.setOwner(Some(this)) // aqui es donde el arma debe saber como equiparse en cada personaje
+    weapon.setOwner(this) // aqui es donde el arma debe saber como equiparse en cada personaje
     this.arma = Some(weapon)
   }
 

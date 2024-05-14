@@ -48,9 +48,16 @@ abstract class AWeapon(name: String, weight: Int,
    * Implementation of Method to get the owner of the non-playable entity (a weapon).
    * @param newOwner the new owner of the weapon
    */
-  def setOwner(newOwner:Option[Playable]) : Unit = {
-    this.owner = newOwner
+  def setOwner(newOwner:Playable) : Unit = {
+    this.owner = Some(newOwner)
   }
+
+  /**
+   * Abstact method to check if a non-playable entity (weapon) can be equipped by some particular playable entity
+   * @param player The potencial owner of the weapon
+   * @return true if the weapon can be equipped by him , false in other case.
+   */
+  def canBeEquippedBy(player:Playable): Boolean
 
   /**
    * Implementation for method to get the magic attack points of a magic weapon entity.
