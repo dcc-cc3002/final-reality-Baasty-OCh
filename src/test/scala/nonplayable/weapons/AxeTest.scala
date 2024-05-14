@@ -88,6 +88,15 @@ class AxeTest extends FunSuite {
   }
 
   /**
+   * Test case for 'setOwner' method.
+   * This test verifies if the returned owner character for an axe ('Hacha') matches with the playable who was previous set ('Casemiro')
+   */
+  test("setOwner"){
+    Hacha.setOwner(Some(Casemiro))
+    assertEquals(Hacha.getOwner,Some(Casemiro))
+  }
+
+  /**
    * Test case for `getMAP` method.
    * This test verifies if the returned magic attack points value for an axe (`Hacha`) matches the expected value (`0`).
    */

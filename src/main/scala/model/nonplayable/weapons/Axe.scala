@@ -24,9 +24,6 @@ class Axe(name: String, weight: Int,
     this("Hacha", 50, 50, 0)
   }
 
-  def setOwner(newOwner:Option[Playable]) : Unit = {
-    this.owner = newOwner
-  }
 
   /**
    * Checks if this Axe is equal to another axe.
