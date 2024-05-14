@@ -22,7 +22,7 @@ class Bow(name: String, weight: Int,
     this("Arco", 30, 40, 0)
   }
 
-  override def canBeEquippedBy(player: Playable): Boolean = p.canEquip(this)
+  override def canBeEquippedBy(player: Playable): Boolean = player.canEquip(this)
 
 
   /**

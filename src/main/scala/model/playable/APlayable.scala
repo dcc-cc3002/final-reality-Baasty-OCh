@@ -118,40 +118,5 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
     }
   }
 
-  /**
-   * Abstract method to check if a Playable entity can equip 'Axe'
-   * @param w represent the Axe
-   * @return true if the playable can equip the weapon, false in other case
-   */
-  def canEquip(w:Axe): Boolean
-
-  /**
-   * Abstract method to check if a Playable entity can equip 'Sword'
-   * @param w represent the Sword
-   * @return true if the playable can equip the weapon, false in other case
-   */
-  def canEquip(w:Sword): Boolean
-
-  /**
-   * Abstract method to check if a Playable entity can equip 'Bow'
-   * @param w represent the Bow
-   * @return true if the playable can equip the weapon, false in other case
-   */
-  def canEquip(w:Bow): Boolean
-
-  /**
-   * Abstract method to check if a Playable entity can equip 'Staff'
-   * @param w represent the Staff
-   * @return true if the playable can equip the weapon, false in other case
-   */
-  def canEquip(w:Staff): Boolean
-
-  /**
-   * Abstract method to check if a Playable entity can equip 'Wand'
-   * @param w represent the Wand
-   * @return true if the playable can equip the weapon, false in other case
-   */
-  def canEquip(w:Wand): Boolean
-
 }
 

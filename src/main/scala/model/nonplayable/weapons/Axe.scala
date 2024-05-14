@@ -24,7 +24,7 @@ class Axe(name: String, weight: Int,
     this("Hacha", 50, 50, 0)
   }
 
-  override def canBeEquippedBy(player: Playable): Boolean = p.canEquip(this)
+  override def canBeEquippedBy(player: Playable): Boolean = player.canEquip(this)
 
 
   /**

@@ -24,7 +24,7 @@ class Sword(name: String, weight: Int,
     this("Espada", 70, 70, 0)
   }
 
-  override def canBeEquippedBy(player: Playable): Boolean = p.canEquip(this)
+  override def canBeEquippedBy(player: Playable): Boolean = player.canEquip(this)
 
 
   /**

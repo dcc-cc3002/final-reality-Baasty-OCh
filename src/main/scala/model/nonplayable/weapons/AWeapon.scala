@@ -65,6 +65,8 @@ abstract class AWeapon(name: String, weight: Int,
    */
   def getMAP: Int = 0
 
+
+
 }
 
 
