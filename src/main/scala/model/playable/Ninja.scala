@@ -1,5 +1,5 @@
 package model.playable
-import model.nonplayable.weapons.AWeapon
+import model.nonplayable.weapons.{AWeapon, Axe, Bow, Staff, Sword, Wand}
 import model.playable.APlayable
 /**
  *"A ninja is a key character in any game; they may not excel
@@ -21,6 +21,43 @@ class Ninja(name:String, healthPoints: Int,
   def this(name:String) = {
     this(name,80,70,30)
   }
+
+
+  /**
+   * Implementation of method to check if a Playable entity can equip 'Axe'
+   * @param w represent the Axe
+   * @return true if the playable can equip the weapon, false in other case
+   */
+  override def canEquip(w: Axe): Boolean = false
+
+  /**
+   * Implementation of method to check if a Playable entity can equip 'Sword'
+   * @param w represent the Sword
+   * @return true if the playable can equip the weapon, false in other case
+   */
+  override def canEquip(w: Sword): Boolean = true
+
+  /**
+   * Implementation of method to check if a Playable entity can equip 'Bow'
+   * @param w represent the Bow
+   * @return true if the playable can equip the weapon, false in other case
+   */
+  override def canEquip(w: Bow): Boolean = true
+
+  /**
+   * Implementation of method to check if a Playable entity can equip 'Staff'
+   * @param w represent the Staff
+   * @return true if the playable can equip the weapon, false in other case
+   */
+  override def canEquip(w: Staff): Boolean = false
+
+  /**
+   * Implementation of method to check if a Playable entity can equip 'Wand'
+   * @param w represent the Wand
+   * @return true if the playable can equip the weapon, false in other case
+   */
+  override def canEquip(w: Wand): Boolean = true
+
 
   /**
    * Re-Implementation of a method to set the mana points, to non-magic character just do 'nothing'
