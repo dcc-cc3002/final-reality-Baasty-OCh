@@ -96,14 +96,43 @@ class WarriorTest extends FunSuite {
   }
 
   /**
+   * Test case for 'canEquip' methods.
+   * This test verifies if the Warrior 'Casemiro' can Equip particular kind of weapon or not
+   * (he can: Bow, Axe and Sword. and can not: Staff and Wand)
+   */
+  test("canEquip"){
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
+
+    assertEquals(Casemiro.canEquip(Baston),false)
+    assertEquals(Casemiro.canEquip(Varita),false)
+    assertEquals(Casemiro.canEquip(Espada),true)
+    assertEquals(Casemiro.canEquip(Arco),true)
+    assertEquals(Casemiro.canEquip(Hacha),true)
+  }
+
+  /**
    * Test case for `putWeapon` method.
-   * This test verifies if the `putWeapon` method successfully equips a weapon (`Axe`) on the character `Casemiro`.
+   * This test verifies if the `putWeapon` method successfully equips a weapon ('Bow' , 'Axe' or 'Sword') on the character 'Casemiro'.
    */
   test("putWeapon") {
-    var Hacha: Axe = new Axe()
-    Casemiro.putWeapon(Hacha)
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
 
+    Casemiro.putWeapon(Hacha)
     assertEquals(Casemiro.hasWeapon, Some(Hacha))
+
+    Casemiro.putWeapon(Arco)
+    assertEquals(Casemiro.hasWeapon, Some(Arco))
+
+    Casemiro.putWeapon(Espada)
+    assertEquals(Casemiro.hasWeapon, Some(Espada))
   }
 
   /**

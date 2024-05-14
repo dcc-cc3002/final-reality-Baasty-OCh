@@ -22,9 +22,9 @@ class WandTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
-    Varita = new Wand(Modric) // - Name: Barita // - Weight: 25 // - Attack: 50 // - Owner: Modric
-    Varita2 = new Wand("Varita",100,100,Modric,50)
-    Baston = new Staff(Modric)
+    Varita = new Wand() // - Name: Barita // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Varita2 = new Wand("Varita",100,100,50)
+    Baston = new Staff()
   }
 
   /**

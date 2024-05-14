@@ -12,16 +12,15 @@ import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Play
  * @param magicAttackPoints The magic attack points of the staff
  */
 class Staff(name: String, weight: Int,
-            attackPoints: Int, owner: Playable,
-            magicAttackPoints: Int)
+            attackPoints: Int, magicAttackPoints: Int)
             extends AWeapon(name, weight, attackPoints,magicAttackPoints) {
 
   /**
    * Constructs a Staff with specified parameters and a specified owner.
    * @param owner The playable entity that will own this staff
    */
-  def this(owner: Playable) = {
-    this("Baston", 70, 70, owner, 40)
+  def this() = {
+    this("Baston", 70, 70, 40)
   }
 
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquip(this)

@@ -97,15 +97,45 @@ class NinjaTest extends FunSuite {
   }
 
   /**
+   * Test case for 'canEquip' methods.
+   * This test verifies if the Ninja 'Kroos' can Equip particular kind of weapon or not
+   * (he can: Bow, Wand and Sword. and can not: Staff and Axe)
+   */
+  test("canEquip"){
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
+
+    assertEquals(Kroos.canEquip(Baston),false)
+    assertEquals(Kroos.canEquip(Varita),true)
+    assertEquals(Kroos.canEquip(Espada),true)
+    assertEquals(Kroos.canEquip(Arco),true)
+    assertEquals(Kroos.canEquip(Hacha),false)
+  }
+
+  /**
    * Test case for `putWeapon` method.
-   * This test verifies if the `putWeapon` method successfully equips a weapon (`Bow`) on the character `Kroos`.
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Bow' , 'Wand' or 'Sword') on the character `Kroos`.
    */
   test("putWeapon") {
-    var Arco: Bow = new Bow()
-    Kroos.putWeapon(Arco)
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
 
+    Kroos.putWeapon(Varita)
+    assertEquals(Kroos.hasWeapon, Some(Varita))
+
+    Kroos.putWeapon(Arco)
     assertEquals(Kroos.hasWeapon, Some(Arco))
+
+    Kroos.putWeapon(Espada)
+    assertEquals(Kroos.hasWeapon, Some(Espada))
   }
+
 
   /**
    * Test case for `attackEnemy` method.

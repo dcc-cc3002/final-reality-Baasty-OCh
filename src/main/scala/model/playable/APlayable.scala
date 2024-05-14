@@ -85,7 +85,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
     if (weapon.canBeEquippedBy(this)){
       this.arma = Some(weapon)
       weapon.setOwner(this)
-    } else {
+    } else { // aqui en realidad debemos lanzar exceptions (no se aun como)
       println(s"${this.getName} no puede equipar ${weapon.getClass.getSimpleName}.")
     }
   }

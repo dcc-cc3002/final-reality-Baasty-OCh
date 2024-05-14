@@ -5,7 +5,7 @@ import model.nonplayable.NonPlayable
 import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
 import model.nonplayable.Enemy
 import model.playable.{APlayable, BlackMagican, Ninja, Paladin, Playable, Warrior, WhiteMagican}
-import munit.{FunSuite, Ignore}
+import munit.{FunSuite, Ignore, Slow}
 
 /**
  * Test suite for the `WhiteMagican` class.
@@ -15,6 +15,7 @@ class BlackMagicanTest extends FunSuite {
   var Modric: BlackMagican = _ // Declaration of a variable `Modric` of type `Playable`.
   var Iniesta: Enemy = _ // Declaration of a variable `Iniesta` of type `Enemy`.
   var James: BlackMagican = _
+
 
   /**
    * Set up the test environment before each test case.
@@ -106,13 +107,43 @@ class BlackMagicanTest extends FunSuite {
   }
 
   /**
+   * Test case for 'canEquip' methods.
+   * This test verifies if the BlackMagican 'Modric' can Equip particular kind of weapon or not
+   * (he can: Staff, Wand and Sword. and can not: Bow and Axe)
+   */
+  test("canEquip"){
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
+
+    assertEquals(Modric.canEquip(Baston),true)
+    assertEquals(Modric.canEquip(Varita),true)
+    assertEquals(Modric.canEquip(Espada),true)
+    assertEquals(Modric.canEquip(Arco),false)
+    assertEquals(Modric.canEquip(Hacha),false)
+  }
+
+  /**
    * Test case for `putWeapon` method.
-   * This test verifies if the `putWeapon` method successfully equips a weapon (`Wand`) on the character `Modric`.
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Staff' , 'Wand' or 'Sword') on the character `Modric`.
    */
   test("putWeapon") {
-    var Baston: Wand = new Wand(Modric)
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
+
     Modric.putWeapon(Baston)
     assertEquals(Modric.hasWeapon, Some(Baston))
+
+    Modric.putWeapon(Varita)
+    assertEquals(Modric.hasWeapon, Some(Varita))
+
+    Modric.putWeapon(Espada)
+    assertEquals(Modric.hasWeapon, Some(Espada))
   }
 
   /**
@@ -120,7 +151,7 @@ class BlackMagicanTest extends FunSuite {
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Iniesta`) when `Modric` attacks with a `Wand`.
    */
   test("attackEnemy") {
-    Modric.putWeapon(new Wand(Modric))
+    Modric.putWeapon(new Wand())
     val damage: Int = Modric.attackEnemy(Iniesta)
     val expectedDamage: Int = 50 - 50
 

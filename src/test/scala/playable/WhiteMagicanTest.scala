@@ -85,14 +85,44 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.hasWeapon, None)
   }
 
+
+  /**
+   * Test case for 'canEquip' methods.
+   * This test verifies if the WhiteMagican 'Benzema' can Equip particular kind of weapon or not
+   * (he can: Bow, Wand and Staff. and can not: Sword and Axe)
+   */
+  test("canEquip"){
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
+
+    assertEquals(Benzema.canEquip(Baston),true)
+    assertEquals(Benzema.canEquip(Varita),true)
+    assertEquals(Benzema.canEquip(Espada),false)
+    assertEquals(Benzema.canEquip(Arco),true)
+    assertEquals(Benzema.canEquip(Hacha),false)
+  }
+
   /**
    * Test case for `putWeapon` method.
-   * This test verifies if the `putWeapon` method successfully equips a weapon (`Staff`) on the character `Benzema`.
+   * This test verifies if the `putWeapon` method successfully equips a weapon ('Bow' , 'Wand' or 'Staff') on the character 'Casemiro'.
    */
   test("putWeapon") {
-    var Baston: Staff = new Staff(Benzema)
-    Benzema.putWeapon(Baston)
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
 
+    Benzema.putWeapon(Varita)
+    assertEquals(Benzema.hasWeapon, Some(Varita))
+
+    Benzema.putWeapon(Arco)
+    assertEquals(Benzema.hasWeapon, Some(Arco))
+
+    Benzema.putWeapon(Baston)
     assertEquals(Benzema.hasWeapon, Some(Baston))
   }
 
@@ -101,7 +131,7 @@ class WhiteMagicanTest extends FunSuite {
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Modric` attacks with a `Bow`.
    */
   test("attackEnemy") {
-    Benzema.putWeapon(new Staff(Benzema))
+    Benzema.putWeapon(new Staff())
     val damage: Int = Benzema.attackEnemy(Ter_Stegen)
     val expectedDamage: Int = 70 - 50
 

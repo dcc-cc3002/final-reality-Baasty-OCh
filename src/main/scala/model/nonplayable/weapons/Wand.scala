@@ -11,16 +11,15 @@ import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Play
  * @param magicAttackPoints The magic attack points of the wand
  */
 class Wand(name: String, weight: Int,
-           attackPoints: Int, owner: Playable,
-           magicAttackPoints: Int)
+           attackPoints: Int, magicAttackPoints: Int)
            extends AWeapon(name, weight, attackPoints, magicAttackPoints) {
 
   /**
    * Constructs a Wand with specified parameters and a specified owner.
    * @param owner The playable entity that will own this wand
    */
-  def this(owner: Playable) = {
-    this("Varita", 40, 50, owner, 30)
+  def this() = {
+    this("Varita", 40, 50, 30)
   }
 
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquip(this)

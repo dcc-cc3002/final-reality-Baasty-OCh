@@ -23,9 +23,9 @@ class StaffTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
-    Baston  = new Staff(Benzema) // - Name: Baston // - Weight: 25 // - Attack: 50 // - Owner: Modric
-    Baston2  = new Staff("Baston2",57,89,Benzema,50)
-    Varita  = new Wand(Benzema)
+    Baston  = new Staff() // - Name: Baston // - Weight: 25 // - Attack: 50 // - Owner: Modric
+    Baston2  = new Staff("Baston2",57,89,50)
+    Varita  = new Wand()
   }
 
   /**

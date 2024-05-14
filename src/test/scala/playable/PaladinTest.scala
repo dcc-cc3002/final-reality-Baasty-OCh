@@ -116,18 +116,42 @@ class PaladinTest extends FunSuite {
     assertEquals(Bale.hasWeapon,None)
   }
 
+
+  /**
+   * Test case for 'canEquip' methods.
+   * This test verifies if the Paladin 'Cristiano' can Equip particular kind of weapon or not
+   * (he can: Axe and Sword. and can not: Bow, Staff and Wand)
+   */
+  test("canEquip"){
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
+
+    assertEquals(Cristiano.canEquip(Baston),false)
+    assertEquals(Cristiano.canEquip(Varita),false)
+    assertEquals(Cristiano.canEquip(Espada),true)
+    assertEquals(Cristiano.canEquip(Arco),false)
+    assertEquals(Cristiano.canEquip(Hacha),true)
+  }
+
   /**
    * Test case for `putWeapon` method.
-   * This test verifies if the `putWeapon` method successfully equips a weapon (`Espada`) on the character `Cristiano`.
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Axe' or 'Sword') on the character `Cristiano`.
    */
   test("putWeapon") {
-    var Espada: Sword = new Sword()
-    var Hacha: Axe = new Axe()
-    Cristiano.putWeapon(Espada)
-    Bale.putWeapon(Hacha)
+    val Baston: Staff = new Staff()
+    val Varita: Wand = new Wand()
+    val Espada: Sword = new Sword()
+    val Hacha: Axe = new Axe()
+    val Arco: Bow = new Bow()
 
+    Cristiano.putWeapon(Hacha)
+    assertEquals(Cristiano.hasWeapon, Some(Hacha))
+
+    Cristiano.putWeapon(Espada)
     assertEquals(Cristiano.hasWeapon, Some(Espada))
-    assertEquals(Bale.hasWeapon,Some(Hacha))
   }
 
   /**
