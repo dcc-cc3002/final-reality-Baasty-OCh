@@ -82,8 +82,12 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
    */
   def putWeapon(weapon: AWeapon): Unit = {
-    weapon.setOwner(this) // aqui es donde el arma debe saber como equiparse en cada personaje
-    this.arma = Some(weapon)
+    if (weapon.canBeEquippedBy(this)){
+      this.arma = Some(weapon)
+      weapon.setOwner(this)
+    } else {
+      println(s"${this.getName} no puede equipar ${weapon.getClass.getSimpleName}.")
+    }
   }
 
   /**
@@ -115,35 +119,35 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   }
 
   /**
-   * Abstract method to check if a Playable entity can equip 'Axe' 
+   * Abstract method to check if a Playable entity can equip 'Axe'
    * @param w represent the Axe
    * @return true if the playable can equip the weapon, false in other case
    */
   def canEquip(w:Axe): Boolean
 
   /**
-   * Abstract method to check if a Playable entity can equip 'Sword' 
+   * Abstract method to check if a Playable entity can equip 'Sword'
    * @param w represent the Sword
    * @return true if the playable can equip the weapon, false in other case
    */
   def canEquip(w:Sword): Boolean
 
   /**
-   * Abstract method to check if a Playable entity can equip 'Bow' 
+   * Abstract method to check if a Playable entity can equip 'Bow'
    * @param w represent the Bow
    * @return true if the playable can equip the weapon, false in other case
    */
   def canEquip(w:Bow): Boolean
 
   /**
-   * Abstract method to check if a Playable entity can equip 'Staff' 
+   * Abstract method to check if a Playable entity can equip 'Staff'
    * @param w represent the Staff
    * @return true if the playable can equip the weapon, false in other case
    */
   def canEquip(w:Staff): Boolean
 
   /**
-   * Abstract method to check if a Playable entity can equip 'Wand' 
+   * Abstract method to check if a Playable entity can equip 'Wand'
    * @param w represent the Wand
    * @return true if the playable can equip the weapon, false in other case
    */
