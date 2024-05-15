@@ -17,8 +17,9 @@ class EnemyTest extends FunSuite {
   }
 
   test("equals") {
-    assertEquals(Neymar, Neymar)
-    assertNotEquals(Neymar,Bale)
+    assertEquals(Neymar.equals(Neymar),true)
+    assertEquals(Neymar.equals(Bale),false)
+    assertEquals(Neymar.equals(Cristiano),false)
   }
 
   test("setName") {
