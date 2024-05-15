@@ -81,12 +81,13 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * Implementation of Method to put a Weapon on a Playable Entity
    * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
    */
+  @throws(classOf[Exception])
   def putWeapon(weapon: AWeapon): Unit = {
     if (weapon.canBeEquippedBy(this)){
       this.arma = Some(weapon)
       weapon.setOwner(this)
-    } else { // aqui en realidad debemos lanzar exceptions (no se aun como)
-      println(s"${this.getName} no puede equipar ${weapon.getClass.getSimpleName}.")
+    } else {
+      throw new Exception(s"${this.getName} no puede equipar ${weapon.getClass.getSimpleName}.")
     }
   }
 

@@ -128,6 +128,7 @@ class BlackMagicanTest extends FunSuite {
   /**
    * Test case for `putWeapon` method.
    * This test verifies if the `putWeapon` method successfully equips a weapon (`Staff' , 'Wand' or 'Sword') on the character `Modric`.
+   * And throw exceptions in other cases
    */
   test("putWeapon") {
     val Baston: Staff = new Staff()
@@ -144,7 +145,19 @@ class BlackMagicanTest extends FunSuite {
 
     Modric.putWeapon(Espada)
     assertEquals(Modric.hasWeapon, Some(Espada))
+    try {
+    Modric.putWeapon(Arco)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
+
+    try {
+      Modric.putWeapon(Hacha)
+      } catch {
+      case e: Exception => println(e.getMessage)
+    }
   }
+
 
   /**
    * Test case for `attackEnemy` method.
