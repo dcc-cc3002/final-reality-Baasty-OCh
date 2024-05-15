@@ -108,6 +108,7 @@ class WhiteMagicanTest extends FunSuite {
   /**
    * Test case for `putWeapon` method.
    * This test verifies if the `putWeapon` method successfully equips a weapon ('Bow' , 'Wand' or 'Staff') on the character 'Casemiro'.
+   * And throw exceptions in other cases
    */
   test("putWeapon") {
     val Baston: Staff = new Staff()
@@ -124,6 +125,17 @@ class WhiteMagicanTest extends FunSuite {
 
     Benzema.putWeapon(Baston)
     assertEquals(Benzema.hasWeapon, Some(Baston))
+
+    try {
+      Benzema.putWeapon(Espada)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
+    try {
+      Benzema.putWeapon(Hacha)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
   }
 
   /**

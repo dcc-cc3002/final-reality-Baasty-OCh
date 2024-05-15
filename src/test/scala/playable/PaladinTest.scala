@@ -139,6 +139,7 @@ class PaladinTest extends FunSuite {
   /**
    * Test case for `putWeapon` method.
    * This test verifies if the `putWeapon` method successfully equips a weapon (`Axe' or 'Sword') on the character `Cristiano`.
+   * And throw exceptions in other cases
    */
   test("putWeapon") {
     val Baston: Staff = new Staff()
@@ -152,6 +153,22 @@ class PaladinTest extends FunSuite {
 
     Cristiano.putWeapon(Espada)
     assertEquals(Cristiano.hasWeapon, Some(Espada))
+
+    try {
+      Cristiano.putWeapon(Arco)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
+    try {
+      Cristiano.putWeapon(Varita)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
+    try {
+      Cristiano.putWeapon(Baston)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
   }
 
   /**

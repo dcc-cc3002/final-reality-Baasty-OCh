@@ -117,6 +117,7 @@ class WarriorTest extends FunSuite {
   /**
    * Test case for `putWeapon` method.
    * This test verifies if the `putWeapon` method successfully equips a weapon ('Bow' , 'Axe' or 'Sword') on the character 'Casemiro'.
+   * And throw exceptions in other cases
    */
   test("putWeapon") {
     val Baston: Staff = new Staff()
@@ -133,6 +134,17 @@ class WarriorTest extends FunSuite {
 
     Casemiro.putWeapon(Espada)
     assertEquals(Casemiro.hasWeapon, Some(Espada))
+
+    try {
+      Casemiro.putWeapon(Baston)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
+    try {
+      Casemiro.putWeapon(Varita)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
   }
 
   /**

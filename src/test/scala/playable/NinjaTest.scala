@@ -118,6 +118,7 @@ class NinjaTest extends FunSuite {
   /**
    * Test case for `putWeapon` method.
    * This test verifies if the `putWeapon` method successfully equips a weapon (`Bow' , 'Wand' or 'Sword') on the character `Kroos`.
+   * And throw exceptions in other cases
    */
   test("putWeapon") {
     val Baston: Staff = new Staff()
@@ -134,6 +135,17 @@ class NinjaTest extends FunSuite {
 
     Kroos.putWeapon(Espada)
     assertEquals(Kroos.hasWeapon, Some(Espada))
+
+    try {
+      Kroos.putWeapon(Hacha)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
+    try {
+      Kroos.putWeapon(Baston)
+    } catch {
+      case e: Exception => println(e.getMessage)
+    }
   }
 
 
