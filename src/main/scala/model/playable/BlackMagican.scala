@@ -28,35 +28,35 @@ class BlackMagican(name:String, healthPoints:Int,
    * @param w represent the Axe
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquip(w: Axe): Boolean = false
+  override def canEquipAxe(w: Axe): Boolean = false
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Sword'
    * @param w represent the Sword
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquip(w: Sword): Boolean = true
+  override def canEquipSword(w: Sword): Boolean = true
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Bow'
    * @param w represent the Bow
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquip(w: Bow): Boolean = false
+  override def canEquipBow(w: Bow): Boolean = false
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Staff'
    * @param w represent the Staff
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquip(w: Staff): Boolean = true
+  override def canEquipStaff(w: Staff): Boolean = true
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Wand'
    * @param w represent the Wand
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquip(w: Wand): Boolean = true
+  override def canEquipWand(w: Wand): Boolean = true
 
   /**
    * Checks if this BlackMagican is equal to another BlackMagican.

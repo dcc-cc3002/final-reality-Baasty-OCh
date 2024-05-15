@@ -23,7 +23,7 @@ class Staff(name: String, weight: Int,
     this("Baston", 70, 70, 40)
   }
 
-  override def canBeEquippedBy(player: Playable): Boolean = player.canEquip(this)
+  override def canBeEquippedBy(player: Playable): Boolean = player.canEquipStaff(this)
 
 
   /**

@@ -22,7 +22,7 @@ class Wand(name: String, weight: Int,
     this("Varita", 40, 50, 30)
   }
 
-  override def canBeEquippedBy(player: Playable): Boolean = player.canEquip(this)
+  override def canBeEquippedBy(player: Playable): Boolean = player.canEquipWand(this)
 
 
   /**
