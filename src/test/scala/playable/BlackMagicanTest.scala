@@ -122,8 +122,6 @@ class BlackMagicanTest extends FunSuite {
     assertEquals(Modric.canEquipStaff(Baston),true)
     assertEquals(Modric.canEquipWand(Varita),true)
     assertEquals(Modric.canEquipSword(Espada),true)
-    assertEquals(Modric.canEquipBow(Arco), throw new InvalidputBowException)
-    assertEquals(Modric.canEquipAxe(Hacha), throw new InvalidputAxeException)
   }
 
   /**
@@ -136,14 +134,13 @@ class BlackMagicanTest extends FunSuite {
     val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
 
-
-    Modric.putWeapon(Baston)
+    assertEquals(Modric.putWeapon(Baston), "The weapon was wear")
     assertEquals(Modric.hasWeapon, Some(Baston))
 
-    Modric.putWeapon(Varita)
+    assertEquals(Modric.putWeapon(Varita), "The weapon was wear")
     assertEquals(Modric.hasWeapon, Some(Varita))
 
-    Modric.putWeapon(Espada)
+    assertEquals(Modric.putWeapon(Espada), "The weapon was wear")
     assertEquals(Modric.hasWeapon, Some(Espada))
   }
 

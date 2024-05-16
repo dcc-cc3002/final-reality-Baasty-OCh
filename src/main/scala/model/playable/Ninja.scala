@@ -73,7 +73,7 @@ class Ninja(name:String, healthPoints: Int,
    * @param w represent the Staff
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipStaff(w: Staff): Boolean = false
+  override def canEquipStaff(w: Staff): Boolean = throw new InvalidputStaffException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Wand'

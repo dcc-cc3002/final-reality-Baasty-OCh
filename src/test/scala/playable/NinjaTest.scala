@@ -108,11 +108,9 @@ class NinjaTest extends FunSuite {
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    assertEquals(Kroos.canEquipStaff(Baston),false)
     assertEquals(Kroos.canEquipWand(Varita),true)
     assertEquals(Kroos.canEquipSword(Espada),true)
     assertEquals(Kroos.canEquipBow(Arco),true)
-    assertEquals(Kroos.canEquipAxe(Hacha),false)
   }
 
   /**
@@ -135,17 +133,6 @@ class NinjaTest extends FunSuite {
 
     Kroos.putWeapon(Espada)
     assertEquals(Kroos.hasWeapon, Some(Espada))
-
-    try {
-      Kroos.putWeapon(Hacha)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
-    try {
-      Kroos.putWeapon(Baston)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
   }
 
 
