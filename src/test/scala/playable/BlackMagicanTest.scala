@@ -118,11 +118,11 @@ class BlackMagicanTest extends FunSuite {
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    assertEquals(Modric.canEquip(Baston),true)
-    assertEquals(Modric.canEquip(Varita),true)
-    assertEquals(Modric.canEquip(Espada),true)
-    assertEquals(Modric.canEquip(Arco),false)
-    assertEquals(Modric.canEquip(Hacha),false)
+    assertEquals(Modric.canEquipStaff(Baston),true)
+    assertEquals(Modric.canEquipWand(Varita),true)
+    assertEquals(Modric.canEquipSword(Espada),true)
+    assertEquals(Modric.canEquipBow(Arco),false)
+    assertEquals(Modric.canEquipAxe(Hacha),false)
   }
 
   /**

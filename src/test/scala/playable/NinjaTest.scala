@@ -108,11 +108,11 @@ class NinjaTest extends FunSuite {
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    assertEquals(Kroos.canEquip(Baston),false)
-    assertEquals(Kroos.canEquip(Varita),true)
-    assertEquals(Kroos.canEquip(Espada),true)
-    assertEquals(Kroos.canEquip(Arco),true)
-    assertEquals(Kroos.canEquip(Hacha),false)
+    assertEquals(Kroos.canEquipStaff(Baston),false)
+    assertEquals(Kroos.canEquipWand(Varita),true)
+    assertEquals(Kroos.canEquipSword(Espada),true)
+    assertEquals(Kroos.canEquipBow(Arco),true)
+    assertEquals(Kroos.canEquipAxe(Hacha),false)
   }
 
   /**

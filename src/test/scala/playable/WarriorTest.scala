@@ -107,11 +107,11 @@ class WarriorTest extends FunSuite {
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    assertEquals(Casemiro.canEquip(Baston),false)
-    assertEquals(Casemiro.canEquip(Varita),false)
-    assertEquals(Casemiro.canEquip(Espada),true)
-    assertEquals(Casemiro.canEquip(Arco),true)
-    assertEquals(Casemiro.canEquip(Hacha),true)
+    assertEquals(Casemiro.canEquipStaff(Baston),false)
+    assertEquals(Casemiro.canEquipWand(Varita),false)
+    assertEquals(Casemiro.canEquipSword(Espada),true)
+    assertEquals(Casemiro.canEquipBow(Arco),true)
+    assertEquals(Casemiro.canEquipAxe(Hacha),true)
   }
 
   /**

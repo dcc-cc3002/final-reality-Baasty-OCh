@@ -98,11 +98,11 @@ class WhiteMagicanTest extends FunSuite {
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    assertEquals(Benzema.canEquip(Baston),true)
-    assertEquals(Benzema.canEquip(Varita),true)
-    assertEquals(Benzema.canEquip(Espada),false)
-    assertEquals(Benzema.canEquip(Arco),true)
-    assertEquals(Benzema.canEquip(Hacha),false)
+    assertEquals(Benzema.canEquipStaff(Baston),true)
+    assertEquals(Benzema.canEquipWand(Varita),true)
+    assertEquals(Benzema.canEquipSword(Espada),false)
+    assertEquals(Benzema.canEquipBow(Arco),true)
+    assertEquals(Benzema.canEquipAxe(Hacha),false)
   }
 
   /**

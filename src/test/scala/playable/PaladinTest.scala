@@ -129,11 +129,11 @@ class PaladinTest extends FunSuite {
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    assertEquals(Cristiano.canEquip(Baston),false)
-    assertEquals(Cristiano.canEquip(Varita),false)
-    assertEquals(Cristiano.canEquip(Espada),true)
-    assertEquals(Cristiano.canEquip(Arco),false)
-    assertEquals(Cristiano.canEquip(Hacha),true)
+    assertEquals(Cristiano.canEquipStaff(Baston),false)
+    assertEquals(Cristiano.canEquipWand(Varita),false)
+    assertEquals(Cristiano.canEquipSword(Espada),true)
+    assertEquals(Cristiano.canEquipBow(Arco),false)
+    assertEquals(Cristiano.canEquipAxe(Hacha),true)
   }
 
   /**
