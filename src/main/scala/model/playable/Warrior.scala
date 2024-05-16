@@ -35,14 +35,13 @@ class Warrior(name:String, healthPoints:Int,
    */
   def putWeapon(weapon: AWeapon): String = {
     try {
-      if (weapon.canBeEquippedBy(this)) {
-        this.arma = Some(weapon)
-        weapon.setOwner(this)
-        "The weapon was wear"
-      } else{ "Problem detected"}
+      weapon.canBeEquippedBy(this)
+      this.arma = Some(weapon)
+      weapon.setOwner(this)
+      "The weapon was wear"
     } catch {
-      case _:InvalidputStaffException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
-      case _:InvalidputWandException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
+      case _:InvalidputStaffException => s"The character: ${this.getName} can't wear a Staff"
+      case _:InvalidputWandException => s"The character: ${this.getName} can't wear a Wand"
     }
   }
 
@@ -73,14 +72,14 @@ class Warrior(name:String, healthPoints:Int,
    * @param w represent the Staff
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipStaff(w: Staff): Boolean = false
+  override def canEquipStaff(w: Staff): Boolean = throw new InvalidputStaffException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Wand'
    * @param w represent the Wand
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipWand(w: Wand): Boolean = false
+  override def canEquipWand(w: Wand): Boolean = throw new InvalidputWandException
 
 
   /**

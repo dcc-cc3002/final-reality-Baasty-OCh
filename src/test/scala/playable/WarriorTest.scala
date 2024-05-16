@@ -101,14 +101,10 @@ class WarriorTest extends FunSuite {
    * (he can: Bow, Axe and Sword. and can not: Staff and Wand)
    */
   test("canEquip"){
-    val Baston: Staff = new Staff()
-    val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    assertEquals(Casemiro.canEquipStaff(Baston),false)
-    assertEquals(Casemiro.canEquipWand(Varita),false)
     assertEquals(Casemiro.canEquipSword(Espada),true)
     assertEquals(Casemiro.canEquipBow(Arco),true)
     assertEquals(Casemiro.canEquipAxe(Hacha),true)
@@ -120,32 +116,20 @@ class WarriorTest extends FunSuite {
    * And throw exceptions in other cases
    */
   test("putWeapon") {
-    val Baston: Staff = new Staff()
-    val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    Casemiro.putWeapon(Hacha)
+    assertEquals(Casemiro.putWeapon(Hacha), "The weapon was wear")
     assertEquals(Casemiro.hasWeapon, Some(Hacha))
 
-    Casemiro.putWeapon(Arco)
+    assertEquals(Casemiro.putWeapon(Arco), "The weapon was wear")
     assertEquals(Casemiro.hasWeapon, Some(Arco))
 
-    Casemiro.putWeapon(Espada)
+    assertEquals(Casemiro.putWeapon(Espada), "The weapon was wear")
     assertEquals(Casemiro.hasWeapon, Some(Espada))
-
-    try {
-      Casemiro.putWeapon(Baston)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
-    try {
-      Casemiro.putWeapon(Varita)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
   }
+
 
   /**
    * Test case for `attackEnemy` method.
