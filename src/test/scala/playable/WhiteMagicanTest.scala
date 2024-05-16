@@ -94,15 +94,11 @@ class WhiteMagicanTest extends FunSuite {
   test("canEquip"){
     val Baston: Staff = new Staff()
     val Varita: Wand = new Wand()
-    val Espada: Sword = new Sword()
-    val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
     assertEquals(Benzema.canEquipStaff(Baston),true)
     assertEquals(Benzema.canEquipWand(Varita),true)
-    assertEquals(Benzema.canEquipSword(Espada),false)
     assertEquals(Benzema.canEquipBow(Arco),true)
-    assertEquals(Benzema.canEquipAxe(Hacha),false)
   }
 
   /**
@@ -117,26 +113,28 @@ class WhiteMagicanTest extends FunSuite {
     val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    Benzema.putWeapon(Varita)
+    assertEquals(Benzema.putWeapon(Varita),"The weapon was wear")
     assertEquals(Benzema.hasWeapon, Some(Varita))
 
-    Benzema.putWeapon(Arco)
+    assertEquals(Benzema.putWeapon(Arco),"The weapon was wear")
     assertEquals(Benzema.hasWeapon, Some(Arco))
 
-    Benzema.putWeapon(Baston)
+    assertEquals(Benzema.putWeapon(Baston),"The weapon was wear")
     assertEquals(Benzema.hasWeapon, Some(Baston))
 
-    try {
-      Benzema.putWeapon(Espada)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
-    try {
-      Benzema.putWeapon(Hacha)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
   }
+
+  test("It should throw an exception if the Paladin cant equip a Sword"){
+    val Espada: Sword = new Sword()
+    assertEquals(Benzema.putWeapon(Espada),"The character: Benzema can't wear a Sword")
+  }
+
+
+  test("It should throw an exception if the Paladin cant equip a Axe"){
+    val Hacha: Axe = new Axe()
+    assertEquals(Benzema.putWeapon(Hacha),"The character: Benzema can't wear an Axe")
+  }
+
 
   /**
    * Test case for `attackEnemy` method.
