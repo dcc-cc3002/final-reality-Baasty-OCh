@@ -23,7 +23,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   /**
    * variable to represent a weapon in an APlayable Entity
    */
-  private var arma: Option[AWeapon] = None
+  protected var arma: Option[AWeapon] = None
 
   /**
    * Implementation of Method to get the name of the playable entity
@@ -78,19 +78,10 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   def hasWeapon = arma
 
   /**
-   * Implementation of Method to put a Weapon on a Playable Entity
-   * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
+   * Abstract Method to equip a Weapon on a Playable Entity
+   * @param Any class of Weapon
    */
-  @throws(classOf[Exception])
-  def putWeapon(weapon: AWeapon): Unit = {
-    if (weapon.canBeEquippedBy(this)){
-      this.arma = Some(weapon)
-      weapon.setOwner(this)
-    } else {
-      throw new Exception(s"${this.getName} no puede equipar ${weapon.getClass.getSimpleName}.")
-    }
-  }
-
+  def putWeapon( weapon: AWeapon): String
   /**
    * Implementation of Method to attack an Enemy entity
    * @param target represent an object of Enemy class and is our objective

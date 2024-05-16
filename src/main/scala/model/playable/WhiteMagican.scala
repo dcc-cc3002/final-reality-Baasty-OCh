@@ -1,9 +1,10 @@
 package model.playable
 
+import exceptions.{InvalidputAxeException, InvalidputStaffException, InvalidputSwordException, InvalidputWandException}
 import model.nonplayable.weapons.AWeapon
 import model.nonplayable.Enemy
 import model.playable.APlayable
-import model.nonplayable.weapons.{Bow,Staff,Sword,Axe,Wand}
+import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
 
 /**
  * "A White Mage will predominantly have defensive qualities but with certain magical attributes."
@@ -23,6 +24,25 @@ class WhiteMagican(name:String, healthPoints:Int,
    */
   def this(name:String) = {
     this(name,100,80,60,40)
+  }
+
+  /**
+   * Implementation of Method to put a Weapon on a Playable Entity (Warrior)
+   * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
+   * @return positive message if the Warrior Can equip the weapon,
+   *         negative one in other cases, with his particular exception.
+   */
+  def putWeapon(weapon: AWeapon): String = {
+    try {
+      if (weapon.canBeEquippedBy(this)) {
+        this.arma = Some(weapon)
+        weapon.setOwner(this)
+        "The weapon was wear"
+      } else{ "Problem detected"}
+    } catch {
+      case _:InvalidputSwordException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
+      case _:InvalidputAxeException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
+    }
   }
 
 

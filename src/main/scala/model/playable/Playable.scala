@@ -51,7 +51,7 @@ trait Playable {
    * Abstract Method to equip a Weapon on a Playable Entity
    * @param Any class of Weapon
    */
-  def putWeapon( weapon: AWeapon): Unit
+  def putWeapon( weapon: AWeapon): String
 
   /**
    * Abstract Method to attack an Enemy entity

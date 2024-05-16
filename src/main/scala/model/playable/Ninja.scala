@@ -1,4 +1,5 @@
 package model.playable
+import exceptions.{InvalidputAxeException, InvalidputBowException, InvalidputStaffException}
 import model.nonplayable.weapons.{AWeapon, Axe, Bow, Staff, Sword, Wand}
 import model.playable.APlayable
 /**
@@ -20,6 +21,26 @@ class Ninja(name:String, healthPoints: Int,
    */
   def this(name:String) = {
     this(name,80,70,30)
+  }
+
+
+  /**
+   * Implementation of Method to put a Weapon on a Playable Entity (Ninja)
+   * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
+   * @return positive message if the Ninja Can equip the weapon,
+   *         negative one in other cases, with his particular exception.
+   */
+  def putWeapon(weapon: AWeapon): String = {
+    try {
+      if (weapon.canBeEquippedBy(this)) {
+        this.arma = Some(weapon)
+        weapon.setOwner(this)
+        "The weapon was wear"
+      } else{ "Problem detected"}
+    } catch {
+      case _:InvalidputAxeException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
+      case _:InvalidputStaffException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
+    }
   }
 
 
