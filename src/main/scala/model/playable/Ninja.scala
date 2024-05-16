@@ -49,7 +49,10 @@ class Ninja(name:String, healthPoints: Int,
    * @param w represent the Axe
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipAxe(w: Axe): Boolean = false
+  override def canEquipAxe(w: Axe): Boolean = {
+    throw new InvalidputAxeException
+
+  }
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Sword'

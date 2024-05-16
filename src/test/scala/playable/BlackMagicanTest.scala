@@ -1,5 +1,6 @@
 package playable
 
+import exceptions.{InvalidputAxeException, InvalidputBowException}
 import model.nonplayable.weapons.{AWeapon, Axe}
 import model.nonplayable.NonPlayable
 import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
@@ -121,8 +122,8 @@ class BlackMagicanTest extends FunSuite {
     assertEquals(Modric.canEquipStaff(Baston),true)
     assertEquals(Modric.canEquipWand(Varita),true)
     assertEquals(Modric.canEquipSword(Espada),true)
-    assertEquals(Modric.canEquipBow(Arco),false)
-    assertEquals(Modric.canEquipAxe(Hacha),false)
+    assertEquals(Modric.canEquipBow(Arco), throw new InvalidputBowException)
+    assertEquals(Modric.canEquipAxe(Hacha), throw new InvalidputAxeException)
   }
 
   /**
@@ -134,8 +135,7 @@ class BlackMagicanTest extends FunSuite {
     val Baston: Staff = new Staff()
     val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
-    val Hacha: Axe = new Axe()
-    val Arco: Bow = new Bow()
+
 
     Modric.putWeapon(Baston)
     assertEquals(Modric.hasWeapon, Some(Baston))
@@ -145,17 +145,15 @@ class BlackMagicanTest extends FunSuite {
 
     Modric.putWeapon(Espada)
     assertEquals(Modric.hasWeapon, Some(Espada))
-    try {
-    Modric.putWeapon(Arco)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
+  }
 
-    try {
-      Modric.putWeapon(Hacha)
-      } catch {
-      case e: Exception => println(e.getMessage)
-    }
+  test("It should throw an exception if the BlackMagican cant equip an Axe"){
+    val Hacha: Axe = new Axe()
+    assertEquals(Modric.putWeapon(Hacha),"The character: Modric can't wear an Axe")
+  }
+  test("It should throw an exception if the BlackMagican cant equip an Bow"){
+    val Arco: Bow = new Bow()
+    assertEquals(Modric.putWeapon(Arco),"The character: Modric can't wear an Bow")
   }
 
 

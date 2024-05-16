@@ -33,15 +33,14 @@ class BlackMagican(name:String, healthPoints:Int,
    */
   def putWeapon(weapon: AWeapon): String = {
     try {
-      if (weapon.canBeEquippedBy(this)) {
-        this.arma = Some(weapon)
-        weapon.setOwner(this)
-        "The weapon was wear"
-      } else{ "Problem detected"}
+      weapon.canBeEquippedBy(this)
+      this.arma = Some(weapon)
+      weapon.setOwner(this)
+      "The weapon was wear"
     } catch {
-      case _:InvalidputAxeException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
-      case _:InvalidputBowException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
-      }
+      case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
+      case _:InvalidputBowException => s"The character: ${this.getName} can't wear an Bow"
+    }
   }
 
 
@@ -50,7 +49,7 @@ class BlackMagican(name:String, healthPoints:Int,
    * @param w represent the Axe
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipAxe(w: Axe): Boolean = false
+  override def canEquipAxe(w: Axe): Boolean = throw new InvalidputAxeException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Sword'
@@ -64,7 +63,7 @@ class BlackMagican(name:String, healthPoints:Int,
    * @param w represent the Bow
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipBow(w: Bow): Boolean = false
+  override def canEquipBow(w: Bow): Boolean = throw new InvalidputBowException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Staff'
