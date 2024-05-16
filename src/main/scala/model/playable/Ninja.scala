@@ -32,14 +32,13 @@ class Ninja(name:String, healthPoints: Int,
    */
   def putWeapon(weapon: AWeapon): String = {
     try {
-      if (weapon.canBeEquippedBy(this)) {
-        this.arma = Some(weapon)
-        weapon.setOwner(this)
-        "The weapon was wear"
-      } else{ "Problem detected"}
+      weapon.canBeEquippedBy(this)
+      this.arma = Some(weapon)
+      weapon.setOwner(this)
+      "The weapon was wear"
     } catch {
-      case _:InvalidputAxeException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
-      case _:InvalidputStaffException => s"The character: ${this.getName} (${this.getClass}) can't wear an ${weapon}"
+      case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
+      case _:InvalidputStaffException => s"The character: ${this.getName} can't wear a Staff"
     }
   }
 

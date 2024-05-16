@@ -148,9 +148,9 @@ class BlackMagicanTest extends FunSuite {
     val Hacha: Axe = new Axe()
     assertEquals(Modric.putWeapon(Hacha),"The character: Modric can't wear an Axe")
   }
-  test("It should throw an exception if the BlackMagican cant equip an Bow"){
+  test("It should throw an exception if the BlackMagican cant equip a Bow"){
     val Arco: Bow = new Bow()
-    assertEquals(Modric.putWeapon(Arco),"The character: Modric can't wear an Bow")
+    assertEquals(Modric.putWeapon(Arco),"The character: Modric can't wear a Bow")
   }
 
 

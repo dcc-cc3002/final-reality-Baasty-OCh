@@ -123,16 +123,10 @@ class PaladinTest extends FunSuite {
    * (he can: Axe and Sword. and can not: Bow, Staff and Wand)
    */
   test("canEquip"){
-    val Baston: Staff = new Staff()
-    val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
     val Hacha: Axe = new Axe()
-    val Arco: Bow = new Bow()
 
-    assertEquals(Cristiano.canEquipStaff(Baston),false)
-    assertEquals(Cristiano.canEquipWand(Varita),false)
     assertEquals(Cristiano.canEquipSword(Espada),true)
-    assertEquals(Cristiano.canEquipBow(Arco),false)
     assertEquals(Cristiano.canEquipAxe(Hacha),true)
   }
 
@@ -142,34 +136,32 @@ class PaladinTest extends FunSuite {
    * And throw exceptions in other cases
    */
   test("putWeapon") {
-    val Baston: Staff = new Staff()
-    val Varita: Wand = new Wand()
-    val Espada: Sword = new Sword()
     val Hacha: Axe = new Axe()
-    val Arco: Bow = new Bow()
+    val Espada: Sword = new Sword()
 
-    Cristiano.putWeapon(Hacha)
+    assertEquals(Cristiano.putWeapon(Hacha),"The weapon was wear")
     assertEquals(Cristiano.hasWeapon, Some(Hacha))
 
-    Cristiano.putWeapon(Espada)
+    assertEquals(Cristiano.putWeapon(Espada),"The weapon was wear")
     assertEquals(Cristiano.hasWeapon, Some(Espada))
-
-    try {
-      Cristiano.putWeapon(Arco)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
-    try {
-      Cristiano.putWeapon(Varita)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
-    try {
-      Cristiano.putWeapon(Baston)
-    } catch {
-      case e: Exception => println(e.getMessage)
-    }
   }
+
+  test("It should throw an exception if the Paladin cant equip a Staff"){
+    val Baston: Staff = new Staff()
+    assertEquals(Cristiano.putWeapon(Baston),"The character: Cristiano can't wear a Staff")
+  }
+
+
+  test("It should throw an exception if the Paladin cant equip a Wand"){
+    val Varita: Wand = new Wand()
+    assertEquals(Cristiano.putWeapon(Varita),"The character: Cristiano can't wear a Wand")
+  }
+
+  test("It should throw an exception if the Paladin cant equip a Bow"){
+    val Arco: Bow = new Bow()
+    assertEquals(Cristiano.putWeapon(Arco),"The character: Cristiano can't wear a Bow")
+  }
+
 
   /**
    * Test case for `attackEnemy` method.

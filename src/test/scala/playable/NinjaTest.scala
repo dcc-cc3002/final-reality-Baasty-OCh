@@ -119,20 +119,28 @@ class NinjaTest extends FunSuite {
    * And throw exceptions in other cases
    */
   test("putWeapon") {
-    val Baston: Staff = new Staff()
     val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
-    val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
-    Kroos.putWeapon(Varita)
+    assertEquals(Kroos.putWeapon(Varita),"The weapon was wear")
     assertEquals(Kroos.hasWeapon, Some(Varita))
 
-    Kroos.putWeapon(Arco)
+    assertEquals(Kroos.putWeapon(Arco),"The weapon was wear")
     assertEquals(Kroos.hasWeapon, Some(Arco))
 
-    Kroos.putWeapon(Espada)
+    assertEquals(Kroos.putWeapon(Espada),"The weapon was wear")
     assertEquals(Kroos.hasWeapon, Some(Espada))
+  }
+
+  test("It should throw an exception if the Ninja cant equip a Staff"){
+    val Baston: Staff = new Staff()
+    assertEquals(Kroos.putWeapon(Baston),"The character: Kroos can't wear a Staff")
+  }
+
+  test("It should throw an exception if the Ninja cant equip an Axe"){
+    val Hacha: Axe = new Axe()
+    assertEquals(Kroos.putWeapon(Hacha),"The character: Kroos can't wear an Axe")
   }
 
 

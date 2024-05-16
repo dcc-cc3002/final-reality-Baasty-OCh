@@ -39,7 +39,7 @@ class BlackMagican(name:String, healthPoints:Int,
       "The weapon was wear"
     } catch {
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
-      case _:InvalidputBowException => s"The character: ${this.getName} can't wear an Bow"
+      case _:InvalidputBowException => s"The character: ${this.getName} can't wear a Bow"
     }
   }
 
