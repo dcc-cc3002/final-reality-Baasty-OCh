@@ -130,6 +130,17 @@ class WarriorTest extends FunSuite {
     assertEquals(Casemiro.hasWeapon, Some(Espada))
   }
 
+  test("It should throw an exception if the Paladin cant equip a Staff"){
+    val Baston: Staff = new Staff()
+    assertEquals(Casemiro.putWeapon(Baston),"The character: Casemiro can't wear a Staff")
+  }
+
+
+  test("It should throw an exception if the Paladin cant equip a Wand"){
+    val Varita: Wand = new Wand()
+    assertEquals(Casemiro.putWeapon(Varita),"The character: Casemiro can't wear a Wand")
+  }
+
 
   /**
    * Test case for `attackEnemy` method.

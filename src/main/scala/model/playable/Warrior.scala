@@ -46,6 +46,8 @@ class Warrior(name:String, healthPoints:Int,
   }
 
 
+
+
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
    * @param w represent the Axe
