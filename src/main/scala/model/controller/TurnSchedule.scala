@@ -9,21 +9,21 @@ import scala.collection.mutable.{Map, Queue}
 
 /** Class representing a turn schedule that implements the `Schedule` trait.
  *
- * This class manages the turn-based gameplay schedule for playable characters.
- * It keeps track of the action bars and turn order of the characters.
+ * This class manages the turn-based gameplay schedule for players (characters and enemies).
+ * It keeps track of the action bars and turn order of the players (characters and enemies).
  */
 class TurnSchedule extends Schedule {
 
-  /** Map to store the action bars of playable characters.
+  /** Map to store the action bars of players (characters and enemies).
    * The key is a Playable character, and the value is a tuple of (maximum action bar value, current action bar value).
    */
   val actionBar: Map[GameUnit, (Int, Int)] = Map()
 
-  /** Queue to maintain the turn order of playable characters. */
+  /** Queue to maintain the turn order of players (characters and enemies). */
   val turns: Queue[GameUnit] = Queue()
 
-  /** Adds a playable character to the turn schedule.
-   * @param pj The playable character to add.
+  /** Adds a players (characters and enemies) to the turn schedule.
+   * @param pj The players (characters and enemies) to add.
    */
   def addPlayer(pj: GameUnit): Unit = {
     val maxActionBar = pj.getWeight
@@ -31,8 +31,8 @@ class TurnSchedule extends Schedule {
     actionBar.put(pj, (maxActionBar, cntBar))
   }
 
-  /** Deletes a playable character from the turn schedule.
-   * @param pj The playable character to delete.
+  /** Deletes a players (characters and enemies) from the turn schedule.
+   * @param pj The players (characters and enemies) to delete.
    */
   def deletePlayer(pj: GameUnit): Unit = {
     if (actionBar.contains(pj)) {
@@ -40,8 +40,8 @@ class TurnSchedule extends Schedule {
     }
   }
 
-  /** Resets the action bar of a playable character to its initial state.
-   * @param pj The playable character whose action bar to reset.
+  /** Resets the action bar of a players (characters and enemies) to its initial state.
+   * @param pj The players (characters and enemies) whose action bar to reset.
    *           buscar solucion mas sencilla
    */
   def resetActionBar(pj: GameUnit): Unit = {
@@ -51,9 +51,9 @@ class TurnSchedule extends Schedule {
     }
   }
 
-  /** Fills the action bar of all playable characters in the schedule.
+  /** Fills the action bar of all players (characters and enemies) in the schedule.
    * Increases the current action bar value by the specified amount and handles turn queueing.
-   * @param n The amount to increase the action bar by for each playable character.
+   * @param n The amount to increase the action bar by for each players (characters and enemies).
    */
   def fillActionBar(n: Int): Unit = {
     actionBar.keys.foreach { key =>
@@ -67,10 +67,10 @@ class TurnSchedule extends Schedule {
     }
   }
 
-  /** Determines if a playable character from the specified queue can play.
-   * Removes and returns the first playable character from the queue.
-   * @param q The queue of playable characters.
-   * @return The first playable character from the queue.
+  /** Determines if a players (characters and enemies) from the specified queue can play.
+   * Removes and returns the first players (characters and enemies) from the queue.
+   * @param q The queue of players (characters and enemies).
+   * @return The first players (characters and enemies) from the queue.
    */
   def CanPlay(q: mutable.Queue[GameUnit]): GameUnit = {
     val player1: GameUnit = q.head
