@@ -1,7 +1,6 @@
-package model.nonplayable.weapons
+package model.nonplayable.weapons.magic
+
 import model.nonplayable.weapons.AWeapon
-import model.playable.common.{Ninja, Paladin, Warrior}
-import model.playable.magic.{BlackMagican, WhiteMagican}
 import model.playable.Playable
 
 /**
@@ -15,7 +14,7 @@ import model.playable.Playable
  */
 class Staff(name: String, weight: Int,
             attackPoints: Int, magicAttackPoints: Int)
-            extends AWeapon(name, weight, attackPoints,magicAttackPoints) {
+            extends AMagicWeapon(name, weight, attackPoints,magicAttackPoints) {
 
   /**
    * Constructs a Staff with specified parameters and a specified owner.
@@ -28,12 +27,6 @@ class Staff(name: String, weight: Int,
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquipStaff(this)
 
 
-  /**
-   * Implementation of Method to get the magic attack points of the staff.
-   * Since this is a magic staff, it returns magic attack points(MAP).
-   * @return The magic attack points of the staff
-   */
-  override def getMAP: Int = magicAttackPoints
 
   /**
    * Checks if this Staff is equal to another staff.

@@ -13,11 +13,9 @@ import model.playable.Playable
  * @param magicAttackPoints The magic attack points of the weapon (if it's a magic weapon)
  */
 abstract class AWeapon(name: String, weight: Int,
-                       attackPoints: Int,
-                       magicAttackPoints: Int) extends NonPlayable {
+                       attackPoints: Int) extends NonPlayable {
   require(weight >=0)
   require(attackPoints >=0)
-  require(magicAttackPoints >=0)
 
   var owner : Option[Playable] = None
   /**
@@ -58,12 +56,6 @@ abstract class AWeapon(name: String, weight: Int,
    * @return true if the weapon can be equipped by him , false in other case.
    */
   def canBeEquippedBy(player:Playable): Boolean
-
-  /**
-   * Implementation for method to get the magic attack points of a magic weapon entity.
-   * @return The magic attack points of the weapon (if it's a magic weapon)
-   */
-  def getMAP: Int = 0
 
 
 

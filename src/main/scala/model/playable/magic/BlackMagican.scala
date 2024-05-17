@@ -2,6 +2,8 @@ package model.playable.magic
 
 import exceptions.{InvalidputAxeException, InvalidputBowException}
 import model.nonplayable.weapons._
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
+import model.nonplayable.weapons.magic.{Staff, Wand}
 
 /**
  * "A Black Mage will primarily be a magical attack character,

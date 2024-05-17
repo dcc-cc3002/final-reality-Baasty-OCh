@@ -1,7 +1,8 @@
 package nonplayable.weapons
 
-import model.nonplayable.weapons.{Bow, Staff, Wand}
 import model.nonplayable.NonPlayable
+import model.nonplayable.weapons.common.Bow
+import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.playable.Playable
 import munit.FunSuite
 

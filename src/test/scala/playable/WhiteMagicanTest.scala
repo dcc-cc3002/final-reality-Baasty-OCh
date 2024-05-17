@@ -2,8 +2,9 @@ package playable
 
 import model.nonplayable.weapons.AWeapon
 import model.nonplayable.NonPlayable
-import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
 import model.nonplayable.Enemy
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
+import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.WhiteMagican
 import model.playable.{APlayable, Playable}

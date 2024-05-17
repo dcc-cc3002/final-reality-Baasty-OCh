@@ -2,6 +2,8 @@ package model.playable.common
 
 import exceptions.{InvalidputStaffException, InvalidputWandException}
 import model.nonplayable.weapons._
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
+import model.nonplayable.weapons.magic.{Staff, Wand}
 
 /**
  * "The warrior is a character designed

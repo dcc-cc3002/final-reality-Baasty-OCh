@@ -1,7 +1,9 @@
 package model.playable
 
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
+import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.nonplayable.{Enemy, NonPlayable}
-import model.nonplayable.weapons.{AWeapon, Axe, Bow, Staff, Sword, Wand}
+import model.nonplayable.weapons.AWeapon
 
 trait Playable {
   /**

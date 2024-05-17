@@ -1,7 +1,7 @@
 package nonplayable.weapons
 
-import model.nonplayable.weapons.{Axe, Bow, Sword}
 import model.nonplayable.NonPlayable
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
 import model.playable.Playable
 import model.playable.common.Warrior
 import munit.FunSuite
@@ -25,7 +25,7 @@ class AxeTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Axe` class with the specified parameters:
     Hacha = new Axe() // - Name: Hacha // - Weight: 25 // - Attack: 50 // - Owner: Modric
-    Hacha2 = new Axe("Hacha2", 50,50,0)
+    Hacha2 = new Axe("Hacha2", 50,50)
     Espada = new Sword()
   }
 
@@ -97,12 +97,5 @@ class AxeTest extends FunSuite {
     assertEquals(Hacha.getOwner,Some(Casemiro))
   }
 
-  /**
-   * Test case for `getMAP` method.
-   * This test verifies if the returned magic attack points value for an axe (`Hacha`) matches the expected value (`0`).
-   */
-  test("getMAP") {
-    assertEquals(Hacha.getMAP, 0)
-  }
 }
 

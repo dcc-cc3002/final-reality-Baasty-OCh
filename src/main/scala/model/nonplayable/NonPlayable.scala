@@ -26,6 +26,5 @@ trait NonPlayable {
    */
   def getAttack: Int
 
-
 }
 

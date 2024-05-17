@@ -1,9 +1,8 @@
 package nonplayable.weapons
 
-import model.nonplayable.weapons.Sword
 import model.nonplayable.NonPlayable
+import model.nonplayable.weapons.common.{Bow, Sword}
 import model.playable.Playable
-import model.nonplayable.weapons.Bow
 import munit.FunSuite
 
 /**
@@ -25,7 +24,7 @@ class SwordTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     // Creates a new instance of the `Bow` class with the specified parameters:
     Espada = new Sword() // - Name: Espada // - Weight: 25 // - Attack: 50 // - Owner: Modric
-    Espada2 = new Sword("Espada2",40,40,0)
+    Espada2 = new Sword("Espada2",40,40)
     Arco = new Bow()
   }
 
@@ -88,12 +87,6 @@ class SwordTest extends FunSuite {
     assertEquals(owner, None)
   }
 
-  /**
-   * Test case for `getMAP` method.
-   * This test verifies if the returned magic attack points value for a sword (`Espada`) matches the expected value (`0`).
-   */
-  test("getMAP") {
-    assertEquals(Espada.getMAP, 0)
-  }
+
 }
 

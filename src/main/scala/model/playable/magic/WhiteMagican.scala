@@ -2,6 +2,8 @@ package model.playable.magic
 
 import exceptions.{InvalidputAxeException, InvalidputSwordException}
 import model.nonplayable.weapons._
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
+import model.nonplayable.weapons.magic.{Staff, Wand}
 
 /**
  * "A White Mage will predominantly have defensive qualities but with certain magical attributes."

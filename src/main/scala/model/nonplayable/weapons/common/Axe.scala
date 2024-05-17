@@ -1,8 +1,6 @@
-package model.nonplayable.weapons
+package model.nonplayable.weapons.common
 
 import model.nonplayable.weapons.AWeapon
-import model.playable.common.{Ninja, Paladin, Warrior}
-import model.playable.magic.{BlackMagican, WhiteMagican}
 import model.playable.Playable
 
 /**
@@ -15,15 +13,14 @@ import model.playable.Playable
  * @param magicAttackPoints The magic attack points of the axe (if it's a magic weapon)
  */
 class Axe(name: String, weight: Int,
-          attackPoints: Int, magicAttackPoints: Int)
-          extends AWeapon(name, weight, attackPoints, magicAttackPoints) {
+          attackPoints: Int) extends ACommonWeapon(name, weight, attackPoints) {
 
   /**
    * Constructs an Axe with default parameters and a specified owner.
    * @param owner The playable entity that will own this axe
    */
   def this() = {
-    this("Hacha", 50, 50, 0)
+    this("Hacha", 50, 50)
   }
 
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquipAxe(this)
@@ -41,8 +38,7 @@ class Axe(name: String, weight: Int,
         getName == otherCast.getName &&
         getWeight == otherCast.getWeight &&
         getAttack == otherCast.getAttack &&
-        getOwner == otherCast.getOwner &&
-        getMAP == otherCast.getMAP)
+        getOwner == otherCast.getOwner )
 
     } else false
   }

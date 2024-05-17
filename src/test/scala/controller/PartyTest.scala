@@ -1,6 +1,7 @@
 package controller
 
-import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
+import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.party.Party
 import model.playable.magic.WhiteMagican
 import model.playable.Playable

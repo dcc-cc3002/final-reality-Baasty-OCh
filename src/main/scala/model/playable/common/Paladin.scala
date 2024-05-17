@@ -2,6 +2,8 @@ package model.playable.common
 
 import exceptions.{InvalidputBowException, InvalidputStaffException, InvalidputWandException}
 import model.nonplayable.weapons._
+import model.nonplayable.weapons.common.{Axe, Bow, Sword}
+import model.nonplayable.weapons.magic.{Staff, Wand}
 /**
  * "A paladin is thought of as a very balanced character,
  * not excelling excessively in any attribute but also
