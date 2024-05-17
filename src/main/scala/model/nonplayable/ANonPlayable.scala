@@ -10,10 +10,10 @@ import model.playable.Playable
 protected abstract class ANonPlayable(val name: String, val weight: Int,
                                       val attackPoints: Int, var life: Int,
                                       val defence: Int) extends NonPlayable {
-  require(weight >=0)
-  require(attackPoints >=0)
-  require(life >=0)
-  require(defence >=0)
+  require(weight >=0 && weight<=150)
+  require(attackPoints >=0 && attackPoints<=100)
+  require(life >=0 && life <=250)
+  require(defence >=0 && defence<=200)
   /**
    * Implementation of Method to get the name of the non-playable entity
    * @return : The name of non-playable entity
