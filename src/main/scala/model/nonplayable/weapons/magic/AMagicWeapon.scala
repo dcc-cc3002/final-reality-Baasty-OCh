@@ -2,7 +2,7 @@ package model.nonplayable.weapons.magic
 
 import model.nonplayable.weapons.AWeapon
 
-private abstract class AMagicWeapon(name: String, weight: Int,
+protected abstract class AMagicWeapon(name: String, weight: Int,
                             attackPoints: Int, magicAttackPoints: Int) extends AWeapon(name, weight, attackPoints) {
 
   private var MAP : Int = magicAttackPoints
