@@ -2,7 +2,8 @@ package nonplayable.weapons
 
 import model.nonplayable.weapons.{Axe, Bow, Sword}
 import model.nonplayable.NonPlayable
-import model.playable.{Playable, Warrior}
+import model.playable.Playable
+import model.playable.common.Warrior
 import munit.FunSuite
 
 /**

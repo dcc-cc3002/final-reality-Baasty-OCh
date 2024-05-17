@@ -1,8 +1,7 @@
-package model.playable
+package model.playable.common
 
-import exceptions.{InvalidputBowException, InvalidputStaffException, InvalidputWandException}
-import model.nonplayable.weapons.{AWeapon, Axe, Bow, Staff, Sword, Wand}
-import model.playable.APlayable
+import exceptions.{InvalidputStaffException, InvalidputWandException}
+import model.nonplayable.weapons._
 
 /**
  * "The warrior is a character designed
@@ -15,9 +14,8 @@ import model.playable.APlayable
  * @param defensePoints The defense points of the character.
  * @param weight The weight of the character.
  */
-class Warrior(name:String, healthPoints:Int,
-               defensePoints:Int, weight:Int,
-               ) extends APlayable(name,healthPoints, defensePoints,weight,0){
+class Warrior(name:String, healthPoints: Int,
+              defensePoints: Int, weight: Int) extends ACommonPlayable(name, healthPoints, defensePoints, weight){
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."
@@ -83,12 +81,6 @@ class Warrior(name:String, healthPoints:Int,
    */
   override def canEquipWand(w: Wand): Boolean = throw new InvalidputWandException
 
-
-  /**
-   * Re-Implementation of a method to set the mana points, to non-magic character just do 'nothing'
-   * @param newMana represent the new mana points of the playable entity
-   */
-  override def setMana(newMana:Int) : Unit = {}
 
   /**
    * Checks if this Warrior is equal to another Warrior .

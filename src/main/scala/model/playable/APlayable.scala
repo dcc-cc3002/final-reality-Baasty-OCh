@@ -14,11 +14,11 @@ import model.playable.Playable
  */
 protected abstract class APlayable(val name: String, var healthPoints: Int,
                                    val defensePoints: Int, val weight: Int,
-                                   var mana: Int) extends Playable {
+                                   ) extends Playable {
   require(healthPoints >=0)
   require(defensePoints >=0)
   require(weight >=0)
-  require(mana >=0)
+
 
   /**
    * variable to represent a weapon in an APlayable Entity
@@ -57,19 +57,6 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    */
   def getWeight: Int = weight
 
-  /**
-   * Implementation of Method to get the mana points of the playable entity
-   * @return The mana of playable entity
-   */
-  def getMana: Int = mana
-
-  /**
-   * Implementation of Method to set the mana points of the playable entity
-   * @param newMana represent the new mana points of the playable entity
-   */
-  def setMana(newMana:Int): Unit = {
-    this.mana = newMana
-  }
 
   /**
    * Implementation of Method to know if a Playable Entity has or not a weapon

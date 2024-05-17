@@ -1,6 +1,8 @@
 package model.nonplayable.weapons
 import model.nonplayable.weapons.AWeapon
-import model.playable.{Warrior, WhiteMagican, BlackMagican, Ninja, Paladin, Playable}
+import model.playable.common.{Ninja, Paladin, Warrior}
+import model.playable.magic.{BlackMagican, WhiteMagican}
+import model.playable.Playable
 
 /**
  * Class representing a Wand, which is a type of non-playable weapon.

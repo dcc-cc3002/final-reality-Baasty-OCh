@@ -1,7 +1,8 @@
 package nonplayable
 
 import model.nonplayable.{Enemy, NonPlayable}
-import model.playable.{Paladin, Playable}
+import model.playable.Playable
+import model.playable.common.Paladin
 import munit.FunSuite
 class EnemyTest extends FunSuite {
   var Neymar: Enemy = _ // We declare a variable Neymar of type Enemy

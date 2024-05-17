@@ -4,16 +4,18 @@ import model.nonplayable.weapons.AWeapon
 import model.nonplayable.NonPlayable
 import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
 import model.nonplayable.Enemy
-import model.playable.{APlayable, Ninja, Paladin, Playable, Warrior, WhiteMagican}
+import model.playable.common.{Ninja, Paladin, Warrior}
+import model.playable.magic.WhiteMagican
+import model.playable.{APlayable, Playable}
 import munit.{FunSuite, Only}
 /**
  * Test suite for the `WhiteMagican` class.
  * This class contains tests for various functionalities of the `WhiteMagican` class.
  */
 class WhiteMagicanTest extends FunSuite {
-  var Benzema: Playable = _ // Declaration of a variable `Benzema` of type `Playable`.
+  var Benzema: WhiteMagican = _ // Declaration of a variable `Benzema` of type `Playable`.
   var Ter_Stegen: Enemy = _ // Declaration of a variable `Ter_Stegen` of type `Enemy`.
-  var Ozil: Playable = _
+  var Ozil: WhiteMagican = _
 
   /**
    * Set up the test environment before each test case.

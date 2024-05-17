@@ -1,6 +1,8 @@
 package model.controller
 
-import model.playable.{APlayable, WhiteMagican, Paladin, Playable}
+import model.playable.common.Paladin
+import model.playable.magic.WhiteMagican
+import model.playable.{APlayable, Playable}
 
 import scala.collection.mutable
 import scala.collection.mutable.{Map, Queue}

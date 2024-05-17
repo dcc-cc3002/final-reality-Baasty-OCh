@@ -31,16 +31,6 @@ trait Playable {
    */
   def getWeight: Int
 
-  /**
-   * Abstract Method to get the mana points of the playable entity
-   */
-  def getMana: Int
-
-  /**
-   * Abstract Method to set the mana points of the playable entity
-   * @param x represent the amount of new mana
-   */
-  def setMana(x:Int): Unit
 
   /**
    * Abstract Method to know if Playable have a weapon or not

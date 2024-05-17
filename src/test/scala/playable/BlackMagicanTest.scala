@@ -5,7 +5,9 @@ import model.nonplayable.weapons.{AWeapon, Axe}
 import model.nonplayable.NonPlayable
 import model.nonplayable.weapons.{Axe, Bow, Staff, Sword, Wand}
 import model.nonplayable.Enemy
-import model.playable.{APlayable, BlackMagican, Ninja, Paladin, Playable, Warrior, WhiteMagican}
+import model.playable.common.{Ninja, Paladin, Warrior}
+import model.playable.magic.{BlackMagican, WhiteMagican}
+import model.playable.{APlayable, Playable}
 import munit.{FunSuite, Ignore, Slow}
 
 /**

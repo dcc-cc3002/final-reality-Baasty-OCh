@@ -2,7 +2,9 @@ package controller
 
 import model.controller.TurnSchedule
 import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
-import model.playable.{Warrior, WhiteMagican, Paladin, Playable}
+import model.playable.common.{Paladin, Warrior}
+import model.playable.magic.WhiteMagican
+import model.playable.Playable
 import munit.FunSuite
 
 import scala.collection.mutable

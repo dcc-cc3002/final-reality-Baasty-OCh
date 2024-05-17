@@ -5,7 +5,8 @@ import model.nonplayable.NonPlayable
 import model.nonplayable.weapons.{Bow,Sword,Axe,Staff,Wand}
 import model.nonplayable.Enemy
 import model.playable.Playable
-import model.playable.{APlayable, Warrior, Ninja, Paladin}
+import model.playable.common.{Ninja, Paladin, Warrior}
+import model.playable.APlayable
 import munit.FunSuite
 /**
  * Test suite for the `Paladin` class.
@@ -87,26 +88,7 @@ class PaladinTest extends FunSuite {
     assertEquals(Bale.getWeight,56)
   }
 
-  /**
-   * Test case for `getMana` method.
-   * This test verifies if the returned mana value for the character `Cristiano` matches the expected value (`0`).
-   */
-  test("getMana") {
-    assertEquals(Cristiano.getMana, 0)
-    assertEquals(Bale.getMana,0)
-  }
 
-  /**
-   * Test case for 'setMana' method.
-   * This test verifies if the set mana method do 'nothing' in the amount of mana points in this character
-   */
-  test("setMana"){
-    Cristiano.setMana(55)
-    Bale.setMana(450)
-
-    assertEquals(Cristiano.getMana,0)
-    assertEquals(Bale.getMana,0)
-  }
   /**
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Cristiano` does not have a weapon (returns `None`).
