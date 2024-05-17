@@ -4,8 +4,7 @@ import model.nonplayable.weapons.AWeapon
 import model.playable.Playable
 
 /**
- * Class representing a Staff, which is a type of non-playable weapon.
- *
+ * Class representing a Staff, which is a type of weapon.
  * @param name             The name of the staff
  * @param weight           The weight of the staff
  * @param attackPoints     The attack points of the staff
@@ -24,6 +23,11 @@ class Staff(name: String, weight: Int,
     this("Baston", 70, 70, 40)
   }
 
+  /**
+   * Implementation of method, to know if a weapon can be equipped by some type of playable entity
+   * @param player The potencial owner of the weapon
+   *  @return true if the weapon can be equipped by him , false in other case.
+   */
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquipStaff(this)
 
 
