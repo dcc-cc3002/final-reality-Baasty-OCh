@@ -4,7 +4,7 @@ import model.nonplayable.weapons.AWeapon
 import model.playable.Playable
 
 /**
- * Class representing a Bow, which is a type of non-playable weapon.
+ * Class representing a Bow, which is a type of common weapon.
  * @param name             The name of the bow
  * @param weight           The weight of the bow
  * @param attackPoints     The attack points of the bow
@@ -22,6 +22,11 @@ class Bow(name: String, weight: Int,
     this("Arco", 30, 40)
   }
 
+  /**
+   * Implementation of method, to know if a weapon can be equipped by some type of playable entity
+   * @param player The potencial owner of the weapon
+   *  @return true if the weapon can be equipped by him , false in other case.
+   */
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquipBow(this)
 
 

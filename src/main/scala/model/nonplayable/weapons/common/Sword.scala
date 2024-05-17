@@ -23,6 +23,11 @@ class Sword(name: String, weight: Int,
     this("Espada", 70, 70)
   }
 
+  /**
+   * Implementation of method, to know if a weapon can be equipped by some type of playable entity
+   * @param player The potencial owner of the weapon
+   *  @return true if the weapon can be equipped by him , false in other case.
+   */
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquipSword(this)
 
 

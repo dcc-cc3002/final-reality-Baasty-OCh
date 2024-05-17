@@ -4,8 +4,7 @@ import model.nonplayable.weapons.AWeapon
 import model.playable.Playable
 
 /**
- * Class representing an Axe, which is a type of non-playable weapon.
- *
+ * Class representing an Axe, which is a type of common weapon.
  * @param name             The name of the axe
  * @param weight           The weight of the axe
  * @param attackPoints     The attack points of the axe
@@ -23,6 +22,11 @@ class Axe(name: String, weight: Int,
     this("Hacha", 50, 50)
   }
 
+  /**
+   * Implementation of method, to know if a weapon can be equipped by some type of playable entity
+   * @param player The potencial owner of the weapon
+   *  @return true if the weapon can be equipped by him , false in other case.
+   */
   override def canBeEquippedBy(player: Playable): Boolean = player.canEquipAxe(this)
 
 
