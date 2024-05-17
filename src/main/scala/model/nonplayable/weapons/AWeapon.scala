@@ -12,7 +12,7 @@ import model.playable.Playable
  * @param owner            The playable entity that owns this weapon
  * @param magicAttackPoints The magic attack points of the weapon (if it's a magic weapon)
  */
-abstract class AWeapon(name: String, weight: Int,
+private abstract class AWeapon(name: String, weight: Int,
                        attackPoints: Int) extends NonPlayable {
 
   require(weight >=0 && weight<=100)
