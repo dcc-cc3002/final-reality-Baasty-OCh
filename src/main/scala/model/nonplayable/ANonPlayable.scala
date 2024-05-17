@@ -14,6 +14,7 @@ protected abstract class ANonPlayable(val name: String, val weight: Int,
   require(attackPoints >=0 && attackPoints<=100)
   require(life >=0 && life <=250)
   require(defence >=0 && defence<=200)
+
   /**
    * Implementation of Method to get the name of the non-playable entity
    * @return : The name of non-playable entity
@@ -42,7 +43,7 @@ protected abstract class ANonPlayable(val name: String, val weight: Int,
    * Implementation of Method to set the life of the non-playable
    * @param newLife represent the new life points of the non-playable entity
    */
-  def setLife(newLife:Int) : Unit = {
+  private def setLife(newLife:Int) : Unit = {
     this.life = newLife
   }
 

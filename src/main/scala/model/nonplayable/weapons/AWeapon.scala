@@ -14,8 +14,9 @@ import model.playable.Playable
  */
 abstract class AWeapon(name: String, weight: Int,
                        attackPoints: Int) extends NonPlayable {
-  require(weight >=0)
-  require(attackPoints >=0)
+
+  require(weight >=0 && weight<=100)
+  require(attackPoints >=0 && attackPoints<=100)
 
   var owner : Option[Playable] = None
   /**
@@ -56,8 +57,6 @@ abstract class AWeapon(name: String, weight: Int,
    * @return true if the weapon can be equipped by him , false in other case.
    */
   def canBeEquippedBy(player:Playable): Boolean
-
-
 
 }
 
