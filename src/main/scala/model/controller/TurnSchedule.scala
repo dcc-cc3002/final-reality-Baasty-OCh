@@ -17,15 +17,15 @@ class TurnSchedule extends Schedule {
   /** Map to store the action bars of playable characters.
    * The key is a Playable character, and the value is a tuple of (maximum action bar value, current action bar value).
    */
-  val actionBar: Map[Playable, (Int, Int)] = Map()
+  val actionBar: Map[GameUnit, (Int, Int)] = Map()
 
   /** Queue to maintain the turn order of playable characters. */
-  val turns: Queue[Playable] = Queue()
+  val turns: Queue[GameUnit] = Queue()
 
   /** Adds a playable character to the turn schedule.
    * @param pj The playable character to add.
    */
-  def addPlayer(pj: Playable): Unit = {
+  def addPlayer(pj: GameUnit): Unit = {
     val maxActionBar = pj.getWeight
     var cntBar = 0
     actionBar.put(pj, (maxActionBar, cntBar))
@@ -34,7 +34,7 @@ class TurnSchedule extends Schedule {
   /** Deletes a playable character from the turn schedule.
    * @param pj The playable character to delete.
    */
-  def deletePlayer(pj: Playable): Unit = {
+  def deletePlayer(pj: GameUnit): Unit = {
     if (actionBar.contains(pj)) {
       actionBar.remove(pj)
     }
@@ -42,8 +42,9 @@ class TurnSchedule extends Schedule {
 
   /** Resets the action bar of a playable character to its initial state.
    * @param pj The playable character whose action bar to reset.
+   *           buscar solucion mas sencilla
    */
-  def resetActionBar(pj: Playable): Unit = {
+  def resetActionBar(pj: GameUnit): Unit = {
     actionBar.get(pj).foreach {
       case (maxActionBar, _) =>
         actionBar.update(pj, (maxActionBar, 0))
@@ -71,8 +72,8 @@ class TurnSchedule extends Schedule {
    * @param q The queue of playable characters.
    * @return The first playable character from the queue.
    */
-  def CanPlay(q: mutable.Queue[Playable]): Playable = {
-    val player1: Playable = q.head
+  def CanPlay(q: mutable.Queue[GameUnit]): GameUnit = {
+    val player1: GameUnit = q.head
     q.dequeue()
     player1
   }

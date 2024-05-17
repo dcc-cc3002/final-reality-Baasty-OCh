@@ -1,11 +1,12 @@
 package model.playable
 
+import model.controller.GameUnit
 import model.nonplayable.weapons.common.{Axe, Bow, Sword}
 import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.nonplayable.{Enemy, NonPlayable}
 import model.nonplayable.weapons.AWeapon
 
-trait Playable {
+trait Playable extends GameUnit{
   /**
    * Abstract method to get the name of the playable entity
   */

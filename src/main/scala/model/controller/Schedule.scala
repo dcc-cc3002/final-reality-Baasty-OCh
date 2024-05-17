@@ -12,17 +12,17 @@ trait Schedule {
   /** Adds a player to the game schedule.
    * @param pj The player (Playable) to be added.
    */
-  def addPlayer(pj: Playable): Unit
+  def addPlayer(pj: GameUnit): Unit
 
   /** Deletes a player from the game schedule.
    * @param pj The player (Playable) to be deleted.
    */
-  def deletePlayer(pj: Playable): Unit
+  def deletePlayer(pj: GameUnit): Unit
 
   /** Resets the action bar of a player.
    * @param pj The player (Playable) whose action bar is to be reset.
    */
-  def resetActionBar(pj: Playable): Unit
+  def resetActionBar(pj: GameUnit): Unit
 
   /** Fills the action bar of all players in the game schedule.
    * @param n The value to add to each player's action bar.
@@ -33,7 +33,7 @@ trait Schedule {
    * @param q The queue of players (mutable.Queue[Playable]) to evaluate.
    * @return The first player in the queue (mutable.Queue[Playable]) who can play based on accumulated action, or `null` if none can play.
    */
-  def CanPlay(q: mutable.Queue[Playable]): Playable
+  def CanPlay(q: mutable.Queue[GameUnit]): GameUnit
 
 }
 

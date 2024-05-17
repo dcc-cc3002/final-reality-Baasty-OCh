@@ -88,6 +88,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.
+   *             delegar el if a set hp
    */
 
   def wasAttacked(pain: Int): Unit = {

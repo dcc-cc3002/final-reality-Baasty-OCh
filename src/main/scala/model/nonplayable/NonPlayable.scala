@@ -1,9 +1,10 @@
 package model.nonplayable
 
+import model.controller.GameUnit
 import model.playable.Playable
 
 // Trait to represent non-playable entities
-trait NonPlayable {
+trait NonPlayable extends GameUnit{
   /**
    * Abstract method to get the name of the non-playable entity
    *
