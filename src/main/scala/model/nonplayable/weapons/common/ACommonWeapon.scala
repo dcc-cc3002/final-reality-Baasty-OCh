@@ -8,7 +8,7 @@ import model.nonplayable.weapons.AWeapon
  * @param weight           The weight of the weapon
  * @param attackPoints     The attack points of the weapon
  */
-abstract class ACommonWeapon(name: String, weight: Int,
+private abstract class ACommonWeapon(name: String, weight: Int,
                              attackPoints: Int) extends AWeapon(name, weight, attackPoints) {
 
 }
