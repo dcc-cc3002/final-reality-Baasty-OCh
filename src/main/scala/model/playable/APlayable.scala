@@ -86,19 +86,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   def foreignWeapon():Boolean =
     throw new InvalidputWeaponException
 
-  /**
-   * Implementation of Method to attack an Enemy entity
-   * @param target represent an object of Enemy class and is our objective
-   * @return damage represent the amount of damage inflicted on the target
-   */
-  def attackEnemy(target: Enemy): Int = {
-    val damage = arma.map(_.getAttack - target.getDF).getOrElse(0)
-    if (damage >= 0) {
-      target.wasInjure(damage)
-      damage
-    }
-    else damage
-  }
+
 
   /**
    * Method to simulate the playable entity being attacked.

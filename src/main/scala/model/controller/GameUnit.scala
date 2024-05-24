@@ -6,4 +6,7 @@ trait GameUnit {
    * @return weight of players (characters or enemies)
    */
   def getWeight: Int
+
+  def attack(entity: GameUnit): Int
+
 }

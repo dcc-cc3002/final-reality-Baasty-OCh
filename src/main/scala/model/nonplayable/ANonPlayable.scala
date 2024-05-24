@@ -53,18 +53,6 @@ protected abstract class ANonPlayable(val name: String, val weight: Int,
    */
   def getDF: Int = defence
 
-  /**
-   * Implementation of Method to attack an Enemy entity
-   * @param target represent an object of Playable class and is our objective
-   * @return damage represent the amount of damage inflicted on the target
-   */
-  def attackPlayer(target:Playable): Int = {
-    val damage : Int = this.attackPoints - target.getDp
-    if (damage >= 0) {
-      target.wasAttacked(damage)
-      damage
-    } else 0
-  }
 
   /**
    * Method to simulate the playable entity being attacked.
