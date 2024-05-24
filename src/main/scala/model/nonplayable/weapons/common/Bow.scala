@@ -27,7 +27,12 @@ class Bow(name: String, weight: Int,
    * @param player The potencial owner of the weapon
    *  @return true if the weapon can be equipped by him , false in other case.
    */
-  override def canBeEquippedBy(player: Playable): Boolean = player.canEquipBow(this)
+  override def canBeEquippedBy(player: Playable): Boolean =
+    if(this.owner != None){
+      player.foreignWeapon()
+    } else{
+      player.canEquipBow(this)
+    }
 
 
   /**
