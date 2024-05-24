@@ -112,8 +112,6 @@ class WhiteMagicanTest extends FunSuite {
   test("putWeapon") {
     val Baston: Staff = new Staff()
     val Varita: Wand = new Wand()
-    val Espada: Sword = new Sword()
-    val Hacha: Axe = new Axe()
     val Arco: Bow = new Bow()
 
     assertEquals(Benzema.putWeapon(Varita),"The weapon was wear")
@@ -124,7 +122,19 @@ class WhiteMagicanTest extends FunSuite {
 
     assertEquals(Benzema.putWeapon(Baston),"The weapon was wear")
     assertEquals(Benzema.hasWeapon, Some(Baston))
+  }
 
+  /**
+   * Test case for 'dropWeapon' method.
+   * This test verifies if the 'dropWeapon' method successfully remove a weapon on the character 'Benzema'
+   */
+  test("dropWeapon"){
+    val Arco: Bow = new Bow()
+    Benzema.putWeapon(Arco)
+    assertEquals(Benzema.hasWeapon, Some(Arco))
+
+    Benzema.dropWeapon()
+    assertEquals(Benzema.hasWeapon,None)
   }
 
   test("It should throw an exception if the Paladin cant equip a Sword"){

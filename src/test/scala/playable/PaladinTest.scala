@@ -129,21 +129,24 @@ class PaladinTest extends FunSuite {
     assertEquals(Cristiano.hasWeapon, Some(Espada))
   }
 
+  /**
+   * Test case for 'dropWeapon' method.
+   * This test verifies if the 'dropWeapon' method successfully remove a weapon on the character 'Cristiano'
+   */
   test("dropWeapon"){
     val Hacha: Axe = new Axe()
     Cristiano.putWeapon(Hacha)
     assertEquals(Cristiano.hasWeapon, Some(Hacha))
 
-    Cristiano.dropWeapon
-
-
+    Cristiano.dropWeapon()
+    assertEquals(Cristiano.hasWeapon,None)
   }
+
 
   test("It should throw an exception if the Paladin cant equip a Staff"){
     val Baston: Staff = new Staff()
     assertEquals(Cristiano.putWeapon(Baston),"The character: Cristiano can't wear a Staff")
   }
-
 
   test("It should throw an exception if the Paladin cant equip a Wand"){
     val Varita: Wand = new Wand()

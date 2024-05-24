@@ -72,8 +72,6 @@ class NinjaTest extends FunSuite {
     assertEquals(Kroos.getWeight, 30)
   }
 
-
-
   /**
    * Test case for `haveWeapon` method.
    * This test verifies if the playable entity `Kroos` does not have a weapon (returns `None`).
@@ -117,6 +115,19 @@ class NinjaTest extends FunSuite {
 
     assertEquals(Kroos.putWeapon(Espada),"The weapon was wear")
     assertEquals(Kroos.hasWeapon, Some(Espada))
+  }
+
+  /**
+   * Test case for 'dropWeapon' method.
+   * This test verifies if the 'dropWeapon' method successfully remove a weapon on the character 'Kroos'
+   */
+  test("dropWeapon"){
+    val Varita: Wand = new Wand()
+    Kroos.putWeapon(Varita)
+    assertEquals(Kroos.hasWeapon, Some(Varita))
+
+    Kroos.dropWeapon()
+    assertEquals(Kroos.hasWeapon,None)
   }
 
   test("It should throw an exception if the Ninja cant equip a Staff"){

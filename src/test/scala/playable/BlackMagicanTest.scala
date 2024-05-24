@@ -147,6 +147,19 @@ class BlackMagicanTest extends FunSuite {
     assertEquals(Modric.hasWeapon, Some(Espada))
   }
 
+  /**
+   * Test case for 'dropWeapon' method.
+   * This test verifies if the 'dropWeapon' method successfully remove a weapon on the character 'Modric'
+   */
+  test("dropWeapon"){
+    val Baston: Staff = new Staff()
+    Modric.putWeapon(Baston)
+    assertEquals(Modric.hasWeapon, Some(Baston))
+
+    Modric.dropWeapon()
+    assertEquals(Modric.hasWeapon,None)
+  }
+
   test("It should throw an exception if the BlackMagican cant equip an Axe"){
     val Hacha: Axe = new Axe()
     assertEquals(Modric.putWeapon(Hacha),"The character: Modric can't wear an Axe")
