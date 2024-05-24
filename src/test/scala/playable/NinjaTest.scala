@@ -115,6 +115,7 @@ class NinjaTest extends FunSuite {
 
     assertEquals(Kroos.putWeapon(Espada),"The weapon was wear")
     assertEquals(Kroos.hasWeapon, Some(Espada))
+
   }
 
   /**
@@ -135,6 +136,12 @@ class NinjaTest extends FunSuite {
     assertEquals(Kroos.putWeapon(Baston),"The character: Kroos can't wear a Staff")
   }
 
+  test("It should throw an exception if the Ninja cant equip a foreign weapon"){
+    val Varita: Wand = new Wand()
+    Alonso.putWeapon(Varita)
+
+    assertEquals(Kroos.putWeapon(Varita),"The weapon: Varita already has owner")
+  }
   test("It should throw an exception if the Ninja cant equip an Axe"){
     val Hacha: Axe = new Axe()
     assertEquals(Kroos.putWeapon(Hacha),"The character: Kroos can't wear an Axe")

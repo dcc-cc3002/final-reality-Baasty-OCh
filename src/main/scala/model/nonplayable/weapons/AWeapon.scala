@@ -1,5 +1,6 @@
 package model.nonplayable.weapons
 
+import exceptions.InvalidputAxeException
 import model.nonplayable.NonPlayable
 import model.playable.Playable
 
@@ -57,6 +58,8 @@ abstract class AWeapon(name: String, weight: Int,
    * @return true if the weapon can be equipped by him , false in other case.
    */
   def canBeEquippedBy(player:Playable): Boolean
+
+
 
 }
 

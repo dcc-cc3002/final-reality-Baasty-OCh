@@ -1,5 +1,6 @@
 package model.playable
 
+import exceptions.{InvalidputAxeException, InvalidputWeaponException}
 import model.nonplayable.weapons.common.{Axe, Bow, Sword}
 import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.nonplayable.weapons.AWeapon
@@ -81,6 +82,9 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
     this.arma = None
     } else {}
   }
+
+  def foreignWeapon():Boolean =
+    throw new InvalidputWeaponException
 
   /**
    * Implementation of Method to attack an Enemy entity

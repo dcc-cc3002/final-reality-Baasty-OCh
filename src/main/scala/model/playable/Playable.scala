@@ -101,4 +101,7 @@ trait Playable extends GameUnit{
    */
   def canEquipWand(w:Wand): Boolean
 
+  def foreignWeapon():Boolean
+
+
 }

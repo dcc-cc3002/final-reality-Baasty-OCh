@@ -29,7 +29,7 @@ class Axe(name: String, weight: Int,
    */
   override def canBeEquippedBy(player: Playable): Boolean =
     if(this.owner != None){
-      false
+      player.foreignWeapon()
     } else{
       player.canEquipAxe(this)
     }
