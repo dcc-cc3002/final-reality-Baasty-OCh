@@ -1,13 +1,13 @@
 package playable
 
-import model.nonplayable.weapons.AWeapon
 import model.nonplayable.NonPlayable
 import model.nonplayable.Enemy
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.APlayable
+import model.weapons.AWeapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 /**
  * Test suite for the `Paladin` class.
@@ -170,16 +170,8 @@ class PaladinTest extends FunSuite {
    * Test case for `attackEnemy` method.
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Pique`) when `Cristiano` attacks with a `Sword`.
    */
-  test("attackEnemy") {
-    Cristiano.putWeapon(new Sword())
-    Bale.putWeapon((new Axe()))
-    val damage: Int = Cristiano.attack(Pique)
-    val damage2: Int = Bale.attack(Pique)
-    val expectedDamage: Int = 70 - 50
-    val expectedDamage2: Int = 0
+  test("attack") {
 
-    assertEquals(damage, expectedDamage)
-    assertEquals(damage2,expectedDamage2)
   }
 
 

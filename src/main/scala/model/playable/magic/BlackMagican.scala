@@ -1,13 +1,14 @@
 package model.playable.magic
 
 import exceptions.{InvalidputAxeException, InvalidputBowException, InvalidputWeaponException}
-import model.nonplayable.weapons._
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
+import model.weapons.Weapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 
 /**
  * "A Black Mage will primarily be a magical attack character,
  * though without excessively neglecting defense."
+ *
  * @param name The name of the character.
  * @param healthPoints The health points of the character.
  * @param defensePoints The defense points of the character.
@@ -33,7 +34,7 @@ class BlackMagican(name:String, healthPoints:Int,
    * @return positive message if the BlackMAgican Can equip the weapon,
    *         negative one in other cases, with his particular exception.
    */
-  def putWeapon(weapon: AWeapon): String = {
+  def putWeapon(weapon: Weapon): String = {
     try {
       weapon.canBeEquippedBy(this)
       this.arma = Some(weapon)

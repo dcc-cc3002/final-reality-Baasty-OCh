@@ -1,10 +1,11 @@
-package model.nonplayable.weapons.common
+package model.weapons.common
 
-import model.nonplayable.weapons.AWeapon
 import model.playable.Playable
+import model.weapons.AWeapon
 
 /**
  * Class representing an Axe, which is a type of common weapon.
+ *
  * @param name             The name of the axe
  * @param weight           The weight of the axe
  * @param attackPoints     The attack points of the axe

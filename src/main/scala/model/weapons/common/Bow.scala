@@ -1,10 +1,11 @@
-package model.nonplayable.weapons.common
+package model.weapons.common
 
-import model.nonplayable.weapons.AWeapon
 import model.playable.Playable
+import model.weapons.AWeapon
 
 /**
  * Class representing a Bow, which is a type of common weapon.
+ *
  * @param name             The name of the bow
  * @param weight           The weight of the bow
  * @param attackPoints     The attack points of the bow

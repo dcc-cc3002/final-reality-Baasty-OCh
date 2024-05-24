@@ -1,12 +1,14 @@
 package model.playable.common
 
 import exceptions.{InvalidputAxeException, InvalidputStaffException, InvalidputWeaponException}
-import model.nonplayable.weapons._
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
+import model.weapons.Weapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
+
 /**
  *"A ninja is a key character in any game; they may not excel
  * in defensive arts but can be decisive due to their high attack speed."
+ *
  * @param name The name of the character.
  * @param healthPoints The health points of the character.
  * @param defensePoints The defense points of the character.
@@ -31,7 +33,7 @@ class Ninja(name:String, healthPoints: Int,
    * @return positive message if the Ninja Can equip the weapon,
    *         negative one in other cases, with his particular exception.
    */
-  def putWeapon(weapon: AWeapon): String = {
+  def putWeapon(weapon: Weapon): String = {
     try {
       weapon.canBeEquippedBy(this)
       this.arma = Some(weapon)

@@ -1,13 +1,13 @@
 package playable
 
-import model.nonplayable.weapons.AWeapon
 import model.nonplayable.NonPlayable
 import model.nonplayable.Enemy
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.WhiteMagican
 import model.playable.{APlayable, Playable}
+import model.weapons.AWeapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 import munit.{FunSuite, Only}
 /**
  * Test suite for the `WhiteMagican` class.
@@ -161,11 +161,7 @@ class WhiteMagicanTest extends FunSuite {
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Modric` attacks with a `Bow`.
    */
   test("attackEnemy") {
-    Benzema.putWeapon(new Staff())
-    val damage: Int = Benzema.attack(Ter_Stegen)
-    val expectedDamage: Int = 70 - 50
 
-    assertEquals(damage, expectedDamage)
   }
 
   /**

@@ -1,13 +1,15 @@
 package model.playable.common
 
 import exceptions.{InvalidputBowException, InvalidputStaffException, InvalidputWandException, InvalidputWeaponException}
-import model.nonplayable.weapons._
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
+import model.weapons.Weapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
+
 /**
  * "A paladin is thought of as a very balanced character,
  * not excelling excessively in any attribute but also
  * not possessing notable deficiencies compared to other characters."
+ *
  * @param name The name of the character.
  * @param healthPoints The health points of the character.
  * @param defensePoints The defense points of the character.
@@ -33,7 +35,7 @@ class Paladin(name:String, healthPoints: Int,
    * @return positive message if the Paladin Can equip the weapon,
    *         negative one in other cases, with his particular exception.
    */
-  def putWeapon(weapon: AWeapon): String = {
+  def putWeapon(weapon: Weapon): String = {
     try {
       weapon.canBeEquippedBy(this)
       this.arma = Some(weapon)

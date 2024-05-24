@@ -1,10 +1,11 @@
 package model.playable
 
+import exceptions.InvalidputWeaponException
 import model.controller.GameUnit
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.nonplayable.{Enemy, NonPlayable}
-import model.nonplayable.weapons.AWeapon
+import model.weapons.{AWeapon, Weapon}
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 
 trait Playable extends GameUnit{
   /**
@@ -25,50 +26,26 @@ trait Playable extends GameUnit{
   def setHp(x:Int): Unit
 
   /**
-   * Abstract method to get the Defense points of the playable entity
-   */
-  def getDp: Int
-
-  /**
-   * Abstract method to get the Weight of the playable entity
-   */
-  def getWeight: Int
-
-
-  /**
    * Abstract Method to know if Playable have a weapon or not
    */
-  def hasWeapon: Option[AWeapon]
+  def hasWeapon: Option[Weapon]
 
   /**
    * Abstract Method to equip a Weapon on a Playable Entity
    * @param Any class of Weapon
    */
-  def putWeapon( weapon: AWeapon): String
+  def putWeapon( weapon: Weapon): String
+
+  /**
+   * Implementation of method to alert if the player is attempting to use a weapon owned by another character."
+   * @return an Exception
+   */
+  def foreignWeapon():Boolean = throw new InvalidputWeaponException
 
   /**
    * Abstract Method to remove a weapon in playable entity
    */
   def dropWeapon(): Unit
-
-  /**
-   * Abstract Method to attack an entity
-   * @param entity the guy who will be attack by a Playable
-   * @return damage
-   */
-  def attack(entity:GameUnit):Int
-
-  def CanAttackPlayables(entity: Playable): Boolean = false
-  def CanAttackEnemies(entity: Enemy): Boolean = true
-
-  /**
-   * Abstract Method to hurt an Playable Entity
-   * @param pain
-   * @return a new Playable
-   */
-  def wasAttacked(pain:Int) : Unit
-
-
 
   /**
    * Abstract method to check if a Playable entity can equip 'Axe'
@@ -105,7 +82,18 @@ trait Playable extends GameUnit{
    */
   def canEquipWand(w:Wand): Boolean
 
-  def foreignWeapon():Boolean
+  /**
+   * Implementation method to know if a Game Unit can attack a Playable entity
+   * @param entity the candidate to be the target of attack
+   * @return false , we can not attack another playable entities
+   */
+  def CanAttackPlayable(entity: Playable): Boolean = false
 
+  /**
+   * Implementation method to know if a Game Unit can attack an Enemy entity
+   * @param entity the candidate to be the target of attack
+   * @return true, we have to attack enemy entities
+   */
+  def CanAttackEnemies(entity: Enemy): Boolean = true
 
 }

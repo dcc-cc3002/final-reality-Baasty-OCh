@@ -1,11 +1,11 @@
 package controller
 
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.party.Party
 import model.playable.magic.WhiteMagican
 import model.playable.Playable
 import model.playable.common.Paladin
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 class PartyTest extends FunSuite {
   var Team1: Party = _ // We declare a variable Team1 of type Party

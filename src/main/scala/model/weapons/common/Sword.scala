@@ -1,7 +1,7 @@
-package model.nonplayable.weapons.common
+package model.weapons.common
 
-import model.nonplayable.weapons.AWeapon
 import model.playable.Playable
+import model.weapons.AWeapon
 
 /**
  * Class representing a Sword, which is a type of non-playable weapon.

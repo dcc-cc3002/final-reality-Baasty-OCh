@@ -1,4 +1,5 @@
 package model.nonplayable
+import exceptions.InvalidattackAllieException
 import model.controller.GameUnit
 import model.nonplayable.NonPlayable
 import model.playable.Playable
@@ -8,7 +9,7 @@ import model.playable.Playable
  * @param weight
  * @param attackPoints
  */
-protected abstract class ANonPlayable(val name: String, val weight: Int,
+protected abstract class AEnemy(val name: String, val weight: Int,
                                       val attackPoints: Int, var life: Int,
                                       val defence: Int) extends NonPlayable {
   require(weight >=0 && weight<=150)
@@ -27,6 +28,12 @@ protected abstract class ANonPlayable(val name: String, val weight: Int,
    * @return The weight of non-playable entity
    */
   def getWeight: Int = weight
+
+  /**
+   * Method to get defence points of the non-playable entity
+   * @return defence of the non-playable entity
+   */
+  def getDp: Int = defence
 
   /**
    * Implementation of Method to get the attack points of the non-playable entity
@@ -49,30 +56,28 @@ protected abstract class ANonPlayable(val name: String, val weight: Int,
   }
 
   /**
-   * Method to get defence points of the non-playable entity
-   * @return defence of the non-playable entity
-   */
-  def getDp: Int = defence
-
-  /**
    * Abstract Method to attack an entity
-   * @param entity the guy who will be attack by a Playable
-   * @return damage
+   * @param entity the guy who will be attack by a Enemy
+   * @return  affirmative message in case the target was correct attack and "exception" message in other case
    */
-  def attack(entity:GameUnit):Int = {
+  def attack(entity:GameUnit): String = {
+    try{
     entity.wasAttackBy(this)
     val damage : Int = this.attackPoints - entity.getDp
     if (damage >= 0) {
     entity.wasAttacked(damage)
-    damage
-    } else 0
+    "The target was Attack"
+    } else "The enemy was Attack, but the damage is not enough"}
+    catch{
+      case _: InvalidattackAllieException =>  s"The character: ${this.getName} can't attack an Allie"
+    }
 }
 
 
 
 
 
-def CanAttackPlayables(player:Playable): Boolean = true
+  def CanAttackPlayable(player:Playable): Boolean = true
   def CanAttackEnemies(target: Enemy): Boolean = false
 
   /**

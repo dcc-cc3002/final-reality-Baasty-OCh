@@ -1,6 +1,6 @@
-package model.nonplayable.weapons.common
+package model.weapons.common
 
-import model.nonplayable.weapons.AWeapon
+import model.weapons.AWeapon
 
 /**
  * Abstract class to made a group for common (non-magic) weapons

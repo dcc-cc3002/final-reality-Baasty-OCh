@@ -1,6 +1,6 @@
-package model.nonplayable.weapons.magic
+package model.weapons.magic
 
-import model.nonplayable.weapons.AWeapon
+import model.weapons.AWeapon
 
 protected abstract class AMagicWeapon(name: String, weight: Int,
                             attackPoints: Int, magicAttackPoints: Int) extends AWeapon(name, weight, attackPoints) {

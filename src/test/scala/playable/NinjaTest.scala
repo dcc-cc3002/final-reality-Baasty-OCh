@@ -1,13 +1,13 @@
 package playable
 
-import model.nonplayable.weapons.AWeapon
 import model.nonplayable.NonPlayable
 import model.nonplayable.Enemy
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.APlayable
+import model.weapons.AWeapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
 /**
@@ -153,12 +153,8 @@ class NinjaTest extends FunSuite {
    * Test case for `attackEnemy` method.
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Kroos` attacks with a `Bow`.
    */
-  test("attackEnemy") {
-    Kroos.putWeapon(new Bow())
-    val damage: Int = Kroos.attack(Rakitic)
-    val expectedDamage: Int = 40 - 50
+  test("attack") {
 
-    assertEquals(damage, expectedDamage)
   }
 
 

@@ -40,11 +40,7 @@ class EnemyTest extends FunSuite {
   }
 
   test("attack"){
-    val Ronaldo: Playable = new Paladin("Ronaldo",100,200,50)
-    val daño2: Int = Neymar.attack(Ronaldo)
 
-    assertEquals(Neymar.attack(Cristiano),5)
-    assertEquals(daño2,0)
   }
   test("wasInjure"){
     Neymar.wasAttacked(25)

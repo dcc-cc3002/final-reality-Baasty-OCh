@@ -14,7 +14,7 @@ import model.playable.Playable
  */
 class Enemy(name: String, weight: Int,
             attackPoints: Int, life: Int,
-            defence: Int) extends ANonPlayable(name, weight, attackPoints, life, defence) {
+            defence: Int) extends AEnemy(name, weight, attackPoints, life, defence) {
 
   /**
    * "The auxiliary builder receives the name that the user chooses for their non-playable entity
@@ -27,6 +27,11 @@ class Enemy(name: String, weight: Int,
     this(name,50,80,250,50)
   }
 
+  /**
+   * Implementation method to know if Enemy can be attacked by other particular Game Unit
+   * @param entity represents the possible attacker
+   * @return true in case Game Unit was enemy of our non-playable entity
+   */
   def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackEnemies(this)
 
   /**

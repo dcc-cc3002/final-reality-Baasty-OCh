@@ -1,10 +1,11 @@
-package model.nonplayable.weapons.magic
+package model.weapons.magic
 
-import model.nonplayable.weapons.AWeapon
 import model.playable.Playable
+import model.weapons.AWeapon
 
 /**
  * Class representing a Wand, which is a type of  weapon.
+ *
  * @param name             The name of the wand
  * @param weight           The weight of the wand
  * @param attackPoints     The attack points of the wand

@@ -1,4 +1,4 @@
-package model.nonplayable.weapons
+package model.weapons
 
 import exceptions.InvalidputAxeException
 import model.nonplayable.NonPlayable
@@ -52,12 +52,7 @@ abstract class AWeapon(name: String, weight: Int,
     this.owner = Some(newOwner)
   }
 
-  /**
-   * Abstact method to check if a non-playable entity (weapon) can be equipped by some particular playable entity
-   * @param player The potencial owner of the weapon
-   * @return true if the weapon can be equipped by him , false in other case.
-   */
-  def canBeEquippedBy(player:Playable): Boolean
+
 
 
 

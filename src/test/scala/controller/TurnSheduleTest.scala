@@ -1,11 +1,11 @@
 package controller
 
 import model.controller.{GameUnit, TurnSchedule}
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.playable.common.{Paladin, Warrior}
 import model.playable.magic.WhiteMagican
 import model.playable.Playable
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
 import scala.collection.mutable

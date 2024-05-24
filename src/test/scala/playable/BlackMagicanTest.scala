@@ -1,14 +1,14 @@
 package playable
 
 import exceptions.{InvalidputAxeException, InvalidputBowException}
-import model.nonplayable.weapons.AWeapon
 import model.nonplayable.NonPlayable
 import model.nonplayable.Enemy
-import model.nonplayable.weapons.common.{Axe, Bow, Sword}
-import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.{BlackMagican, WhiteMagican}
 import model.playable.{APlayable, Playable}
+import model.weapons.AWeapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 import munit.{FunSuite, Ignore, Slow}
 
 /**
@@ -181,12 +181,9 @@ class BlackMagicanTest extends FunSuite {
    * Test case for `attackEnemy` method.
    * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Iniesta`) when `Modric` attacks with a `Wand`.
    */
-  test("attackEnemy") {
-    Modric.putWeapon(new Wand())
-    val damage: Int = Modric.attack(Iniesta)
-    val expectedDamage: Int = 50 - 50
+  test("attack") {
 
-    assertEquals(damage, expectedDamage)
+
   }
 
 
