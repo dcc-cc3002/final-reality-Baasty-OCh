@@ -1,6 +1,7 @@
 package model.playable
 
 import exceptions.{InvalidputAxeException, InvalidputWeaponException}
+import model.controller.GameUnit
 import model.nonplayable.weapons.common.{Axe, Bow, Sword}
 import model.nonplayable.weapons.magic.{Staff, Wand}
 import model.nonplayable.weapons.AWeapon
@@ -86,13 +87,25 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   def foreignWeapon():Boolean =
     throw new InvalidputWeaponException
 
+  def attack(entity:GameUnit):Int ={
+    entity.wasAttackBy(this)
+    val damage = arma.map(_.getAttack - entity.getDp).getOrElse(0)
+    if (damage >= 0) {
+      entity.wasAttacked(damage)
+      damage
+    }
+    else damage
+  }
 
+
+  def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackPlayables(this)
 
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.
    *             delegar el if a set hp
    */
+
 
   def wasAttacked(pain: Int): Unit = {
     if (this.healthPoints >= pain){

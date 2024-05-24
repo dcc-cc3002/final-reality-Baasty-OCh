@@ -173,8 +173,8 @@ class PaladinTest extends FunSuite {
   test("attackEnemy") {
     Cristiano.putWeapon(new Sword())
     Bale.putWeapon((new Axe()))
-    val damage: Int = Cristiano.attackEnemy(Pique)
-    val damage2: Int = Bale.attackEnemy(Pique)
+    val damage: Int = Cristiano.attack(Pique)
+    val damage2: Int = Bale.attack(Pique)
     val expectedDamage: Int = 70 - 50
     val expectedDamage2: Int = 0
 

@@ -52,11 +52,14 @@ trait Playable extends GameUnit{
   def dropWeapon(): Unit
 
   /**
-   * Abstract Method to attack an Enemy entity
-   * @param target
+   * Abstract Method to attack an entity
+   * @param entity the guy who will be attack by a Playable
    * @return damage
    */
-  def attackEnemy(target: Enemy): Int
+  def attack(entity:GameUnit):Int
+
+  def CanAttackPlayables(entity: Playable): Boolean = false
+  def CanAttackEnemies(entity: Enemy): Boolean = true
 
   /**
    * Abstract Method to hurt an Playable Entity
@@ -64,6 +67,7 @@ trait Playable extends GameUnit{
    * @return a new Playable
    */
   def wasAttacked(pain:Int) : Unit
+
 
 
   /**

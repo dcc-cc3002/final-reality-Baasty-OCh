@@ -36,20 +36,20 @@ class EnemyTest extends FunSuite {
   }
 
   test("setDefencePoints"){
-    assertEquals(Neymar.getDF,50)
+    assertEquals(Neymar.getDp,50)
   }
 
   test("attack"){
     val Ronaldo: Playable = new Paladin("Ronaldo",100,200,50)
-    val daño2: Int = Neymar.attackPlayer(Ronaldo)
+    val daño2: Int = Neymar.attack(Ronaldo)
 
-    assertEquals(Neymar.attackPlayer(Cristiano),5)
+    assertEquals(Neymar.attack(Cristiano),5)
     assertEquals(daño2,0)
   }
   test("wasInjure"){
-    Neymar.wasInjure(25)
+    Neymar.wasAttacked(25)
     assertEquals(Neymar.getLife,225)
-    Neymar.wasInjure(300)
+    Neymar.wasAttacked(300)
     assertEquals(Neymar.getLife,0)
   }
 

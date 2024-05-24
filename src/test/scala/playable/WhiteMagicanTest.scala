@@ -162,7 +162,7 @@ class WhiteMagicanTest extends FunSuite {
    */
   test("attackEnemy") {
     Benzema.putWeapon(new Staff())
-    val damage: Int = Benzema.attackEnemy(Ter_Stegen)
+    val damage: Int = Benzema.attack(Ter_Stegen)
     val expectedDamage: Int = 70 - 50
 
     assertEquals(damage, expectedDamage)

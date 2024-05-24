@@ -183,7 +183,7 @@ class BlackMagicanTest extends FunSuite {
    */
   test("attackEnemy") {
     Modric.putWeapon(new Wand())
-    val damage: Int = Modric.attackEnemy(Iniesta)
+    val damage: Int = Modric.attack(Iniesta)
     val expectedDamage: Int = 50 - 50
 
     assertEquals(damage, expectedDamage)

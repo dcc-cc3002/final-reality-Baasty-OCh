@@ -1,4 +1,5 @@
 package model.nonplayable
+import model.controller.GameUnit
 import model.nonplayable.NonPlayable
 import model.playable.Playable
 
@@ -51,15 +52,35 @@ protected abstract class ANonPlayable(val name: String, val weight: Int,
    * Method to get defence points of the non-playable entity
    * @return defence of the non-playable entity
    */
-  def getDF: Int = defence
+  def getDp: Int = defence
 
+  /**
+   * Abstract Method to attack an entity
+   * @param entity the guy who will be attack by a Playable
+   * @return damage
+   */
+  def attack(entity:GameUnit):Int = {
+    entity.wasAttackBy(this)
+    val damage : Int = this.attackPoints - entity.getDp
+    if (damage >= 0) {
+    entity.wasAttacked(damage)
+    damage
+    } else 0
+}
+
+
+
+
+
+def CanAttackPlayables(player:Playable): Boolean = true
+  def CanAttackEnemies(target: Enemy): Boolean = false
 
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.
    */
 
-  def wasInjure(pain: Int): Unit = {
+  def wasAttacked(pain: Int): Unit = {
     if (this.life >= pain){
       this.setLife(this.life-pain)
     }

@@ -14,7 +14,7 @@ import model.playable.Playable
  * @param magicAttackPoints The magic attack points of the weapon (if it's a magic weapon)
  */
 abstract class AWeapon(name: String, weight: Int,
-                       attackPoints: Int) extends NonPlayable {
+                       attackPoints: Int) extends Weapon {
 
   require(weight >=0 && weight<=100)
   require(attackPoints >=0 && attackPoints<=100)

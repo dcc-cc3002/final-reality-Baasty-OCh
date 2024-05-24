@@ -154,7 +154,7 @@ class WarriorTest extends FunSuite {
    */
   test("attackEnemy") {
     Casemiro.putWeapon(new Axe())
-    val damage: Int = Casemiro.attackEnemy(Busquets)
+    val damage: Int = Casemiro.attack(Busquets)
     val expectedDamage: Int = 50 - 50
 
     assertEquals(damage, expectedDamage)

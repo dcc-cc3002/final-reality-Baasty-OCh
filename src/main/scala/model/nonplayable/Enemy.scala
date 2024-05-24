@@ -1,4 +1,5 @@
 package model.nonplayable
+import model.controller.GameUnit
 import model.nonplayable.NonPlayable
 import model.playable.Playable
 
@@ -26,6 +27,8 @@ class Enemy(name: String, weight: Int,
     this(name,50,80,250,50)
   }
 
+  def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackEnemies(this)
+
   /**
    * Checks if this Enemy is equal to another Enemy.
    * @param other The object to compare against
@@ -38,7 +41,7 @@ class Enemy(name: String, weight: Int,
         getName == otherCast.getName &&
         getWeight == otherCast.getWeight &&
         getLife == otherCast.getLife &&
-        getDF == otherCast.getDF )
+        getDp == otherCast.getDp )
 
     } else false
   }

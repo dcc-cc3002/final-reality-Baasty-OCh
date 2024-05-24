@@ -155,7 +155,7 @@ class NinjaTest extends FunSuite {
    */
   test("attackEnemy") {
     Kroos.putWeapon(new Bow())
-    val damage: Int = Kroos.attackEnemy(Rakitic)
+    val damage: Int = Kroos.attack(Rakitic)
     val expectedDamage: Int = 40 - 50
 
     assertEquals(damage, expectedDamage)
