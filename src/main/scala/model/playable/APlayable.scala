@@ -71,6 +71,17 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * @param Any class of Weapon
    */
   def putWeapon( weapon: AWeapon): String
+
+  /**
+   * Method to 'reset' the state of arma parameter in a playable entity
+   */
+
+  def dropWeapon() : Unit ={
+    if (this.hasWeapon != None){
+    this.arma = None
+    } else {}
+  }
+
   /**
    * Implementation of Method to attack an Enemy entity
    * @param target represent an object of Enemy class and is our objective

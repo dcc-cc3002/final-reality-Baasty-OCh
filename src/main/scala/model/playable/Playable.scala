@@ -47,6 +47,11 @@ trait Playable extends GameUnit{
   def putWeapon( weapon: AWeapon): String
 
   /**
+   * Abstract Method to remove a weapon in playable entity
+   */
+  def dropWeapon(): Unit
+
+  /**
    * Abstract Method to attack an Enemy entity
    * @param target
    * @return damage
