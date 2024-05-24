@@ -1,6 +1,6 @@
 package model.playable.magic
 
-import exceptions.{InvalidputAxeException, InvalidputSwordException}
+import exceptions.{InvalidputAxeException, InvalidputSwordException, InvalidputWeaponException}
 import model.nonplayable.weapons._
 import model.nonplayable.weapons.common.{Axe, Bow, Sword}
 import model.nonplayable.weapons.magic.{Staff, Wand}
@@ -40,6 +40,7 @@ class WhiteMagican(name:String, healthPoints:Int,
     } catch {
       case _:InvalidputSwordException => s"The character: ${this.getName} can't wear a Sword"
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
+      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
     }
   }
 

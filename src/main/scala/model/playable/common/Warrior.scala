@@ -1,6 +1,6 @@
 package model.playable.common
 
-import exceptions.{InvalidputStaffException, InvalidputWandException}
+import exceptions.{InvalidputStaffException, InvalidputWandException, InvalidputWeaponException}
 import model.nonplayable.weapons._
 import model.nonplayable.weapons.common.{Axe, Bow, Sword}
 import model.nonplayable.weapons.magic.{Staff, Wand}
@@ -42,6 +42,7 @@ class Warrior(name:String, healthPoints: Int,
     } catch {
       case _:InvalidputStaffException => s"The character: ${this.getName} can't wear a Staff"
       case _:InvalidputWandException => s"The character: ${this.getName} can't wear a Wand"
+      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
     }
   }
 
