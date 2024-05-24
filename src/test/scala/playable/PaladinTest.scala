@@ -158,6 +158,13 @@ class PaladinTest extends FunSuite {
     assertEquals(Cristiano.putWeapon(Arco),"The character: Cristiano can't wear a Bow")
   }
 
+  test("It should throw an exception if the Paladin cant equip a foreign weapon"){
+    val Hacha: Axe = new Axe()
+    Bale.putWeapon(Hacha)
+
+    assertEquals(Cristiano.putWeapon(Hacha),"The weapon: Hacha already has owner")
+  }
+
 
   /**
    * Test case for `attackEnemy` method.

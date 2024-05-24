@@ -140,6 +140,13 @@ class WarriorTest extends FunSuite {
     assertEquals(Casemiro.putWeapon(Varita),"The character: Casemiro can't wear a Wand")
   }
 
+  test("It should throw an exception if the Warrior cant equip a foreign weapon"){
+    val Espada: Sword = new Sword()
+    Ramos.putWeapon(Espada)
+
+    assertEquals(Casemiro.putWeapon(Espada),"The weapon: Espada already has owner")
+  }
+
 
   /**
    * Test case for `attackEnemy` method.

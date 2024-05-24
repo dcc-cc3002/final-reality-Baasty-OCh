@@ -148,6 +148,13 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.putWeapon(Hacha),"The character: Benzema can't wear an Axe")
   }
 
+  test("It should throw an exception if the WhiteMagican cant equip a foreign weapon"){
+    val Arco: Bow = new Bow()
+    Ozil.putWeapon(Arco)
+
+    assertEquals(Benzema.putWeapon(Arco),"The weapon: Arco already has owner")
+  }
+
 
   /**
    * Test case for `attackEnemy` method.
