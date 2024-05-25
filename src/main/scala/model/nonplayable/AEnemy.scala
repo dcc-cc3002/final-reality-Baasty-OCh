@@ -15,7 +15,7 @@ protected abstract class AEnemy(val name: String, val weight: Int,
   require(weight >=0 && weight<=150)
   require(attackPoints >=0 && attackPoints<=100)
   require(life >=0 && life <=250)
-  require(defence >=0 && defence<=200)
+  require(defence >=0 && defence<=500)
 
   /**
    * Implementation of Method to get the name of the non-playable entity
@@ -77,8 +77,8 @@ protected abstract class AEnemy(val name: String, val weight: Int,
 
 
 
-  def CanAttackPlayable(player:Playable): Boolean = true
-  def CanAttackEnemies(target: Enemy): Boolean = false
+  def CanAttackPlayable(): Boolean = true
+  def CanAttackEnemies(): Boolean = throw new InvalidattackAllieException
 
   /**
    * Method to simulate the playable entity being attacked.

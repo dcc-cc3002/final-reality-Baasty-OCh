@@ -24,14 +24,14 @@ trait GameUnit {
    * Abtract method to know if a Game Unit can attack a Playable entity
    * @param entity the candidate to be the target of attack
    */
-  def CanAttackPlayable(entity: Playable): Boolean
+  def CanAttackPlayable(): Boolean
 
 
   /**
    * Abtract method to know if a Game Unit can attack a Enemy entity
    * @param entity the candidate to be the target of attack
    */
-  def CanAttackEnemies(entity: Enemy): Boolean
+  def CanAttackEnemies(): Boolean
 
   /**
    * Abstract method to know if a Game Unit can be attacked by another Game Unit

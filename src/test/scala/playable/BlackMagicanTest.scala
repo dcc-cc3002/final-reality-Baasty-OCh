@@ -19,6 +19,7 @@ class BlackMagicanTest extends FunSuite {
   var Modric: BlackMagican = _ // Declaration of a variable `Modric` of type `Playable`.
   var Iniesta: Enemy = _ // Declaration of a variable `Iniesta` of type `Enemy`.
   var James: BlackMagican = _
+  var Puyol: Enemy = _
 
 
   /**
@@ -33,6 +34,7 @@ class BlackMagicanTest extends FunSuite {
     James = new BlackMagican("James",50,60,80,21)
     // Initialize `Iniesta` with new instances of `Enemy`.
     Iniesta = new Enemy("Iniesta")
+    Puyol = new Enemy("Puyol",50,50,250,500) // enemy with ridiculous defense
   }
 
   /**
@@ -119,8 +121,7 @@ class BlackMagicanTest extends FunSuite {
     val Baston: Staff = new Staff()
     val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
-    val Hacha: Axe = new Axe()
-    val Arco: Bow = new Bow()
+
 
     assertEquals(Modric.canEquipStaff(Baston),true)
     assertEquals(Modric.canEquipWand(Varita),true)
@@ -178,12 +179,23 @@ class BlackMagicanTest extends FunSuite {
 
 
   /**
-   * Test case for `attackEnemy` method.
-   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Iniesta`) when `Modric` attacks with a `Wand`.
+   * Test case for attack method.
+   * This test verifies if the `attack` method inflicts the correct damage on the enemy (`Iniesta`) when `Modric` attacks with a `Wand`.
+   * also verifies if the 'attack' method inflicts zero damage when the defense poitns of enemy are higher than the attack points of Black Magican
    */
   test("attack") {
+    val Baston: Staff = new Staff()
+    Modric.putWeapon(Baston)
 
+    assertEquals(Modric.attack(Iniesta),"The enemy was Attack")
+    assertEquals(Modric.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+  }
 
+  test("It should throw an exception if the BlackMagican cant attack game unit"){
+    val Baston: Staff = new Staff()
+    Modric.putWeapon(Baston)
+
+    assertEquals(Modric.attack(James), "The character: Modric can't attack an Allie")
   }
 
 

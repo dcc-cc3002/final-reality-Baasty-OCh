@@ -1,6 +1,6 @@
 package model.playable
 
-import exceptions.InvalidputWeaponException
+import exceptions.{InvalidattackAllieException, InvalidputWeaponException}
 import model.controller.GameUnit
 import model.nonplayable.{Enemy, NonPlayable}
 import model.weapons.{AWeapon, Weapon}
@@ -87,13 +87,13 @@ trait Playable extends GameUnit{
    * @param entity the candidate to be the target of attack
    * @return false , we can not attack another playable entities
    */
-  def CanAttackPlayable(entity: Playable): Boolean = false
+  def CanAttackPlayable(): Boolean = throw new InvalidattackAllieException
 
   /**
    * Implementation method to know if a Game Unit can attack an Enemy entity
    * @param entity the candidate to be the target of attack
    * @return true, we have to attack enemy entities
    */
-  def CanAttackEnemies(entity: Enemy): Boolean = true
+  def CanAttackEnemies(): Boolean = true
 
 }

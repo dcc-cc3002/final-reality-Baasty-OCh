@@ -32,7 +32,7 @@ class Enemy(name: String, weight: Int,
    * @param entity represents the possible attacker
    * @return true in case Game Unit was enemy of our non-playable entity
    */
-  def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackEnemies(this)
+  def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackEnemies()
 
   /**
    * Checks if this Enemy is equal to another Enemy.

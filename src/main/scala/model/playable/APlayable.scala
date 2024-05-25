@@ -104,12 +104,13 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
     }
   }
 
+
   /**
    * Implementation method to know if Playable can be attacked by other particular Game Unit
    * @param entity represents the possible attacker
    * @return true in case Game Unit was enemy of our playable entity
    */
-  def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackPlayable(this)
+  def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackPlayable()
 
   /**
    * Method to simulate the playable entity being attacked.
