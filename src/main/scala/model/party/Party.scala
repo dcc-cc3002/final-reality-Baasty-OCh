@@ -1,6 +1,7 @@
 package model.party
 
-import model.playable.{Playable}
+import exceptions.InvalidadditionPartyException
+import model.playable.Playable
 
 import scala.collection.mutable.Map
 
@@ -19,8 +20,16 @@ class Party  {
    * Adds a playable character to the party.
    * @param pj The playable character to be added.
    */
-  def addPlayable(pj: Playable): Unit = {
-    allies.put(pj.getClass, pj) // Adds the playable character to the allies map with their kind as the key
+  def addPlayable(pj: Playable): String = {
+    try{
+      if (allies.size < 3){
+        allies.put(pj.getClass, pj) // Adds the playable character to the allies map with their kind as the key
+        "The allie was add successfully"
+      }
+      else throw new InvalidadditionPartyException
+    } catch {
+      case _: InvalidadditionPartyException => "The Party cant add more than 3 players, is full"
+    }
   }
 
   /**

@@ -3,7 +3,7 @@ package controller
 import model.party.Party
 import model.playable.magic.WhiteMagican
 import model.playable.Playable
-import model.playable.common.Paladin
+import model.playable.common.{Ninja, Paladin}
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
@@ -11,21 +11,29 @@ class PartyTest extends FunSuite {
   var Team1: Party = _ // We declare a variable Team1 of type Party
   var Cristiano: Playable = _ // We declare a variable Cristiano of type Playable
   var Alexis: Playable = _ // We declare a variable Alexis of type Playable
+  var Vinicius: Playable = _
+  var Bellingham : Playable = _
 
 
   override def beforeEach(context: BeforeEach): Unit = {
     Team1 = new Party() // Creates a new instance of the Party class and assigns it to the variable Team1.
     // Creates a new instance of the Character class with the specified parameters:
     Cristiano = new Paladin("Cristiano",0,50,50)
-
-    // Creates a new instance of the MagicCharacter class with the specified parameters:
+    Vinicius = new Ninja("Vini Jr")
+    Bellingham = new WhiteMagican("Jude")
     Alexis = new WhiteMagican("Alexis")// - Kind: Mago Blanco // - Weapon: false
 
   }
-  test("addCharacter") { // Test the method to add a character
-    Team1.addPlayable(Cristiano) // Add the character Cristiano
-    val expected: Map[Class[_<:Playable], Playable] = Map(Cristiano.getClass -> Cristiano) // The expected variable will be a map with the type and name of the character
-    assertEquals(Team1.allies.toMap, expected) // Compare the result with the Map
+  test("addCharacter") {
+    assertEquals(Team1.addPlayable(Cristiano),"The allie was add successfully")
+  }
+
+  test("It should throw an exception if the Party cant add more than 3 players"){
+    assertEquals(Team1.addPlayable(Cristiano),"The allie was add successfully")
+    assertEquals(Team1.addPlayable(Vinicius),"The allie was add successfully")
+    assertEquals(Team1.addPlayable(Bellingham),"The allie was add successfully")
+
+    assertEquals(Team1.addPlayable(Alexis),"The Party cant add more than 3 players, is full")
   }
 
   test("isEmpty") { // Test if the team is initially empty

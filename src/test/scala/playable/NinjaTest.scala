@@ -149,13 +149,6 @@ class NinjaTest extends FunSuite {
     assertEquals(Kroos.putWeapon(Varita),"The weapon: Varita already has owner")
   }
 
-  /**
-   * Test case for `attackEnemy` method.
-   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Kroos` attacks with a `Bow`.
-   */
-  test("attack") {
-
-  }
 
 
   /**

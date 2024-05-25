@@ -8,7 +8,7 @@ import model.playable.{APlayable, Playable}
 import model.weapons.AWeapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
-import munit.{FunSuite, Only}
+import munit.{FunSuite, Only, Slow}
 /**
  * Test suite for the `WhiteMagican` class.
  * This class contains tests for various functionalities of the `WhiteMagican` class.
@@ -17,6 +17,7 @@ class WhiteMagicanTest extends FunSuite {
   var Benzema: WhiteMagican = _ // Declaration of a variable `Benzema` of type `Playable`.
   var Ter_Stegen: Enemy = _ // Declaration of a variable `Ter_Stegen` of type `Enemy`.
   var Ozil: WhiteMagican = _
+  var Suarez: Enemy = _
 
   /**
    * Set up the test environment before each test case.
@@ -28,6 +29,7 @@ class WhiteMagicanTest extends FunSuite {
     Benzema = new WhiteMagican("Benzema")
     Ozil = new WhiteMagican("Ozil",55,90,32,90)
     Ter_Stegen = new Enemy("Ter_Stegen")
+    Suarez = new Enemy("Suarez",50,50,250,500) // enemy with ridiculous defense
   }
 
   /**
@@ -155,13 +157,24 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.putWeapon(Arco),"The weapon: Arco already has owner")
   }
 
-
   /**
-   * Test case for `attackEnemy` method.
-   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Rakitic`) when `Modric` attacks with a `Bow`.
+   * Test case for attack method.
+   * This test verifies if the `attack` method inflicts the correct damage on the enemy (`Ter_Stegen`) when `Benzema` attacks with a `Wand`.
+   * also verifies if the 'attack' method inflicts zero damage when the defense poitns of enemy are higher than the attack points of Black Magican
    */
-  test("attackEnemy") {
+  test("attack") {
+    val Baston: Staff = new Staff()
+    Benzema.putWeapon(Baston)
 
+    assertEquals(Benzema.attack(Ter_Stegen),"The enemy was Attack")
+    assertEquals(Benzema.attack(Suarez),"The enemy was Attack, but the damage is not enough")
+  }
+
+  test("It should throw an exception if the BlackMagican cant attack game unit"){
+    val Baston: Staff = new Staff()
+    Benzema.putWeapon(Baston)
+
+    assertEquals(Benzema.attack(Ozil), "The character: Benzema can't attack an Allie")
   }
 
   /**
