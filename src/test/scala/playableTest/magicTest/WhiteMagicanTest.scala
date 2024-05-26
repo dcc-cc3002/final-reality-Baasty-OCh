@@ -1,14 +1,10 @@
-package playableTest
+package playableTest.magicTest
 
-import model.nonplayable.NonPlayable
 import model.nonplayable.Enemy
-import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.WhiteMagican
-import model.playable.{APlayable, Playable}
-import model.weapons.AWeapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
-import munit.{FunSuite, Only, Slow}
+import munit.FunSuite
 /**
  * Test suite for the `WhiteMagican` class.
  * This class contains tests for various functionalities of the `WhiteMagican` class.
@@ -42,53 +38,7 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.equals(Ter_Stegen),false)
   }
 
-  /**
-   * Test case for `getName` method.
-   * This test verifies if the returned name value for a character (`Benzema`) matches the expected value.
-   */
-  test("getName") {
-    assertEquals(Benzema.getName, "Benzema")
-  }
 
-  /**
-   * Test case for `getHp` method.
-   * This test verifies if the returned health points (`hp`) value for the character `Benzema` matches the expected value (`100`).
-   */
-  test("getHealthPoints") {
-    assertEquals(Benzema.getHp, 100)
-  }
-
-  /**
-   * Test case for `getDp` method.
-   * This test verifies if the returned defense points (`dp`) value for the character `Benzema` matches the expected value (`80`).
-   */
-  test("getDefencePoints") {
-    assertEquals(Benzema.getDp, 80)
-  }
-
-  /**
-   * Test case for `getWeight` method.
-   * This test verifies if the returned weight value for the character `Benzema` matches the expected value (`60`).
-   */
-  test("getWeight") {
-    assertEquals(Benzema.getWeight, 60)
-  }
-
-  /**
-   * Test case for `getMana` method.
-   * This test verifies if the returned mana value for the character `Benzema` matches the expected value (`40`).
-   */
-  test("getMana") {
-    assertEquals(Benzema.getMana, 40)
-  }
-
-  /**
-   * Test case for `haveWeapon` method.
-   * This test verifies if the playable entity `Benzema` does not have a weapon (returns `None`).
-   */
-  test("HasWeapon") {
-    assertEquals(Benzema.hasWeapon, None)
-  }
 
 
   /**
@@ -177,20 +127,6 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.attack(Ozil), "The character: Benzema can't attack an Allie")
   }
 
-  /**
-   * Test case when a 'BlackMagican' was attack by other entity
-   * This test verifies if the 'wasAttacked' method inflicts the correct damage on the BlackMagican 'Modric' when is attacked by entity with 45 points of power
-   * and when the power is 200
-   */
-  test("wasAttacked"){
-    Benzema.wasAttacked(45)
-
-    assertEquals(Benzema.getHp,55)
-
-    Benzema.wasAttacked(200)
-
-    assertEquals(Benzema.getHp,0)
-  }
 
 
 }

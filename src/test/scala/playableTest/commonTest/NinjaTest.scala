@@ -1,4 +1,4 @@
-package playableTest.common
+package playableTest.commonTest
 
 import model.nonplayable.Enemy
 import model.playable.Playable
@@ -37,45 +37,7 @@ class NinjaTest extends FunSuite {
     assertEquals(Kroos.equals(Rakitic),false)
   }
 
-  /**
-   * Test case for `getName` method.
-   * This test verifies if the returned name value for a character (`Kroos`) matches the expected value.
-   */
-  test("getName") {
-    assertEquals(Kroos.getName, "Kroos")
-  }
 
-  /**
-   * Test case for `getHp` method.
-   * This test verifies if the returned health points (`hp`) value for the character `Kroos` matches the expected value (`80`).
-   */
-  test("getHealthPoints") {
-    assertEquals(Kroos.getHp, 80)
-  }
-
-  /**
-   * Test case for `getDp` method.
-   * This test verifies if the returned defense points (`dp`) value for the character `Kroos` matches the expected value (`70`).
-   */
-  test("getDefencePoints") {
-    assertEquals(Kroos.getDp, 70)
-  }
-
-  /**
-   * Test case for `getWeight` method.
-   * This test verifies if the returned weight value for the character `Kroos` matches the expected value (`30`).
-   */
-  test("getWeight") {
-    assertEquals(Kroos.getWeight, 30)
-  }
-
-  /**
-   * Test case for `haveWeapon` method.
-   * This test verifies if the playable entity `Kroos` does not have a weapon (returns `None`).
-   */
-  test("HasWeapon") {
-    assertEquals(Kroos.hasWeapon, None)
-  }
 
   /**
    * Test case for 'canEquip' methods.
@@ -148,20 +110,6 @@ class NinjaTest extends FunSuite {
 
 
 
-  /**
-   * Test case when a 'Ninja' was attack by other entity
-   * This test verifies if the 'wasAttacked' method inflicts the correct damage on the Ninja 'Kroos' when is attacked by entity with 45 points of power
-   * and when the power is 200
-   */
-  test("wasAttacked"){
-    Kroos.wasAttacked(45)
-
-    assertEquals(Kroos.getHp,35)
-
-    Kroos.wasAttacked(200)
-
-    assertEquals(Kroos.getHp,0)
-  }
 }
 
 

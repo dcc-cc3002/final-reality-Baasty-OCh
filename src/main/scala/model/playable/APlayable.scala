@@ -20,7 +20,7 @@ import model.weapons.magic.{Staff, Wand}
 protected abstract class APlayable(val name: String, var healthPoints: Int,
                                    val defensePoints: Int, val weight: Int,
                                    ) extends Playable {
-  require(healthPoints >0)
+  require(healthPoints >=0)
   require(defensePoints >=0)
   require(weight >=0)
 

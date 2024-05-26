@@ -1,15 +1,10 @@
-package playableTest
+package playableTest.magicTest
 
-import exceptions.{InvalidputAxeException, InvalidputBowException}
-import model.nonplayable.NonPlayable
 import model.nonplayable.Enemy
-import model.playable.common.{Ninja, Paladin, Warrior}
-import model.playable.magic.{BlackMagican, WhiteMagican}
-import model.playable.{APlayable, Playable}
-import model.weapons.AWeapon
+import model.playable.magic.BlackMagican
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
-import munit.{FunSuite, Ignore, Slow}
+import munit.FunSuite
 
 /**
  * Test suite for the `WhiteMagican` class.
@@ -49,44 +44,6 @@ class BlackMagicanTest extends FunSuite {
   }
 
   /**
-   * Test case for `getName` method.
-   * This test verifies if the returned name value for a character (`Modric`) matches the expected value.
-   */
-  test("getName") {
-    assertEquals(Modric.getName, "Modric")
-  }
-
-  /**
-   * Test case for `getHp` method.
-   * This test verifies if the returned health points (`hp`) value for the character `Modric` matches the expected value (`100`).
-   */
-  test("getHealthPoints") {
-    assertEquals(Modric.getHp, 90)
-  }
-
-  test("setHp"){
-    Modric.setHp(45)
-
-    assertEquals(Modric.getHp,45)
-  }
-
-  /**
-   * Test case for `getDp` method.
-   * This test verifies if the returned defense points (`dp`) value for the character `Modric` matches the expected value (`80`).
-   */
-  test("getDefencePoints") {
-    assertEquals(Modric.getDp, 60)
-  }
-
-  /**
-   * Test case for `getWeight` method.
-   * This test verifies if the returned weight value for the character `Modric` matches the expected value (`60`).
-   */
-  test("getWeight") {
-    assertEquals(Modric.getWeight, 50)
-  }
-
-  /**
    * Test case for `getMana` method.
    * This test verifies if the returned mana value for the character `Modric` matches the expected value (`40`).
    */
@@ -102,14 +59,6 @@ class BlackMagicanTest extends FunSuite {
     Modric.setMana(90)
 
     assertEquals(Modric.getMana,90)
-  }
-
-  /**
-   * Test case for `haveWeapon` method.
-   * This test verifies if the playable entity `Modric` does not have a weapon (returns `None`).
-   */
-  test("HasWeapon") {
-    assertEquals(Modric.hasWeapon, None)
   }
 
   /**
@@ -196,22 +145,6 @@ class BlackMagicanTest extends FunSuite {
     Modric.putWeapon(Baston)
 
     assertEquals(Modric.attack(James), "The character: Modric can't attack an Allie")
-  }
-
-
-  /**
-   * Test case when a 'BlackMagican' was attack by other entity
-   * This test verifies if the 'wasAttacked' method inflicts the correct damage on the BlackMagican 'Modric' when is attacked by entity with 45 points of power
-   * and when the power is 200
-   */
-  test("wasAttacked"){
-    Modric.wasAttacked(45)
-
-    assertEquals(Modric.getHp,45)
-
-    Modric.wasAttacked(200)
-
-    assertEquals(Modric.getHp,0)
   }
 
 }

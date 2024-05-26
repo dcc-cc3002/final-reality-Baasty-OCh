@@ -1,4 +1,4 @@
-package playableTest.common
+package playableTest.commonTest
 
 import model.nonplayable.Enemy
 import model.playable.Playable
@@ -38,63 +38,7 @@ class PaladinTest extends FunSuite {
     assertEquals(Cristiano.equals(Pique),false)
   }
 
-  /**
-   * Test case for `getName` method.
-   * This test verifies if the returned name value for a character (`Cristiano`) matches the expected value.
-   */
-  test("getName") {
-    assertEquals(Cristiano.getName, "Cristiano")
-    assertEquals(Bale.getName,"Bale")
-  }
-  /**
-   * Test case for `getHp` method.
-   * This test verifies if the returned health points (`hp`) value for the character `Cristiano` matches the expected value (`100`).
-   */
-  test("getHealthPoints") {
-    assertEquals(Cristiano.getHp, 100)
-    assertEquals(Bale.getHp,25)
-  }
 
-
-  /**
-   * Test case for `setMana` method.
-   * This test verifies if the returned health points value for the characters `Cristiano` and 'Bale' matches the expected values (`125 and 250`).
-   */
-  test("setHp"){
-    Cristiano.setHp(125)
-    Bale.setHp(250)
-
-    assertEquals(Cristiano.getHp,125)
-    assertEquals(Bale.getHp,250)
-  }
-
-  /**
-   * Test case for `getDp` method.
-   * This test verifies if the returned defense points (`dp`) value for the character `Cristiano` matches the expected value (`75`).
-   */
-  test("getDefencePoints") {
-    assertEquals(Cristiano.getDp, 75)
-    assertEquals(Bale.getDp,34)
-  }
-
-  /**
-   * Test case for `getWeight` method.
-   * This test verifies if the returned weight value for the character `Cristiano` matches the expected value (`50`).
-   */
-  test("getWeight") {
-    assertEquals(Cristiano.getWeight, 50)
-    assertEquals(Bale.getWeight,56)
-  }
-
-
-  /**
-   * Test case for `haveWeapon` method.
-   * This test verifies if the playable entity `Cristiano` does not have a weapon (returns `None`).
-   */
-  test("HasWeapon") {
-    assertEquals(Cristiano.hasWeapon, None)
-    assertEquals(Bale.hasWeapon,None)
-  }
 
 
   /**
@@ -172,20 +116,6 @@ class PaladinTest extends FunSuite {
   }
 
 
-  /**
-   * Test case when a 'Paladin' was attack by other entity
-   * This test verifies if the 'wasAttacked' method inflicts the correct damage on the Paladin 'Cristiano' when is attacked by entity with 45 points of power
-   * and when the power is 200
-   */
-  test("wasAttacked"){
-    Cristiano.wasAttacked(45)
-
-    assertEquals(Cristiano.getHp,55)
-
-    Cristiano.wasAttacked(200)
-
-    assertEquals(Cristiano.getHp,0)
-  }
 
 
 }

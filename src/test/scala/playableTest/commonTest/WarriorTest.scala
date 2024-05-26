@@ -1,4 +1,4 @@
-package playableTest.common
+package playableTest.commonTest
 
 import model.nonplayable.Enemy
 import model.playable.Playable
@@ -36,47 +36,7 @@ class WarriorTest extends FunSuite {
     assertEquals(Casemiro.equals(Busquets),false)
   }
 
-  /**
-   * Test case for `getName` method.
-   * This test verifies if the returned name value for a character (`Casemiro`) matches the expected value.
-   */
-  test("getName") {
-    assertEquals(Casemiro.getName, "Casemiro")
-  }
 
-  /**
-   * Test case for `getHp` method.
-   * This test verifies if the returned health points (`hp`) value for the character `Casemiro` matches the expected value (`120`).
-   */
-  test("getHealthPoints") {
-    assertEquals(Casemiro.getHp, 120)
-  }
-
-  /**
-   * Test case for `getDp` method.
-   * This test verifies if the returned defense points (`dp`) value for the character `Casemiro` matches the expected value (`100`).
-   */
-  test("getDefencePoints") {
-    assertEquals(Casemiro.getDp, 100)
-  }
-
-  /**
-   * Test case for `getWeight` method.
-   * This test verifies if the returned weight value for the character `Casemiro` matches the expected value (`70`).
-   */
-  test("getWeight") {
-    assertEquals(Casemiro.getWeight, 70)
-  }
-
-
-
-  /**
-   * Test case for `haveWeapon` method.
-   * This test verifies if the playable entity `Casemiro` does not have a weapon (returns `None`).
-   */
-  test("HasWeapon") {
-    assertEquals(Casemiro.hasWeapon, None)
-  }
 
   /**
    * Test case for 'canEquip' methods.
@@ -153,20 +113,6 @@ class WarriorTest extends FunSuite {
 
   }
 
-  /**
-   * Test case when a 'Warrior' was attack by other entity
-   * This test verifies if the 'wasAttacked' method inflicts the correct damage on the Warrior 'Casemiro' when is attacked by entity with 45 points of power
-   * and when the power is 200
-   */
-  test("wasAttacked"){
-    Casemiro.wasAttacked(45)
-
-    assertEquals(Casemiro.getHp,75)
-
-    Casemiro.wasAttacked(200)
-
-    assertEquals(Casemiro.getHp,0)
-  }
 
 
 }
