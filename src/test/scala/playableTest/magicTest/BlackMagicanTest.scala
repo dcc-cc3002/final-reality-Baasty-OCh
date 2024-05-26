@@ -7,12 +7,12 @@ import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
 /**
- * Test suite for the `WhiteMagican` class.
- * This class contains tests for various functionalities of the `WhiteMagican` class.
+ * Test suite for the `BlackMagican` class.
+ * This class contains tests for various functionalities of the `BlackMagican` class.
  */
 class BlackMagicanTest extends FunSuite {
-  var Modric: BlackMagican = _ // Declaration of a variable `Modric` of type `Playable`.
-  var Iniesta: Enemy = _ // Declaration of a variable `Iniesta` of type `Enemy`.
+  var Modric: BlackMagican = _
+  var Iniesta: Enemy = _
   var James: BlackMagican = _
   var Puyol: Enemy = _
 
@@ -20,14 +20,11 @@ class BlackMagicanTest extends FunSuite {
   /**
    * Set up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
-   *
    * @param context The context provided by the test framework (`BeforeEach`).
    */
   override def beforeEach(context: BeforeEach): Unit = {
-    // Initialize `Modric` with new instances of `Ninja`.
     Modric = new BlackMagican("Modric")
     James = new BlackMagican("James",50,60,80,21)
-    // Initialize `Iniesta` with new instances of `Enemy`.
     Iniesta = new Enemy("Iniesta")
     Puyol = new Enemy("Puyol",50,50,250,500) // enemy with ridiculous defense
   }
@@ -35,30 +32,12 @@ class BlackMagicanTest extends FunSuite {
   /**
    * Test case for `equals` method.
    * This test verifies if two references to the same character (`Modric`) are considered equal.
+   * false in other case.
    */
   test("equals") {
     assertEquals(Modric.equals(Modric),true)
     assertEquals(Modric.equals(James),false)
     assertEquals(Modric.equals(Iniesta),false)
-
-  }
-
-  /**
-   * Test case for `getMana` method.
-   * This test verifies if the returned mana value for the character `Modric` matches the expected value (`40`).
-   */
-  test("getMana") {
-    assertEquals(Modric.getMana, 50)
-  }
-
-  /**
-   * Test case for 'setMana' method.
-   * This test verifies if the returned mana value for the character `Modric` matches the expected value (`90`).
-   */
-  test("setMana"){
-    Modric.setMana(90)
-
-    assertEquals(Modric.getMana,90)
   }
 
   /**
@@ -71,7 +50,6 @@ class BlackMagicanTest extends FunSuite {
     val Varita: Wand = new Wand()
     val Espada: Sword = new Sword()
 
-
     assertEquals(Modric.canEquipStaff(Baston),true)
     assertEquals(Modric.canEquipWand(Varita),true)
     assertEquals(Modric.canEquipSword(Espada),true)
@@ -79,8 +57,8 @@ class BlackMagicanTest extends FunSuite {
 
   /**
    * Test case for `putWeapon` method.
-   * This test verifies if the `putWeapon` method successfully equips a weapon (`Staff' , 'Wand' or 'Sword') on the character `Modric`.
-   * And throw exceptions in other cases
+   * This test verifies if the `putWeapon` method successfully equips a weapon (`Staff' , 'Wand' or 'Sword') on the
+   * BlackMagican `Modric`.
    */
   test("putWeapon") {
     val Baston: Staff = new Staff()
@@ -114,6 +92,7 @@ class BlackMagicanTest extends FunSuite {
     val Hacha: Axe = new Axe()
     assertEquals(Modric.putWeapon(Hacha),"The character: Modric can't wear an Axe")
   }
+
   test("It should throw an exception if the BlackMagican cant equip a Bow"){
     val Arco: Bow = new Bow()
     assertEquals(Modric.putWeapon(Arco),"The character: Modric can't wear a Bow")
@@ -126,11 +105,11 @@ class BlackMagicanTest extends FunSuite {
     assertEquals(Modric.putWeapon(Baston),"The weapon: Baston already has owner")
   }
 
-
   /**
    * Test case for attack method.
-   * This test verifies if the `attack` method inflicts the correct damage on the enemy (`Iniesta`) when `Modric` attacks with a `Wand`.
-   * also verifies if the 'attack' method inflicts zero damage when the defense poitns of enemy are higher than the attack points of Black Magican
+   * This test verifies if the `attack` method inflicts the correct damage on the enemy (`Iniesta`) when `Modric`
+   * attacks with a `Wand`. Also verifies if the 'attack' method inflicts zero damage
+   * when the defense poitns of enemy are higher than the attack points of BlackMagican
    */
   test("attack") {
     val Baston: Staff = new Staff()

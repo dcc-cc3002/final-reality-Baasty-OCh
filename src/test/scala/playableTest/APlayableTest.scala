@@ -9,10 +9,9 @@ import munit.FunSuite
 class APlayableTest extends FunSuite{
   var Di_Stefano: Playable = _
   var Puskas: Playable = _
-  var Gento: Playable = _
   var Amancio: Playable = _
   var Kopa: Playable = _
-  var Cruyff: Enemy = _
+  var Gento: Playable = _
 
   /**
    * Set up the test environment before each test case.
@@ -26,12 +25,15 @@ class APlayableTest extends FunSuite{
     Amancio = new Warrior("Amancio")
     Kopa = new BlackMagican("Kopa")
     Gento = new WhiteMagican("Gento")
-    Cruyff = new Enemy("Cruyff")
+
     }
 
   /**
    * Test case for `getName` method.
-   * This test verifies if the returned name value for a character (`Di_Stefano`) matches the expected value.
+   * This test verifies if the returned name value for Paladin 'Di_Stefano', Ninja 'Puskas',
+   * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento' matches the
+   * expected values (Di Stefano, Puskas,
+   * Amancio, Kopa, Gento).
    */
   test("getName") {
     assertEquals(Di_Stefano.getName, "Di Stefano")
@@ -43,7 +45,8 @@ class APlayableTest extends FunSuite{
 
   /**
    * Test case for `getHp` method.
-   * This test verifies if the returned health points (`hp`) value for the character `Di_Stefano` matches the expected value (`100`).
+   * This test verifies if the returned health points (`hp`) value for the Paladin 'Di_Stefano', Ninja 'Puskas',
+   * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento' matches the expected values (100,80,120,90,100).
    */
   test("getHealthPoints") {
     assertEquals(Di_Stefano.getHp, 100)
@@ -54,7 +57,9 @@ class APlayableTest extends FunSuite{
   }
 
   /**
-   *
+   * Test case for 'setHp' method.
+   * This test verifies if the method actually update the health points of the character Paladin 'Di_Stefano', Ninja 'Puskas',
+   * * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento' to value (45)
    */
   test("setHp"){
     Di_Stefano.setHp(45)
@@ -72,7 +77,8 @@ class APlayableTest extends FunSuite{
 
   /**
    * Test case for `getDp` method.
-   * This test verifies if the returned defense points (`dp`) value for the character `Di_Stefano` matches the expected value (`75`).
+   * This test verifies if the returned defense points (`dp`) value for the Paladin 'Di_Stefano', Ninja 'Puskas',
+   * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento' matches the expected values (75,70,100,60,80).
    */
   test("getDefencePoints") {
     assertEquals(Di_Stefano.getDp, 75)
@@ -84,7 +90,8 @@ class APlayableTest extends FunSuite{
 
   /**
    * Test case for `getWeight` method.
-   * This test verifies if the returned weight value for the character `Di_Stefano` matches the expected value (`50`).
+   * This test verifies if the returned weight value for the Paladin 'Di_Stefano', Ninja 'Puskas',
+   * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento' matches the expected values (50,30,70,50,60).
    */
   test("getWeight") {
     assertEquals(Di_Stefano.getWeight, 50)
@@ -96,7 +103,8 @@ class APlayableTest extends FunSuite{
 
   /**
    * Test case for `hasWeapon` method.
-   * This test verifies if the playable entity `Di_Stefano` does not have a weapon (returns `None`).
+   * This test verifies if the Paladin 'Di_Stefano', Ninja 'Puskas',
+   * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento'  do not have a weapon (returns None`).
    */
   test("HasWeapon") {
     assertEquals(Di_Stefano.hasWeapon, None)
