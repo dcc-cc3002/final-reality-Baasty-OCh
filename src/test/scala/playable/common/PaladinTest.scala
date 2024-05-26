@@ -1,11 +1,8 @@
-package playable
+package playable.common
 
-import model.nonplayable.NonPlayable
 import model.nonplayable.Enemy
 import model.playable.Playable
-import model.playable.common.{Ninja, Paladin, Warrior}
-import model.playable.APlayable
-import model.weapons.AWeapon
+import model.playable.common.Paladin
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
