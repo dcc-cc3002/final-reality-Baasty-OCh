@@ -1,4 +1,4 @@
-package model.controller
+package model.general
 
 import model.nonplayable.Enemy
 import model.playable.Playable

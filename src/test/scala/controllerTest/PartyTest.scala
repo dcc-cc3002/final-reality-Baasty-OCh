@@ -1,6 +1,6 @@
 package controllerTest
 
-import model.party.Party
+import model.general.party.Party
 import model.playable.magic.WhiteMagican
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin}

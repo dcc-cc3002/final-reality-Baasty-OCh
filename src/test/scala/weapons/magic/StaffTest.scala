@@ -1,9 +1,6 @@
-package nonplayableTest.weapons
+package weapons.magic
 
-import model.nonplayable.NonPlayable
 import model.playable.Playable
-import model.playable.magic.WhiteMagican
-import model.weapons.common.Bow
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 

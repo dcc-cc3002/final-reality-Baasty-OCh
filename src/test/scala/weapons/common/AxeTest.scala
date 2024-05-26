@@ -1,9 +1,7 @@
-package nonplayableTest.weapons
+package weapons.common
 
-import model.nonplayable.NonPlayable
 import model.playable.Playable
-import model.playable.common.Warrior
-import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.common.{Axe, Sword}
 import munit.FunSuite
 
 /**
@@ -13,7 +11,7 @@ import munit.FunSuite
 class AxeTest extends FunSuite {
   var Hacha: Axe = _ // Declaration of a variable `Hacha` of type `Axe`.
   var Casemiro: Playable = _ // Declaration of a variable `Casemiro` of type `Playable`.
-  var Isco: Playable = _
+
   var Hacha2: Axe = _
   var Espada: Sword = _
   /**

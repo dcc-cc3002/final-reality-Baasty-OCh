@@ -1,6 +1,6 @@
 package nonplayableTest
 
-import model.nonplayable.{Enemy, NonPlayable}
+import model.nonplayable.Enemy
 import model.playable.Playable
 import model.playable.common.Paladin
 import munit.FunSuite

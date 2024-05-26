@@ -1,6 +1,7 @@
-package model.controller
+package model.general.schedule
 
-import model.playable.Playable
+import model.general.GameUnit
+
 import scala.collection.mutable
 
 /** Trait that defines basic operations for managing a game schedule of Playable objects.

@@ -1,4 +1,4 @@
-package model.party
+package model.general.party
 
 import exceptions.InvalidadditionPartyException
 import model.playable.Playable

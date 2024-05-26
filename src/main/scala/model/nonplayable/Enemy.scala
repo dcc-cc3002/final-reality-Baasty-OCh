@@ -1,5 +1,5 @@
 package model.nonplayable
-import model.controller.GameUnit
+import model.general.GameUnit
 import model.nonplayable.NonPlayable
 import model.playable.Playable
 

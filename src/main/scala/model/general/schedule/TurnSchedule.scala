@@ -1,8 +1,6 @@
-package model.controller
+package model.general.schedule
 
-import model.playable.common.Paladin
-import model.playable.magic.WhiteMagican
-import model.playable.{APlayable, Playable}
+import model.general.GameUnit
 
 import scala.collection.mutable
 import scala.collection.mutable.{Map, Queue}

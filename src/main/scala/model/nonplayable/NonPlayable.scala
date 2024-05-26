@@ -1,6 +1,6 @@
 package model.nonplayable
 
-import model.controller.GameUnit
+import model.general.GameUnit
 import model.playable.Playable
 
 // Trait to represent non-playable entities

@@ -1,6 +1,7 @@
 package controllerTest
 
-import model.controller.{GameUnit, TurnSchedule}
+import model.general.GameUnit
+import model.general.schedule.TurnSchedule
 import model.playable.common.{Paladin, Warrior}
 import model.playable.magic.WhiteMagican
 import model.playable.Playable

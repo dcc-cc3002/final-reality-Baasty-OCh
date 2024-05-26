@@ -1,6 +1,5 @@
-package nonplayableTest.weapons
+package weapons.common
 
-import model.nonplayable.NonPlayable
 import model.playable.Playable
 import model.weapons.common.{Axe, Bow}
 import munit.FunSuite

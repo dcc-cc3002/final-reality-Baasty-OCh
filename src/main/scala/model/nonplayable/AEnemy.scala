@@ -1,6 +1,6 @@
 package model.nonplayable
 import exceptions.InvalidattackAllieException
-import model.controller.GameUnit
+import model.general.GameUnit
 import model.nonplayable.NonPlayable
 import model.playable.Playable
 

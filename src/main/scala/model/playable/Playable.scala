@@ -1,7 +1,7 @@
 package model.playable
 
 import exceptions.{InvalidattackAllieException, InvalidputWeaponException}
-import model.controller.GameUnit
+import model.general.GameUnit
 import model.nonplayable.{Enemy, NonPlayable}
 import model.weapons.{AWeapon, Weapon}
 import model.weapons.common.{Axe, Bow, Sword}
