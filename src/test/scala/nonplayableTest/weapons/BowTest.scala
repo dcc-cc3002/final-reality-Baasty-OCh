@@ -1,4 +1,4 @@
-package nonplayable.weapons
+package nonplayableTest.weapons
 
 import model.nonplayable.NonPlayable
 import model.playable.Playable

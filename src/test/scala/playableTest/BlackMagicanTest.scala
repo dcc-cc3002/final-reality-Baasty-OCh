@@ -1,4 +1,4 @@
-package playable
+package playableTest
 
 import exceptions.{InvalidputAxeException, InvalidputBowException}
 import model.nonplayable.NonPlayable

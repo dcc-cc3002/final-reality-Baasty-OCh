@@ -1,4 +1,4 @@
-package playable.common
+package playableTest.common
 
 import model.nonplayable.Enemy
 import model.playable.Playable

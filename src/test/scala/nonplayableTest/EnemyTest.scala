@@ -1,4 +1,4 @@
-package nonplayable
+package nonplayableTest
 
 import model.nonplayable.{Enemy, NonPlayable}
 import model.playable.Playable

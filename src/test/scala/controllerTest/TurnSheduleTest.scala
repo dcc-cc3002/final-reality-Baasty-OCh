@@ -1,4 +1,4 @@
-package controller
+package controllerTest
 
 import model.controller.{GameUnit, TurnSchedule}
 import model.playable.common.{Paladin, Warrior}

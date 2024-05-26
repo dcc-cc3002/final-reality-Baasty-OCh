@@ -1,4 +1,4 @@
-package controller
+package controllerTest
 
 import model.party.Party
 import model.playable.magic.WhiteMagican
