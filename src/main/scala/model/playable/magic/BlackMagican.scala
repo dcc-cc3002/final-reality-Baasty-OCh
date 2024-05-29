@@ -1,6 +1,7 @@
 package model.playable.magic
 
 import exceptions.{InvalidputAxeException, InvalidputBowException, InvalidputWeaponException}
+import model.spell.Spell
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
@@ -44,6 +45,19 @@ class BlackMagican(name:String, healthPoints:Int,
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
       case _:InvalidputBowException => s"The character: ${this.getName} can't wear a Bow"
       case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
+    }
+  }
+
+  def selectSpell(spell: Spell): Unit = {
+    try{
+      spell.canBeSelectedBy(this)
+      this.Spell = Some(spell)
+      "The spell was select"
+    } catch {
+      case _:InvalidselectHealingSpell => s"The character ${this.getName} cant select a Healing Spell"
+      case _:InvalidselectPoisonSpell => s"The character ${this.getName} cant select a Poison Spell"
+      case _:InvalidselectParalysisSpell => s"The character ${this.getName} cant select a Paralysis Spell"
+
     }
   }
 
