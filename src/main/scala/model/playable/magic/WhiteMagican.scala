@@ -59,6 +59,13 @@ class WhiteMagican(name:String, healthPoints:Int,
   }
 
 
+  override def canSelectHealing(): Boolean = true
+  override def canSelectPoison(): Boolean = true
+  override def canSelectParalysis(): Boolean = true
+  override def canSelectFire(): Boolean = throw new InvalidselectFireSpell
+  override def canSelectThunder(): Boolean = throw new InvalidselectThunderSpell
+
+
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
    * @param w represent the Axe
