@@ -1,6 +1,7 @@
 package model.playable.magic
 
 import model.playable.APlayable
+import model.spell.Spell
 
 /**
  * Abstract class to made a group of magic characters
@@ -14,6 +15,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
                               defensePoints:Int, weight:Int,
                               mana:Int) extends APlayable(name,healthPoints, defensePoints,weight) {
   private var Mana: Int = mana
+  var Spell: Option[Spell] = None
 
   /**
    * Implementation of Method to get the mana points of the playable entity
@@ -28,6 +30,12 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   def setMana(newMana:Int): Unit = {
     this.Mana = newMana
   }
+
+  def selectSpell(spell: Spell): Unit = {
+    this.Spell = Some(spell)
+  }
+
+  def throwSpell: Unit = {}
 
 
 }
