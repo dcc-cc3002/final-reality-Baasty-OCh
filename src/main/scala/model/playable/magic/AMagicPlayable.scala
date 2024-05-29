@@ -31,9 +31,15 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
     this.Mana = newMana
   }
 
-  def selectSpell(spell: Spell): Unit = {}
+  def selectSpell(spell: Spell): String
 
   def throwSpell: Unit = {}
+
+  def canSelectHealing(): Boolean
+  def canSelectPoison(): Boolean
+  def canSelectParalysis(): Boolean
+  def canSelectFire(): Boolean
+  def canSelectThunder(): Boolean
 
 
 }

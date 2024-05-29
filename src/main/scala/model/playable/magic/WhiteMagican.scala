@@ -1,6 +1,7 @@
 package model.playable.magic
 
-import exceptions.{InvalidputAxeException, InvalidputSwordException, InvalidputWeaponException}
+import exceptions.{InvalidputAxeException, InvalidputSwordException, InvalidputWeaponException, InvalidselectFireSpell, InvalidselectHealingSpell, InvalidselectParalysisSpell, InvalidselectPoisonSpell, InvalidselectThunderSpell}
+import model.spell.Spell
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
@@ -42,6 +43,18 @@ class WhiteMagican(name:String, healthPoints:Int,
       case _:InvalidputSwordException => s"The character: ${this.getName} can't wear a Sword"
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
       case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
+    }
+  }
+
+  def selectSpell(spell: Spell): String = {
+    try{
+      spell.canBeSelectedBy(this)
+      this.Spell = Some(spell)
+      "The spell was select"
+    } catch {
+      case _:InvalidselectFireSpell => s"The character ${this.getName} cant select a Fire Spell"
+      case _:InvalidselectThunderSpell => s"The character ${this.getName} cant select a Thunder Spell"
+
     }
   }
 

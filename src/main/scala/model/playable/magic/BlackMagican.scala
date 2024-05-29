@@ -1,6 +1,6 @@
 package model.playable.magic
 
-import exceptions.{InvalidputAxeException, InvalidputBowException, InvalidputWeaponException}
+import exceptions.{InvalidputAxeException, InvalidputBowException, InvalidputWeaponException, InvalidselectHealingSpell, InvalidselectParalysisSpell, InvalidselectPoisonSpell}
 import model.spell.Spell
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
@@ -48,7 +48,7 @@ class BlackMagican(name:String, healthPoints:Int,
     }
   }
 
-  def selectSpell(spell: Spell): Unit = {
+  def selectSpell(spell: Spell): String = {
     try{
       spell.canBeSelectedBy(this)
       this.Spell = Some(spell)
@@ -62,6 +62,11 @@ class BlackMagican(name:String, healthPoints:Int,
   }
 
 
+  override def canSelectHealing(): Boolean = throw new InvalidselectHealingSpell
+  override def canSelectPoison(): Boolean = throw new InvalidselectPoisonSpell
+  override def canSelectParalysis(): Boolean = throw new InvalidselectParalysisSpell
+  override def canSelectFire(): Boolean = true
+  override def canSelectThunder(): Boolean = true
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
    * @param w represent the Axe

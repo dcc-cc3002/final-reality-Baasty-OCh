@@ -1,5 +1,5 @@
 package exceptions
 
-class InvalidselectParalysisSpell {
+class InvalidselectParalysisSpell extends Exception{
 
 }
