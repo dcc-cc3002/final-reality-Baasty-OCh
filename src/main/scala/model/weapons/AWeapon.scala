@@ -1,6 +1,6 @@
 package model.weapons
 
-import exceptions.InvalidputAxeException
+import exceptions.weapons.InvalidputAxeException
 import model.nonplayable.NonPlayable
 import model.playable.Playable
 

@@ -1,6 +1,7 @@
 package model.playable.magic
 
-import exceptions.{InvalidputAxeException, InvalidputBowException, InvalidputWeaponException, InvalidselectHealingSpell, InvalidselectParalysisSpell, InvalidselectPoisonSpell}
+import exceptions.spells.{InvalidselectHealingSpell, InvalidselectParalysisSpell, InvalidselectPoisonSpell}
+import exceptions.weapons.{InvalidputAxeException, InvalidputBowException, InvalidputWeaponException}
 import model.spell.Spell
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}

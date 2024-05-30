@@ -1,6 +1,6 @@
 package model.playable.common
 
-import exceptions.{InvalidputBowException, InvalidputStaffException, InvalidputWandException, InvalidputWeaponException}
+import exceptions.weapons.{InvalidputBowException, InvalidputStaffException, InvalidputWandException, InvalidputWeaponException}
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}

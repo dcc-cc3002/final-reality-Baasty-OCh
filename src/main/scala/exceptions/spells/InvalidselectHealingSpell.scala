@@ -1,4 +1,4 @@
-package exceptions
+package exceptions.spells
 
 class InvalidselectHealingSpell extends Exception{
 

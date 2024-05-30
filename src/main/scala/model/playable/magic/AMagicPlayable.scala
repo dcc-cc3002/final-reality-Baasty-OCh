@@ -1,6 +1,8 @@
 package model.playable.magic
 
+import model.general.GameUnit
 import model.playable.APlayable
+import model.weapons.magic.AMagicWeapon
 import model.spell.Spell
 
 /**
@@ -17,6 +19,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   private var Mana: Int = mana
   var Spell: Option[Spell] = None
 
+
   /**
    * Implementation of Method to get the mana points of the playable entity
    * @return The mana of playable entity
@@ -30,10 +33,29 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   def setMana(newMana:Int): Unit = {
     this.Mana = newMana
   }
+  def hasSpell: Option[Spell] = Spell
+
+  def hasEnoughMana: Boolean = {
+    if (this.Mana < Spell.map(_.getCost).getOrElse(0)){
+      false
+    } else true
+  }
+
+  def hasMagicWeapon: Boolean = {
+    true
+  }
 
   def selectSpell(spell: Spell): String
 
-  def throwSpell: Unit = {}
+  def throwSpell(objective: GameUnit): Unit = {
+    //try{
+      //this.hasEnoughMana
+      //setMana(this.mana - Spell.map(_.getCost).getOrElse(0))
+      //Spell.map(_.detEffect).getOrElse(0)}
+
+    }
+
+
 
   def canSelectHealing(): Boolean
   def canSelectPoison(): Boolean

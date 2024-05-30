@@ -1,4 +1,4 @@
-package exceptions
+package exceptions.spells
 
 class InvalidselectParalysisSpell extends Exception{
 

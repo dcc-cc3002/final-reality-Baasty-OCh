@@ -1,4 +1,4 @@
-package exceptions
+package exceptions.weapons
 
 class InvalidputSwordException extends Exception{
 
