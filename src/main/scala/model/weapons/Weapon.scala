@@ -39,4 +39,6 @@ trait Weapon{
    */
   def canBeEquippedBy(player:Playable): Boolean
 
+  def iAmMagic: Boolean
+
 }

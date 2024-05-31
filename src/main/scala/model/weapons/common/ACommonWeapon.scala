@@ -11,4 +11,5 @@ import model.weapons.AWeapon
 protected abstract class ACommonWeapon(name: String, weight: Int,
                              attackPoints: Int) extends AWeapon(name, weight, attackPoints) {
 
+
 }

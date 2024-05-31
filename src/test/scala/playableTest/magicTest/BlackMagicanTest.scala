@@ -2,9 +2,13 @@ package playableTest.magicTest
 
 import model.nonplayable.Enemy
 import model.playable.magic.BlackMagican
+import model.spell.Spell
+import model.spell.dark.{Fire, Thunder}
+import model.spell.light.{Healing, Paralysis, Poison}
+import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
-import munit.FunSuite
+import munit.{FunSuite, Slow}
 
 /**
  * Test suite for the `BlackMagican` class.
@@ -124,6 +128,45 @@ class BlackMagicanTest extends FunSuite {
     Modric.putWeapon(Baston)
 
     assertEquals(Modric.attack(James), "The character: Modric can't attack an Allie")
+  }
+
+  test("SelectSpell"){
+    var Fire : Spell = new Fire()
+    var Thunder : Spell = new Thunder()
+    var Poison : Spell = new Poison()
+
+    assertEquals(Modric.selectSpell(Fire), "The spell was select")
+    assertEquals(Modric.selectSpell(Thunder), "The spell was select")
+  }
+
+  test("It should throw an exception if the BlackMagican cant select Healing Spell"){
+    var Healing : Spell = new Healing()
+    assertEquals(Modric.selectSpell(Healing), "The character Modric cant select a Healing Spell")
+  }
+
+  test("It should throw an exception if the BlackMagican cant select Paralysis Spell"){
+    var Paralysis : Spell = new Paralysis()
+    assertEquals(Modric.selectSpell(Paralysis), "The character Modric cant select a Paralysis Spell")
+  }
+
+  test("It should throw an exception if the BlackMagican cant select Poison Spell"){
+    var Poison : Spell = new Poison()
+    assertEquals(Modric.selectSpell(Poison), "The character Modric cant select a Poison Spell")
+  }
+
+  test("hasMagicWeapon"){
+    var Staff: Weapon = new Staff()
+    var Wand: Weapon = new Wand()
+    var Sword: Weapon = new Sword()
+    Modric.putWeapon(Staff)
+    assertEquals(Modric.hasMagicWeapon, true)
+
+    Modric.putWeapon(Wand)
+    assertEquals(Modric.hasMagicWeapon, true)
+
+    Modric.putWeapon(Sword)
+    assertEquals(Modric.hasMagicWeapon, false)
+
   }
 
 }

@@ -4,6 +4,7 @@ import model.general.GameUnit
 import model.playable.APlayable
 import model.weapons.magic.AMagicWeapon
 import model.spell.Spell
+import model.weapons.Weapon
 
 /**
  * Abstract class to made a group of magic characters
@@ -35,14 +36,17 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   }
   def hasSpell: Option[Spell] = Spell
 
-  def hasEnoughMana: Boolean = {
-    if (this.Mana < Spell.map(_.getCost).getOrElse(0)){
-      false
-    } else true
-  }
+  //def hasEnoughMana: Boolean = {
+  //if (this.Mana < Spell.map(_.getCost).getOrElse(0)){
+  //  false
+  //} else true
+  //}
 
   def hasMagicWeapon: Boolean = {
-    true
+    //var foo: Weapon = Some(this.arma)
+    try {
+      this.arma.map(_.iAmMagic).getOrElse(false)
+    }
   }
 
   def selectSpell(spell: Spell): String

@@ -38,10 +38,10 @@ trait Playable extends GameUnit{
   def putWeapon( weapon: Weapon): String
 
   /**
-   * Implementation of method to alert if the player is attempting to use a weapon owned by another character."
+   * Abstract method to alert if the player is attempting to use a weapon owned by another character."
    * @return an Exception
    */
-  def foreignWeapon():Boolean = throw new InvalidputWeaponException
+  def foreignWeapon():Boolean
 
   /**
    * Abstract Method to remove a weapon in playable entity

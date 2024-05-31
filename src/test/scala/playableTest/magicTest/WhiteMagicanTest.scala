@@ -2,6 +2,10 @@ package playableTest.magicTest
 
 import model.nonplayable.Enemy
 import model.playable.magic.WhiteMagican
+import model.spell.Spell
+import model.spell.dark.{Fire, Thunder}
+import model.spell.light.{Healing, Paralysis, Poison}
+import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
@@ -128,5 +132,39 @@ class WhiteMagicanTest extends FunSuite {
   }
 
 
+  test("SelectSpell"){
+    var Healing : Spell = new Healing()
+    var Paralysis : Spell = new Paralysis()
+    var Poison : Spell = new Poison()
+
+    assertEquals(Benzema.selectSpell(Healing), "The spell was select")
+    assertEquals(Benzema.selectSpell(Paralysis), "The spell was select")
+    assertEquals(Benzema.selectSpell(Poison), "The spell was select")
+  }
+
+  test("It should throw an exception if the WhiteMagican cant select Fire Spell"){
+    var Fire : Spell = new Fire()
+    assertEquals(Benzema.selectSpell(Fire), "The character Benzema cant select a Fire Spell")
+  }
+
+  test("It should throw an exception if the WhiteMagican cant select Thunder Spell"){
+    var Thunder : Spell = new Thunder()
+    assertEquals(Benzema.selectSpell(Thunder), "The character Benzema cant select a Thunder Spell")
+  }
+
+  test("hasMagicWeapon"){
+    var Staff: Weapon = new Staff()
+    var Wand: Weapon = new Wand()
+    var Bow: Weapon = new Bow()
+    Benzema.putWeapon(Staff)
+    assertEquals(Benzema.hasMagicWeapon, true)
+
+    Benzema.putWeapon(Wand)
+    assertEquals(Benzema.hasMagicWeapon, true)
+
+    Benzema.putWeapon(Bow)
+    assertEquals(Benzema.hasMagicWeapon, false)
+
+  }
 
 }

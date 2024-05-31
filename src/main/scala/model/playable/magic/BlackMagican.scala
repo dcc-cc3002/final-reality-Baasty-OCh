@@ -41,6 +41,7 @@ class BlackMagican(name:String, healthPoints:Int,
       weapon.canBeEquippedBy(this)
       this.arma = Some(weapon)
       weapon.setOwner(this)
+      //val foo: Boolean = weapon.iAmMagic
       "The weapon was wear"
     } catch {
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"

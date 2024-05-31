@@ -52,6 +52,8 @@ abstract class AWeapon(name: String, weight: Int,
     this.owner = Some(newOwner)
   }
 
+  def iAmMagic: Boolean = false
+
 
 
 

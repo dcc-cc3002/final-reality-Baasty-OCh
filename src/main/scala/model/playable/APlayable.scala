@@ -86,6 +86,12 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   }
 
   /**
+   * Implementation of method to alert if the player is attempting to use a weapon owned by another character."
+   * @return an Exception
+   */
+  def foreignWeapon():Boolean = throw new InvalidputWeaponException
+
+  /**
    * Implementation method to attack Game Unit entity
    * @param entity the target of attack
    * @return affirmative message in case the target was correct attack and "exception" message in other case

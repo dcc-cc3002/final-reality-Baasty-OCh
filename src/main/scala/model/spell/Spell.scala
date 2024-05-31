@@ -6,6 +6,6 @@ trait Spell {
 
   def getCost: Int
   def detEffect: Unit
-  def canBeSelectedBy(player:AMagicPlayable):Boolean
+  def canBeSelectedBy(player:AMagicPlayable): Boolean
 
 }

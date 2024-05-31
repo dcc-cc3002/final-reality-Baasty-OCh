@@ -2,6 +2,8 @@ package playableTest.magicTest
 
 import model.playable.Playable
 import model.playable.magic.{AMagicPlayable, BlackMagican, WhiteMagican}
+import model.weapons.Weapon
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
 class AMagicPlayableTest extends FunSuite{
@@ -42,4 +44,11 @@ class AMagicPlayableTest extends FunSuite{
     assertEquals(Kopa.getMana,90)
     assertEquals(Gento.getMana,90)
   }
+
+  test("hasSpell"){
+    assertEquals(Kopa.hasSpell, None)
+    assertEquals(Gento.hasSpell, None)
+  }
+
+
 }

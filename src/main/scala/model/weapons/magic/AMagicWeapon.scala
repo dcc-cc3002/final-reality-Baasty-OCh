@@ -13,5 +13,7 @@ protected abstract class AMagicWeapon(name: String, weight: Int,
    */
   def getMAP: Int = MAP
 
+  override def iAmMagic: Boolean = true
+
 
 }
