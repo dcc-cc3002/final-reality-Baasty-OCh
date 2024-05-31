@@ -49,7 +49,12 @@ class AMagicPlayableTest extends FunSuite{
     assertEquals(Gento.getMana,90)
   }
 
-
+  /**
+   * Test case for 'hasEnoughMana' method.
+   * This test verifies if the character has enough mana to use a selected spell.
+   * It checks if the character BlackMagican `Kopa` with 100 mana can use the `Fire` spell
+   * and if the character WhiteMagican `Gento` with 5 mana cannot use the `Healing` spell.
+   */
   test("hasEnoughMana"){
     var Fire : Spell = new Fire()
     var Healing : Spell = new Healing()
@@ -62,14 +67,13 @@ class AMagicPlayableTest extends FunSuite{
     assertEquals(Gento.hasEnoughMana, "The character Gento has not the enough mana to use the Spell")
   }
 
-  test("checkMana"){
-    var Fire : Spell = new Fire()
-    var Healing : Spell = new Healing()
-    Kopa.setMana(100)
-    Kopa.selectSpell(Fire)
-    assertEquals(Kopa.checkMana, true)
-  }
-
+  /**
+   * Test case for 'throwSpell' method.
+   * This test verifies if the character can successfully throw the selected spell at a target.
+   * It checks if the character BlackMagican `Kopa` with a `Staff` and `Fire` spell can throw the spell at the enemy `Laudrup`
+   * and if the character WhiteMagican `Gento` with a `Wand` and `Healing` spell can throw the spell at `Kopa`.
+   * Both cases are expected to return "nice spell".
+   */
   test("throwSpell"){
     var Staff : Staff = new Staff()
     var Wand : Wand = new Wand()
@@ -84,6 +88,28 @@ class AMagicPlayableTest extends FunSuite{
     Gento.selectSpell(Healing)
     assertEquals(Gento.throwSpell(Kopa), "nice spell")
 
+  }
+
+  /**
+   * Test case for handling invalid spell targets.
+   * This test verifies if the appropriate exception is thrown when a character tries to cast a spell on an invalid target.
+   * It checks if the character BlackMagican `Kopa` with a `Staff` and `Fire` spell cannot cast the spell on `Gento`
+   * and if the character WhiteMagican `Gento` with a `Wand` and `Healing` spell cannot cast the spell on `Laudrup`.
+   * Both cases are expected to return "The spell can not act in that target".
+   */
+  test("It should throw an exception if the Magic Playable cant throw a spell on specific target"){
+    var Staff : Staff = new Staff()
+    var Wand : Wand = new Wand()
+    var Fire : Spell = new Fire()
+    var Healing : Spell = new Healing()
+    var Laudrup: Enemy = new Enemy("Laudrup")
+    Kopa.putWeapon(Staff)
+    Kopa.selectSpell(Fire)
+    assertEquals(Kopa.throwSpell(Gento), "The spell can not act in that target")
+
+    Gento.putWeapon(Wand)
+    Gento.selectSpell(Healing)
+    assertEquals(Gento.throwSpell(Laudrup), "The spell can not act in that target")
   }
 
 

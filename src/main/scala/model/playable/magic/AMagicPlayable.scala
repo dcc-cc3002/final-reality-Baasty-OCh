@@ -1,6 +1,6 @@
 package model.playable.magic
 
-import exceptions.spells.InvalidnoEnoughMana
+import exceptions.spells.{InvalidnoEnoughMana, InvalidspellTarget}
 import exceptions.weapons.InvalidkindOfWeapon
 import model.general.GameUnit
 import model.playable.APlayable
@@ -66,12 +66,16 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   def selectSpell(spell: Spell): String
 
   def throwSpell(target: GameUnit): String = {
-    this.hasMagicWeapon
-    this.hasEnoughMana
-    target.canSuffer(spell)
-    spell.Effect(target)
-    "nice spell"
+    try{
+      this.hasMagicWeapon
+      this.hasEnoughMana
+      target.canSuffer(spell)
+      spell.Effect(target)
+      "nice spell"
+    } catch {
+      case _: InvalidspellTarget => s"The spell can not act in that target"
     }
+  }
 
 
 
