@@ -50,7 +50,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   def throwSpell(objective: GameUnit): Unit = {
     //try{
       //this.hasEnoughMana
-      //setMana(this.mana - Spell.map(_.getCost).getOrElse(0))
+      //this.setMana(this.mana - Spell.map(_.getCost).getOrElse(0))
       //Spell.map(_.detEffect).getOrElse(0)}
 
     }
