@@ -3,6 +3,7 @@ package model.playable.magic
 import exceptions.spells.{InvalidselectFireSpell, InvalidselectHealingSpell, InvalidselectParalysisSpell, InvalidselectPoisonSpell, InvalidselectThunderSpell}
 import exceptions.weapons.{InvalidputAxeException, InvalidputSwordException, InvalidputWeaponException}
 import model.spell.Spell
+import model.spell.light.Healing
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
@@ -19,6 +20,7 @@ import model.weapons.magic.{Staff, Wand}
 class WhiteMagican(name:String, healthPoints:Int,
                  defensePoints:Int, weight:Int,
                  mana:Int) extends AMagicPlayable(name,healthPoints, defensePoints,weight,mana) {
+  var spell : Spell = new Healing()
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."
@@ -50,7 +52,7 @@ class WhiteMagican(name:String, healthPoints:Int,
   def selectSpell(spell: Spell): String = {
     try{
       spell.canBeSelectedBy(this)
-      this.Spell = Some(spell)
+      this.spell = spell
       "The spell was select"
     } catch {
       case _:InvalidselectFireSpell => s"The character ${this.getName} cant select a Fire Spell"

@@ -4,6 +4,7 @@ import exceptions.InvalidattackAllieException
 import exceptions.weapons.InvalidputWeaponException
 import model.general.GameUnit
 import model.nonplayable.{Enemy, NonPlayable}
+import model.spell.Spell
 import model.weapons.{AWeapon, Weapon}
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
@@ -96,5 +97,6 @@ trait Playable extends GameUnit{
    * @return true, we have to attack enemy entities
    */
   def CanAttackEnemies(): Boolean = true
+
 
 }

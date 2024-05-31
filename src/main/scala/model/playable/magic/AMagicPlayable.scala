@@ -20,7 +20,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
                               defensePoints:Int, weight:Int,
                               mana:Int) extends APlayable(name,healthPoints, defensePoints,weight) {
   private var Mana: Int = mana
-  var Spell: Option[Spell] = None
+  var spell: Spell
 
 
   /**
@@ -36,10 +36,10 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   def setMana(newMana:Int): Unit = {
     this.Mana = newMana
   }
-  def hasSpell: Option[Spell] = Spell
+  //def hasSpell: Spell = spell
 
   def checkMana: Boolean = {
-  if (this.Mana < Spell.map(_.getCost).getOrElse(15)){
+  if (this.Mana < spell.getCost){
     throw new InvalidnoEnoughMana
   } else
     true
@@ -65,12 +65,12 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
 
   def selectSpell(spell: Spell): String
 
-  def throwSpell(objective: GameUnit): Unit = {
-    //try{
-      //this.hasEnoughMana
-      //this.setMana(this.mana - Spell.map(_.getCost).getOrElse(0))
-      //Spell.map(_.detEffect).getOrElse(0)}
-
+  def throwSpell(target: GameUnit): String = {
+    this.hasMagicWeapon
+    this.hasEnoughMana
+    target.canSuffer(spell)
+    spell.Effect(target)
+    "nice spell"
     }
 
 

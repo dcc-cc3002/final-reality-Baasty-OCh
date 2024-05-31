@@ -2,6 +2,7 @@ package model.general
 
 import model.nonplayable.Enemy
 import model.playable.Playable
+import model.spell.Spell
 
 trait GameUnit {
   /**
@@ -44,4 +45,6 @@ trait GameUnit {
    * @param pain the amount of damage Game Unit receive
    */
   def wasAttacked(pain:Int) : Unit
+
+  def canSuffer(spell : Spell): Boolean
 }

@@ -1,12 +1,14 @@
 package playableTest.magicTest
 
+import model.nonplayable.Enemy
 import model.playable.Playable
 import model.playable.magic.{AMagicPlayable, BlackMagican, WhiteMagican}
 import model.spell.Spell
 import model.spell.dark.{Fire, Thunder}
+import model.spell.light.Healing
 import model.weapons.Weapon
 import model.weapons.magic.{Staff, Wand}
-import munit.FunSuite
+import munit.{FunSuite, Slow}
 
 class AMagicPlayableTest extends FunSuite{
   var Kopa: AMagicPlayable = _
@@ -47,29 +49,41 @@ class AMagicPlayableTest extends FunSuite{
     assertEquals(Gento.getMana,90)
   }
 
-  test("hasSpell"){
-    assertEquals(Kopa.hasSpell, None)
-    assertEquals(Gento.hasSpell, None)
-  }
 
   test("hasEnoughMana"){
     var Fire : Spell = new Fire()
-    var Thunder : Spell = new Thunder()
+    var Healing : Spell = new Healing()
     Kopa.setMana(100)
     Kopa.selectSpell(Fire)
     assertEquals(Kopa.hasEnoughMana, "It is Enough")
 
     Gento.setMana(5)
-    Gento.selectSpell(Thunder)
+    Gento.selectSpell(Healing)
     assertEquals(Gento.hasEnoughMana, "The character Gento has not the enough mana to use the Spell")
   }
 
   test("checkMana"){
     var Fire : Spell = new Fire()
-    var Thunder : Spell = new Thunder()
+    var Healing : Spell = new Healing()
     Kopa.setMana(100)
     Kopa.selectSpell(Fire)
     assertEquals(Kopa.checkMana, true)
+  }
+
+  test("throwSpell"){
+    var Staff : Staff = new Staff()
+    var Wand : Wand = new Wand()
+    var Fire : Spell = new Fire()
+    var Healing : Spell = new Healing()
+    var Laudrup: Enemy = new Enemy("Laudrup")
+    Kopa.putWeapon(Staff)
+    Kopa.selectSpell(Fire)
+    assertEquals(Kopa.throwSpell(Laudrup), "nice spell")
+
+    Gento.putWeapon(Wand)
+    Gento.selectSpell(Healing)
+    assertEquals(Gento.throwSpell(Kopa), "nice spell")
+
   }
 
 

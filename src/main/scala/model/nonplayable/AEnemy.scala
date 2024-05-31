@@ -3,6 +3,7 @@ import exceptions.InvalidattackAllieException
 import model.general.GameUnit
 import model.nonplayable.NonPlayable
 import model.playable.Playable
+import model.spell.Spell
 
 /**
  * @param name
@@ -93,5 +94,7 @@ protected abstract class AEnemy(val name: String, val weight: Int,
       this.setLife(0)
     }
   }
+
+  def canSuffer(spell: Spell): Boolean = spell.actOnEnemy()
 
 }

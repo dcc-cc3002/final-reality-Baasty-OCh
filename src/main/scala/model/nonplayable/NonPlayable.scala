@@ -2,6 +2,7 @@ package model.nonplayable
 
 import model.general.GameUnit
 import model.playable.Playable
+import model.spell.Spell
 
 // Trait to represent non-playable entities
 trait NonPlayable extends GameUnit{
@@ -26,6 +27,8 @@ trait NonPlayable extends GameUnit{
    * @return The attack points of the non-playable entity as an integer
    */
   def getAttack: Int
+
+  def canSuffer(spell: Spell): Boolean
 
 }
 

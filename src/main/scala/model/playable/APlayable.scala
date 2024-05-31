@@ -5,6 +5,7 @@ import exceptions.InvalidattackAllieException
 import model.general.GameUnit
 import model.nonplayable.{Enemy, NonPlayable}
 import model.playable.Playable
+import model.spell.Spell
 import model.weapons.{AWeapon, Weapon}
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
@@ -133,5 +134,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
     }
   }
 
+
+  def canSuffer(spell: Spell): Boolean = spell.actOnPlayable()
 }
 
