@@ -1,6 +1,6 @@
 package model.weapons
 
-import exceptions.weapons.InvalidputAxeException
+import exceptions.weapons.{InvalidkindOfWeapon, InvalidputAxeException}
 import model.nonplayable.NonPlayable
 import model.playable.Playable
 
@@ -52,7 +52,7 @@ abstract class AWeapon(name: String, weight: Int,
     this.owner = Some(newOwner)
   }
 
-  def iAmMagic: Boolean = false
+  def iAmMagic: Boolean = throw new InvalidkindOfWeapon
 
 
 

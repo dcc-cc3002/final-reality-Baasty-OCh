@@ -1,5 +1,7 @@
 package model.playable.magic
 
+import exceptions.spells.InvalidnoEnoughMana
+import exceptions.weapons.InvalidkindOfWeapon
 import model.general.GameUnit
 import model.playable.APlayable
 import model.weapons.magic.AMagicWeapon
@@ -36,18 +38,30 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   }
   def hasSpell: Option[Spell] = Spell
 
-  //def hasEnoughMana: Boolean = {
-  //if (this.Mana < Spell.map(_.getCost).getOrElse(0)){
-  //  false
-  //} else true
-  //}
+  def checkMana: Boolean = {
+  if (this.Mana < Spell.map(_.getCost).getOrElse(15)){
+    throw new InvalidnoEnoughMana
+  } else
+    true
+  }
 
-  def hasMagicWeapon: Boolean = {
-    //var foo: Weapon = Some(this.arma)
-    try {
-      this.arma.map(_.iAmMagic).getOrElse(false)
+  def hasEnoughMana: String = {
+    try{
+      this.checkMana
+      "It is Enough"
+    } catch {
+      case _: InvalidnoEnoughMana => s"The character ${this.getName} has not the enough mana to use the Spell"
     }
   }
+
+  def hasMagicWeapon: String = {
+    try{
+      this.arma.map(_.iAmMagic).getOrElse(false)
+      "good"
+    } catch {
+      case _: InvalidkindOfWeapon => s" The weapon is not magic"
+    }
+   }
 
   def selectSpell(spell: Spell): String
 

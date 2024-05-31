@@ -133,7 +133,7 @@ class BlackMagicanTest extends FunSuite {
   test("SelectSpell"){
     var Fire : Spell = new Fire()
     var Thunder : Spell = new Thunder()
-    var Poison : Spell = new Poison()
+
 
     assertEquals(Modric.selectSpell(Fire), "The spell was select")
     assertEquals(Modric.selectSpell(Thunder), "The spell was select")
@@ -159,15 +159,16 @@ class BlackMagicanTest extends FunSuite {
     var Wand: Weapon = new Wand()
     var Sword: Weapon = new Sword()
     Modric.putWeapon(Staff)
-    assertEquals(Modric.hasMagicWeapon, true)
+    assertEquals(Modric.hasMagicWeapon, "good")
 
     Modric.putWeapon(Wand)
-    assertEquals(Modric.hasMagicWeapon, true)
+    assertEquals(Modric.hasMagicWeapon, "good")
 
     Modric.putWeapon(Sword)
-    assertEquals(Modric.hasMagicWeapon, false)
-
+    assertEquals(Modric.hasMagicWeapon, " The weapon is not magic")
   }
+
+
 
 }
 

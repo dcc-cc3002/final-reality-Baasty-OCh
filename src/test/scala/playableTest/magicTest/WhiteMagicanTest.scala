@@ -157,14 +157,16 @@ class WhiteMagicanTest extends FunSuite {
     var Wand: Weapon = new Wand()
     var Bow: Weapon = new Bow()
     Benzema.putWeapon(Staff)
-    assertEquals(Benzema.hasMagicWeapon, true)
+    assertEquals(Benzema.hasMagicWeapon, "good")
 
     Benzema.putWeapon(Wand)
-    assertEquals(Benzema.hasMagicWeapon, true)
+    assertEquals(Benzema.hasMagicWeapon, "good")
 
     Benzema.putWeapon(Bow)
-    assertEquals(Benzema.hasMagicWeapon, false)
+    assertEquals(Benzema.hasMagicWeapon, " The weapon is not magic")
 
   }
+
+
 
 }

@@ -2,6 +2,8 @@ package playableTest.magicTest
 
 import model.playable.Playable
 import model.playable.magic.{AMagicPlayable, BlackMagican, WhiteMagican}
+import model.spell.Spell
+import model.spell.dark.{Fire, Thunder}
 import model.weapons.Weapon
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
@@ -48,6 +50,26 @@ class AMagicPlayableTest extends FunSuite{
   test("hasSpell"){
     assertEquals(Kopa.hasSpell, None)
     assertEquals(Gento.hasSpell, None)
+  }
+
+  test("hasEnoughMana"){
+    var Fire : Spell = new Fire()
+    var Thunder : Spell = new Thunder()
+    Kopa.setMana(100)
+    Kopa.selectSpell(Fire)
+    assertEquals(Kopa.hasEnoughMana, "It is Enough")
+
+    Gento.setMana(5)
+    Gento.selectSpell(Thunder)
+    assertEquals(Gento.hasEnoughMana, "The character Gento has not the enough mana to use the Spell")
+  }
+
+  test("checkMana"){
+    var Fire : Spell = new Fire()
+    var Thunder : Spell = new Thunder()
+    Kopa.setMana(100)
+    Kopa.selectSpell(Fire)
+    assertEquals(Kopa.checkMana, true)
   }
 
 
