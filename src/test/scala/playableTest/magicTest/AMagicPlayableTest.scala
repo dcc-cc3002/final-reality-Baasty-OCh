@@ -1,5 +1,6 @@
 package playableTest.magicTest
 
+import exceptions.spells.InvalidnoEnoughMana
 import model.nonplayable.Enemy
 import model.playable.Playable
 import model.playable.magic.{AMagicPlayable, BlackMagican, WhiteMagican}
@@ -60,11 +61,14 @@ class AMagicPlayableTest extends FunSuite{
     var Healing : Spell = new Healing()
     Kopa.setMana(100)
     Kopa.selectSpell(Fire)
-    assertEquals(Kopa.hasEnoughMana, "It is Enough")
+    assert(Kopa.hasEnoughMana == "It is Enough")
 
     Gento.setMana(5)
     Gento.selectSpell(Healing)
-    assertEquals(Gento.hasEnoughMana, "The character Gento has not the enough mana to use the Spell")
+    val thrown = intercept[InvalidnoEnoughMana] {
+      Gento.hasEnoughMana
+    }
+    assert(thrown.getMessage == "The character Gento does not have enough mana to use the spell.")
   }
 
   /**
@@ -87,7 +91,6 @@ class AMagicPlayableTest extends FunSuite{
     Gento.putWeapon(Wand)
     Gento.selectSpell(Healing)
     assertEquals(Gento.throwSpell(Kopa), "nice spell")
-
   }
 
   /**
@@ -111,6 +114,4 @@ class AMagicPlayableTest extends FunSuite{
     Gento.selectSpell(Healing)
     assertEquals(Gento.throwSpell(Laudrup), "The spell can not act in that target")
   }
-
-
 }

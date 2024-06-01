@@ -1,5 +1,6 @@
 package exceptions.spells
 
-class InvalidnoEnoughMana extends Exception{
+class InvalidnoEnoughMana(messages: String) extends Exception{
+  override def getMessage: String = messages
 
 }

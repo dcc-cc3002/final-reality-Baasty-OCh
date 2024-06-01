@@ -4,9 +4,7 @@ import exceptions.spells.{InvalidnoEnoughMana, InvalidspellTarget}
 import exceptions.weapons.InvalidkindOfWeapon
 import model.general.GameUnit
 import model.playable.APlayable
-import model.weapons.magic.AMagicWeapon
 import model.spell.Spell
-import model.weapons.Weapon
 
 /**
  * Abstract class to made a group of magic characters
@@ -19,9 +17,18 @@ import model.weapons.Weapon
 abstract class AMagicPlayable(name:String, healthPoints:Int,
                               defensePoints:Int, weight:Int,
                               mana:Int) extends APlayable(name,healthPoints, defensePoints,weight) {
-  private var Mana: Int = mana
-  var spell: Spell
 
+  /**
+   * The mana of the character.
+   * This variable is private and represents the magical energy available for casting spells.
+   */
+  private var Mana: Int = mana
+
+  /**
+   * The spell that the character can cast.
+   * This variable is public and represents the current spell associated with the character.
+   */
+  var spell: Spell
 
   /**
    * Implementation of Method to get the mana points of the playable entity
@@ -36,23 +43,23 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   def setMana(newMana:Int): Unit = {
     this.Mana = newMana
   }
-  //def hasSpell: Spell = spell
 
-  def checkMana: Boolean = {
-  if (this.Mana < spell.getCost){
-    throw new InvalidnoEnoughMana
-  } else
-    true
-  }
-
+  /**
+   * Checks if the character has enough mana to cast the current spell.
+   * If the character has sufficient mana to cast the spell, returns "It is Enough".
+   * Otherwise, throws an InvalidnoEnoughMana exception with a message indicating the mana insufficiency.
+   *
+   * @return "It is Enough" if the mana points are sufficient to cast the spell
+   * @throws InvalidnoEnoughMana if the mana points are insufficient to cast the spell
+   */
   def hasEnoughMana: String = {
-    try{
-      this.checkMana
+    if (this.Mana < spell.getCost) {
+      throw new InvalidnoEnoughMana(s"The character ${this.getName} does not have enough mana to use the spell.")
+    } else {
       "It is Enough"
-    } catch {
-      case _: InvalidnoEnoughMana => s"The character ${this.getName} has not the enough mana to use the Spell"
     }
   }
+
 
   def hasMagicWeapon: String = {
     try{
