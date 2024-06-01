@@ -26,9 +26,12 @@ class AMagicWeaponTest extends FunSuite{
     assertEquals(staff.getMAP, 40)
   }
 
+  /**
+   * Verifies the behavior of the 'iAmMagic' method.
+   * This test checks if the 'iAmMagic' method correctly identifies magical weapons.
+   */
   test("iAmMagic"){
     assertEquals(wand.iAmMagic, true)
     assertEquals(staff.iAmMagic, true)
   }
-
 }
