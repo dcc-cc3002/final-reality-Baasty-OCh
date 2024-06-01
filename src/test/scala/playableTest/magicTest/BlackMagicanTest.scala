@@ -140,7 +140,6 @@ class BlackMagicanTest extends FunSuite {
 
   /**
    * Verifies that an exception is thrown when a BlackMagican character attempts to attack another ally game unit.
-   *
    * This test checks if the character 'Modric' equipped with a Staff attempts to attack the character 'James', who is also an ally.
    * The expected exception message is returned, indicating that Modric cannot attack an ally.
    */
@@ -153,7 +152,6 @@ class BlackMagicanTest extends FunSuite {
 
   /**
    * Test case for selecting spells by the character.
-   *
    * This test checks if the character 'Modric' can successfully select different types of spells such as Fire and Thunder.
    * The expected message indicating successful spell selection is returned for each spell.
    */
@@ -167,7 +165,6 @@ class BlackMagicanTest extends FunSuite {
 
   /**
    * Verifies that an exception is thrown when a BlackMagican character attempts to select a Healing spell.
-   *
    * This test checks if the character 'Modric' attempts to select a Healing spell, which is not allowed for BlackMagican characters.
    * The expected exception message is returned, indicating that Modric cannot select a Healing Spell.
    */
@@ -178,7 +175,6 @@ class BlackMagicanTest extends FunSuite {
 
   /**
    * Verifies that an exception is thrown when a BlackMagican character attempts to select a Paralysis spell.
-   *
    * This test checks if the character 'Modric' attempts to select a Paralysis spell, which is not allowed for BlackMagican characters.
    * The expected exception message is returned, indicating that Modric cannot select a Paralysis Spell.
    */
@@ -189,7 +185,6 @@ class BlackMagicanTest extends FunSuite {
 
   /**
    * Verifies that an exception is thrown when a BlackMagican character attempts to select a Poison spell.
-   *
    * This test checks if the character 'Modric' attempts to select a Poison spell, which is not allowed for BlackMagican characters.
    * The expected exception message is returned, indicating that Modric cannot select a Poison Spell.
    */
@@ -197,23 +192,6 @@ class BlackMagicanTest extends FunSuite {
     var Poison : Spell = new Poison()
     assertEquals(Modric.selectSpell(Poison), "The character Modric cant select a Poison Spell")
   }
-
-
-  test("hasMagicWeapon"){
-    var Staff: Weapon = new Staff()
-    var Wand: Weapon = new Wand()
-    var Sword: Weapon = new Sword()
-    Modric.putWeapon(Staff)
-    assertEquals(Modric.hasMagicWeapon, "Yes")
-
-    Modric.putWeapon(Wand)
-    assertEquals(Modric.hasMagicWeapon, "Yes")
-
-    Modric.putWeapon(Sword)
-    assertEquals(Modric.hasMagicWeapon, " The weapon is not magic")
-  }
-
-
 
 }
 

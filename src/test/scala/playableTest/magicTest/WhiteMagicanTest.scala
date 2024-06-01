@@ -182,20 +182,7 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.selectSpell(Thunder), "The character Benzema cant select a Thunder Spell")
   }
 
-  test("hasMagicWeapon"){
-    var Staff: Weapon = new Staff()
-    var Wand: Weapon = new Wand()
-    var Bow: Weapon = new Bow()
-    Benzema.putWeapon(Staff)
-    assertEquals(Benzema.hasMagicWeapon, "Yes")
 
-    Benzema.putWeapon(Wand)
-    assertEquals(Benzema.hasMagicWeapon, "Yes")
-
-    Benzema.putWeapon(Bow)
-    assertEquals(Benzema.hasMagicWeapon, " The weapon is not magic")
-
-  }
 
 
 

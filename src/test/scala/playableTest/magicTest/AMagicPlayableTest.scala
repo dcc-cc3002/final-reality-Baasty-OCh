@@ -8,6 +8,7 @@ import model.spell.Spell
 import model.spell.dark.{Fire, Thunder}
 import model.spell.light.Healing
 import model.weapons.Weapon
+import model.weapons.common.{Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.{FunSuite, Slow}
 
@@ -69,6 +70,37 @@ class AMagicPlayableTest extends FunSuite{
       Gento.hasEnoughMana
     }
     assert(thrown.getMessage == "The character Gento does not have enough mana to use the spell.")
+  }
+
+  /**
+   * Verifies if a character has a magic weapon equipped.
+   * This test checks if the characters 'Kopa' and 'Gento' have magic weapons equipped.
+   * For 'Kopa', the test verifies if equipping a Staff or a Wand results in the character having a magic weapon.
+   * For 'Gento', the test verifies if equipping a Staff or a Wand results in the character having a magic weapon.
+   * The expected return value is "Yes" if the character has a magic weapon, and "The weapon is not magic" otherwise.
+   */
+  test("hasMagicWeapon"){
+    var Staff: Weapon = new Staff()
+    var Wand: Weapon = new Wand()
+    var Sword: Weapon = new Sword()
+    var Bow: Weapon = new Bow()
+    Kopa.putWeapon(Staff)
+    assertEquals(Kopa.hasMagicWeapon, "Yes")
+
+    Kopa.putWeapon(Wand)
+    assertEquals(Kopa.hasMagicWeapon, "Yes")
+
+    Kopa.putWeapon(Sword)
+    assertEquals(Kopa.hasMagicWeapon, " The weapon is not magic")
+
+    Gento.putWeapon(Staff)
+    assertEquals(Gento.hasMagicWeapon, "Yes")
+
+    Gento.putWeapon(Wand)
+    assertEquals(Gento.hasMagicWeapon, "Yes")
+
+    Gento.putWeapon(Bow)
+    assertEquals(Gento.hasMagicWeapon, " The weapon is not magic")
   }
 
   /**
