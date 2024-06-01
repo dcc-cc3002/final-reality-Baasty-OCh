@@ -64,7 +64,6 @@ class EnemyTest extends FunSuite {
 
   /**
    * Test case for the 'getDefencePoints' method.
-   *
    * This test verifies the functionality of the getDefencePoints method by checking if the defence points of Neymar are set correctly.
    */
   test("getDefencePoints"){

@@ -80,7 +80,6 @@ class PaladinTest extends FunSuite {
     assertEquals(Cristiano.hasWeapon,None)
   }
 
-
   /**
    * Verifies that an exception is thrown when a Paladin character cannot equip a Staff.
    * This test checks if the character 'Cristiano' attempts to equip a Staff, which is not allowed for Paladin characters.
@@ -122,18 +121,6 @@ class PaladinTest extends FunSuite {
 
     assertEquals(Cristiano.putWeapon(Hacha),"The weapon: Hacha already has an owner")
   }
-
-  /**
-   * Test case for `attackEnemy` method.
-   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Pique`) when `Cristiano` attacks with a `Sword`.
-   */
-  test("attack") {
-
-  }
-
-
-
-
 }
 
 

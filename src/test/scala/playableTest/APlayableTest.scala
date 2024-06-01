@@ -8,6 +8,10 @@ import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
+/**
+ * Test suite for the abstract class `APlayable` and its subclasses.
+ * This suite verifies the behavior of playable characters in the game.
+ */
 class APlayableTest extends FunSuite{
   var Di_Stefano: Playable = _
   var Puskas: Playable = _
@@ -20,7 +24,6 @@ class APlayableTest extends FunSuite{
   /**
    * Set up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
-   *
    * @param context The context provided by the test framework (`BeforeEach`).
    */
   override def beforeEach(context: BeforeEach): Unit = {
@@ -31,7 +34,6 @@ class APlayableTest extends FunSuite{
     Gento = new WhiteMagican("Gento")
     Iniesta = new Enemy("Iniesta",50, 50, 250, 25)
     Puyol = new Enemy("Puyol",50,50,250,500) // enemy with ridiculous defense
-
     }
 
   /**
@@ -186,6 +188,5 @@ class APlayableTest extends FunSuite{
     Amancio.putWeapon(Axe)
     assertEquals(Amancio.attack(Iniesta),"The enemy was Attack")
     assertEquals(Amancio.attack(Puyol),"The enemy was Attack, but the damage is not enough")
-
   }
 }

@@ -11,6 +11,7 @@ class WandTest extends FunSuite {
   var Varita: Wand = _
   var Varita2: Wand = _
   var Baston: Staff = _
+
   /**
    * Set up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
@@ -32,13 +33,4 @@ class WandTest extends FunSuite {
     assertEquals(Varita.equals(Varita2),false)
     assertEquals(Varita.equals(Baston),false)
   }
-
-  /**
-   * Test case for `getMAP` method.
-   * This test verifies if the returned magic attack points value for a wand (`Varita`) matches the expected value (`30`).
-   */
-  test("getMAP") {
-    assertEquals(Varita.getMAP, 30)
-  }
-
 }

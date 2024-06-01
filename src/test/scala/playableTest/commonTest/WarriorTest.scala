@@ -103,16 +103,4 @@ class WarriorTest extends FunSuite {
 
     assertEquals(Casemiro.putWeapon(Espada),"The weapon: Espada already has owner")
   }
-
-
-  /**
-   * Test case for `attackEnemy` method.
-   * This test verifies if the `attackEnemy` method inflicts the correct damage on the enemy (`Busquets`) when `Casemiro` attacks with a `Axe`.
-   */
-  test("attackEnemy") {
-
-  }
-
-
-
 }

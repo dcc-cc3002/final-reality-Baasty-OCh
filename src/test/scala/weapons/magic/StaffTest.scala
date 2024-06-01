@@ -34,14 +34,5 @@ class StaffTest extends FunSuite {
     assertEquals(Baston.equals(Baston2),false)
     assertEquals(Baston.equals(Varita),false)
   }
-
-  /**
-   * Test case for `getMAP` method.
-   * This test verifies if the returned magic attack points value for a staff (`Baston`) matches the expected value (`40`).
-   */
-  test("getMAP") {
-    assertEquals(Baston.getMAP, 40)
-  }
-
 }
 

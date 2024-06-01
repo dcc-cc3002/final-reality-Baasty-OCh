@@ -28,7 +28,6 @@ class AWeaponTest extends FunSuite{
     Cachanna = new Bow()
     Azteca = new Staff()
     Telstar = new Wand()
-
   }
 
   /**
@@ -68,7 +67,6 @@ class AWeaponTest extends FunSuite{
     assertEquals(Cachanna.getAttack, 40)
     assertEquals(Azteca.getAttack, 70)
     assertEquals(Telstar.getAttack, 50)
-
   }
 
   /**
