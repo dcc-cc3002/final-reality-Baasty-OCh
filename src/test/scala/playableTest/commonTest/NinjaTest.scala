@@ -116,7 +116,7 @@ class NinjaTest extends FunSuite {
     val Varita: Wand = new Wand()
     Alonso.putWeapon(Varita)
 
-    assertEquals(Kroos.putWeapon(Varita),"The weapon: Varita already has owner")
+    assertEquals(Kroos.putWeapon(Varita),"The weapon: Varita already has an owner")
   }
 
 

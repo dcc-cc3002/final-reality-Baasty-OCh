@@ -4,6 +4,8 @@ import model.nonplayable.Enemy
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.{BlackMagican, WhiteMagican}
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
 class APlayableTest extends FunSuite{
@@ -12,6 +14,8 @@ class APlayableTest extends FunSuite{
   var Amancio: Playable = _
   var Kopa: Playable = _
   var Gento: Playable = _
+  var Puyol: Enemy = _
+  var Iniesta: Enemy = _
 
   /**
    * Set up the test environment before each test case.
@@ -25,6 +29,8 @@ class APlayableTest extends FunSuite{
     Amancio = new Warrior("Amancio")
     Kopa = new BlackMagican("Kopa")
     Gento = new WhiteMagican("Gento")
+    Iniesta = new Enemy("Iniesta",50, 50, 250, 25)
+    Puyol = new Enemy("Puyol",50,50,250,500) // enemy with ridiculous defense
 
     }
 
@@ -145,5 +151,41 @@ class APlayableTest extends FunSuite{
     assertEquals(Gento.getHp,55)
     Gento.wasAttacked(200)
     assertEquals(Gento.getHp,0)
+  }
+
+  /**
+   * Test case for the 'attack' method.
+   * This test checks the attack functionality of different characters against enemy game units.
+   * Each character equips a different weapon (Staff, Wand, Sword, Bow, Axe) and attacks enemy units (Iniesta and Puyol).
+   * The expected result is "The enemy was Attack" if the attack is successful, and "The enemy was Attack,
+   * but the damage is not enough" if the attack is not strong enough to defeat the enemy.
+   */
+  test("attack") {
+    val Staff: Staff = new Staff()
+    val Wand: Wand = new Wand()
+    val Sword: Sword = new Sword()
+    val Bow: Bow = new Bow()
+    val Axe: Axe = new Axe()
+
+    Gento.putWeapon(Wand)
+    assertEquals(Gento.attack(Iniesta),"The enemy was Attack")
+    assertEquals(Gento.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+
+    Kopa.putWeapon(Staff)
+    assertEquals(Kopa.attack(Iniesta),"The enemy was Attack")
+    assertEquals(Kopa.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+
+    Di_Stefano.putWeapon(Sword)
+    assertEquals(Di_Stefano.attack(Iniesta),"The enemy was Attack")
+    assertEquals(Di_Stefano.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+
+    Puskas.putWeapon(Bow)
+    assertEquals(Puskas.attack(Iniesta),"The enemy was Attack")
+    assertEquals(Puskas.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+
+    Amancio.putWeapon(Axe)
+    assertEquals(Amancio.attack(Iniesta),"The enemy was Attack")
+    assertEquals(Amancio.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+
   }
 }

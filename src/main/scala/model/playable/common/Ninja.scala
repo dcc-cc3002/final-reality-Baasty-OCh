@@ -42,7 +42,7 @@ class Ninja(name:String, healthPoints: Int,
     } catch {
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
       case _:InvalidputStaffException => s"The character: ${this.getName} can't wear a Staff"
-      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
+      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
 

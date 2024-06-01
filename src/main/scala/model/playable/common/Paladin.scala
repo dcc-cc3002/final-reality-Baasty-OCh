@@ -45,7 +45,7 @@ class Paladin(name:String, healthPoints: Int,
       case _:InvalidputBowException => s"The character: ${this.getName} can't wear a Bow"
       case _:InvalidputStaffException => s"The character: ${this.getName} can't wear a Staff"
       case _:InvalidputWandException => s"The character: ${this.getName} can't wear a Wand"
-      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
+      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
 

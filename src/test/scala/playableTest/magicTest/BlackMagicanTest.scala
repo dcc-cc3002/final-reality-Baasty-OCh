@@ -18,7 +18,6 @@ class BlackMagicanTest extends FunSuite {
   var Modric: BlackMagican = _
   var Iniesta: Enemy = _
   var James: BlackMagican = _
-  var Puyol: Enemy = _
 
 
   /**
@@ -30,7 +29,6 @@ class BlackMagicanTest extends FunSuite {
     Modric = new BlackMagican("Modric")
     James = new BlackMagican("James",50,60,80,21)
     Iniesta = new Enemy("Iniesta")
-    Puyol = new Enemy("Puyol",50,50,250,500) // enemy with ridiculous defense
   }
 
   /**
@@ -122,20 +120,6 @@ class BlackMagicanTest extends FunSuite {
     James.putWeapon(Baston)
 
     assertEquals(Modric.putWeapon(Baston),"The weapon: Baston already has an owner")
-  }
-
-  /**
-   * Test case for attack method.
-   * This test verifies if the `attack` method inflicts the correct damage on the enemy (`Iniesta`) when `Modric`
-   * attacks with a `Wand`. Also verifies if the 'attack' method inflicts zero damage
-   * when the defense poitns of enemy are higher than the attack points of BlackMagican
-   */
-  test("attack") {
-    val Baston: Staff = new Staff()
-    Modric.putWeapon(Baston)
-
-    assertEquals(Modric.attack(Iniesta),"The enemy was Attack")
-    assertEquals(Modric.attack(Puyol),"The enemy was Attack, but the damage is not enough")
   }
 
   /**
