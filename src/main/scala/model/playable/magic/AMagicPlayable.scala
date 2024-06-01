@@ -60,7 +60,14 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
     }
   }
 
-
+  /**
+   * Checks if the character has a magic weapon equipped.
+   * If the character has a magic weapon equipped, returns "good".
+   * Otherwise, throws an InvalidkindOfWeapon exception with a message indicating that the weapon is not magic.
+   *
+   * @return "good" if the character has a magic weapon equipped
+   * @throws InvalidkindOfWeapon if the character does not have a magic weapon equipped
+   */
   def hasMagicWeapon: String = {
     try{
       this.arma.map(_.iAmMagic).getOrElse(false)
@@ -70,8 +77,27 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
     }
    }
 
+  /**
+   * Allows the character to choose a spell for casting.
+   *
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
   def selectSpell(spell: Spell): String
 
+  /**
+   * Throws a spell at a target game unit.
+   *
+   * This method performs several checks before throwing the spell:
+   *   - It verifies if the character has a magic weapon equipped.
+   *   - It checks if the character has enough mana to cast the spell.
+   *   - It verifies if the target can suffer the effects of the spell.
+   *   - Finally, it applies the effects of the spell on the target.
+   *
+   * @param target The game unit at which the spell is aimed.
+   * @return A message indicating the success of casting the spell.
+   * @throws InvalidspellTarget if the spell cannot act on the specified target.
+   */
   def throwSpell(target: GameUnit): String = {
     try{
       this.hasMagicWeapon
@@ -84,13 +110,33 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
     }
   }
 
-
-
+  /**
+   * Abstract method to checks if the character can select a healing spell.
+   * @return true if the character can select a healing spell, false otherwise.
+   */
   def canSelectHealing(): Boolean
+
+  /**
+   * Abstract method to checks if the character can select a poison spell.
+   * @return true if the character can select a poison spell, false otherwise.
+   */
   def canSelectPoison(): Boolean
+
+  /**
+   * Abstract method to checks if the character can select a paralysis spell.
+   * @return true if the character can select a paralysis spell, false otherwise.
+   */
   def canSelectParalysis(): Boolean
+
+  /**
+   * Abstract method to checks if the character can select a fire spell.
+   * @return true if the character can select a fire spell, false otherwise.
+   */
   def canSelectFire(): Boolean
+
+  /**
+   * Abstract method to checks if the character can select a thunder spell.
+   * @return true if the character can select a thunder spell, false otherwise.
+   */
   def canSelectThunder(): Boolean
 
-
-}
