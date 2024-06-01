@@ -37,8 +37,6 @@ class NinjaTest extends FunSuite {
     assertEquals(Kroos.equals(Rakitic),false)
   }
 
-
-
   /**
    * Test case for 'canEquip' methods.
    * This test verifies if the Ninja 'Kroos' can Equip particular kind of weapon or not
@@ -74,7 +72,6 @@ class NinjaTest extends FunSuite {
 
     assertEquals(Kroos.putWeapon(Espada),"The weapon was wear")
     assertEquals(Kroos.hasWeapon, Some(Espada))
-
   }
 
   /**
@@ -90,23 +87,38 @@ class NinjaTest extends FunSuite {
     assertEquals(Kroos.hasWeapon,None)
   }
 
+  /**
+   * Verifies that an exception is thrown when a Ninja character cannot equip a Staff.
+   * This test checks if the character 'Kroos' attempts to equip a Staff, which is not allowed for Ninja characters.
+   * The expected exception message is returned, indicating that Kroos cannot equip a Staff.
+   */
   test("It should throw an exception if the Ninja cant equip a Staff"){
     val Baston: Staff = new Staff()
     assertEquals(Kroos.putWeapon(Baston),"The character: Kroos can't wear a Staff")
   }
 
+  /**
+   * Verifies that an exception is thrown when a Ninja character cannot equip an Axe.
+   * This test checks if the character 'Kroos' attempts to equip an Axe, which is not allowed for Ninja characters.
+   * The expected exception message is returned, indicating that Kroos cannot equip an Axe.
+   */
   test("It should throw an exception if the Ninja cant equip an Axe"){
     val Hacha: Axe = new Axe()
     assertEquals(Kroos.putWeapon(Hacha),"The character: Kroos can't wear an Axe")
   }
 
-
+  /**
+   * Verifies that an exception is thrown when a Ninja character attempts to equip a foreign weapon.
+   * This test checks if the character 'Alonso' tries to equip a Wand, and then 'Kroos' attempts to equip the same Wand,
+   * the expected exception message is returned since the Wand 'Varita' already has an owner.
+   */
   test("It should throw an exception if the Ninja cant equip a foreign weapon"){
     val Varita: Wand = new Wand()
     Alonso.putWeapon(Varita)
 
     assertEquals(Kroos.putWeapon(Varita),"The weapon: Varita already has owner")
   }
+
 
 
 
