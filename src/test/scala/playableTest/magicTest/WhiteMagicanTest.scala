@@ -42,9 +42,6 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.equals(Ter_Stegen),false)
   }
 
-
-
-
   /**
    * Test case for 'canEquip' methods.
    * This test verifies if the WhiteMagican 'Benzema' can Equip particular kind of weapon or not
@@ -93,28 +90,42 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.hasWeapon,None)
   }
 
-  test("It should throw an exception if the Paladin cant equip a Sword"){
+  /**
+   * Verifies that an exception is thrown when a whiteMagican character cannot equip a Sword.
+   * This test checks if the character 'Benzema' cannot equip a Sword, the expected exception message is returned.
+   */
+  test("It should throw an exception if the WhiteMagican cant equip a Sword"){
     val Espada: Sword = new Sword()
     assertEquals(Benzema.putWeapon(Espada),"The character: Benzema can't wear a Sword")
   }
 
-
-  test("It should throw an exception if the Paladin cant equip a Axe"){
+  /**
+   * Verifies that an exception is thrown when a WhiteMagican character cannot equip an Axe.
+   * This test checks if the character 'Benzema' cannot equip an Axe, the expected exception message is returned.
+   */
+  test("It should throw an exception if the whiteMagican cant equip a Axe"){
     val Hacha: Axe = new Axe()
     assertEquals(Benzema.putWeapon(Hacha),"The character: Benzema can't wear an Axe")
   }
 
+  /**
+   * Verifies that an exception is thrown when a WhiteMagican character cannot equip a foreign weapon.
+   * This test checks if the character 'Benzema' tries to equip a Bow, which is a foreign weapon ('Ozil' is the owner),
+   * the expected exception message is returned since the weapon 'Arco' already has an owner.
+   */
   test("It should throw an exception if the WhiteMagican cant equip a foreign weapon"){
     val Arco: Bow = new Bow()
     Ozil.putWeapon(Arco)
 
-    assertEquals(Benzema.putWeapon(Arco),"The weapon: Arco already has owner")
+    assertEquals(Benzema.putWeapon(Arco),"The weapon: Arco already has an owner")
   }
 
   /**
    * Test case for attack method.
-   * This test verifies if the `attack` method inflicts the correct damage on the enemy (`Ter_Stegen`) when `Benzema` attacks with a `Wand`.
-   * also verifies if the 'attack' method inflicts zero damage when the defense poitns of enemy are higher than the attack points of Black Magican
+   * This test verifies if the `attack` method inflicts the correct damage on the enemy (`Ter_Stegen`)
+   * when `Benzema` attacks with a `Wand`.
+   * also verifies if the 'attack' method inflicts zero damage
+   * when the defense points of enemy are greater than the attack points of  WhiteMagican
    */
   test("attack") {
     val Baston: Staff = new Staff()
@@ -124,14 +135,23 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.attack(Suarez),"The enemy was Attack, but the damage is not enough")
   }
 
-  test("It should throw an exception if the BlackMagican cant attack game unit"){
+  /**
+   * Verifies that an exception is thrown when a WhiteMagican character attempts to attack another ally game unit.
+   * This test checks if the character 'Benzema' equipped with a Staff attempts to attack the character 'Ozil', who is also an ally.
+   * The expected exception message is returned, indicating that Benzema cannot attack an ally.
+   */
+  test("It should throw an exception if the WhiteMagican cant attack game unit (Playable)"){
     val Baston: Staff = new Staff()
     Benzema.putWeapon(Baston)
 
     assertEquals(Benzema.attack(Ozil), "The character: Benzema can't attack an Allie")
   }
 
-
+  /**
+   * Test case for selecting spells by the character.
+   * This test checks if the character 'Benzema' can successfully select different types of spells such as Healing, Paralysis, and Poison.
+   * The expected message indicating successful spell selection is returned for each spell.
+   */
   test("SelectSpell"){
     var Healing : Spell = new Healing()
     var Paralysis : Spell = new Paralysis()
@@ -142,11 +162,21 @@ class WhiteMagicanTest extends FunSuite {
     assertEquals(Benzema.selectSpell(Poison), "The spell was select")
   }
 
+  /**
+   * Verifies that an exception is thrown when a WhiteMagican character attempts to select a Fire spell.
+   * This test checks if the character 'Benzema' attempts to select a Fire spell, which is not allowed for WhiteMagican characters.
+   * The expected exception message is returned, indicating that Benzema cannot select a Fire Spell.
+   */
   test("It should throw an exception if the WhiteMagican cant select Fire Spell"){
     var Fire : Spell = new Fire()
     assertEquals(Benzema.selectSpell(Fire), "The character Benzema cant select a Fire Spell")
   }
 
+  /**
+   * Verifies that an exception is thrown when a WhiteMagican character attempts to select a Thunder spell.
+   * This test checks if the character 'Benzema' attempts to select a Thunder spell, which is not allowed for WhiteMagican characters.
+   * The expected exception message is returned, indicating that Benzema cannot select a Thunder Spell.
+   */
   test("It should throw an exception if the WhiteMagican cant select Thunder Spell"){
     var Thunder : Spell = new Thunder()
     assertEquals(Benzema.selectSpell(Thunder), "The character Benzema cant select a Thunder Spell")
@@ -157,10 +187,10 @@ class WhiteMagicanTest extends FunSuite {
     var Wand: Weapon = new Wand()
     var Bow: Weapon = new Bow()
     Benzema.putWeapon(Staff)
-    assertEquals(Benzema.hasMagicWeapon, "good")
+    assertEquals(Benzema.hasMagicWeapon, "Yes")
 
     Benzema.putWeapon(Wand)
-    assertEquals(Benzema.hasMagicWeapon, "good")
+    assertEquals(Benzema.hasMagicWeapon, "Yes")
 
     Benzema.putWeapon(Bow)
     assertEquals(Benzema.hasMagicWeapon, " The weapon is not magic")

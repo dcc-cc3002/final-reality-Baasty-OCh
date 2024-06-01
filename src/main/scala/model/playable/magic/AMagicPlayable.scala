@@ -32,15 +32,17 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
 
   /**
    * Implementation of Method to get the mana points of the playable entity
+   *
    * @return The mana of playable entity
    */
   def getMana: Int = Mana
 
   /**
    * Implementation of Method to set the mana points of the playable entity
+   *
    * @param newMana represent the new mana points of the playable entity
    */
-  def setMana(newMana:Int): Unit = {
+  def setMana(newMana: Int): Unit = {
     this.Mana = newMana
   }
 
@@ -69,17 +71,16 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    * @throws InvalidkindOfWeapon if the character does not have a magic weapon equipped
    */
   def hasMagicWeapon: String = {
-    try{
-      this.arma.map(_.iAmMagic).getOrElse(false)
-      "good"
+    try {
+      this.arma.exists(_.iAmMagic)
+      "Yes"
     } catch {
       case _: InvalidkindOfWeapon => s" The weapon is not magic"
     }
-   }
+  }
 
   /**
    * Allows the character to choose a spell for casting.
-   *
    * @param spell The spell to be chosen by the character.
    * @return A message indicating the success of the spell selection.
    */
@@ -87,7 +88,6 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
 
   /**
    * Throws a spell at a target game unit.
-   *
    * This method performs several checks before throwing the spell:
    *   - It verifies if the character has a magic weapon equipped.
    *   - It checks if the character has enough mana to cast the spell.
@@ -99,7 +99,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    * @throws InvalidspellTarget if the spell cannot act on the specified target.
    */
   def throwSpell(target: GameUnit): String = {
-    try{
+    try {
       this.hasMagicWeapon
       this.hasEnoughMana
       target.canSuffer(spell)
@@ -139,4 +139,4 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    * @return true if the character can select a thunder spell, false otherwise.
    */
   def canSelectThunder(): Boolean
-
+}

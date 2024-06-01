@@ -45,7 +45,7 @@ class WhiteMagican(name:String, healthPoints:Int,
     } catch {
       case _:InvalidputSwordException => s"The character: ${this.getName} can't wear a Sword"
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
-      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
+      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
 

@@ -41,6 +41,7 @@ class BlackMagican(name:String, healthPoints:Int,
   def putWeapon(weapon: Weapon): String = {
     try {
       weapon.canBeEquippedBy(this)
+      this.dropWeapon()
       this.arma = Some(weapon)
       weapon.setOwner(this)
       //val foo: Boolean = weapon.iAmMagic
@@ -48,7 +49,7 @@ class BlackMagican(name:String, healthPoints:Int,
     } catch {
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
       case _:InvalidputBowException => s"The character: ${this.getName} can't wear a Bow"
-      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has owner"
+      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
 
