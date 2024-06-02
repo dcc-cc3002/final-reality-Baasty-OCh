@@ -5,12 +5,26 @@ import model.spell.Spell
 import model.spell.dark.Thunder
 import munit.FunSuite
 
-class ThunderTest extends FunSuite{
+/**
+ * A test suite for testing the functionality of the Thunder spell.
+ * This class extends FunSuite, providing a framework for writing and running tests.
+ */
+class ThunderTest extends FunSuite {
+
+  /**
+   * A variable representing the Thunder spell, which is a type of Spell.
+   * This variable is initialized in the beforeEach method.
+   */
   var Thunder: Spell = _
+
+  /**
+   * A variable representing a Black Magician named Brahim.
+   * This variable is initialized in the beforeEach method.
+   */
   var Brahim: BlackMagican = _
 
   /**
-   * Set up the test environment before each test case.
+   * Sets up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
    *
    * @param context The context provided by the test framework (`BeforeEach`).
@@ -20,9 +34,12 @@ class ThunderTest extends FunSuite{
     Brahim = new BlackMagican("Brahim")
   }
 
-  test("canSelectedBy"){
-    assertEquals(Thunder.canBeSelectedBy(Brahim),true) // resto de casos seran probados en flujo de select spell en clases de pj magicos
+  /**
+   * Test case to check if the Thunder spell can be selected by the Black Magician Brahim.
+   * This test verifies that the Thunder spell can be selected by Brahim.
+   */
+  test("canSelectedBy") {
+    assertEquals(Thunder.canBeSelectedBy(Brahim), true)
   }
-
 
 }
