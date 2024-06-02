@@ -1,7 +1,5 @@
 package spellTest
 
-import model.playable.common.{Ninja, Paladin, Warrior}
-import model.playable.magic.{BlackMagican, WhiteMagican}
 import model.spell.Spell
 import model.spell.dark.{Fire, Thunder}
 import model.spell.light.{Healing, Paralysis, Poison}

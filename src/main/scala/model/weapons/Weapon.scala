@@ -39,6 +39,10 @@ trait Weapon{
    */
   def canBeEquippedBy(player:Playable): Boolean
 
+  /**
+   * Abstract method to indicates whether the weapon is magical or not.
+   * @return true if the weapon is magical, false otherwise.
+   */
   def iAmMagic: Boolean
 
 }
