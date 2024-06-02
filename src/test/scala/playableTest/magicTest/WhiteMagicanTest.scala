@@ -5,7 +5,6 @@ import model.playable.magic.WhiteMagican
 import model.spell.Spell
 import model.spell.dark.{Fire, Thunder}
 import model.spell.light.{Healing, Paralysis, Poison}
-import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
@@ -14,8 +13,8 @@ import munit.FunSuite
  * This class contains tests for various functionalities of the `WhiteMagican` class.
  */
 class WhiteMagicanTest extends FunSuite {
-  var Benzema: WhiteMagican = _ // Declaration of a variable `Benzema` of type `Playable`.
-  var Ter_Stegen: Enemy = _ // Declaration of a variable `Ter_Stegen` of type `Enemy`.
+  var Benzema: WhiteMagican = _
+  var Ter_Stegen: Enemy = _
   var Ozil: WhiteMagican = _
   var Suarez: Enemy = _
 
@@ -131,8 +130,8 @@ class WhiteMagicanTest extends FunSuite {
     val Baston: Staff = new Staff()
     Benzema.putWeapon(Baston)
 
-    assertEquals(Benzema.attack(Ter_Stegen),"The enemy was Attack")
-    assertEquals(Benzema.attack(Suarez),"The enemy was Attack, but the damage is not enough")
+    assertEquals(Benzema.attack(Ter_Stegen), "The enemy was attacked")
+    assertEquals(Benzema.attack(Suarez), "The enemy was attacked, but the damage is not enough")
   }
 
   /**
@@ -144,7 +143,7 @@ class WhiteMagicanTest extends FunSuite {
     val Baston: Staff = new Staff()
     Benzema.putWeapon(Baston)
 
-    assertEquals(Benzema.attack(Ozil), "The character: Benzema can't attack an Allie")
+    assertEquals(Benzema.attack(Ozil), "The character: Benzema can't attack an ally")
   }
 
   /**

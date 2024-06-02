@@ -170,23 +170,23 @@ class APlayableTest extends FunSuite{
     val Axe: Axe = new Axe()
 
     Gento.putWeapon(Wand)
-    assertEquals(Gento.attack(Iniesta),"The enemy was Attack")
-    assertEquals(Gento.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+    assertEquals(Gento.attack(Iniesta),"The enemy was attacked")
+    assertEquals(Gento.attack(Puyol),"The enemy was attacked, but the damage is not enough")
 
     Kopa.putWeapon(Staff)
-    assertEquals(Kopa.attack(Iniesta),"The enemy was Attack")
-    assertEquals(Kopa.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+    assertEquals(Kopa.attack(Iniesta),"The enemy was attacked")
+    assertEquals(Kopa.attack(Puyol),"The enemy was attacked, but the damage is not enough")
 
     Di_Stefano.putWeapon(Sword)
-    assertEquals(Di_Stefano.attack(Iniesta),"The enemy was Attack")
-    assertEquals(Di_Stefano.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+    assertEquals(Di_Stefano.attack(Iniesta),"The enemy was attacked")
+    assertEquals(Di_Stefano.attack(Puyol),"The enemy was attacked, but the damage is not enough")
 
     Puskas.putWeapon(Bow)
-    assertEquals(Puskas.attack(Iniesta),"The enemy was Attack")
-    assertEquals(Puskas.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+    assertEquals(Puskas.attack(Iniesta),"The enemy was attacked")
+    assertEquals(Puskas.attack(Puyol),"The enemy was attacked, but the damage is not enough")
 
     Amancio.putWeapon(Axe)
-    assertEquals(Amancio.attack(Iniesta),"The enemy was Attack")
-    assertEquals(Amancio.attack(Puyol),"The enemy was Attack, but the damage is not enough")
+    assertEquals(Amancio.attack(Iniesta),"The enemy was attacked")
+    assertEquals(Amancio.attack(Puyol),"The enemy was attacked, but the damage is not enough")
   }
 }

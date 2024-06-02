@@ -2,15 +2,14 @@ package playableTest.magicTest
 
 import exceptions.spells.InvalidnoEnoughMana
 import model.nonplayable.Enemy
-import model.playable.Playable
 import model.playable.magic.{AMagicPlayable, BlackMagican, WhiteMagican}
 import model.spell.Spell
-import model.spell.dark.{Fire, Thunder}
+import model.spell.dark.Fire
 import model.spell.light.Healing
 import model.weapons.Weapon
 import model.weapons.common.{Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
-import munit.{FunSuite, Slow}
+import munit.FunSuite
 
 class AMagicPlayableTest extends FunSuite{
   var Kopa: AMagicPlayable = _
@@ -133,11 +132,11 @@ class AMagicPlayableTest extends FunSuite{
    * Both cases are expected to return "The spell can not act in that target".
    */
   test("It should throw an exception if the Magic Playable cant throw a spell on specific target"){
-    var Staff : Staff = new Staff()
-    var Wand : Wand = new Wand()
-    var Fire : Spell = new Fire()
-    var Healing : Spell = new Healing()
-    var Laudrup: Enemy = new Enemy("Laudrup")
+    val Staff : Staff = new Staff()
+    val Wand : Wand = new Wand()
+    val Fire : Spell = new Fire()
+    val Healing : Spell = new Healing()
+    val Laudrup: Enemy = new Enemy("Laudrup")
     Kopa.putWeapon(Staff)
     Kopa.selectSpell(Fire)
     assertEquals(Kopa.throwSpell(Gento), "The spell can not act in that target")

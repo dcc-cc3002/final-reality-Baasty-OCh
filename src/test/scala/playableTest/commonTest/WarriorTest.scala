@@ -6,13 +6,14 @@ import model.playable.common.Warrior
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
+
 /**
  * Test suite for the `Paladin` class.
  * This class contains tests for various functionalities of the `Paladin` class.
  */
 class WarriorTest extends FunSuite {
-  var Casemiro: Playable = _ // Declaration of a variable `Casemiro` of type `Playable`.
-  var Busquets: Enemy = _ // Declaration of a variable `Busquets` of type `Enemy`.
+  var Casemiro: Playable = _
+  var Busquets: Enemy = _
   var Ramos: Playable = _
 
   /**
@@ -35,8 +36,6 @@ class WarriorTest extends FunSuite {
     assertEquals(Casemiro.equals(Ramos),false)
     assertEquals(Casemiro.equals(Busquets),false)
   }
-
-
 
   /**
    * Test case for 'canEquip' methods.
@@ -103,4 +102,5 @@ class WarriorTest extends FunSuite {
 
     assertEquals(Casemiro.putWeapon(Espada),"The weapon: Espada already has owner")
   }
+
 }

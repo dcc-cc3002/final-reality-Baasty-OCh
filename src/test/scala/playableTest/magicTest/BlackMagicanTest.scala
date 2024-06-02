@@ -5,10 +5,10 @@ import model.playable.magic.BlackMagican
 import model.spell.Spell
 import model.spell.dark.{Fire, Thunder}
 import model.spell.light.{Healing, Paralysis, Poison}
-import model.weapons.Weapon
+
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
-import munit.{FunSuite, Slow}
+import munit.FunSuite
 
 /**
  * Test suite for the `BlackMagican` class.
@@ -131,7 +131,7 @@ class BlackMagicanTest extends FunSuite {
     val Baston: Staff = new Staff()
     Modric.putWeapon(Baston)
 
-    assertEquals(Modric.attack(James), "The character: Modric can't attack an Allie")
+    assertEquals(Modric.attack(James), "The character: Modric can't attack an ally")
   }
 
   /**

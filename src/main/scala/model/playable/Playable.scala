@@ -1,15 +1,13 @@
 package model.playable
 
 import exceptions.InvalidattackAllieException
-import exceptions.weapons.InvalidputWeaponException
 import model.general.GameUnit
-import model.nonplayable.{Enemy, NonPlayable}
-import model.spell.Spell
-import model.weapons.{AWeapon, Weapon}
+import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 
 trait Playable extends GameUnit{
+
   /**
    * Abstract method to get the name of the playable entity
   */

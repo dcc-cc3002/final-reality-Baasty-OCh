@@ -11,8 +11,8 @@ import munit.FunSuite
  * This class contains tests for various functionalities of the `Paladin` class.
  */
 class PaladinTest extends FunSuite {
-  var Cristiano: Playable = _ // Declaration of a variable `Cristiano` of type `Playable`.
-  var Pique: Enemy = _ // Declaration of a variable `Pique` of type `Enemy`.
+  var Cristiano: Playable = _
+  var Pique: Enemy = _
   var Bale: Playable = _
 
   /**
@@ -21,10 +21,8 @@ class PaladinTest extends FunSuite {
    * @param context The context provided by the test framework (`BeforeEach`).
    */
   override def beforeEach(context: BeforeEach): Unit = {
-    // Initialize `Cristiano` with new instances of `Paladin`.
     Cristiano = new Paladin("Cristiano")
     Bale = new Paladin("Bale",25,34,56)
-    // Initialize `Pique` with new instances of `Enemy`.
     Pique = new Enemy("Pique")
   }
 

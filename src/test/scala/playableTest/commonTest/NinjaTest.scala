@@ -12,9 +12,9 @@ import munit.FunSuite
  * This class contains tests for various functionalities of the `Ninja` class.
  */
 class NinjaTest extends FunSuite {
-  var Kroos: Playable = _ // Declaration of a variable `Kroos` of type `Playable`.
-  var Rakitic: Enemy = _ // Declaration of a variable `Rakitic` of type `Enemy`.
-  var Alonso: Playable = _ // Declaration of a variable `Alonso` of type `Playable`.
+  var Kroos: Playable = _
+  var Rakitic: Enemy = _
+  var Alonso: Playable = _
 
   /**
    * Set up the test environment before each test case.
