@@ -11,7 +11,7 @@ import model.weapons.AWeapon
  */
 protected abstract class AMagicWeapon(name: String, weight: Int,
                                       attackPoints: Int, magicAttackPoints: Int)
-                                      extends AWeapon(name, weight, attackPoints) {
+                                      extends AWeapon(name, weight, attackPoints) with MagicWeapon {
 
   private var MAP: Int = magicAttackPoints
 

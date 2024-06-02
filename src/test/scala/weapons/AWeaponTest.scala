@@ -3,7 +3,7 @@ package weapons
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.{BlackMagican, WhiteMagican}
-import model.weapons.{AWeapon, Weapon}
+import model.weapons.AWeapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite

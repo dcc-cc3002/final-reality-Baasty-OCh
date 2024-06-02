@@ -16,7 +16,6 @@ class SwordTest extends FunSuite {
   /**
    * Set up the test environment before each test case.
    * This method is invoked before each test case (`test`) to initialize the test objects.
-   *
    * @param context The context provided by the test framework (`BeforeEach`).
    */
   override def beforeEach(context: BeforeEach): Unit = {

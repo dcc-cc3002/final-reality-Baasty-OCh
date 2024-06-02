@@ -1,11 +1,11 @@
 package weapons.magic
 
-import model.weapons.magic.{Staff, Wand}
+import model.weapons.magic.{MagicWeapon, Staff, Wand}
 import munit.FunSuite
 
 class AMagicWeaponTest extends FunSuite{
-  var wand: Wand = _
-  var staff: Staff = _
+  var wand: MagicWeapon = _
+  var staff: MagicWeapon = _
 
   /**
    * Set up the test environment before each test case.
