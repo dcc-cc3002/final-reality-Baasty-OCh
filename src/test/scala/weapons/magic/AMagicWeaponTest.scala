@@ -3,6 +3,10 @@ package weapons.magic
 import model.weapons.magic.{MagicWeapon, Staff, Wand}
 import munit.FunSuite
 
+/**
+ * A test suite for testing the functionality of magic weapons.
+ * This class extends FunSuite, providing a framework for writing and running tests.
+ */
 class AMagicWeaponTest extends FunSuite{
   var wand: MagicWeapon = _
   var staff: MagicWeapon = _

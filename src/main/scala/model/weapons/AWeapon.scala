@@ -1,7 +1,6 @@
 package model.weapons
 
-import exceptions.weapons.{InvalidkindOfWeapon, InvalidputAxeException}
-import model.nonplayable.NonPlayable
+import exceptions.weapons.InvalidkindOfWeapon
 import model.playable.Playable
 
 /**
@@ -16,10 +15,28 @@ import model.playable.Playable
 abstract class AWeapon(name: String, weight: Int,
                        attackPoints: Int) extends Weapon {
 
-  require(weight >=0 && weight<=100)
-  require(attackPoints >=0 && attackPoints<=100)
+  /**
+   * Validates that the weight of the weapon is within the valid range.
+   * The weight must be between 0 and 100 inclusive.
+   * @param weight The weight of the weapon.
+   * @throws IllegalArgumentException if the weight is not within the valid range.
+   */
+  require(weight >= 0 && weight <= 100, "weight must be between 0 and 100 inclusive")
 
-  var owner : Option[Playable] = None
+  /**
+   * Validates that the attack points of the weapon are within the valid range.
+   * The attack points must be between 0 and 100 inclusive.
+   * @param attackPoints The attack points of the weapon.
+   * @throws IllegalArgumentException if the attack points are not within the valid range.
+   */
+  require(attackPoints >= 0 && attackPoints <= 100, "attackPoints must be between 0 and 100 inclusive")
+
+  /**
+   * The owner of the weapon, which is an optional value of type Playable.
+   * This variable is initialized to None, indicating that the weapon has no owner by default.
+   */
+  var owner: Option[Playable] = None
+
   /**
    * Implementation of Method to get the name of the non-playable entity.
    * @return The name of the weapon
@@ -45,18 +62,22 @@ abstract class AWeapon(name: String, weight: Int,
   def getOwner: Option[Playable] = owner
 
   /**
-   * Implementation of Method to get the owner of the non-playable entity (a weapon).
-   * @param newOwner the new owner of the weapon
+   * Sets the owner of the non-playable entity (a weapon).
+   *
+   * @param newOwner The new owner of the weapon, which must be of type Playable.
+   * @throws IllegalArgumentException if the newOwner is null.
    */
-  def setOwner(newOwner:Playable) : Unit = {
+  def setOwner(newOwner: Playable): Unit = {
+    require(newOwner != null, "newOwner cannot be null")
     this.owner = Some(newOwner)
   }
 
+  /**
+   * Indicates whether the weapon is magical.
+   * @return This method always throws an InvalidKindOfWeapon exception.
+   * @throws InvalidkindOfWeapon This exception is always thrown as this weapon cannot be magical.
+   */
   def iAmMagic: Boolean = throw new InvalidkindOfWeapon
-
-
-
-
 
 }
 
