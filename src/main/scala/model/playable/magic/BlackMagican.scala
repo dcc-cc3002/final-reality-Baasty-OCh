@@ -31,7 +31,6 @@ class BlackMagican(name:String, healthPoints:Int,
     this(name,90,60,50,50)
   }
 
-
   /**
    * Implementation of Method to put a Weapon on a Playable Entity (BlackMagican)
    * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
@@ -44,7 +43,6 @@ class BlackMagican(name:String, healthPoints:Int,
       this.dropWeapon()
       this.arma = Some(weapon)
       weapon.setOwner(this)
-      //val foo: Boolean = weapon.iAmMagic
       "The weapon was wear"
     } catch {
       case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
@@ -53,26 +51,54 @@ class BlackMagican(name:String, healthPoints:Int,
     }
   }
 
+  /**
+   * Allows the playable entity to select a spell.
+   * @param spell The spell to be selected.
+   * @return A message indicating whether the spell was successfully selected or an exception message if the spell cannot be selected.
+   */
   def selectSpell(spell: Spell): String = {
-    try{
+    try {
       spell.canBeSelectedBy(this)
       this.spell = spell
       spell.setMagican(this)
-      "The spell was select"
+      "The spell was selected"
     } catch {
-      case _:InvalidselectHealingSpell => s"The character ${this.getName} cant select a Healing Spell"
-      case _:InvalidselectPoisonSpell => s"The character ${this.getName} cant select a Poison Spell"
-      case _:InvalidselectParalysisSpell => s"The character ${this.getName} cant select a Paralysis Spell"
-
+      case _: InvalidselectHealingSpell => s"The character ${this.getName} can't select a Healing Spell"
+      case _: InvalidselectPoisonSpell => s"The character ${this.getName} can't select a Poison Spell"
+      case _: InvalidselectParalysisSpell => s"The character ${this.getName} can't select a Paralysis Spell"
     }
   }
 
-
+  /**
+   * Indicates whether the playable entity can select a Healing spell.
+   * @return Always throws an InvalidselectHealingSpell exception.
+   */
   override def canSelectHealing(): Boolean = throw new InvalidselectHealingSpell
+
+  /**
+   * Indicates whether the playable entity can select a Poison spell.
+   * @return Always throws an InvalidselectPoisonSpell exception.
+   */
   override def canSelectPoison(): Boolean = throw new InvalidselectPoisonSpell
+
+  /**
+   * Indicates whether the playable entity can select a Paralysis spell.
+   * @return Always throws an InvalidselectParalysisSpell exception.
+   */
   override def canSelectParalysis(): Boolean = throw new InvalidselectParalysisSpell
+
+  /**
+   * Indicates whether the playable entity can select a Fire spell.
+   * @return Always returns true.
+   */
   override def canSelectFire(): Boolean = true
+
+  /**
+   * Indicates whether the playable entity can select a Thunder spell.
+   * @return Always returns true.
+   */
   override def canSelectThunder(): Boolean = true
+
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
    * @param w represent the Axe

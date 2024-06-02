@@ -143,8 +143,8 @@ class BlackMagicanTest extends FunSuite {
     var Fire : Spell = new Fire()
     var Thunder : Spell = new Thunder()
 
-    assertEquals(Modric.selectSpell(Fire), "The spell was select")
-    assertEquals(Modric.selectSpell(Thunder), "The spell was select")
+    assertEquals(Modric.selectSpell(Fire), "The spell was selected")
+    assertEquals(Modric.selectSpell(Thunder), "The spell was selected")
   }
 
   /**
@@ -154,7 +154,7 @@ class BlackMagicanTest extends FunSuite {
    */
   test("It should throw an exception if the BlackMagican cant select Healing Spell"){
     var Healing : Spell = new Healing()
-    assertEquals(Modric.selectSpell(Healing), "The character Modric cant select a Healing Spell")
+    assertEquals(Modric.selectSpell(Healing), "The character Modric can't select a Healing Spell")
   }
 
   /**
@@ -164,7 +164,7 @@ class BlackMagicanTest extends FunSuite {
    */
   test("It should throw an exception if the BlackMagican cant select Paralysis Spell"){
     var Paralysis : Spell = new Paralysis()
-    assertEquals(Modric.selectSpell(Paralysis), "The character Modric cant select a Paralysis Spell")
+    assertEquals(Modric.selectSpell(Paralysis), "The character Modric can't select a Paralysis Spell")
   }
 
   /**
@@ -174,7 +174,7 @@ class BlackMagicanTest extends FunSuite {
    */
   test("It should throw an exception if the BlackMagican cant select Poison Spell"){
     var Poison : Spell = new Poison()
-    assertEquals(Modric.selectSpell(Poison), "The character Modric cant select a Poison Spell")
+    assertEquals(Modric.selectSpell(Poison), "The character Modric can't select a Poison Spell")
   }
 
 }
