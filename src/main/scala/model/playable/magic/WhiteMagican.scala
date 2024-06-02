@@ -49,25 +49,52 @@ class WhiteMagican(name:String, healthPoints:Int,
     }
   }
 
+  /**
+   * Allows the playable entity to select a spell.
+   *
+   * @param spell The spell to be selected.
+   * @return A message indicating whether the spell was successfully selected or an exception message if the spell cannot be selected.
+   */
   def selectSpell(spell: Spell): String = {
-    try{
+    try {
       spell.canBeSelectedBy(this)
       this.spell = spell
-      "The spell was select"
+      "The spell was selected"
     } catch {
-      case _:InvalidselectFireSpell => s"The character ${this.getName} cant select a Fire Spell"
-      case _:InvalidselectThunderSpell => s"The character ${this.getName} cant select a Thunder Spell"
-
+      case _: InvalidselectFireSpell => s"The character ${this.getName} can't select a Fire Spell"
+      case _: InvalidselectThunderSpell => s"The character ${this.getName} can't select a Thunder Spell"
     }
   }
 
-
+  /**
+   * Indicates whether the playable entity can select a Healing spell.
+   * @return Always returns true.
+   */
   override def canSelectHealing(): Boolean = true
-  override def canSelectPoison(): Boolean = true
-  override def canSelectParalysis(): Boolean = true
-  override def canSelectFire(): Boolean = throw new InvalidselectFireSpell
-  override def canSelectThunder(): Boolean = throw new InvalidselectThunderSpell
 
+  /**
+   * Indicates whether the playable entity can select a Poison spell.
+   * @return Always returns true.
+   */
+  override def canSelectPoison(): Boolean = true
+
+  /**
+   * Indicates whether the playable entity can select a Paralysis spell.
+   * @return Always returns true.
+   */
+  override def canSelectParalysis(): Boolean = true
+
+  /**
+   * Indicates whether the playable entity can select a Fire spell.
+   * @return Always throws an InvalidselectFireSpell exception.
+   */
+  override def canSelectFire(): Boolean = throw new InvalidselectFireSpell
+
+  /**
+   * Indicates whether the playable entity can select a Thunder spell.
+   * @return Always throws an InvalidselectThunderSpell exception.
+   */
+  override def canSelectThunder(): Boolean = throw new InvalidselectThunderSpell
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'

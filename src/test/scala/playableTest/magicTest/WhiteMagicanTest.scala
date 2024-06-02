@@ -156,9 +156,9 @@ class WhiteMagicanTest extends FunSuite {
     var Paralysis : Spell = new Paralysis()
     var Poison : Spell = new Poison()
 
-    assertEquals(Benzema.selectSpell(Healing), "The spell was select")
-    assertEquals(Benzema.selectSpell(Paralysis), "The spell was select")
-    assertEquals(Benzema.selectSpell(Poison), "The spell was select")
+    assertEquals(Benzema.selectSpell(Healing), "The spell was selected")
+    assertEquals(Benzema.selectSpell(Paralysis), "The spell was selected")
+    assertEquals(Benzema.selectSpell(Poison), "The spell was selected")
   }
 
   /**
@@ -168,7 +168,7 @@ class WhiteMagicanTest extends FunSuite {
    */
   test("It should throw an exception if the WhiteMagican cant select Fire Spell"){
     var Fire : Spell = new Fire()
-    assertEquals(Benzema.selectSpell(Fire), "The character Benzema cant select a Fire Spell")
+    assertEquals(Benzema.selectSpell(Fire), "The character Benzema can't select a Fire Spell")
   }
 
   /**
@@ -178,7 +178,7 @@ class WhiteMagicanTest extends FunSuite {
    */
   test("It should throw an exception if the WhiteMagican cant select Thunder Spell"){
     var Thunder : Spell = new Thunder()
-    assertEquals(Benzema.selectSpell(Thunder), "The character Benzema cant select a Thunder Spell")
+    assertEquals(Benzema.selectSpell(Thunder), "The character Benzema can't select a Thunder Spell")
   }
 
 
