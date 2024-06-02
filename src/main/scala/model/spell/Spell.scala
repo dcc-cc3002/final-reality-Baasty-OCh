@@ -10,38 +10,38 @@ import model.playable.magic.AMagicPlayable
 trait Spell {
 
   /**
-   * Gets the cost of the spell.
+   * Abstract method to gets the cost of the spell.
    * @return The cost of the spell as an integer.
    */
   def getCost: Int
 
   /**
-   * Applies the effect of the spell to the target.
+   * Abstract method to applies the effect of the spell to the target.
    * @param target The game unit that the spell will affect.
    */
   def Effect(target: GameUnit): Unit
 
   /**
-   * Determines if the spell can be selected by a given player.
+   * Abstract method to determines if the spell can be selected by a given player.
    * @param player The player attempting to select the spell.
    * @return True if the spell can be selected by the player, false otherwise.
    */
   def canBeSelectedBy(player: AMagicPlayable): Boolean
 
   /**
-   * Checks if the spell can act on playable units.
+   * Abstract method to checks if the spell can act on playable units.
    * @return True if the spell can act on playables, false otherwise.
    */
   def actOnPlayable(): Boolean
 
   /**
-   * Checks if the spell can act on enemy units.
+   * Abstract method checks if the spell can act on enemy units.
    * @return True if the spell can act on enemies, false otherwise.
    */
   def actOnEnemy(): Boolean
 
   /**
-   * Sets the magician associated with this spell.
+   * Abstract method to sets the magician associated with this spell.
    * @param mago The magician to be associated with the spell.
    */
   def setMagican(mago: AMagicPlayable): Unit
