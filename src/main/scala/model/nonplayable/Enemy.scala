@@ -1,7 +1,6 @@
 package model.nonplayable
+
 import model.general.GameUnit
-import model.nonplayable.NonPlayable
-import model.playable.Playable
 
 /**
  * "An enemy is a type of non-playable character that represents the adversary

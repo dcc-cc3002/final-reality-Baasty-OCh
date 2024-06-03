@@ -1,10 +1,9 @@
 package model.general
 
-import model.nonplayable.Enemy
-import model.playable.Playable
 import model.spell.Spell
 
 trait GameUnit {
+
   /**
    * Abstract Method to get the weight of a entity (characters or enemies) in the game.
    */
@@ -27,7 +26,6 @@ trait GameUnit {
    */
   def CanAttackPlayable(): Boolean
 
-
   /**
    * Abtract method to know if a Game Unit can attack a Enemy entity
    * @param entity the candidate to be the target of attack
@@ -46,5 +44,10 @@ trait GameUnit {
    */
   def wasAttacked(pain:Int) : Unit
 
+  /**
+   * Abstract method to determine if a Playable entity can suffer the effects of a spell.
+   * @param spell The spell being cast.
+   * @return True if the Playable entity can suffer the spell's effects, false otherwise.
+   */
   def canSuffer(spell : Spell): Boolean
 }

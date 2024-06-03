@@ -28,21 +28,18 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   /**
    * Implementation of Method to get the name of the playable entity.
-   *
    * @return The name of the playable entity.
    */
   def getName: String = name
 
   /**
    * Implementation of Method to get the health points of the playable entity.
-   *
    * @return The health points of the playable entity.
    */
   def getHp: Int = healthPoints
 
   /**
    * Implementation of Method to set the health points of the playable entity.
-   *
    * @param newHp The new health points of the playable entity.
    */
   def setHp(newHp: Int): Unit = {
@@ -51,28 +48,24 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   /**
    * Implementation of Method to get the defense points of the playable entity.
-   *
    * @return The defense points of the playable entity.
    */
   def getDp: Int = defensePoints
 
   /**
    * Implementation of Method to get the weight of the playable entity.
-   *
    * @return The weight of the playable entity.
    */
   def getWeight: Int = weight
 
   /**
    * Implementation of Method to know if a Playable Entity has or not a weapon.
-   *
    * @return The Weapon of the Character or None in case he/she does not have one.
    */
   def hasWeapon: Option[Weapon] = arma
 
   /**
    * Abstract Method to equip a Weapon on a Playable Entity.
-   *
    * @param weapon Any class of Weapon.
    */
   def putWeapon(weapon: Weapon): String
@@ -88,14 +81,12 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   /**
    * Implementation of method to alert if the player is attempting to use a weapon owned by another character.
-   *
    * @return an Exception.
    */
   def foreignWeapon(): Boolean = throw new InvalidputWeaponException
 
   /**
    * Implementation method to attack a GameUnit entity.
-   *
    * @param entity The target of attack.
    * @return An affirmative message in case the target was correctly attacked and an "exception" message in other cases.
    */
@@ -116,7 +107,6 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   /**
    * Implementation method to know if Playable can be attacked by another particular GameUnit.
-   *
    * @param entity Represents the possible attacker.
    * @return True if GameUnit is an enemy of our playable entity.
    */
@@ -124,7 +114,6 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   /**
    * Method to simulate the playable entity being attacked.
-   *
    * @param pain The amount of damage inflicted on the playable entity.
    */
   def wasAttacked(pain: Int): Unit = {
@@ -137,7 +126,6 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   /**
    * Method to determine if a Playable entity can suffer the effects of a spell.
-   *
    * @param spell The spell being cast.
    * @return True if the Playable entity can suffer the spell's effects, false otherwise.
    */
