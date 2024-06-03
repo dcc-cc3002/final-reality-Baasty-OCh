@@ -103,6 +103,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
       this.hasMagicWeapon
       this.hasEnoughMana
       target.canSuffer(spell)
+      this.setMana(this.getMana-spell.getCost)
       spell.Effect(target)
       "nice spell"
     } catch {

@@ -44,7 +44,7 @@ class Enemy(name: String, weight: Int,
       (getClass() == otherCast.getClass() &&
         getName == otherCast.getName &&
         getWeight == otherCast.getWeight &&
-        getLife == otherCast.getLife &&
+        getHp == otherCast.getHp &&
         getDp == otherCast.getDp )
 
     } else false

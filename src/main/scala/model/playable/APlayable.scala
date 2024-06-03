@@ -129,5 +129,5 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * @param spell The spell being cast.
    * @return True if the Playable entity can suffer the spell's effects, false otherwise.
    */
-  def canSuffer(spell: Spell): Boolean = spell.actOnPlayable()
+  def canSuffer(spell: Spell): Boolean = spell.actOnPlayable(this)
 }

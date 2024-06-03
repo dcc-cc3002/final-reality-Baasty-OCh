@@ -49,7 +49,7 @@ protected abstract class AEnemy(val name: String, val weight: Int,
    * Retrieves the life points of the non-playable entity.
    * @return The life points of the non-playable entity.
    */
-  def getLife: Int = life
+  def getHp: Int = life
 
   /**
    * Sets the life points of the non-playable entity.
@@ -106,7 +106,7 @@ protected abstract class AEnemy(val name: String, val weight: Int,
    * @param spell The spell being cast.
    * @return true if the spell can affect the enemy, false otherwise.
    */
-  def canSuffer(spell: Spell): Boolean = spell.actOnEnemy()
+  def canSuffer(spell: Spell): Boolean = spell.actOnEnemy(this)
 
 }
 

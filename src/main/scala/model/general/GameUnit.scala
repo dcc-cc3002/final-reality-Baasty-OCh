@@ -15,6 +15,12 @@ trait GameUnit {
   def getDp:Int
 
   /**
+   * Abstract method to get the Health points of the entity
+   */
+
+  def getHp: Int
+
+  /**
    * Abstract Method to attack entity
    * @param entity the target of attack
    */

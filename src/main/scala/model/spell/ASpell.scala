@@ -20,13 +20,17 @@ abstract class ASpell extends Spell {
    * Determines if the spell can act on enemy units.
    * @return Always returns true, as by default spells can act on enemies.
    */
-  def actOnEnemy(): Boolean = true
+  def actOnEnemy(enemy: GameUnit): Boolean = {
+    if (enemy.getHp > 0){
+      true
+    } else false
+  }
 
   /**
    * Throws an InvalidSpellTarget exception as the default implementation.
    * @throws InvalidspellTarget Always thrown to indicate that the spell cannot act on playable units.
    */
-  def actOnPlayable(): Boolean = throw new InvalidspellTarget
+  def actOnPlayable(player: GameUnit): Boolean = throw new InvalidspellTarget
 
   /**
    * Applies the spell's effect to the target game unit.

@@ -32,13 +32,13 @@ trait Spell {
    * Abstract method to checks if the spell can act on playable units.
    * @return True if the spell can act on playables, false otherwise.
    */
-  def actOnPlayable(): Boolean
+  def actOnPlayable(player: GameUnit): Boolean
 
   /**
    * Abstract method checks if the spell can act on enemy units.
    * @return True if the spell can act on enemies, false otherwise.
    */
-  def actOnEnemy(): Boolean
+  def actOnEnemy(enemy: GameUnit): Boolean
 
   /**
    * Abstract method to sets the magician associated with this spell.

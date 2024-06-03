@@ -96,9 +96,9 @@ class EnemyTest extends FunSuite {
    */
   test("wasInjure"){
     Neymar.wasAttacked(25)
-    assertEquals(Neymar.getLife,225)
+    assertEquals(Neymar.getHp,225)
     Neymar.wasAttacked(300)
-    assertEquals(Neymar.getLife,0)
+    assertEquals(Neymar.getHp,0)
   }
 }
 
