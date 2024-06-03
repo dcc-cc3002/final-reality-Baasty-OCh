@@ -4,54 +4,81 @@ import model.general.party.Party
 import model.playable.magic.WhiteMagican
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin}
-import model.weapons.common.{Axe, Bow, Sword}
-import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
+
+/**
+ * Test suite for the Party class.
+ * This class contains unit tests for the Party class, which manages a group of playable characters.
+ * It utilizes the munit.FunSuite framework for organizing and running tests.
+ */
 class PartyTest extends FunSuite {
-  var Team1: Party = _ // We declare a variable Team1 of type Party
-  var Cristiano: Playable = _ // We declare a variable Cristiano of type Playable
-  var Alexis: Playable = _ // We declare a variable Alexis of type Playable
+  var Team1: Party = _
+  var Cristiano: Playable = _
+  var Alexis: Playable = _
   var Vinicius: Playable = _
-  var Bellingham : Playable = _
+  var Bellingham: Playable = _
 
-
+  /**
+   * Set up the test environment before each test case.
+   * This method initializes the Party and Playable instances before each test is run.
+   * It ensures a fresh setup for each test case to maintain test isolation and reliability.
+   *
+   * @param context The context provided by the test framework (BeforeEach).
+   */
   override def beforeEach(context: BeforeEach): Unit = {
-    Team1 = new Party() // Creates a new instance of the Party class and assigns it to the variable Team1.
-    // Creates a new instance of the Character class with the specified parameters:
-    Cristiano = new Paladin("Cristiano",0,50,50)
+    Team1 = new Party()
+    Cristiano = new Paladin("Cristiano", 0, 50, 50)
     Vinicius = new Ninja("Vini Jr")
     Bellingham = new WhiteMagican("Jude")
-    Alexis = new WhiteMagican("Alexis")// - Kind: Mago Blanco // - Weapon: false
-
-  }
-  test("addCharacter") {
-    assertEquals(Team1.addPlayable(Cristiano),"The allie was add successfully")
-  }
-
-  test("It should throw an exception if the Party cant add more than 3 players"){
-    assertEquals(Team1.addPlayable(Cristiano),"The allie was add successfully")
-    assertEquals(Team1.addPlayable(Vinicius),"The allie was add successfully")
-    assertEquals(Team1.addPlayable(Bellingham),"The allie was add successfully")
-
-    assertEquals(Team1.addPlayable(Alexis),"The Party cant add more than 3 players, is full")
-  }
-
-  test("isEmpty") { // Test if the team is initially empty
-    var state: Boolean = Team1.isDefeated // Create a variable 'state' that stores the result of checking if a party is defeated
-    assertEquals(state, true) // Compare the results
-  }
-  test("isDefeat") { // Test if a party is defeated or not
-    Team1.addPlayable(Cristiano) // Add a character with zero health
-    assertEquals(Team1.isDefeated, true) // Check if they are defeated or not (a team with no health is defeated) -> true
-  }
-  test("isNotDefeat") { // Test if a party is not defeated
     Alexis = new WhiteMagican("Alexis")
-    Team1.addPlayable(Alexis) // Add that living character
-    assertEquals(Team1.isDefeated, false) // Check that the team is alive (false)
   }
 
+  /**
+   * Test case to verify adding a playable character to the Party.
+   * This test adds a playable character to the Party and checks if the character is added successfully.
+   */
+  test("addCharacter") {
+    assertEquals(Team1.addPlayable(Cristiano), "The allie was add successfully")
+  }
 
+  /**
+   * Test case to verify that adding more than three players to the Party throws an exception.
+   * This test adds three playable characters to the Party and checks if adding a fourth character
+   * throws an exception indicating that the Party is full.
+   */
+  test("It should throw an exception if the Party cant add more than 3 players") {
+    assertEquals(Team1.addPlayable(Cristiano), "The allie was add successfully")
+    assertEquals(Team1.addPlayable(Vinicius), "The allie was add successfully")
+    assertEquals(Team1.addPlayable(Bellingham), "The allie was add successfully")
 
+    assertEquals(Team1.addPlayable(Alexis), "The Party cant add more than 3 players, is full")
+  }
 
+  /**
+   * Test case to verify if the Party is initially empty.
+   * This test checks the initial state of the Party to verify if it is empty.
+   */
+  test("isEmpty") {
+    val state: Boolean = Team1.isDefeated
+    assertEquals(state, true)
+  }
 
+  /**
+   * Test case to verify if the Party is defeated after adding a playable character.
+   * This test adds a playable character to the Party and checks if the Party is still considered defeated.
+   */
+  test("isDefeat") {
+    Team1.addPlayable(Cristiano)
+    assertEquals(Team1.isDefeated, true)
+  }
+
+  /**
+   * Test case to verify if the Party is not defeated after adding a non-defeated playable character.
+   * This test adds a non-defeated playable character to the Party and checks if the Party is not considered defeated.
+   */
+  test("isNotDefeat") {
+    Alexis = new WhiteMagican("Alexis")
+    Team1.addPlayable(Alexis)
+    assertEquals(Team1.isDefeated, false)
+  }
 }
