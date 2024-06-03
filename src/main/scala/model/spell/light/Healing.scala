@@ -1,6 +1,6 @@
 package model.spell.light
 
-import exceptions.spells.InvalidspellTarget
+import exceptions.spells.InvalidSpellTarget
 import model.general.GameUnit
 import model.playable.magic.AMagicPlayable
 
@@ -24,9 +24,9 @@ class Healing extends ALightSpell {
 
   /**
    * Throws an InvalidspellTarget exception as the Healing spell cannot act on enemy units.
-   * @throws InvalidspellTarget Always thrown to indicate that the Healing spell cannot act on enemy units.
+   * @throws InvalidSpellTarget Always thrown to indicate that the Healing spell cannot act on enemy units.
    */
-  override def actOnEnemy(enemy: GameUnit): Boolean = throw new InvalidspellTarget
+  override def actOnEnemy(enemy: GameUnit): Boolean = throw new InvalidSpellTarget
 
   /**
    * Determines if the Healing spell can be selected by a player.

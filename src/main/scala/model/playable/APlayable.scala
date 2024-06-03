@@ -1,7 +1,7 @@
 package model.playable
 
-import exceptions.weapons.InvalidputWeaponException
-import exceptions.InvalidattackAllieException
+import exceptions.weapons.InvalidPutWeaponException
+import exceptions.InvalidAttackAllyException
 import model.general.GameUnit
 import model.spell.Spell
 import model.weapons.Weapon
@@ -83,7 +83,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * Implementation of method to alert if the player is attempting to use a weapon owned by another character.
    * @return an Exception.
    */
-  def foreignWeapon(): Boolean = throw new InvalidputWeaponException
+  def foreignWeapon(): Boolean = throw new InvalidPutWeaponException
 
   /**
    * Implementation method to attack a GameUnit entity.
@@ -101,7 +101,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
       } else
         "The enemy was attacked, but the damage is not enough"
     } catch {
-      case _: InvalidattackAllieException => s"The character: ${this.getName} can't attack an ally"
+      case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
     }
   }
 

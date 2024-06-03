@@ -1,5 +1,7 @@
 package spellTest
 
+import model.general.GameUnit
+import model.nonplayable.Enemy
 import model.spell.Spell
 import model.spell.dark.{Fire, Thunder}
 import model.spell.light.{Healing, Paralysis, Poison}
@@ -65,5 +67,26 @@ class ASpellTest extends FunSuite {
     assertEquals(Healing.getCost, 15)
     assertEquals(Paralysis.getCost, 25)
     assertEquals(Poison.getCost, 30)
+  }
+
+  /**
+   * Validates the behavior of different spells when acting on enemy units.
+   * This test verifies the behavior of various spells (Fire, Thunder, Paralysis, Poison) when acting on enemy units.
+   * It ensures that each spell correctly applies its effects on enemy units, returning `true` when used on an enemy
+   * unit eligible for the spell and `false` otherwise.
+   */
+
+  test("actOnEnemy"){
+    val Villa : GameUnit = new Enemy("David")
+    val Pedro: GameUnit = new Enemy("Pedro",50,100,0,50)
+    assertEquals(Fire.actOnEnemy(Villa),true)
+    assertEquals(Fire.actOnEnemy(Pedro),false)
+    assertEquals(Thunder.actOnEnemy(Villa),true)
+    assertEquals(Thunder.actOnEnemy(Pedro),false)
+
+    assertEquals(Paralysis.actOnEnemy(Villa),true)
+    assertEquals(Paralysis.actOnEnemy(Pedro),false)
+    assertEquals(Poison.actOnEnemy(Villa),true)
+    assertEquals(Poison.actOnEnemy(Pedro),false)
   }
 }

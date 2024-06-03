@@ -1,6 +1,6 @@
 package model.playable
 
-import exceptions.InvalidattackAllieException
+import exceptions.InvalidAttackAllyException
 import model.general.GameUnit
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
@@ -87,7 +87,7 @@ trait Playable extends GameUnit{
    * @param entity the candidate to be the target of attack
    * @return false , we can not attack another playable entities
    */
-  def CanAttackPlayable(): Boolean = throw new InvalidattackAllieException
+  def CanAttackPlayable(): Boolean = throw new InvalidAttackAllyException
 
   /**
    * Implementation method to know if a Game Unit can attack an Enemy entity

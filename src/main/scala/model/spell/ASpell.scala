@@ -1,6 +1,6 @@
 package model.spell
 
-import exceptions.spells.InvalidspellTarget
+import exceptions.spells.InvalidSpellTarget
 import model.general.GameUnit
 import model.playable.magic.AMagicPlayable
 
@@ -28,9 +28,10 @@ abstract class ASpell extends Spell {
 
   /**
    * Throws an InvalidSpellTarget exception as the default implementation.
-   * @throws InvalidspellTarget Always thrown to indicate that the spell cannot act on playable units.
+ *
+   * @throws InvalidSpellTarget Always thrown to indicate that the spell cannot act on playable units.
    */
-  def actOnPlayable(player: GameUnit): Boolean = throw new InvalidspellTarget
+  def actOnPlayable(player: GameUnit): Boolean = throw new InvalidSpellTarget
 
   /**
    * Applies the spell's effect to the target game unit.

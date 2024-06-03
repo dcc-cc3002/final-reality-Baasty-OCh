@@ -1,7 +1,7 @@
 package model.playable.magic
 
-import exceptions.spells.{InvalidnoEnoughMana, InvalidspellTarget}
-import exceptions.weapons.InvalidkindOfWeapon
+import exceptions.spells.{InvalidNoEnoughMana, InvalidSpellTarget}
+import exceptions.weapons.InvalidKindOfWeapon
 import model.general.GameUnit
 import model.playable.APlayable
 import model.spell.Spell
@@ -52,11 +52,11 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    * Otherwise, throws an InvalidnoEnoughMana exception with a message indicating the mana insufficiency.
    *
    * @return "It is Enough" if the mana points are sufficient to cast the spell
-   * @throws InvalidnoEnoughMana if the mana points are insufficient to cast the spell
+   * @throws InvalidNoEnoughMana if the mana points are insufficient to cast the spell
    */
   def hasEnoughMana: String = {
     if (this.Mana < spell.getCost) {
-      throw new InvalidnoEnoughMana(s"The character ${this.getName} does not have enough mana to use the spell.")
+      throw new InvalidNoEnoughMana(s"The character ${this.getName} does not have enough mana to use the spell.")
     } else {
       "It is Enough"
     }
@@ -68,14 +68,14 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    * Otherwise, throws an InvalidkindOfWeapon exception with a message indicating that the weapon is not magic.
    *
    * @return "good" if the character has a magic weapon equipped
-   * @throws InvalidkindOfWeapon if the character does not have a magic weapon equipped
+   * @throws InvalidKindOfWeapon if the character does not have a magic weapon equipped
    */
   def hasMagicWeapon: String = {
     try {
       this.arma.exists(_.iAmMagic)
       "Yes"
     } catch {
-      case _: InvalidkindOfWeapon => s" The weapon is not magic"
+      case _: InvalidKindOfWeapon => s" The weapon is not magic"
     }
   }
 
@@ -96,7 +96,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    *
    * @param target The game unit at which the spell is aimed.
    * @return A message indicating the success of casting the spell.
-   * @throws InvalidspellTarget if the spell cannot act on the specified target.
+   * @throws InvalidSpellTarget if the spell cannot act on the specified target.
    */
   def throwSpell(target: GameUnit): String = {
     try {
@@ -107,7 +107,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
       spell.Effect(target)
       "nice spell"
     } catch {
-      case _: InvalidspellTarget => s"The spell can not act in that target"
+      case _: InvalidSpellTarget => s"The spell can not act in that target"
     }
   }
 

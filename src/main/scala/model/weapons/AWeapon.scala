@@ -1,6 +1,6 @@
 package model.weapons
 
-import exceptions.weapons.InvalidkindOfWeapon
+import exceptions.weapons.InvalidKindOfWeapon
 import model.playable.Playable
 
 /**
@@ -74,10 +74,11 @@ abstract class AWeapon(name: String, weight: Int,
 
   /**
    * Indicates whether the weapon is magical.
+ *
    * @return This method always throws an InvalidKindOfWeapon exception.
-   * @throws InvalidkindOfWeapon This exception is always thrown as this weapon cannot be magical.
+   * @throws InvalidKindOfWeapon This exception is always thrown as this weapon cannot be magical.
    */
-  def iAmMagic: Boolean = throw new InvalidkindOfWeapon
+  def iAmMagic: Boolean = throw new InvalidKindOfWeapon
 
 }
 

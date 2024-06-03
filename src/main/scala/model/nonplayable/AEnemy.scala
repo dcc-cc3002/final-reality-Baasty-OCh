@@ -1,6 +1,6 @@
 package model.nonplayable
 
-import exceptions.InvalidattackAllieException
+import exceptions.InvalidAttackAllyException
 import model.general.GameUnit
 import model.spell.Spell
 
@@ -73,7 +73,7 @@ protected abstract class AEnemy(val name: String, val weight: Int,
         "The target was attacked"
       } else "The enemy was attacked, but the damage is not enough"
     } catch {
-      case _: InvalidattackAllieException => s"The character: ${this.getName} can't attack an ally"
+      case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
     }
   }
 
@@ -87,7 +87,7 @@ protected abstract class AEnemy(val name: String, val weight: Int,
    * Checks if the enemy can attack other enemies.
    * @return false, indicating that the enemy cannot attack other enemies (throws an exception).
    */
-  def CanAttackEnemies(): Boolean = throw new InvalidattackAllieException
+  def CanAttackEnemies(): Boolean = throw new InvalidAttackAllyException
 
   /**
    * Simulates the enemy being attacked.

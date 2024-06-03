@@ -1,7 +1,7 @@
 package model.playable.magic
 
-import exceptions.spells.{InvalidselectHealingSpell, InvalidselectParalysisSpell, InvalidselectPoisonSpell}
-import exceptions.weapons.{InvalidputAxeException, InvalidputBowException, InvalidputWeaponException}
+import exceptions.spells.{InvalidSelectHealingSpell, InvalidSelectParalysisSpell, InvalidSelectPoisonSpell}
+import exceptions.weapons.{InvalidPutAxeException, InvalidPutBowException, InvalidPutWeaponException}
 import model.spell.Spell
 import model.spell.dark.Fire
 import model.weapons.Weapon
@@ -45,9 +45,9 @@ class BlackMagican(name:String, healthPoints:Int,
       weapon.setOwner(this)
       "The weapon was wear"
     } catch {
-      case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
-      case _:InvalidputBowException => s"The character: ${this.getName} can't wear a Bow"
-      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
+      case _:InvalidPutAxeException => s"The character: ${this.getName} can't wear an Axe"
+      case _:InvalidPutBowException => s"The character: ${this.getName} can't wear a Bow"
+      case _:InvalidPutWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
 
@@ -63,9 +63,9 @@ class BlackMagican(name:String, healthPoints:Int,
       spell.setMagican(this)
       "The spell was selected"
     } catch {
-      case _: InvalidselectHealingSpell => s"The character ${this.getName} can't select a Healing Spell"
-      case _: InvalidselectPoisonSpell => s"The character ${this.getName} can't select a Poison Spell"
-      case _: InvalidselectParalysisSpell => s"The character ${this.getName} can't select a Paralysis Spell"
+      case _: InvalidSelectHealingSpell => s"The character ${this.getName} can't select a Healing Spell"
+      case _: InvalidSelectPoisonSpell => s"The character ${this.getName} can't select a Poison Spell"
+      case _: InvalidSelectParalysisSpell => s"The character ${this.getName} can't select a Paralysis Spell"
     }
   }
 
@@ -73,19 +73,19 @@ class BlackMagican(name:String, healthPoints:Int,
    * Indicates whether the playable entity can select a Healing spell.
    * @return Always throws an InvalidselectHealingSpell exception.
    */
-  override def canSelectHealing(): Boolean = throw new InvalidselectHealingSpell
+  override def canSelectHealing(): Boolean = throw new InvalidSelectHealingSpell
 
   /**
    * Indicates whether the playable entity can select a Poison spell.
    * @return Always throws an InvalidselectPoisonSpell exception.
    */
-  override def canSelectPoison(): Boolean = throw new InvalidselectPoisonSpell
+  override def canSelectPoison(): Boolean = throw new InvalidSelectPoisonSpell
 
   /**
    * Indicates whether the playable entity can select a Paralysis spell.
    * @return Always throws an InvalidselectParalysisSpell exception.
    */
-  override def canSelectParalysis(): Boolean = throw new InvalidselectParalysisSpell
+  override def canSelectParalysis(): Boolean = throw new InvalidSelectParalysisSpell
 
   /**
    * Indicates whether the playable entity can select a Fire spell.
@@ -104,7 +104,7 @@ class BlackMagican(name:String, healthPoints:Int,
    * @param w represent the Axe
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipAxe(w: Axe): Boolean = throw new InvalidputAxeException
+  override def canEquipAxe(w: Axe): Boolean = throw new InvalidPutAxeException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Sword'
@@ -118,7 +118,7 @@ class BlackMagican(name:String, healthPoints:Int,
    * @param w represent the Bow
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipBow(w: Bow): Boolean = throw new InvalidputBowException
+  override def canEquipBow(w: Bow): Boolean = throw new InvalidPutBowException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Staff'

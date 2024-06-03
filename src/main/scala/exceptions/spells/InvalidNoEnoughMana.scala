@@ -5,7 +5,7 @@ package exceptions.spells
  * This exception is thrown when a character does not have enough mana to cast a spell.
  * @param message The message describing the insufficient mana condition.
  */
-class InvalidnoEnoughMana(message: String) extends Exception(message) {
+class InvalidNoEnoughMana(message: String) extends Exception(message) {
 
   /**
    * Retrieves the message describing the insufficient mana condition.

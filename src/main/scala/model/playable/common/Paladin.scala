@@ -1,6 +1,6 @@
 package model.playable.common
 
-import exceptions.weapons.{InvalidputBowException, InvalidputStaffException, InvalidputWandException, InvalidputWeaponException}
+import exceptions.weapons.{InvalidPutBowException, InvalidPutStaffException, InvalidPutWandException, InvalidPutWeaponException}
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
@@ -41,10 +41,10 @@ class Paladin(name:String, healthPoints: Int,
       weapon.setOwner(this)
       "The weapon was wear"
   } catch {
-      case _:InvalidputBowException => s"The character: ${this.getName} can't wear a Bow"
-      case _:InvalidputStaffException => s"The character: ${this.getName} can't wear a Staff"
-      case _:InvalidputWandException => s"The character: ${this.getName} can't wear a Wand"
-      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
+      case _:InvalidPutBowException => s"The character: ${this.getName} can't wear a Bow"
+      case _:InvalidPutStaffException => s"The character: ${this.getName} can't wear a Staff"
+      case _:InvalidPutWandException => s"The character: ${this.getName} can't wear a Wand"
+      case _:InvalidPutWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
 
@@ -67,21 +67,21 @@ class Paladin(name:String, healthPoints: Int,
    * @param w represent the Bow
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipBow(w: Bow): Boolean = throw new InvalidputBowException
+  override def canEquipBow(w: Bow): Boolean = throw new InvalidPutBowException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Staff'
    * @param w represent the Staff
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipStaff(w: Staff): Boolean = throw new InvalidputStaffException
+  override def canEquipStaff(w: Staff): Boolean = throw new InvalidPutStaffException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Wand'
    * @param w represent the Wand
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipWand(w: Wand): Boolean = throw new InvalidputWandException
+  override def canEquipWand(w: Wand): Boolean = throw new InvalidPutWandException
 
   /**
    * Checks if this Paladin is equal to another Paladin.

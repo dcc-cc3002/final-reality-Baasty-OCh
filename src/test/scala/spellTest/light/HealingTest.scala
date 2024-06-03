@@ -1,5 +1,6 @@
 package spellTest.light
 
+import model.general.GameUnit
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.{BlackMagican, WhiteMagican}
 import model.spell.Spell
@@ -41,6 +42,18 @@ class HealingTest extends FunSuite {
    */
   test("canSelectedBy") {
     assertEquals(Healing.canBeSelectedBy(Guler), true)
+  }
+
+  /**
+   * Validates the behavior of the Healing spell when acting on playable characters.
+   * This test ensures that the Healing spell correctly applies its effects on playable characters.
+   * It verifies that the spell returns `true` when used on a playable character eligible for healing
+   * and `false` otherwise.
+   */
+  test("actOnPlayable"){
+    val Di_Maria : GameUnit = new WhiteMagican("Angel",0,50,50,50)
+    assertEquals(Healing.actOnPlayable(Guler),true)
+    assertEquals(Healing.actOnPlayable(Di_Maria),false)
   }
 
 }

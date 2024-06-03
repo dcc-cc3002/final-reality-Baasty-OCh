@@ -1,7 +1,7 @@
 package model.playable.magic
 
-import exceptions.spells.{InvalidselectFireSpell, InvalidselectHealingSpell, InvalidselectParalysisSpell, InvalidselectPoisonSpell, InvalidselectThunderSpell}
-import exceptions.weapons.{InvalidputAxeException, InvalidputSwordException, InvalidputWeaponException}
+import exceptions.spells.{InvalidSelectFireSpell, InvalidSelectHealingSpell, InvalidSelectParalysisSpell, InvalidSelectPoisonSpell, InvalidSelectThunderSpell}
+import exceptions.weapons.{InvalidPutAxeException, InvalidPutSwordException, InvalidPutWeaponException}
 import model.spell.Spell
 import model.spell.light.Healing
 import model.weapons.Weapon
@@ -43,9 +43,9 @@ class WhiteMagican(name:String, healthPoints:Int,
       weapon.setOwner(this)
       "The weapon was wear"
     } catch {
-      case _:InvalidputSwordException => s"The character: ${this.getName} can't wear a Sword"
-      case _:InvalidputAxeException => s"The character: ${this.getName} can't wear an Axe"
-      case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
+      case _:InvalidPutSwordException => s"The character: ${this.getName} can't wear a Sword"
+      case _:InvalidPutAxeException => s"The character: ${this.getName} can't wear an Axe"
+      case _:InvalidPutWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
 
@@ -61,8 +61,8 @@ class WhiteMagican(name:String, healthPoints:Int,
       this.spell = spell
       "The spell was selected"
     } catch {
-      case _: InvalidselectFireSpell => s"The character ${this.getName} can't select a Fire Spell"
-      case _: InvalidselectThunderSpell => s"The character ${this.getName} can't select a Thunder Spell"
+      case _: InvalidSelectFireSpell => s"The character ${this.getName} can't select a Fire Spell"
+      case _: InvalidSelectThunderSpell => s"The character ${this.getName} can't select a Thunder Spell"
     }
   }
 
@@ -88,27 +88,27 @@ class WhiteMagican(name:String, healthPoints:Int,
    * Indicates whether the playable entity can select a Fire spell.
    * @return Always throws an InvalidselectFireSpell exception.
    */
-  override def canSelectFire(): Boolean = throw new InvalidselectFireSpell
+  override def canSelectFire(): Boolean = throw new InvalidSelectFireSpell
 
   /**
    * Indicates whether the playable entity can select a Thunder spell.
    * @return Always throws an InvalidselectThunderSpell exception.
    */
-  override def canSelectThunder(): Boolean = throw new InvalidselectThunderSpell
+  override def canSelectThunder(): Boolean = throw new InvalidSelectThunderSpell
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
    * @param w represent the Axe
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipAxe(w: Axe): Boolean = throw new InvalidputAxeException
+  override def canEquipAxe(w: Axe): Boolean = throw new InvalidPutAxeException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Sword'
    * @param w represent the Sword
    * @return true if the playable can equip the weapon, false in other case
    */
-  override def canEquipSword(w: Sword): Boolean = throw new InvalidputSwordException
+  override def canEquipSword(w: Sword): Boolean = throw new InvalidPutSwordException
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Bow'
