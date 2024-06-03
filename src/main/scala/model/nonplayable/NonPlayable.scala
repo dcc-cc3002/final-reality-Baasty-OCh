@@ -1,10 +1,13 @@
 package model.nonplayable
 
 import model.general.GameUnit
-import model.playable.Playable
 import model.spell.Spell
 
-// Trait to represent non-playable entities
+/**
+ * Trait representing a non-playable entity in the game.
+ * A NonPlayable entity is any character or object within the game that cannot be controlled directly by the player.
+ * This trait extends the GameUnit trait, indicating that all non-playable entities are also game units.
+ */
 trait NonPlayable extends GameUnit{
   /**
    * Abstract method to get the name of the non-playable entity

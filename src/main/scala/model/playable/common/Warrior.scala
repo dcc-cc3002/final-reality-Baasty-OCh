@@ -46,9 +46,6 @@ class Warrior(name:String, healthPoints: Int,
     }
   }
 
-
-
-
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
    * @param w represent the Axe
@@ -84,7 +81,6 @@ class Warrior(name:String, healthPoints: Int,
    */
   override def canEquipWand(w: Wand): Boolean = throw new InvalidputWandException
 
-
   /**
    * Checks if this Warrior is equal to another Warrior .
    * @param other The object to compare against
@@ -101,4 +97,5 @@ class Warrior(name:String, healthPoints: Int,
 
     } else false
   }
+
 }

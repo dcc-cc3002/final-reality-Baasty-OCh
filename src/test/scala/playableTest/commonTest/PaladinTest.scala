@@ -119,6 +119,7 @@ class PaladinTest extends FunSuite {
 
     assertEquals(Cristiano.putWeapon(Hacha),"The weapon: Hacha already has an owner")
   }
+
 }
 
 

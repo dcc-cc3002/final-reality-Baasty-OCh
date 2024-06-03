@@ -28,7 +28,6 @@ class Paladin(name:String, healthPoints: Int,
     this(name, 100, 75, 50) // stats by default: HP:100 , DP:75 , Weight:50
   }
 
-
   /**
    * Implementation of Method to put a Weapon on a Playable Entity (Paladin)
    * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
@@ -48,7 +47,6 @@ class Paladin(name:String, healthPoints: Int,
       case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
-
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
@@ -85,8 +83,6 @@ class Paladin(name:String, healthPoints: Int,
    */
   override def canEquipWand(w: Wand): Boolean = throw new InvalidputWandException
 
-
-
   /**
    * Checks if this Paladin is equal to another Paladin.
    * @param other The object to compare against
@@ -103,6 +99,7 @@ class Paladin(name:String, healthPoints: Int,
 
     } else false
   }
+
 }
 
 

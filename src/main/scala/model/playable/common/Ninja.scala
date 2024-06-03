@@ -26,7 +26,6 @@ class Ninja(name:String, healthPoints: Int,
     this(name,80,70,30)
   }
 
-
   /**
    * Implementation of Method to put a Weapon on a Playable Entity (Ninja)
    * @param weapon class of AWeapon (any sub-class of abstract class; Sword, Axe, Bow, Wand and Staff)
@@ -45,7 +44,6 @@ class Ninja(name:String, healthPoints: Int,
       case _:InvalidputWeaponException => s"The weapon: ${weapon.getName} already has an owner"
     }
   }
-
 
   /**
    * Implementation of method to check if a Playable entity can equip 'Axe'
@@ -84,9 +82,6 @@ class Ninja(name:String, healthPoints: Int,
    * @return true if the playable can equip the weapon, false in other case
    */
   override def canEquipWand(w: Wand): Boolean = true
-
-
-
 
   /**
    * Checks if this Ninja is equal to another Ninja.

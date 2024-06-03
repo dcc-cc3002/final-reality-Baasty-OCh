@@ -118,6 +118,7 @@ class NinjaTest extends FunSuite {
 
     assertEquals(Kroos.putWeapon(Varita),"The weapon: Varita already has an owner")
   }
+
 }
 
 
