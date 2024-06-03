@@ -2,12 +2,13 @@ package model.general.party
 
 import exceptions.InvalidadditionPartyException
 import model.playable.Playable
-
 import scala.collection.mutable.Map
-
 
 /**
  * Represents a party of playable characters.
+ * This class manages a group of playable characters (allies) that work together as a unit.
+ * The party can contain up to three unique playable characters. Each character is stored
+ * in a map keyed by their class type, allowing for efficient retrieval and management.
  */
 class Party  {
 

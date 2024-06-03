@@ -1,12 +1,10 @@
 package model.general.schedule
 
 import model.general.GameUnit
-
 import scala.collection.mutable
 import scala.collection.mutable.{Map, Queue}
 
 /** Class representing a turn schedule that implements the `Schedule` trait.
- *
  * This class manages the turn-based gameplay schedule for players (characters and enemies).
  * It keeps track of the action bars and turn order of the players (characters and enemies).
  */
