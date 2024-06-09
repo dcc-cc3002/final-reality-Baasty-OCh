@@ -41,7 +41,7 @@ class GameView {
   def displayPlayerAction(): Unit = {
     queue.enqueue("Escoge una acción:")
     queue.enqueue("1) Atacar")
-    queue.enqueue("2) Usar técnica maldita")
+    queue.enqueue("2) Usar Magia")
     queue.enqueue("0) Cambiar de aliado")
 
   }
