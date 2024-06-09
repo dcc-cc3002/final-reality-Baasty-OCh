@@ -18,6 +18,11 @@ import model.weapons.magic.{Staff, Wand}
  */
 class Warrior(name:String, healthPoints: Int,
               defensePoints: Int, weight: Int) extends ACommonPlayable(name, healthPoints, defensePoints, weight){
+
+  addWeapon(new Bow)
+  addWeapon(new Axe)
+  addWeapon(new Sword)
+
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    * and sets the other statistics according to the chosen class."

@@ -135,6 +135,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
   def notifyPlayerUnitSpells(pUnit: GameUnit) = {
     view.displayPlayerUnitSpells(pUnit.spells())
   }
+  def notifyPlayerUnitWeapons(pUnit: GameUnit) = {
+    view.displayPlayerUnitWeapons(pUnit.weapons())
+  }
 
   def notifyAllyChoose(pUnit: GameUnit) = {
     view.displayUnitInfo(pUnit)

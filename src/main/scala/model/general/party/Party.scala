@@ -50,11 +50,8 @@ class Party  {
       true // The party is considered defeated if it's empty
     } else {
       // The party is considered defeated if all allies have 0 life points
-      var alive = false
-      for (u <- buff) {
-        alive ||= u.getHp == 0
-      }
-      alive}
+      buff.forall(u => u.getHp <= 0)
+    }
   }
   
 }

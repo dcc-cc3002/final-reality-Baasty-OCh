@@ -3,6 +3,7 @@ package model.nonplayable
 import controller.observers.ObserverAttack
 import model.general.GameUnit
 import model.spell.Spell
+import model.weapons.Weapon
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -19,6 +20,8 @@ class Enemy(name: String, weight: Int,
             attackPoints: Int, life: Int,
             defence: Int) extends AEnemy(name, weight, attackPoints, life, defence) {
   private var _spells = ArrayBuffer.empty[Spell]
+  private var _weapons = ArrayBuffer.empty[Weapon]
+  override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
 
   /**
    * "The auxiliary builder receives the name that the user chooses for their non-playable entity

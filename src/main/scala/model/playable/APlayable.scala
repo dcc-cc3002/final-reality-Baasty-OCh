@@ -25,6 +25,11 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
 
   private var attackObs = ArrayBuffer.empty[ObserverAttack]
 
+  private var _weapons = ArrayBuffer.empty[Weapon]
+
+  override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
+  def addWeapon(weapon: Weapon): Unit = _weapons += weapon
+
   /**
    * Variable to represent a weapon in an APlayable Entity.
    * Base State: None (without weapon).
@@ -101,7 +106,9 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
       val damage = arma.map(_.getAttack - entity.getDp).getOrElse(0)
       if (damage >= 0) {
         entity.wasAttacked(damage)
-        damage
+        for (o <- attackObs) {
+          o.notifySimpleAttack(this, entity, damage)
+        }
         "The enemy was attacked"
       } else
         "The enemy was attacked, but the damage is not enough"

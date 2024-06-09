@@ -4,6 +4,7 @@ import controller.observers.ObserverAttack
 import exceptions.InvalidAttackAllyException
 import model.general.GameUnit
 import model.spell.Spell
+import model.weapons.Weapon
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -119,6 +120,12 @@ protected abstract class AEnemy(val name: String, val weight: Int,
   override def registerAttackObserver(obs: ObserverAttack): Unit = {
     attackObs += obs
   }
+
+  /**
+   * Abstract Method to equip a Weapon on a Playable Entity
+   * @param Any class of Weapon
+   */
+  def putWeapon( weapon: Weapon): String = "nothing"
 
 }
 

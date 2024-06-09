@@ -23,6 +23,10 @@ class BlackMagican(name:String, healthPoints:Int,
                 mana:Int) extends AMagicPlayable(name,healthPoints, defensePoints,weight,mana) {
   addSpell(new Fire)
   addSpell(new Thunder)
+
+  addWeapon(new Wand)
+  addWeapon(new Staff)
+  addWeapon(new Sword)
   var spell: Spell = spells.head
   /**
    * "The auxiliary builder receives the name that the user chooses for their character

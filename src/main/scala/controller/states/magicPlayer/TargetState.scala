@@ -27,7 +27,8 @@ class TargetState(private val source: GameUnit, private val spell: Option[Spell]
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.isDefined)
+    if (selected.isDefined) {
       controller.state = new FinalState(source, selected.get, spell)
+    }
   }
 }

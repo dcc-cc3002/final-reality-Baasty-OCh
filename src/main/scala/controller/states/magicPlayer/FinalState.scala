@@ -7,6 +7,8 @@ import model.spell.Spell
 import controller.GameController
 
 class FinalState(private val source: GameUnit, private val target: GameUnit, private val spell: Option[Spell]) extends AGameState {
+  
+
   override def update(controller: GameController): Unit = {
     if (spell.isDefined) {
       source.throwSpell(target)

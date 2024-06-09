@@ -9,6 +9,7 @@ import scala.collection.mutable.ArrayBuffer
 import model.general.GameUnit
 import model.general.party.Party
 import model.spell.Spell
+import model.weapons.Weapon
 
 class GameView {
   private val queue = new Queue[String].empty
@@ -57,6 +58,13 @@ class GameView {
     queue.enqueue("Escoge un hechizo:")
     for(i <- spells.indices) {
       queue.enqueue(s"${i+1}) ${spells(i).name} ${spells(i).getCost} EM")
+    }
+  }
+
+  def displayPlayerUnitWeapons(weapons: ArrayBuffer[Weapon]): Unit = {
+    queue.enqueue("Escoge un arma:")
+    for(i <- weapons.indices) {
+      queue.enqueue(s"${i+1}) ${weapons(i).getName} ${weapons(i).getAttack} AP")
     }
   }
 

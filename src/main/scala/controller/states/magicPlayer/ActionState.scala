@@ -15,7 +15,7 @@ class ActionState(private val ally: GameUnit) extends AGameState {
     val choice = controller.getNumericalInput()
     choice match {
       case 0 => selected = Some(new UnitState())
-      case 1 => selected = Some(new TargetState(ally))
+      case 1 => selected = Some(new WeaponState(ally))
       case 2 => selected = Some(new SpellState(ally))
       case _ => controller.notifyErrorInvalidOption(choice)
     }

@@ -2,6 +2,7 @@ package model.general
 
 import controller.observers.ObserverAttack
 import model.spell.Spell
+import model.weapons.Weapon
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -71,6 +72,12 @@ trait GameUnit {
    */
   def getMana: Int
 
+  /**
+   * Abstract Method to equip a Weapon on a Playable Entity
+   * @param Any class of Weapon
+   */
+  def putWeapon( weapon: Weapon): String
+
 
   /**
    * Abstract Method Throws a spell at a target game unit.
@@ -83,6 +90,8 @@ trait GameUnit {
    * Array to represent usable spells
    */
   def spells(): ArrayBuffer[Spell]
+
+  def weapons(): ArrayBuffer[Weapon]
 
   /**
    * Allows the character to choose a spell for casting.
