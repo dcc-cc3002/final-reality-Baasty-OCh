@@ -5,12 +5,10 @@ import model.general.GameUnit
 import controller.GameController
 import model.spell.Spell
 
-class TargetState(private val source: GameUnit,private val spell: Option[Spell]) extends AGameState {
+class TargetState(private val source: GameUnit) extends AGameState {
   private var selected: Option[GameUnit] = None
 
-  def this(source: GameUnit) = {
-    this(source,None)
-  }
+
 
   override def handleInput(controller: GameController): Unit = {
     selected = Some(controller.getAITarget())

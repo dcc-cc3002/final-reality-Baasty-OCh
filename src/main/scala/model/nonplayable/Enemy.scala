@@ -83,7 +83,7 @@ class Enemy(name: String, weight: Int,
    */
   def selectSpell(spell: Spell): String = "nothing"
 
-  def registerAttackObserver(obs: ObserverAttack): Unit = {}
+
 }
 
 

@@ -1,8 +1,11 @@
 package model.nonplayable
 
+import controller.observers.ObserverAttack
 import exceptions.InvalidAttackAllyException
 import model.general.GameUnit
 import model.spell.Spell
+
+import scala.collection.mutable.ArrayBuffer
 
 /**
  * Abstract class representing an enemy entity in the game.
@@ -20,6 +23,8 @@ protected abstract class AEnemy(val name: String, val weight: Int,
   require(attackPoints >=0 && attackPoints<=100, "Attack points must be between 0 and 100.")
   require(life >=0 && life <=250, "Life points must be between 0 and 250.")
   require(defence >=0 && defence<=500, "Defence points must be between 0 and 500.")
+
+  private var attackObs = ArrayBuffer.empty[ObserverAttack]
 
   /**
    * Retrieves the name of the non-playable entity.
@@ -70,6 +75,9 @@ protected abstract class AEnemy(val name: String, val weight: Int,
       val damage: Int = this.attackPoints - entity.getDp
       if (damage >= 0) {
         entity.wasAttacked(damage)
+        for (o <- attackObs) {
+          o.notifySimpleAttack(this, entity, damage)
+        }
         "The target was attacked"
       } else "The enemy was attacked, but the damage is not enough"
     } catch {
@@ -107,6 +115,10 @@ protected abstract class AEnemy(val name: String, val weight: Int,
    * @return true if the spell can affect the enemy, false otherwise.
    */
   def canSuffer(spell: Spell): Boolean = spell.actOnEnemy(this)
+
+  override def registerAttackObserver(obs: ObserverAttack): Unit = {
+    attackObs += obs
+  }
 
 }
 
