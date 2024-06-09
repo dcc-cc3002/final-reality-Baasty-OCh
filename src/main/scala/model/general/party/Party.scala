@@ -1,9 +1,11 @@
 package model.general.party
 
 import exceptions.InvalidAdditionPartyException
+import model.general.GameUnit
+import model.nonplayable.NonPlayable
 import model.playable.Playable
 
-import scala.collection.mutable.Map
+import scala.collection.mutable.{ArrayBuffer, Map}
 
 /**
  * Represents a party of playable characters.
@@ -16,23 +18,24 @@ class Party  {
   /**
    * A mutable map to store the allies in the party, keyed by their class (type) for efficient retrieval.
    */
-  val allies: Map[Class[ _<: Playable], Playable] = Map()
+  val buff = ArrayBuffer.empty[GameUnit]
 
   /**
-   * Adds a playable character to the party.
-   * @param pj The playable character to be added.
+   * Adds a game unit character to the party.
+   * @param pj The game unit to be added.
    */
-  def addPlayable(pj: Playable): String = {
+  def addGameUnit(pj: GameUnit): String = {
     try{
-      if (allies.size < 3){
-        allies.put(pj.getClass, pj) // Adds the playable character to the allies map with their kind as the key
-        "The allie was add successfully"
+      if (buff.size < 3){
+        buff += pj // Adds the playable character to the allies map with their kind as the key
+        "The unit was add successfully"
       }
       else throw new InvalidAdditionPartyException
     } catch {
       case _: InvalidAdditionPartyException => "The Party cant add more than 3 players, is full"
     }
   }
+
 
   /**
    * Checks if the party is defeated.
@@ -42,12 +45,16 @@ class Party  {
    * @return True if the party is defeated, False otherwise.
    */
   def isDefeated(): Boolean = {
-    if (allies.isEmpty) {
+    if (buff.isEmpty) {
       // Print a message if the party is empty
       true // The party is considered defeated if it's empty
     } else {
       // The party is considered defeated if all allies have 0 life points
-      allies.values.forall(_.getHp == 0)
-    }
+      var alive = false
+      for (u <- buff) {
+        alive ||= u.getHp == 0
+      }
+      alive}
   }
+  
 }

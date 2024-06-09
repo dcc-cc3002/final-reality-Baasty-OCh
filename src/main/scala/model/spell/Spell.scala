@@ -8,6 +8,7 @@ import model.playable.magic.AMagicPlayable
  * It can act on playables or enemies and is associated with a magician.
  */
 trait Spell {
+  def name : String
 
   /**
    * Abstract method to gets the cost of the spell.

@@ -11,6 +11,9 @@ class Fire extends ASpell {
   /** The cost of casting the Fire spell. */
   val cost: Int = 15
 
+  /** The name of casting the Fire spell. */
+  def name: String = "Fire"
+
   /**
    * Determines if the Fire spell can be selected by a player.
    *

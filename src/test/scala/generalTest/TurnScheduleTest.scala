@@ -1,4 +1,4 @@
-package controllerTest
+package generalTest
 
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule

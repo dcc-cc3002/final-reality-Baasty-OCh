@@ -1,6 +1,10 @@
 package model.nonplayable
 
+import controller.observers.ObserverAttack
 import model.general.GameUnit
+import model.spell.Spell
+
+import scala.collection.mutable.ArrayBuffer
 
 /**
  * "An enemy is a type of non-playable character that represents the adversary
@@ -14,6 +18,7 @@ import model.general.GameUnit
 class Enemy(name: String, weight: Int,
             attackPoints: Int, life: Int,
             defence: Int) extends AEnemy(name, weight, attackPoints, life, defence) {
+  private var _spells = ArrayBuffer.empty[Spell]
 
   /**
    * "The auxiliary builder receives the name that the user chooses for their non-playable entity
@@ -50,6 +55,35 @@ class Enemy(name: String, weight: Int,
     } else false
   }
 
+
+
+  /**
+   * Abstract of Method to get the mana points of the playable entity
+   * @return The mana of playable entity
+   */
+  def getMana: Int = 0
+
+
+  /**
+   * Abstract Method Throws a spell at a target game unit.
+   * @param target The game unit at which the spell is aimed.
+   * @return A message indicating the success of casting the spell.
+   */
+  def throwSpell(target: GameUnit): String = "nothing"
+
+  /**
+   * Array to represent usable spells
+   */
+  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
+
+  /**
+   * Allows the character to choose a spell for casting.
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
+  def selectSpell(spell: Spell): String = "nothing"
+
+  def registerAttackObserver(obs: ObserverAttack): Unit = {}
 }
 
 

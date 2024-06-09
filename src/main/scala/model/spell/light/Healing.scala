@@ -12,6 +12,9 @@ class Healing extends ALightSpell {
   /** The cost of casting the Healing spell. */
   val cost: Int = 15
 
+  /** The name of casting the Healing spell. */
+  def name: String = "Healing"
+
   /**
    * Determines if the Healing spell can act on playable units.
    * @return Always returns true, as the Healing spell can act on playable units.

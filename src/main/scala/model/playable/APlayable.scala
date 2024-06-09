@@ -1,10 +1,13 @@
 package model.playable
 
+import controller.observers.ObserverAttack
 import exceptions.weapons.InvalidPutWeaponException
 import exceptions.InvalidAttackAllyException
 import model.general.GameUnit
 import model.spell.Spell
 import model.weapons.Weapon
+
+import scala.collection.mutable.ArrayBuffer
 
 /**
  * An abstract class representing a Playable entity in the game.
@@ -19,6 +22,8 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   require(healthPoints >= 0)
   require(defensePoints >= 0)
   require(weight >= 0)
+
+  private var attackObs = ArrayBuffer.empty[ObserverAttack]
 
   /**
    * Variable to represent a weapon in an APlayable Entity.
@@ -130,4 +135,37 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * @return True if the Playable entity can suffer the spell's effects, false otherwise.
    */
   def canSuffer(spell: Spell): Boolean = spell.actOnPlayable(this)
+
+
+  override def registerAttackObserver(obs: ObserverAttack): Unit = {
+    attackObs += obs
+  }
+
+
+  /**
+   * Abstract of Method to get the mana points of the playable entity
+   * @return The mana of playable entity
+   */
+  def getMana: Int = 0
+
+
+  /**
+   * Abstract Method Throws a spell at a target game unit.
+   * @param target The game unit at which the spell is aimed.
+   * @return A message indicating the success of casting the spell.
+   */
+  def throwSpell(target: GameUnit): String = "nothing"
+
+  /**
+   * Array to represent usable spells
+   */
+  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
+
+  /**
+   * Allows the character to choose a spell for casting.
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
+  def selectSpell(spell: Spell): String = "nothing"
+
 }

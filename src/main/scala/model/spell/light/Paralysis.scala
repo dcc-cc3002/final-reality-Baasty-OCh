@@ -10,6 +10,9 @@ class Paralysis extends ALightSpell {
   /** The cost of casting the Paralysis spell. */
   val cost: Int = 25
 
+  /** The name of casting the Paralysis spell. */
+  def name: String = "Paralysis"
+
   /**
    * Determines if the Paralysis spell can be selected by a player.
    *

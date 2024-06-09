@@ -6,6 +6,8 @@ import model.general.GameUnit
 import model.playable.APlayable
 import model.spell.Spell
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
  * Abstract class to made a group of magic characters
  * @param name The name of the character.
@@ -24,6 +26,11 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    */
   private var Mana: Int = mana
 
+  private var _spells = ArrayBuffer.empty[Spell]
+
+  override def spells(): ArrayBuffer[Spell] = _spells.clone()
+  def addSpell(spell: Spell): Unit = _spells += spell
+
   /**
    * The spell that the character can cast.
    * This variable is public and represents the current spell associated with the character.
@@ -35,7 +42,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    *
    * @return The mana of playable entity
    */
-  def getMana: Int = Mana
+  override def getMana: Int = Mana
 
   /**
    * Implementation of Method to set the mana points of the playable entity
@@ -98,7 +105,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
    * @return A message indicating the success of casting the spell.
    * @throws InvalidSpellTarget if the spell cannot act on the specified target.
    */
-  def throwSpell(target: GameUnit): String = {
+  override def throwSpell(target: GameUnit): String = {
     try {
       this.hasMagicWeapon
       this.hasEnoughMana

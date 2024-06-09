@@ -10,6 +10,9 @@ class Poison extends ALightSpell {
   /** The cost of casting the Poison spell. */
   val cost: Int = 30
 
+  /** The name of casting the Poison spell. */
+  def name: String = "Poison"
+
   /**
    * Determines if the Poison spell can be selected by a player.
    *

@@ -1,8 +1,16 @@
 package model.general
 
+import controller.observers.ObserverAttack
 import model.spell.Spell
 
+import scala.collection.mutable.ArrayBuffer
+
 trait GameUnit {
+
+  /**
+   * Abstract method to get the name of the playable entity
+   */
+  def getName: String
 
   /**
    * Abstract Method to get the weight of a entity (characters or enemies) in the game.
@@ -56,4 +64,32 @@ trait GameUnit {
    * @return True if the Playable entity can suffer the spell's effects, false otherwise.
    */
   def canSuffer(spell : Spell): Boolean
+
+  /**
+   * Abstract of Method to get the mana points of the playable entity
+   * @return The mana of playable entity
+   */
+  def getMana: Int
+
+
+  /**
+   * Abstract Method Throws a spell at a target game unit.
+   * @param target The game unit at which the spell is aimed.
+   * @return A message indicating the success of casting the spell.
+   */
+  def throwSpell(target: GameUnit): String
+
+  /**
+   * Array to represent usable spells
+   */
+  def spells(): ArrayBuffer[Spell]
+
+  /**
+   * Allows the character to choose a spell for casting.
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
+  def selectSpell(spell: Spell): String
+
+  def registerAttackObserver(obs: ObserverAttack): Unit
 }

@@ -10,6 +10,9 @@ class Thunder extends ADarkSpell {
   /** The cost of casting the Thunder spell. */
   val cost: Int = 20
 
+  /** The name of casting the Thunder spell. */
+  def name: String = "Thunder"
+
   /**
    * Determines if the Thunder spell can be selected by a player.
    *

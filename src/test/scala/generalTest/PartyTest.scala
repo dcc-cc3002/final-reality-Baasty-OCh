@@ -1,4 +1,4 @@
-package controllerTest
+package generalTest
 
 import model.general.party.Party
 import model.playable.magic.WhiteMagican
@@ -38,7 +38,7 @@ class PartyTest extends FunSuite {
    * This test adds a playable character to the Party and checks if the character is added successfully.
    */
   test("addCharacter") {
-    assertEquals(Team1.addPlayable(Cristiano), "The allie was add successfully")
+    assertEquals(Team1.addGameUnit(Cristiano), "The unit was add successfully")
   }
 
   /**
@@ -47,11 +47,11 @@ class PartyTest extends FunSuite {
    * throws an exception indicating that the Party is full.
    */
   test("It should throw an exception if the Party cant add more than 3 players") {
-    assertEquals(Team1.addPlayable(Cristiano), "The allie was add successfully")
-    assertEquals(Team1.addPlayable(Vinicius), "The allie was add successfully")
-    assertEquals(Team1.addPlayable(Bellingham), "The allie was add successfully")
+    assertEquals(Team1.addGameUnit(Cristiano), "The unit was add successfully")
+    assertEquals(Team1.addGameUnit(Vinicius), "The unit was add successfully")
+    assertEquals(Team1.addGameUnit(Bellingham), "The unit was add successfully")
 
-    assertEquals(Team1.addPlayable(Alexis), "The Party cant add more than 3 players, is full")
+    assertEquals(Team1.addGameUnit(Alexis), "The Party cant add more than 3 players, is full")
   }
 
   /**
@@ -68,7 +68,7 @@ class PartyTest extends FunSuite {
    * This test adds a playable character to the Party and checks if the Party is still considered defeated.
    */
   test("isDefeat") {
-    Team1.addPlayable(Cristiano)
+    Team1.addGameUnit(Cristiano)
     assertEquals(Team1.isDefeated, true)
   }
 
@@ -78,7 +78,7 @@ class PartyTest extends FunSuite {
    */
   test("isNotDefeat") {
     Alexis = new WhiteMagican("Alexis")
-    Team1.addPlayable(Alexis)
+    Team1.addGameUnit(Alexis)
     assertEquals(Team1.isDefeated, false)
   }
 }
