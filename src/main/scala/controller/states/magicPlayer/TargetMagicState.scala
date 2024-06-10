@@ -6,7 +6,7 @@ import controller.GameController
 import model.spell.Spell
 
 
-class TargetState(private val source: GameUnit, private val spell: Option[Spell]) extends AGameState {
+class TargetMagicState(private val source: GameUnit, private val spell: Option[Spell]) extends AGameState {
   private var selected: Option[GameUnit] = None
 
   def this(source: GameUnit) = {
@@ -28,7 +28,7 @@ class TargetState(private val source: GameUnit, private val spell: Option[Spell]
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined) {
-      controller.state = new FinalState(source, selected.get, spell)
+      controller.state = new FinalMagicState(source, selected.get, spell)
     }
   }
 }

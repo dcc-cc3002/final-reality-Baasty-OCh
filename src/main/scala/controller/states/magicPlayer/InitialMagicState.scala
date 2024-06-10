@@ -1,8 +1,8 @@
 package controller.states.magicPlayer
-import controller.states.AGameState
+import controller.states.{AGameState, UnitState}
 import controller.GameController
 
-class InitialState extends AGameState {
+class InitialMagicState extends AGameState {
   override def update(controller: GameController) = {
     controller.state = new UnitState()
   }

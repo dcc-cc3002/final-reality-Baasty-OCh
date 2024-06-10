@@ -34,15 +34,22 @@ class GameView {
   def displayPlayerUnits(allies: Party): Unit = {
     queue.enqueue("Escoge un aliado:")
     for(i <- allies.buff.indices) {
-      queue.enqueue(s"${i+1}) ${allies.buff(i).getName}")
+      queue.enqueue(s"${i+1}) ${allies.buff(i).getName} || Class: ${allies.buff(i).getClass}")
     }
   }
 
 
-  def displayPlayerAction(): Unit = {
+  def displayMagicPlayerAction(): Unit = {
     queue.enqueue("Escoge una acción:")
     queue.enqueue("1) Atacar")
     queue.enqueue("2) Usar Magia")
+    queue.enqueue("0) Cambiar de aliado")
+
+  }
+
+  def displayPlayerAction(): Unit = {
+    queue.enqueue("Escoge una acción:")
+    queue.enqueue("1) Atacar")
     queue.enqueue("0) Cambiar de aliado")
 
   }
@@ -94,7 +101,7 @@ class GameView {
   }
 
   def displayDefeat(): Unit = {
-    queue.enqueue("O no! Perdiste :c")
+    queue.enqueue("Oh no! Perdiste :c")
   }
 
   def displayErrorNoEnergy(): Unit = {

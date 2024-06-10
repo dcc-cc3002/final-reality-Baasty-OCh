@@ -114,7 +114,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
       target.canSuffer(spell)
       this.setMana(this.getMana-spell.getCost)
       for (o <- attackObs) {
-        o.notifySpellAttack(this, target, spell, 0)
+        o.notifySpellAttack(this, target, spell, 5)
       }
       spell.Effect(target)
       "nice spell"

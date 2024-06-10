@@ -9,6 +9,6 @@ class FinalState(private val src: GameUnit, private val dest: GameUnit) extends 
   override def update(controller: GameController): Unit = {
     src.attack(dest)
 
-    controller.state = new magicPlayer.InitialState()
+    controller.state = new magicPlayer.InitialMagicState()
   }
 }

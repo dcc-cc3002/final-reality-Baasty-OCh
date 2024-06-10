@@ -5,7 +5,7 @@ import model.general.GameUnit
 import controller.GameController
 import model.spell.Spell
 import model.weapons.Weapon
-class WeaponState (private val src: GameUnit, private var spell: Option[Spell]) extends AGameState {
+class WeaponMagicState(private val src: GameUnit, private var spell: Option[Spell]) extends AGameState {
 
   def this(src:GameUnit) = {
     this(src,None)
@@ -30,6 +30,6 @@ class WeaponState (private val src: GameUnit, private var spell: Option[Spell]) 
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined)
-      controller.state = new TargetState(src,spell)
+      controller.state = new TargetMagicState(src,spell)
   }
 }
