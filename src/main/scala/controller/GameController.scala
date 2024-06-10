@@ -1,8 +1,7 @@
 package controller
 
 import model.general.GameModel
-import states.GameState
-import states.magicPlayer.InitialMagicState
+import states.{GameState, InitialState}
 import observers._
 import model.general.GameUnit
 import model.nonplayable.Enemy
@@ -28,7 +27,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
     notifyInitMessage()
     attackObs += new ObserverAttack(view)
     model.init(this)
-    state = new InitialMagicState()
+    state = new InitialState()
   }
   private def checkFinished(): Unit = {
     if (win()) {
@@ -142,6 +141,11 @@ class GameController(private val model: GameModel, private val view: GameView) {
   def notifyPlayerUnitWeapons(pUnit: GameUnit) = {
     view.displayPlayerUnitWeapons(pUnit.weapons())
   }
+
+  def notifyMagicPlayerUnitWeapons(pUnit: GameUnit) = {
+    view.displayMagicPlayerUnitWeapons(pUnit.weapons())
+  }
+
 
   def notifyAllyChoose(pUnit: GameUnit) = {
     view.displayUnitInfo(pUnit)

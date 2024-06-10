@@ -7,24 +7,38 @@ import model.spell.Spell
 
 class SpellState(private val src: GameUnit) extends AGameState {
   private var selected: Option[Spell] = None
+  var choice : Int = 0
 
   override def notify(controller: GameController) = {
     controller.notifyPlayerUnitSpells(src)
   }
 
   override def handleInput(controller: GameController): Unit = {
-    val choice = controller.getNumericalInput()
+    choice = controller.getNumericalInput()
     try {
-      val s = src.spells()(choice - 1)
-      src.selectSpell(s)
-      selected = Some(s)
-    } catch {
+      if (choice == 0){
+        val s = src.spells()(choice)
+        src.selectSpell(s)
+        selected = Some(s)
+      }
+      else {
+        val s = src.spells()(choice - 1)
+        src.selectSpell(s)
+        selected = Some(s)
+      }
+    }
+    catch {
       case e: IndexOutOfBoundsException => controller.notifyErrorInvalidOption(choice)
     }
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.isDefined)
-      controller.state = new WeaponMagicState(src,selected)
+    choice match{
+      case 0 => controller.state = new ActionMagicState(src)
+      case 1 => controller.state = new WeaponMagicState(src,selected)
+      case 2 => controller.state = new WeaponMagicState(src,selected)
+      case 3 => controller.state = new WeaponMagicState(src,selected)
+
+    }
   }
 }

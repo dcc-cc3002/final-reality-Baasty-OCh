@@ -56,6 +56,7 @@ class GameView {
 
   def displayPlayerTarget(enemies: Party): Unit = {
     queue.enqueue("Escoge un enemigo:")
+    queue.enqueue("0) Volver a elegir Arma")
     for(i <- enemies.buff.indices) {
       queue.enqueue(s"${i+1}) ${enemies.buff(i).getName} ${enemies.buff(i).getHp} PV || ${enemies.buff(i).getDp} DP " +
         s"|| ${enemies.buff(i).getAttack} AP")
@@ -64,6 +65,7 @@ class GameView {
 
   def displayPlayerUnitSpells(spells: ArrayBuffer[Spell]): Unit = {
     queue.enqueue("Escoge un hechizo:")
+    queue.enqueue("0) Volver a elegir Accion")
     for(i <- spells.indices) {
       queue.enqueue(s"${i+1}) ${spells(i).name} ${spells(i).getCost} EM")
     }
@@ -71,9 +73,19 @@ class GameView {
 
   def displayPlayerUnitWeapons(weapons: ArrayBuffer[Weapon]): Unit = {
     queue.enqueue("Escoge un arma:")
+    queue.enqueue("0) Volver a elegir acción")
     for(i <- weapons.indices) {
       queue.enqueue(s"${i+1}) ${weapons(i).getName} ${weapons(i).getAttack} AP")
     }
+  }
+
+  def displayMagicPlayerUnitWeapons(weapons: ArrayBuffer[Weapon]): Unit = {
+    queue.enqueue("Escoge un arma:")
+    queue.enqueue("0) Volver a elegir acción")
+    for(i <- weapons.indices) {
+      queue.enqueue(s"${i+1}) ${weapons(i).getName} ${weapons(i).getAttack} AP")
+    }
+    queue.enqueue("4) Volver a elegir Hechizo")
   }
 
   def displayUnitInfo(gUnit: GameUnit): Unit = {

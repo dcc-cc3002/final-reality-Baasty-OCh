@@ -8,6 +8,7 @@ import model.spell.Spell
 
 class TargetMagicState(private val source: GameUnit, private val spell: Option[Spell]) extends AGameState {
   private var selected: Option[GameUnit] = None
+  var choice : Int = 0
 
   def this(source: GameUnit) = {
     this(source, None)
@@ -18,17 +19,27 @@ class TargetMagicState(private val source: GameUnit, private val spell: Option[S
   }
 
   override def handleInput(controller: GameController): Unit = {
-    val choice = controller.getNumericalInput()
+    choice = controller.getNumericalInput()
     try {
-      selected = Some(controller.getEnemy(choice - 1))
-    } catch {
+      if (choice == 0) {
+        selected = Some(controller.getEnemy(choice))
+      }
+      else {
+        selected = Some(controller.getEnemy(choice - 1))
+      }
+    }
+    catch {
       case e: IndexOutOfBoundsException => controller.notifyErrorInvalidOption(choice)
     }
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.isDefined) {
-      controller.state = new FinalMagicState(source, selected.get, spell)
+    choice match{
+      case 0 =>controller.state = new WeaponMagicState(source, spell)
+      case 1 =>controller.state = new FinalMagicState(source, selected.get, spell)
+      case 2 =>controller.state = new FinalMagicState(source, selected.get, spell)
+      case 3 =>controller.state = new FinalMagicState(source, selected.get, spell)
     }
   }
+
 }

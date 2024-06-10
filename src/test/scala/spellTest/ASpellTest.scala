@@ -78,7 +78,7 @@ class ASpellTest extends FunSuite {
 
   test("actOnEnemy"){
     val Villa : GameUnit = new Enemy("David")
-    val Pedro: GameUnit = new Enemy("Pedro",50,100,0,50)
+    val Pedro: GameUnit = new Enemy("Pedro",0,50,50,100) // he is dead
     assertEquals(Fire.actOnEnemy(Villa),true)
     assertEquals(Fire.actOnEnemy(Pedro),false)
     assertEquals(Thunder.actOnEnemy(Villa),true)

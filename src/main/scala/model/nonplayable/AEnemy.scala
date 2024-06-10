@@ -81,17 +81,16 @@ protected abstract class AEnemy(val name: String, var life: Int,var defence: Int
   def attack(entity: GameUnit): String = {
     try {
       entity.wasAttackBy(this)
-      val damage: Int = this.attackPoints - entity.getDp
-      if (damage >= 0) {
+      val damage: Int = entity.getDp - this.attackPoints
+      if (damage < 0) {
         entity.setDp(0)
-        entity.wasAttacked(damage)
+        entity.wasAttacked(damage.abs)
         for (o <- attackObs) {
-          o.notifySimpleAttack(this, entity, damage)
+          o.notifySimpleAttack(this, entity, damage.abs)
         }
         "The target was attacked"
-      } else
-        entity.setDp(entity.getDp- damage.abs)
-        "The enemy was attacked, but the damage is not enough"
+      } else  {entity.setDp(damage.abs)
+        "The enemy was attacked, but the damage is not enough"}
     } catch {
       case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
     }

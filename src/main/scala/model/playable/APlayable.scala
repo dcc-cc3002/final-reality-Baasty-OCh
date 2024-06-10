@@ -120,8 +120,8 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
         }
         "The enemy was attacked"
       } else
-        entity.setDp(entity.getDp-damage.abs)
-        "The enemy was attacked, but the damage is not enough"
+        {entity.setDp(entity.getDp-damage.abs)
+        "The enemy was attacked, but the damage is not enough"}
     } catch {
       case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
     }
