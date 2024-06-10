@@ -13,7 +13,7 @@ import model.spell.Spell
 import scala.collection.mutable.ArrayBuffer
 
 import scala.util.Random
-import controller.states.enemy.TargetState
+import controller.states.enemy.TargetEnemyState
 import model.view.GameView
 
 class GameController(private val model: GameModel, private val view: GameView) {
@@ -82,7 +82,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
   }
 
   def getAIChoice(u: GameUnit): GameState = {
-    new TargetState(u)
+    new TargetEnemyState(u)
   }
 
   def getAITarget(): GameUnit = {

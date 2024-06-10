@@ -16,9 +16,9 @@ import scala.collection.mutable.ArrayBuffer
  * @param life The life points of the enemy.
  * @param defence The defence points of the enemy.
  */
-protected abstract class AEnemy(val name: String, val weight: Int,
-                                val attackPoints: Int, var life: Int,
-                                val defence: Int) extends NonPlayable {
+protected abstract class AEnemy(val name: String, var life: Int,var defence: Int,
+                                val weight: Int, val attackPoints: Int,
+                                ) extends NonPlayable {
 
   require(weight >=0 && weight<=150, "Weight must be between 0 and 150.")
   require(attackPoints >=0 && attackPoints<=100, "Attack points must be between 0 and 100.")
@@ -66,6 +66,14 @@ protected abstract class AEnemy(val name: String, val weight: Int,
   }
 
   /**
+   * Sets the life points of the non-playable entity.
+   * @param newLife The new life points of the non-playable entity.
+   */
+  def setDp(newDp: Int): Unit = {
+    this.defence = newDp
+  }
+
+  /**
    * Abstract method to attack an entity.
    * @param entity The entity being attacked.
    * @return A message indicating if the attack was successful or not.
@@ -75,12 +83,15 @@ protected abstract class AEnemy(val name: String, val weight: Int,
       entity.wasAttackBy(this)
       val damage: Int = this.attackPoints - entity.getDp
       if (damage >= 0) {
+        entity.setDp(0)
         entity.wasAttacked(damage)
         for (o <- attackObs) {
           o.notifySimpleAttack(this, entity, damage)
         }
         "The target was attacked"
-      } else "The enemy was attacked, but the damage is not enough"
+      } else
+        entity.setDp(entity.getDp- damage.abs)
+        "The enemy was attacked, but the damage is not enough"
     } catch {
       case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
     }

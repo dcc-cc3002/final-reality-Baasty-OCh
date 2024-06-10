@@ -5,7 +5,7 @@ import model.general.GameUnit
 import controller.GameController
 import model.spell.Spell
 
-class TargetState(private val source: GameUnit) extends AGameState {
+class TargetEnemyState(private val source: GameUnit) extends AGameState {
   private var selected: Option[GameUnit] = None
 
 
@@ -16,6 +16,6 @@ class TargetState(private val source: GameUnit) extends AGameState {
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined)
-      controller.state = new FinalState(source, selected.get)
+      controller.state = new FinalEnemyState(source, selected.get)
   }
 }

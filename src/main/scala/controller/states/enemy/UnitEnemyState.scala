@@ -4,7 +4,7 @@ import controller.states.AGameState
 import controller.GameController
 import model.general.GameUnit
 
-class UnitState extends AGameState {
+class UnitEnemyState extends AGameState {
   private var selected: Option[GameUnit] = None
 
   override def notify(controller: GameController): Unit = {
@@ -17,6 +17,6 @@ class UnitState extends AGameState {
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined)
-      controller.state = new ActionState(selected.get)
+      controller.state = new ActionEnemyState(selected.get)
   }
 } 

@@ -6,7 +6,7 @@ import model.general.GameUnit
 import controller.GameController
 
 
-class ActionState(private val source: GameUnit) extends AGameState {
+class ActionEnemyState(private val source: GameUnit) extends AGameState {
   private var selected: Option[GameState] = None
 
   override def handleInput(controller: GameController): Unit = {

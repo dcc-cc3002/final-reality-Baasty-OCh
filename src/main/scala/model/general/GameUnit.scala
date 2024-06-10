@@ -24,11 +24,21 @@ trait GameUnit {
   def getDp:Int
 
   /**
+   * Abstract Method to set the Defense Points of Game Unit
+   */
+  def setDp(newDp: Int): Unit
+
+
+  def getAttack: Int
+
+  /**
    * Abstract method to get the Health points of the entity
    */
-
   def getHp: Int
 
+  /**
+   * Abstract method to set the Health points of the entity
+   */
   def setHp(newHp : Int): Unit
 
   /**

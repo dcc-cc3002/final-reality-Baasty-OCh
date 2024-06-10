@@ -17,10 +17,11 @@ class GameModel {
   private val _enemies = new Party()
 
   def init(controller: GameController): Unit = {
-    val Cristiano = new Paladin("Cristiano",1,1,1)
-    val Vini = new Ninja("Vinicius",10,10,10)
-    val Zidane = new WhiteMagican("Zidane",1,1,1,100)
+    val Cristiano = new Paladin("Cristiano",100,50,1)
+    val Vini = new Ninja("Vinicius",80,25,1)
+    val Zidane = new WhiteMagican("Zidane",150,50,1,25)
     controller.registerUnit(Cristiano)
+    controller.registerUnit(Vini)
     controller.registerUnit(Zidane)
     _allies.addGameUnit(Cristiano)
     _allies.addGameUnit(Vini)
@@ -28,8 +29,8 @@ class GameModel {
 
 
 
-    val Messi = new Enemy("Messi",20,100,1,1)
-    val Guardiola = new Enemy("Guardiola",1,1,1,1)
+    val Messi = new Enemy("Messi",250,50,1,50)
+    val Guardiola = new Enemy("Guardiola",200,25,1,50)
     controller.registerUnit(Messi)
     controller.registerUnit(Guardiola)
     _enemies.addGameUnit(Messi)

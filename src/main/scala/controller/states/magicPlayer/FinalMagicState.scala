@@ -15,6 +15,6 @@ class FinalMagicState(private val source: GameUnit, private val target: GameUnit
     } else {
       source.attack(target)
     }
-    controller.state = new enemy.UnitState()
+    controller.state = new enemy.UnitEnemyState()
   }
 }

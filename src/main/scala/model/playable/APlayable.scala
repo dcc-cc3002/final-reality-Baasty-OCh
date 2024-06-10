@@ -18,12 +18,12 @@ import scala.collection.mutable.ArrayBuffer
  * @param weight The weight of the character.
  */
 protected abstract class APlayable(val name: String, var healthPoints: Int,
-                                   val defensePoints: Int, val weight: Int) extends Playable {
+                                   var defensePoints: Int, val weight: Int) extends Playable {
   require(healthPoints >= 0)
   require(defensePoints >= 0)
   require(weight >= 0)
 
-  private var attackObs = ArrayBuffer.empty[ObserverAttack]
+  protected var attackObs = ArrayBuffer.empty[ObserverAttack]
 
   private var _weapons = ArrayBuffer.empty[Weapon]
 
@@ -54,6 +54,14 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    */
   def setHp(newHp: Int): Unit = {
     this.healthPoints = newHp
+  }
+
+  /**
+   * Implementation of Method to set the health points of the playable entity.
+   * @param newHp The new health points of the playable entity.
+   */
+  def setDp(newDp: Int): Unit = {
+    this.defensePoints = newDp
   }
 
   /**
@@ -105,12 +113,14 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
       entity.wasAttackBy(this)
       val damage = arma.map(_.getAttack - entity.getDp).getOrElse(0)
       if (damage >= 0) {
+        entity.setDp(0)
         entity.wasAttacked(damage)
         for (o <- attackObs) {
           o.notifySimpleAttack(this, entity, damage)
         }
         "The enemy was attacked"
       } else
+        entity.setDp(entity.getDp-damage.abs)
         "The enemy was attacked, but the damage is not enough"
     } catch {
       case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
@@ -144,7 +154,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   def canSuffer(spell: Spell): Boolean = spell.actOnPlayable(this)
 
 
-  override def registerAttackObserver(obs: ObserverAttack): Unit = {
+  def registerAttackObserver(obs: ObserverAttack): Unit = {
     attackObs += obs
   }
 
@@ -175,4 +185,6 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    */
   def selectSpell(spell: Spell): String = "nothing"
 
+
+  def getAttack: Int = arma.map(_.getAttack).getOrElse(0)
 }

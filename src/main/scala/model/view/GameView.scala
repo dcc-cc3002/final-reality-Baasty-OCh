@@ -57,7 +57,8 @@ class GameView {
   def displayPlayerTarget(enemies: Party): Unit = {
     queue.enqueue("Escoge un enemigo:")
     for(i <- enemies.buff.indices) {
-      queue.enqueue(s"${i+1}) ${enemies.buff(i).getName} ${enemies.buff(i).getHp} PV")
+      queue.enqueue(s"${i+1}) ${enemies.buff(i).getName} ${enemies.buff(i).getHp} PV || ${enemies.buff(i).getDp} DP " +
+        s"|| ${enemies.buff(i).getAttack} AP")
     }
   }
 
@@ -79,20 +80,21 @@ class GameView {
     queue.enqueue(s"Estado de ${gUnit.getName}")
     queue.enqueue(s"PV: ${gUnit.getHp}")
     queue.enqueue(s"EM: ${gUnit.getMana}")
+    queue.enqueue(s"DP: ${gUnit.getDp}")
   }
 
   def displaySimpleAttack(src: GameUnit, dest: GameUnit, amount: Int): Unit = {
     queue.enqueue(s"${src.getName} ataca ${dest.getName}")
     queue.enqueue(s"${src.getName} hizo ${amount} de daño!")
     queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
+    queue.enqueue(s"DP de ${dest.getName} reducidos a ${dest.getDp}")
     if (dest.getHp == 0){queue.enqueue((s"${dest.getName} : SOY UN PECHO FRIO"))}
     else queue.enqueue("buen golpe")
   }
 
   def displaySpellAttack(src: GameUnit, dest: GameUnit, sp: Spell, amount: Int): Unit = {
     queue.enqueue(s"${src.getName} usa ${sp.name} contra ${dest.getName}")
-    queue.enqueue(s"${sp.name} hizo ${amount} de daño!")
-    queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
+    queue.enqueue(s"${sp.name} realiza su efecto")
     queue.enqueue(s"EM de ${src.getName} reducidos a ${src.getMana}")
   }
 

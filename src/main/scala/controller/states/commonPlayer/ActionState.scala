@@ -5,6 +5,7 @@ import controller.GameController
 import controller.states.magicPlayer.SpellState
 import controller.states.{AGameState, GameState, UnitState}
 import model.general.GameUnit
+import model.playable.Playable
 
 class ActionState(private val ally: GameUnit) extends AGameState {
   private var selected: Option[GameState] = None

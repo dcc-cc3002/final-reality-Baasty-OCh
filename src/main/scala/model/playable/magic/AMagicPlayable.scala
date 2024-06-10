@@ -19,7 +19,7 @@ import scala.collection.mutable.ArrayBuffer
  */
 abstract class AMagicPlayable(name:String, healthPoints:Int,
                               defensePoints:Int, weight:Int,
-                              mana:Int) extends APlayable(name,healthPoints, defensePoints,weight) {
+                              mana:Int) extends APlayable(name,healthPoints, defensePoints,weight) with MagicPlayable {
 
   /**
    * The mana of the character.
@@ -28,7 +28,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   private var Mana: Int = mana
 
   private var _spells = ArrayBuffer.empty[Spell]
-  private var attackObs = ArrayBuffer.empty[ObserverAttack]
+
 
   override def spells(): ArrayBuffer[Spell] = _spells.clone()
   def addSpell(spell: Spell): Unit = _spells += spell

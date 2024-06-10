@@ -16,9 +16,9 @@ import scala.collection.mutable.ArrayBuffer
  * @param life
  * @param defence
  */
-class Enemy(name: String, weight: Int,
-            attackPoints: Int, life: Int,
-            defence: Int) extends AEnemy(name, weight, attackPoints, life, defence) {
+class Enemy(name: String, life: Int,
+            defence: Int, weight: Int,
+            attackPoints: Int ) extends AEnemy(name, life, defence, weight, attackPoints) {
   private var _spells = ArrayBuffer.empty[Spell]
   private var _weapons = ArrayBuffer.empty[Weapon]
   override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
