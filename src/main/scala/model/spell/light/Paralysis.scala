@@ -1,5 +1,6 @@
 package model.spell.light
 
+import model.general.GameUnit
 import model.playable.magic.AMagicPlayable
 
 /**
@@ -10,6 +11,9 @@ class Paralysis extends ALightSpell {
   /** The cost of casting the Paralysis spell. */
   val cost: Int = 25
 
+  override def Effect(gameUnit: GameUnit): Unit = {
+    gameUnit.setHp(0)
+  }
   /** The name of casting the Paralysis spell. */
   def name: String = "Paralysis"
 

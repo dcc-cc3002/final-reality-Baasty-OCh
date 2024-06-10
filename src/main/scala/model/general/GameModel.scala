@@ -18,14 +18,14 @@ class GameModel {
 
   def init(controller: GameController): Unit = {
     val gojo = new Paladin("Cristiano",1,1,1)
-    val yuji = new WhiteMagican("Zidane",1,1,1,1)
+    val yuji = new WhiteMagican("Zidane",1,1,1,100)
     controller.registerUnit(gojo)
     controller.registerUnit(yuji)
     _allies.addGameUnit(gojo)
     _allies.addGameUnit(yuji)
 
     val jogo = new Enemy("Messi",20,100,1,1)
-    val mahito = new Enemy("Cruyff")
+    val mahito = new Enemy("Guardiola",1,1,1,1)
     controller.registerUnit(jogo)
     controller.registerUnit(mahito)
     _enemies.addGameUnit(jogo)

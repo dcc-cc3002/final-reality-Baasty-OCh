@@ -25,6 +25,6 @@ class SpellState(private val src: GameUnit) extends AGameState {
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined)
-      controller.state = new TargetState(src, selected)
+      controller.state = new WeaponState(src,selected)
   }
 }

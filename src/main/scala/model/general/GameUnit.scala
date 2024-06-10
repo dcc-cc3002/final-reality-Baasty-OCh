@@ -29,6 +29,8 @@ trait GameUnit {
 
   def getHp: Int
 
+  def setHp(newHp : Int): Unit
+
   /**
    * Abstract Method to attack entity
    * @param entity the target of attack

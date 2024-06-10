@@ -21,6 +21,7 @@ trait NonPlayable extends GameUnit{
    */
   def getWeight: Int
 
+  def setHp(newHp:Int) : Unit
 
   /**
    * Abstract method to get the attack points of the non-playable entity

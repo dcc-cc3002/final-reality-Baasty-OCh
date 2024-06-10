@@ -1,5 +1,6 @@
 package model.playable.magic
 
+import controller.observers.ObserverAttack
 import exceptions.spells.{InvalidNoEnoughMana, InvalidSpellTarget}
 import exceptions.weapons.InvalidKindOfWeapon
 import model.general.GameUnit
@@ -27,6 +28,7 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   private var Mana: Int = mana
 
   private var _spells = ArrayBuffer.empty[Spell]
+  private var attackObs = ArrayBuffer.empty[ObserverAttack]
 
   override def spells(): ArrayBuffer[Spell] = _spells.clone()
   def addSpell(spell: Spell): Unit = _spells += spell
@@ -111,6 +113,9 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
       this.hasEnoughMana
       target.canSuffer(spell)
       this.setMana(this.getMana-spell.getCost)
+      for (o <- attackObs) {
+        o.notifySpellAttack(this, target, spell, 0)
+      }
       spell.Effect(target)
       "nice spell"
     } catch {

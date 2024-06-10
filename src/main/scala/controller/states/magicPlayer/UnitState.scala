@@ -21,7 +21,9 @@ class UnitState extends AGameState {
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.isDefined)
+    if (selected.get.getHp != 0) {
       controller.state = new ActionState(selected.get)
+    } else controller.state = new UnitState()
   }
+
 }

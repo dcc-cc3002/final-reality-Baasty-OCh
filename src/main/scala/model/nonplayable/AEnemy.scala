@@ -61,7 +61,7 @@ protected abstract class AEnemy(val name: String, val weight: Int,
    * Sets the life points of the non-playable entity.
    * @param newLife The new life points of the non-playable entity.
    */
-  private def setLife(newLife: Int): Unit = {
+  def setHp(newLife: Int): Unit = {
     this.life = newLife
   }
 
@@ -104,9 +104,9 @@ protected abstract class AEnemy(val name: String, val weight: Int,
    */
   def wasAttacked(damage: Int): Unit = {
     if (this.life >= damage) {
-      this.setLife(this.life - damage)
+      this.setHp(this.life - damage)
     } else {
-      this.setLife(0)
+      this.setHp(0)
     }
   }
 

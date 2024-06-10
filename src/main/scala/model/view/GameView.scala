@@ -78,6 +78,8 @@ class GameView {
     queue.enqueue(s"${src.getName} ataca ${dest.getName}")
     queue.enqueue(s"${src.getName} hizo ${amount} de daño!")
     queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
+    if (dest.getHp == 0){queue.enqueue((s"${dest.getName} : SOY UN PECHO FRIO"))}
+    else queue.enqueue("buen golpe")
   }
 
   def displaySpellAttack(src: GameUnit, dest: GameUnit, sp: Spell, amount: Int): Unit = {
