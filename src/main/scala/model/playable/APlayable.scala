@@ -34,7 +34,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * Variable to represent a weapon in an APlayable Entity.
    * Base State: None (without weapon).
    */
-  protected var arma: Option[Weapon] = None
+  var arma: Option[Weapon] = None
 
   /**
    * Implementation of Method to get the name of the playable entity.
@@ -127,6 +127,9 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
     }
   }
 
+  def Juega(entity: GameUnit): String = {
+    entity.comoJuego()
+  }
   /**
    * Implementation method to know if Playable can be attacked by another particular GameUnit.
    * @param entity Represents the possible attacker.
@@ -134,6 +137,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    */
   def wasAttackBy(entity: GameUnit): Boolean = entity.CanAttackPlayable()
 
+  def comoJuego(): String = "playable"
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.

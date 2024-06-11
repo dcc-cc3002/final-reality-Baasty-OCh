@@ -8,6 +8,7 @@ import model.weapons.magic.{Staff, Wand}
 
 trait Playable extends GameUnit{
 
+
   /**
    * Abstract method to get the name of the playable entity
   */

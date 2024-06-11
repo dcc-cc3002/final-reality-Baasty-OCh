@@ -7,6 +7,7 @@ import model.weapons.Weapon
 import scala.collection.mutable.ArrayBuffer
 
 trait GameUnit {
+  var arma : Option[Weapon]
 
   /**
    * Abstract method to get the name of the playable entity
@@ -90,7 +91,8 @@ trait GameUnit {
    */
   def putWeapon( weapon: Weapon): String
 
-
+  def Juega(entity: GameUnit): String
+  def comoJuego(): String
   /**
    * Abstract Method Throws a spell at a target game unit.
    * @param target The game unit at which the spell is aimed.

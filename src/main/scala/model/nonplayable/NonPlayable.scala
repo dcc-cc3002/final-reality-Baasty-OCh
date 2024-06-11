@@ -2,6 +2,7 @@ package model.nonplayable
 
 import model.general.GameUnit
 import model.spell.Spell
+import model.weapons.Weapon
 
 /**
  * Trait representing a non-playable entity in the game.
@@ -9,6 +10,8 @@ import model.spell.Spell
  * This trait extends the GameUnit trait, indicating that all non-playable entities are also game units.
  */
 trait NonPlayable extends GameUnit{
+
+  var arma: Option[Weapon] = None
   /**
    * Abstract method to get the name of the non-playable entity
    * @return The name of the non-playable entity as a String

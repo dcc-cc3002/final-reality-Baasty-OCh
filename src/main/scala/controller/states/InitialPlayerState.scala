@@ -1,8 +1,9 @@
 package controller.states
 
 import controller.GameController
+import controller.states.enemy.UnitEnemyState
 
-class InitialState extends AGameState {
+class InitialPlayerState extends AGameState {
   override def update(controller: GameController) = {
     controller.state = new UnitState()
   }
@@ -10,5 +11,6 @@ class InitialState extends AGameState {
   override def notify(controller: GameController): Unit = {
     controller.notifyPlayerStart()
   }
-}
 
+
+}

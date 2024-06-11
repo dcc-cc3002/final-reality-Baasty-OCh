@@ -32,6 +32,8 @@ class TargetState(private val source: GameUnit) extends AGameState {
       case 0 => controller.state = new WeaponState(source)
       case 1 => controller.state = new FinalState(source, selected.get)
       case 2 => controller.state = new FinalState(source, selected.get)
+      case 3 => controller.state = new FinalState(source, selected.get)
+
     }
 
   }

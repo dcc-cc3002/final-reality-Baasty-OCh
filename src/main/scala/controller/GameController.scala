@@ -1,7 +1,7 @@
 package controller
 
 import model.general.GameModel
-import states.{GameState, InitialState}
+import states.{GameState, InitialPlayerState}
 import observers._
 import model.general.GameUnit
 import model.nonplayable.Enemy
@@ -10,9 +10,9 @@ import model.playable.magic.{BlackMagican, WhiteMagican}
 import model.spell.Spell
 
 import scala.collection.mutable.ArrayBuffer
-
 import scala.util.Random
-import controller.states.enemy.TargetEnemyState
+import controller.states.enemy.{InitialEnemyState, TargetEnemyState}
+import model.general.schedule.TurnSchedule
 import model.view.GameView
 
 class GameController(private val model: GameModel, private val view: GameView) {
@@ -27,7 +27,8 @@ class GameController(private val model: GameModel, private val view: GameView) {
     notifyInitMessage()
     attackObs += new ObserverAttack(view)
     model.init(this)
-    state = new InitialState()
+    state = new InitialPlayerState()
+    //TurnoDe(model._participantes)
   }
   private def checkFinished(): Unit = {
     if (win()) {
@@ -82,6 +83,21 @@ class GameController(private val model: GameModel, private val view: GameView) {
 
   def getAIChoice(u: GameUnit): GameState = {
     new TargetEnemyState(u)
+  }
+
+  def calcTurns(t:TurnSchedule): GameUnit ={
+    while(t.turns.isEmpty){
+      t.fillActionBar(30)
+    }
+    val src: GameUnit = t.turns.head
+    t.turns.enqueue(src)
+    src
+  }
+  def TurnoDe(t:TurnSchedule): GameState = {
+    val jugador = calcTurns(t)
+    val mode = jugador.Juega(jugador)
+    if (mode == "playable"){new InitialPlayerState()}
+    else new InitialEnemyState()
   }
 
   def getAITarget(): GameUnit = {
@@ -145,6 +161,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
   def notifyMagicPlayerUnitWeapons(pUnit: GameUnit) = {
     view.displayMagicPlayerUnitWeapons(pUnit.weapons())
   }
+
+
+
 
 
   def notifyAllyChoose(pUnit: GameUnit) = {

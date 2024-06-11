@@ -27,6 +27,9 @@ class GameView {
     queue.enqueue("Turno del jugador")
   }
 
+  def displayTurnStart(): Unit = {
+    queue.enqueue("El turno ha comenzado")
+  }
   def displayEnemyStart(): Unit = {
     queue.enqueue("Turno del enemigo")
   }

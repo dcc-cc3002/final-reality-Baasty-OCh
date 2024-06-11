@@ -1,6 +1,8 @@
 package model.general.schedule
 
 import model.general.GameUnit
+import model.playable.Playable
+
 import scala.collection.mutable
 import scala.collection.mutable.{Map, Queue}
 
@@ -22,7 +24,9 @@ class TurnSchedule extends Schedule {
    * @param pj The players (characters and enemies) to add.
    */
   def addPlayer(pj: GameUnit): Unit = {
-    val maxActionBar = pj.getWeight
+    val weaponWeight = pj.arma.map(_.getWeight).getOrElse(0)
+    val maxActionBar = pj.getWeight + (if ((weaponWeight * 0.5).toInt % 2 == 1) (weaponWeight * 0.5 + 1).toInt
+    else (weaponWeight * 0.5).toInt)
     var cntBar = 0
     actionBar.put(pj, (maxActionBar, cntBar))
   }
@@ -62,6 +66,7 @@ class TurnSchedule extends Schedule {
       }
     }
   }
+
 
   /** Determines if a players (characters and enemies) from the specified queue can play.
    * Removes and returns the first players (characters and enemies) from the queue.

@@ -1,5 +1,5 @@
 package controller.states.enemy
-import controller.states.{AGameState, InitialState, magicPlayer}
+import controller.states.{AGameState, InitialPlayerState, magicPlayer}
 import controller.GameController
 import model.general.GameUnit
 import model.spell.Spell
@@ -9,6 +9,6 @@ class FinalEnemyState(private val src: GameUnit, private val dest: GameUnit) ext
   override def update(controller: GameController): Unit = {
     src.attack(dest)
 
-    controller.state = new InitialState()
+    controller.state = new InitialPlayerState()
   }
 }

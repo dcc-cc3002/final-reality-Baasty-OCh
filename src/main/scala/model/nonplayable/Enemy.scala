@@ -31,7 +31,7 @@ class Enemy(name: String, life: Int,
    */
 
   def this(name:String) ={
-    this(name,250,50,50,80)
+    this(name,250,50,60,80)
   }
 
   /**

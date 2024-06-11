@@ -73,6 +73,9 @@ protected abstract class AEnemy(val name: String, var life: Int,var defence: Int
     this.defence = newDp
   }
 
+  def Juega(entity: GameUnit): String = " "
+
+  def comoJuego(): String = " "
   /**
    * Abstract method to attack an entity.
    * @param entity The entity being attacked.
