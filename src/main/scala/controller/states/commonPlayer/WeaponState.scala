@@ -3,12 +3,13 @@ package controller.states.commonPlayer
 import controller.states.AGameState
 import model.general.GameUnit
 import controller.GameController
+import model.general.schedule.TurnSchedule
 import model.spell.Spell
 import model.weapons.Weapon
-class WeaponState (private val src: GameUnit, private var spell: Option[Spell]) extends AGameState {
+class WeaponState (private val src: GameUnit, private var spell: Option[Spell],val people : TurnSchedule) extends AGameState {
   var choice : Int = 0
-  def this(src:GameUnit) = {
-    this(src,None)
+  def this(src:GameUnit,t:TurnSchedule) = {
+    this(src,None,t)
   }
 
   private var selected: Option[Weapon] = None
@@ -38,10 +39,10 @@ class WeaponState (private val src: GameUnit, private var spell: Option[Spell]) 
 
   override def update(controller: GameController): Unit = {
     choice match {
-      case 0 => controller.state = new ActionState (src)
-      case 1 => controller.state = new TargetState (src)
-      case 2 => controller.state = new TargetState (src)
-      case 3 => controller.state = new TargetState (src)
+      case 0 => controller.state = new ActionState (src, people)
+      case 1 => controller.state = new TargetState (src, people)
+      case 2 => controller.state = new TargetState (src, people)
+      case 3 => controller.state = new TargetState (src, people)
     }
   }
 

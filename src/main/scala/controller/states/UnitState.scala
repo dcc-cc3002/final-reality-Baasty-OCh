@@ -4,32 +4,27 @@ import controller.GameController
 import controller.states.commonPlayer.ActionState
 import controller.states.magicPlayer.ActionMagicState
 import model.general.GameUnit
+import model.general.schedule.TurnSchedule
 
-class UnitState extends AGameState {
-  private var selected: Option[GameUnit] = None
+class UnitState(val people : TurnSchedule, val pj: GameUnit) extends AGameState {
+  private val selected: GameUnit = pj
   private var choice: Int = 0
 
   override def notify(controller: GameController): Unit = {
-    controller.notifyPlayerUnits()
+    //controller.notifyPlayerUnits()
   }
 
   override def handleInput(controller: GameController): Unit = {
-    choice = controller.getNumericalInput()
-    try {
-      selected = Some(controller.getAlly(choice - 1))
-    } catch {
-      case e: IndexOutOfBoundsException => controller.notifyErrorInvalidOption(choice)
-    }
+    choice = 1
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.get.getHp != 0) {
+    if (selected.getHp != 0) {
       choice match{
-        case 1 => controller.state = new ActionState(selected.get)
-        case 2 => controller.state = new ActionState(selected.get)
-        case 3 => controller.state = new ActionMagicState(selected.get)
+        case 1 => controller.state = new ActionState(selected,people)
+        case 2 => controller.state = new ActionMagicState(selected,people)
       }
-    } else controller.state = new UnitState()
+    } else controller.state = new UnitState(people,pj)
   }
 
 }

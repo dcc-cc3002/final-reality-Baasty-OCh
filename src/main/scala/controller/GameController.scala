@@ -81,8 +81,8 @@ class GameController(private val model: GameModel, private val view: GameView) {
     model.enemies.buff(choice)
   }
 
-  def getAIChoice(u: GameUnit): GameState = {
-    new TargetEnemyState(u)
+  def getAIChoice(u: GameUnit,t :TurnSchedule): GameState = {
+    new TargetEnemyState(u,t)
   }
 
   def calcTurns(t:TurnSchedule): GameUnit ={
@@ -95,7 +95,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
   }
   def TurnoDe(x: GameUnit): Int = {
     val mode = x.Juega(x)
-    if (mode == "playable"){2}
+    if (mode == "playable" || mode == "magicPlayable"){2}
     else 1
   }
 
@@ -126,17 +126,17 @@ class GameController(private val model: GameModel, private val view: GameView) {
     view.displayInitMessage()
   }
 
-  def notifyPlayerStart() = {
-    view.displayPlayerStart()
+  def notifyPlayerStart(pj:GameUnit) = {
+    view.displayPlayerStart(pj)
   }
 
   def notifyEnemyStart() = {
     view.displayEnemyStart()
   }
 
-  def notifyPlayerUnits() = {
-    view.displayPlayerUnits(model.allies)
-  }
+  //def notifyPlayerUnits() = {
+    //view.displayPlayerUnits(model.allies)
+  //}
 
   def notifyMagicPlayerAction() = {
     view.displayMagicPlayerAction()

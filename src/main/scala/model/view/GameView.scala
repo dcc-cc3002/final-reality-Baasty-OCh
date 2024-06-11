@@ -21,12 +21,10 @@ class GameView {
 
   def displayInitMessage(): Unit = {
     queue.enqueue("Bienvenido al combate!")
-    queue.enqueue("1) Turno del Enemy")
-    queue.enqueue("2) Turno del Player")
   }
 
-  def displayPlayerStart(): Unit = {
-    queue.enqueue("Turno del jugador")
+  def displayPlayerStart(pj: GameUnit): Unit = {
+    queue.enqueue(s"Turno del jugador ${pj.getName}")
   }
 
   def displayTurnStart(): Unit = {

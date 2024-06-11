@@ -5,10 +5,11 @@ package controller.states.commonPlayer
 import model.general.GameUnit
 import controller.states.AGameState
 import controller.GameController
+import model.general.schedule.TurnSchedule
 import model.spell.Spell
 
 
-class TargetState(private val source: GameUnit) extends AGameState {
+class TargetState(private val source: GameUnit, val people : TurnSchedule) extends AGameState {
   private var selected: Option[GameUnit] = None
   var choice : Int = 0
 
@@ -30,11 +31,11 @@ class TargetState(private val source: GameUnit) extends AGameState {
   override def update(controller: GameController): Unit = {
     if (selected.map(_.getHp).getOrElse(0) !=0){
     choice match {
-      case 0 => controller.state = new WeaponState(source)
-      case 1 => controller.state = new FinalState(source, selected.get)
-      case 2 => controller.state = new FinalState(source, selected.get)
-      case 3 => controller.state = new FinalState(source, selected.get)}
-    } else controller.state = new TargetState(source)
+      case 0 => controller.state = new WeaponState(source, people)
+      case 1 => controller.state = new FinalState(source, selected.get, people)
+      case 2 => controller.state = new FinalState(source, selected.get, people)
+      case 3 => controller.state = new FinalState(source, selected.get, people)}
+    } else controller.state = new TargetState(source, people)
   }
 
 

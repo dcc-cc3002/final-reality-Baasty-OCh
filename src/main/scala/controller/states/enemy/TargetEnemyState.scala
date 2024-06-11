@@ -3,9 +3,10 @@ package controller.states.enemy
 import controller.states.AGameState
 import model.general.GameUnit
 import controller.GameController
+import model.general.schedule.TurnSchedule
 import model.spell.Spell
 
-class TargetEnemyState(private val source: GameUnit) extends AGameState {
+class TargetEnemyState(private val source: GameUnit,val people : TurnSchedule) extends AGameState {
   private var selected: Option[GameUnit] = None
 
 
@@ -16,6 +17,6 @@ class TargetEnemyState(private val source: GameUnit) extends AGameState {
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined)
-      controller.state = new FinalEnemyState(source, selected.get)
+      controller.state = new FinalEnemyState(source, selected.get, people)
   }
 }

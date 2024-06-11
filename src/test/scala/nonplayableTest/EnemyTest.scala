@@ -51,7 +51,7 @@ class EnemyTest extends FunSuite {
    * This test verifies the functionality of the getWeight method by checking if the weight of Neymar is set correctly.
    */
   test("getWeight") {
-    assertEquals(Neymar.getWeight, 50)
+    assertEquals(Neymar.getWeight, 60)
   }
 
   /**

@@ -3,20 +3,20 @@ package controller.states.enemy
 import controller.states.AGameState
 import controller.GameController
 import model.general.GameUnit
+import model.general.schedule.TurnSchedule
 
-class UnitEnemyState extends AGameState {
-  private var selected: Option[GameUnit] = None
+class UnitEnemyState(val people : TurnSchedule, val pj: GameUnit) extends AGameState {
+  private var selected: GameUnit = pj
 
   override def notify(controller: GameController): Unit = {
     controller.notifyEnemyStart()
   }
 
   override def handleInput(controller: GameController): Unit = {
-    selected = Some(controller.getAIUnit())
+
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.isDefined)
-      controller.state = new ActionEnemyState(selected.get)
+    controller.state = new ActionEnemyState(selected,people)
   }
 } 

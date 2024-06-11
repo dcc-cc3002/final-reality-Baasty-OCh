@@ -128,8 +128,9 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   }
 
   def Juega(entity: GameUnit): String = {
-    entity.comoJuego()
+    entity.ComoJuego()
   }
+
   /**
    * Implementation method to know if Playable can be attacked by another particular GameUnit.
    * @param entity Represents the possible attacker.
@@ -137,7 +138,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    */
   def wasAttackBy(entity: GameUnit): Boolean = entity.CanAttackPlayable()
 
-  def comoJuego(): String = "playable"
+  def ComoJuego(): String = "playable"
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.
