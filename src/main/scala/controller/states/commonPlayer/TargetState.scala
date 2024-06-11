@@ -28,13 +28,14 @@ class TargetState(private val source: GameUnit) extends AGameState {
   }
 
   override def update(controller: GameController): Unit = {
+    if (selected.map(_.getHp).getOrElse(0) !=0){
     choice match {
       case 0 => controller.state = new WeaponState(source)
       case 1 => controller.state = new FinalState(source, selected.get)
       case 2 => controller.state = new FinalState(source, selected.get)
-      case 3 => controller.state = new FinalState(source, selected.get)
-
-    }
-
+      case 3 => controller.state = new FinalState(source, selected.get)}
+    } else controller.state = new TargetState(source)
   }
+
+
 }

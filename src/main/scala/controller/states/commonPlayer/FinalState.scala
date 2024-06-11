@@ -2,8 +2,7 @@ package controller.states.commonPlayer
 
 
 
-import controller.states.AGameState
-import controller.states.enemy
+import controller.states.{AGameState, TurnState, enemy}
 import model.general.GameUnit
 import model.spell.Spell
 import controller.GameController
@@ -12,6 +11,6 @@ class FinalState(private val source: GameUnit, private val target: GameUnit) ext
 
   override def update(controller: GameController): Unit = {
     source.attack(target)
-    controller.state = new enemy.UnitEnemyState()
+    controller.state = new TurnState()
   }
 }

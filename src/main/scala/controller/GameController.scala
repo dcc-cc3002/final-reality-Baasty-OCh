@@ -1,7 +1,7 @@
 package controller
 
 import model.general.GameModel
-import states.{GameState, InitialPlayerState}
+import states.{GameState, InitialPlayerState, TurnState}
 import observers._
 import model.general.GameUnit
 import model.nonplayable.Enemy
@@ -27,7 +27,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
     notifyInitMessage()
     attackObs += new ObserverAttack(view)
     model.init(this)
-    state = new InitialPlayerState()
+    state = new TurnState(model._participantes)
     //TurnoDe(model._participantes)
   }
   private def checkFinished(): Unit = {
@@ -93,11 +93,10 @@ class GameController(private val model: GameModel, private val view: GameView) {
     t.turns.enqueue(src)
     src
   }
-  def TurnoDe(t:TurnSchedule): GameState = {
-    val jugador = calcTurns(t)
-    val mode = jugador.Juega(jugador)
-    if (mode == "playable"){new InitialPlayerState()}
-    else new InitialEnemyState()
+  def TurnoDe(x: GameUnit): Int = {
+    val mode = x.Juega(x)
+    if (mode == "playable"){2}
+    else 1
   }
 
   def getAITarget(): GameUnit = {

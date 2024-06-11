@@ -21,13 +21,13 @@ class GameModel {
   def init(controller: GameController): Unit = {
     val Cristiano = new Paladin("Cristiano",100,40,1)
     val Vini = new Warrior("Vinicius",80,25,1)
-    val Zidane = new BlackMagican("Zidane",150,50,70,25)
+    val Zidane = new WhiteMagican("Zidane",150,50,70,25)
     controller.registerUnit(Cristiano)
     controller.registerUnit(Vini)
     controller.registerUnit(Zidane)
-    /*_participantes.addPlayer(Cristiano)
+    _participantes.addPlayer(Cristiano)
     _participantes.addPlayer(Vini)
-    _participantes.addPlayer(Zidane)*/
+    _participantes.addPlayer(Zidane)
 
     _allies.addGameUnit(Cristiano)
     _allies.addGameUnit(Vini)
@@ -39,9 +39,9 @@ class GameModel {
     controller.registerUnit(Messi)
     controller.registerUnit(Guardiola)
     controller.registerUnit(Laporta)
-    /*_participantes.addPlayer(Messi)
+    _participantes.addPlayer(Messi)
     _participantes.addPlayer(Guardiola)
-    _participantes.addPlayer(Laporta)*/
+    _participantes.addPlayer(Laporta)
 
     _enemies.addGameUnit(Messi)
     _enemies.addGameUnit(Guardiola)

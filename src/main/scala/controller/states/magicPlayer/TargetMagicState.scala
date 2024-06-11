@@ -34,12 +34,13 @@ class TargetMagicState(private val source: GameUnit, private val spell: Option[S
   }
 
   override def update(controller: GameController): Unit = {
+    if(selected.map(_.getHp).getOrElse(0) != 0)
     choice match{
       case 0 =>controller.state = new WeaponMagicState(source, spell)
       case 1 =>controller.state = new FinalMagicState(source, selected.get, spell)
       case 2 =>controller.state = new FinalMagicState(source, selected.get, spell)
       case 3 =>controller.state = new FinalMagicState(source, selected.get, spell)
-    }
+    } else controller.state = new TargetMagicState(source, spell)
   }
 
 }
