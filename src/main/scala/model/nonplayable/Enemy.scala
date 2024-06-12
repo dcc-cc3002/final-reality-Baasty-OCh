@@ -1,92 +1,38 @@
 package model.nonplayable
 
-import controller.observers.ObserverAttack
-import model.general.GameUnit
-import model.spell.Spell
-import model.weapons.Weapon
-
-import scala.collection.mutable.ArrayBuffer
-
 /**
- * "An enemy is a type of non-playable character that represents the adversary
- *  or adversaries to be defeated by the group of players."
- * @param name
- * @param weight
- * @param attack
- * @param life
- * @param defence
+ * An enemy is a type of non-playable character that represents the adversary
+ * or adversaries to be defeated by the group of players.
+ *
+ * @param name The name of the enemy.
+ * @param life The life points of the enemy.
+ * @param defence The defence points of the enemy.
+ * @param weight The weight of the enemy.
+ * @param attackPoints The attack points of the enemy.
  */
-class Enemy(name: String, life: Int,
-            defence: Int, weight: Int,
-            attackPoints: Int ) extends AEnemy(name, life, defence, weight, attackPoints) {
-  private var _spells = ArrayBuffer.empty[Spell]
-  private var _weapons = ArrayBuffer.empty[Weapon]
-  override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
+class Enemy(name: String, life: Int, defence: Int,
+                  weight: Int, attackPoints: Int) extends AEnemy(name, life, defence, weight, attackPoints) {
 
   /**
-   * "The auxiliary builder receives the name that the user chooses for their non-playable entity
-   * and sets the other statistics according to the enemy class."
-   * @param name
-   * @return Playable
-   */
-
-  def this(name:String) ={
-    this(name,250,50,60,80)
+   * Auxiliary constructor that initializes an enemy with default statistics based on the enemy class.
+   * @param name The name chosen for the enemy.
+   * @return An instance of the Enemy class with preset default statistics. */
+  def this(name: String) = {
+    this(name, 250, 50, 60, 80)
   }
 
   /**
-   * Implementation method to know if Enemy can be attacked by other particular Game Unit
-   * @param entity represents the possible attacker
-   * @return true in case Game Unit was enemy of our non-playable entity
-   */
-  def wasAttackBy(entity:GameUnit): Boolean = entity.CanAttackEnemies()
-
-  /**
-   * Checks if this Enemy is equal to another Enemy.
-   * @param other The object to compare against
-   * @return `true` if the objects are of the same class, Name, Weight, Life and DF, `false` otherwise
-   */
+   * Checks if this Enemy is equal to another Enemy instance based on their attributes.
+   * @param other The object to compare against.
+   * @return `true` if the objects are of the same class and have the same name, weight, life points, and defence points, `false` otherwise. */
   override def equals(other: Any): Boolean = {
     if (other.isInstanceOf[Enemy]) {
       val otherCast = other.asInstanceOf[Enemy]
-      (getClass() == otherCast.getClass() &&
+      getClass == otherCast.getClass &&
         getName == otherCast.getName &&
         getWeight == otherCast.getWeight &&
         getHp == otherCast.getHp &&
-        getDp == otherCast.getDp )
-
+        getDp == otherCast.getDp
     } else false
   }
-
-
-
-  /**
-   * Abstract of Method to get the mana points of the playable entity
-   * @return The mana of playable entity
-   */
-  def getMana: Int = 0
-
-
-  /**
-   * Abstract Method Throws a spell at a target game unit.
-   * @param target The game unit at which the spell is aimed.
-   * @return A message indicating the success of casting the spell.
-   */
-  def throwSpell(target: GameUnit): String = "nothing"
-
-  /**
-   * Array to represent usable spells
-   */
-  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
-
-  /**
-   * Allows the character to choose a spell for casting.
-   * @param spell The spell to be chosen by the character.
-   * @return A message indicating the success of the spell selection.
-   */
-  def selectSpell(spell: Spell): String = "nothing"
-
-
 }
-
-

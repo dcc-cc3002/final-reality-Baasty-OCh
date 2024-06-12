@@ -29,6 +29,12 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
   require(defence >= 0 && defence <= 500, "Defence points must be between 0 and 500.")
 
   private val attackObs = ArrayBuffer.empty[ObserverAttack]
+  private val _weapons = ArrayBuffer.empty[Weapon]
+
+  /**
+   * Retrieves a clone of the weapons currently equipped by the enemy.
+   * @return A clone of the ArrayBuffer containing the enemy's weapons. */
+  override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
 
   /**
    * Retrieves the name of the non-playable entity.
@@ -120,6 +126,13 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
    * @return false, indicating that the enemy cannot attack other enemies (throws an exception). */
   def CanAttackEnemies(): Boolean = throw new InvalidAttackAllyException
 
+
+  /**
+   * Determines if the enemy can be attacked by another specific game unit.
+   * @param entity The game unit representing the possible attacker.
+   * @return true if the game unit can attack this enemy, false otherwise. */
+  def wasAttackBy(entity: GameUnit): Boolean = entity.CanAttackEnemies()
+
   /**
    * Simulates the enemy being attacked.
    * @param damage The amount of damage inflicted on the enemy. */
@@ -149,5 +162,31 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
    * @param weapon The weapon to be equipped.
    * @return A message indicating the success or failure of equipping the weapon. */
   def putWeapon(weapon: Weapon): String = throw new InvalidPutWeaponException
+
+
+  /**
+   * Abstract of Method to get the mana points of the playable entity
+   * @return The mana of playable entity
+   */
+  def getMana: Int = 0
+
+  /**
+   * Array to represent usable spells
+   */
+  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
+
+  /**
+   * Allows the character to choose a spell for casting.
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
+  def selectSpell(spell: Spell): String = "tirar exceptions dsp"
+
+  /**
+   * Abstract Method Throws a spell at a target game unit.
+   * @param target The game unit at which the spell is aimed.
+   * @return A message indicating the success of casting the spell.
+   */
+  def throwSpell(target: GameUnit): String = "tirar exceptions dsp"
 
 }

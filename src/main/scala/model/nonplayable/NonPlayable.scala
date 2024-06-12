@@ -4,6 +4,8 @@ import model.general.GameUnit
 import model.spell.Spell
 import model.weapons.Weapon
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
  * Trait representing a non-playable entity in the game.
  * A NonPlayable entity is any character or object within the game that cannot be controlled directly by the player.
@@ -12,6 +14,9 @@ import model.weapons.Weapon
 trait NonPlayable extends GameUnit{
 
   var arma: Option[Weapon] = None
+
+
+
 
 
 }
