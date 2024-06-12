@@ -30,6 +30,8 @@ class WeaponState (private val src: GameUnit, private var spell: Option[Spell],v
         val w = src.weapons()(choice-1)
         src.putWeapon(w)
         selected = Some(w)
+        people.deletePlayer(src)
+        people.addPlayer(src)
       }
     }
     catch {
@@ -43,6 +45,8 @@ class WeaponState (private val src: GameUnit, private var spell: Option[Spell],v
       case 1 => controller.state = new TargetState (src, people)
       case 2 => controller.state = new TargetState (src, people)
       case 3 => controller.state = new TargetState (src, people)
+      case 4 => controller.state = new WeaponState (src, people)
+      case 5 => controller.state = new WeaponState (src, people)
     }
   }
 

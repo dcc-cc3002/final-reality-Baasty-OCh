@@ -48,6 +48,12 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
 
   override def ComoJuego(): String = "magicPlayable"
 
+  override def magic(gameUnit: GameUnit): Int = {
+    gameUnit.ComoSoyMagico()
+  }
+
+  override def ComoSoyMagico(): Int = 2
+
   /**
    * Implementation of Method to set the mana points of the playable entity
    *

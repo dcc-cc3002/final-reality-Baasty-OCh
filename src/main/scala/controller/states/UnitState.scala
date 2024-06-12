@@ -11,11 +11,11 @@ class UnitState(val people : TurnSchedule, val pj: GameUnit) extends AGameState 
   private var choice: Int = 0
 
   override def notify(controller: GameController): Unit = {
-    //controller.notifyPlayerUnits()
+
   }
 
   override def handleInput(controller: GameController): Unit = {
-    choice = 1
+    choice = selected.magic(selected)
   }
 
   override def update(controller: GameController): Unit = {

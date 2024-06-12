@@ -61,8 +61,9 @@ class TurnSchedule extends Schedule {
       val newCntBar = cntBar + n
       actionBar.update(key, (maxActionBar, newCntBar))
       if (newCntBar >= maxActionBar) {
-        turns.enqueue(key)
-        actionBar.update(key, (maxActionBar, 0))
+        if (key.getHp != 0)
+        {turns.enqueue(key)
+        actionBar.update(key, (maxActionBar, 0))} else this.deletePlayer(key)
       }
     }
   }

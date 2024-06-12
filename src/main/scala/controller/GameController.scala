@@ -33,13 +33,13 @@ class GameController(private val model: GameModel, private val view: GameView) {
   private def checkFinished(): Unit = {
     if (win()) {
       view.displayVictory()
-    } else if (lose()) {
+    } else if (lose(false)) {
       view.displayDefeat()
     }
   }
 
   def hasFinished(): Boolean = {
-    win() || lose()
+    win() || lose(false)
   }
 
   def handleInput(): Unit = {
@@ -74,7 +74,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
   }
 
   def getAIUnit(): GameUnit = {
-    var choice = ai.nextInt(model.enemies.buff.length)
+    var choice = 1//ai.nextInt(model.enemies.buff.length)
     while(model.enemies.buff(choice).getHp == 0) {
       choice = ai.nextInt(model.enemies.buff.length)
     }
@@ -130,13 +130,13 @@ class GameController(private val model: GameModel, private val view: GameView) {
     view.displayPlayerStart(pj)
   }
 
-  def notifyEnemyStart() = {
-    view.displayEnemyStart()
+  def notifyEnemyStart(pj:GameUnit) = {
+    view.displayEnemyStart(pj)
   }
 
-  //def notifyPlayerUnits() = {
-    //view.displayPlayerUnits(model.allies)
-  //}
+  def notifyPlayerUnits() = {
+    view.displayPlayerUnits(model.allies)
+  }
 
   def notifyMagicPlayerAction() = {
     view.displayMagicPlayerAction()
@@ -182,8 +182,8 @@ class GameController(private val model: GameModel, private val view: GameView) {
     model.enemies.isDefeated()
   }
 
-  def lose(): Boolean = {
-    model.allies.isDefeated()
+  def lose(x:Boolean): Boolean = {
+    model.allies.isDefeated() || x
   }
 
 }

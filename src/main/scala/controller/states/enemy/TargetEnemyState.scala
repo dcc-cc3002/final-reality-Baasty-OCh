@@ -7,16 +7,15 @@ import model.general.schedule.TurnSchedule
 import model.spell.Spell
 
 class TargetEnemyState(private val source: GameUnit,val people : TurnSchedule) extends AGameState {
-  private var selected: Option[GameUnit] = None
+  private var selected : GameUnit = source
 
 
 
   override def handleInput(controller: GameController): Unit = {
-    selected = Some(controller.getAITarget())
+    selected = controller.getAITarget()
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.isDefined)
-      controller.state = new FinalEnemyState(source, selected.get, people)
+      controller.state = new FinalEnemyState(source, selected, people)
   }
 }

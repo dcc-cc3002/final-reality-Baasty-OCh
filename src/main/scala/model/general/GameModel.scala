@@ -19,9 +19,9 @@ class GameModel {
   val _participantes = new TurnSchedule()
 
   def init(controller: GameController): Unit = {
-    val Cristiano = new Paladin("Cristiano",100,40,15)
-    val Vini = new Warrior("Vinicius",80,25,10)
-    val Zidane = new WhiteMagican("Zidane",150,50,70,5)
+    val Cristiano = new Paladin("Cristiano",100,40,10)
+    val Vini = new Warrior("Vinicius",80,25,5)
+    val Zidane = new WhiteMagican("Zidane",150,50,7,25)
     controller.registerUnit(Cristiano)
     controller.registerUnit(Vini)
     controller.registerUnit(Zidane)
@@ -33,9 +33,9 @@ class GameModel {
     _allies.addGameUnit(Vini)
     _allies.addGameUnit(Zidane)
 
-    val Messi = new Enemy("Messi",250,50,20,20)
-    val Guardiola = new Enemy("Guardiola",200,25,25,50)
-    val Laporta = new Enemy("Laporta") // 60 peso
+    val Messi = new Enemy("Messi",250,50,55,20)
+    val Guardiola = new Enemy("Guardiola",200,25,45,30)
+    val Laporta = new Enemy("Laporta",250,100,3,100)
     controller.registerUnit(Messi)
     controller.registerUnit(Guardiola)
     controller.registerUnit(Laporta)

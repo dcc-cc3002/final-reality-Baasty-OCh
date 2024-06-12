@@ -9,7 +9,7 @@ class UnitEnemyState(val people : TurnSchedule, val pj: GameUnit) extends AGameS
   private var selected: GameUnit = pj
 
   override def notify(controller: GameController): Unit = {
-    controller.notifyEnemyStart()
+    controller.notifyEnemyStart(selected)
   }
 
   override def handleInput(controller: GameController): Unit = {

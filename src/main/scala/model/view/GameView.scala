@@ -30,14 +30,15 @@ class GameView {
   def displayTurnStart(): Unit = {
     queue.enqueue("El turno ha comenzado")
   }
-  def displayEnemyStart(): Unit = {
-    queue.enqueue("Turno del enemigo")
+  def displayEnemyStart(pj:GameUnit): Unit = {
+    queue.enqueue(s"Turno del enemigo: ${pj.getName}")
   }
 
   def displayPlayerUnits(allies: Party): Unit = {
-    queue.enqueue("Escoge un aliado:")
+    queue.enqueue("Estado de los aliados:")
     for(i <- allies.buff.indices) {
-      queue.enqueue(s"${i+1}) ${allies.buff(i).getName} || Class: ${allies.buff(i).getClass}")
+      queue.enqueue(s"${i+1}) ${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " +
+        s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}")
     }
   }
 
@@ -46,14 +47,14 @@ class GameView {
     queue.enqueue("Escoge una acción:")
     queue.enqueue("1) Atacar")
     queue.enqueue("2) Usar Magia")
-    queue.enqueue("0) Cambiar de aliado")
+    queue.enqueue("5) Terminar Partida")
 
   }
 
   def displayPlayerAction(): Unit = {
     queue.enqueue("Escoge una acción:")
     queue.enqueue("1) Atacar")
-    queue.enqueue("0) Cambiar de aliado")
+    queue.enqueue("5) Terminar Partida")
 
   }
 
@@ -78,7 +79,8 @@ class GameView {
     queue.enqueue("Escoge un arma:")
     queue.enqueue("0) Volver a elegir acción")
     for(i <- weapons.indices) {
-      queue.enqueue(s"${i+1}) ${weapons(i).getName} ${weapons(i).getAttack} AP")
+      queue.enqueue(s"${i+1}) ${weapons(i).getName} ${weapons(i).getAttack} AP" +
+        s" || ${weapons(i).getWeight} WP ")
     }
   }
 
@@ -104,7 +106,16 @@ class GameView {
     queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
     queue.enqueue(s"DP de ${dest.getName} reducidos a ${dest.getDp}")
     if (dest.getHp == 0){queue.enqueue((s"${dest.getName} : SOY UN PECHO FRIO"))}
-    else queue.enqueue("buen golpe")
+    else queue.enqueue("Buen golpe")
+  }
+
+  def displaySimpleEnemyAttack(src: GameUnit, dest: GameUnit, amount: Int): Unit = {
+    queue.enqueue(s"${src.getName} ataca ${dest.getName}")
+    queue.enqueue(s"${src.getName} hizo ${amount} de daño!")
+    queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
+    queue.enqueue(s"DP de ${dest.getName} reducidos a ${dest.getDp}")
+    if (dest.getHp == 0){queue.enqueue((s"${dest.getName} : ES CULPA DE NEGREIRAAAA"))}
+    else queue.enqueue("Buen golpe")
   }
 
   def displaySpellAttack(src: GameUnit, dest: GameUnit, sp: Spell, amount: Int): Unit = {
@@ -119,6 +130,10 @@ class GameView {
 
   def displayDefeat(): Unit = {
     queue.enqueue("Oh no! Perdiste :c")
+  }
+
+  def displaySurrender(): Unit = {
+    queue.enqueue("Perdiste, COBARDE!!")
   }
 
   def displayErrorNoEnergy(): Unit = {

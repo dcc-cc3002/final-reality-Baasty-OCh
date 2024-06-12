@@ -74,7 +74,13 @@ protected abstract class AEnemy(val name: String, var life: Int,var defence: Int
   }
 
   def Juega(entity: GameUnit): String = " "
+  def magic(gameUnit: GameUnit): Int = {
+    gameUnit.ComoSoyComun()
+  }
 
+  override def ComoSoyComun(): Int = 0
+
+  override def ComoSoyMagico(): Int = 0
 
 
   def ComoJuego(): String = "enemy"
@@ -91,7 +97,7 @@ protected abstract class AEnemy(val name: String, var life: Int,var defence: Int
         entity.setDp(0)
         entity.wasAttacked(damage.abs)
         for (o <- attackObs) {
-          o.notifySimpleAttack(this, entity, damage.abs)
+          o.notifySimpleEnemyAttack(this, entity, damage.abs)
         }
         "The target was attacked"
       } else  {entity.setDp(damage.abs)

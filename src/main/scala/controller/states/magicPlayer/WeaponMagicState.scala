@@ -29,6 +29,8 @@ class WeaponMagicState(private val src: GameUnit, private var spell: Option[Spel
         val w = src.weapons()(choice - 1)
         src.putWeapon(w)
         selected = Some(w)
+        people.deletePlayer(src)
+        people.addPlayer(src)
       }
     }
     catch {

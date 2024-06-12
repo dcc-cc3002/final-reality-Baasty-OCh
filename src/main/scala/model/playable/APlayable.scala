@@ -6,6 +6,8 @@ import exceptions.InvalidAttackAllyException
 import model.general.GameUnit
 import model.spell.Spell
 import model.weapons.Weapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
 
 import scala.collection.mutable.ArrayBuffer
 
@@ -28,8 +30,12 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   private var _weapons = ArrayBuffer.empty[Weapon]
 
   override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
-  def addWeapon(weapon: Weapon): Unit = _weapons += weapon
-
+  def addWeapon(weapon: Option[Weapon]): Unit = _weapons += weapon.get
+  addWeapon(Some(new Bow))
+  addWeapon(Some(new Sword))
+  addWeapon(Some(new Axe))
+  addWeapon(Some(new Staff))
+  addWeapon(Some(new Wand))
   /**
    * Variable to represent a weapon in an APlayable Entity.
    * Base State: None (without weapon).
@@ -137,8 +143,13 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * @return True if GameUnit is an enemy of our playable entity.
    */
   def wasAttackBy(entity: GameUnit): Boolean = entity.CanAttackPlayable()
-
+  def magic(gameUnit: GameUnit): Int = {
+    gameUnit.ComoSoyComun()
+  }
   def ComoJuego(): String = "playable"
+  def ComoSoyComun(): Int = 1
+
+  override def ComoSoyMagico(): Int = 0
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.

@@ -25,9 +25,6 @@ class WhiteMagican(name:String, healthPoints:Int,
   addSpell(new Poison)
   var spell : Spell = spells.head
 
-  addWeapon(new Wand)
-  addWeapon(new Staff)
-  addWeapon(new Bow)
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."

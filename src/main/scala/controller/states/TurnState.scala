@@ -6,7 +6,7 @@ import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
 class TurnState(val people:TurnSchedule) extends AGameState {
-  val pj : GameUnit = calcTurns(people)
+  var pj : GameUnit = calcTurns(people)
   var choice: Int = 0
 
   def calcTurns(t:TurnSchedule): GameUnit ={

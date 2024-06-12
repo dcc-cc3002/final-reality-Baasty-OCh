@@ -92,8 +92,10 @@ trait GameUnit {
   def putWeapon( weapon: Weapon): String
 
   def Juega(entity: GameUnit): String
-
+  def magic(gameUnit: GameUnit): Int
   def ComoJuego(): String
+  def ComoSoyComun(): Int
+  def ComoSoyMagico(): Int
   /**
    * Abstract Method Throws a spell at a target game unit.
    * @param target The game unit at which the spell is aimed.
