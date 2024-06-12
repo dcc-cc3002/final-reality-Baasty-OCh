@@ -11,6 +11,7 @@ import model.playable.Playable
 /**
  * Represents the model for the game, managing allies, enemies, and participants. */
 class GameModel {
+
   /**
    * The party of allied units. */
   private val _allies = new Party()
