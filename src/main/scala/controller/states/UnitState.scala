@@ -15,7 +15,7 @@ class UnitState(val people : TurnSchedule, val pj: GameUnit) extends AGameState 
   }
 
   override def handleInput(controller: GameController): Unit = {
-    choice = selected.magic(selected)
+    choice = selected.IsMagic(selected)
   }
 
   override def update(controller: GameController): Unit = {

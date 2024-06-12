@@ -94,7 +94,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
     src
   }
   def TurnoDe(x: GameUnit): Int = {
-    val mode = x.Juega(x)
+    val mode = x.Style(x)
     if (mode == "playable" || mode == "magicPlayable"){2}
     else 1
   }

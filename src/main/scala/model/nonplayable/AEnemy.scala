@@ -73,17 +73,15 @@ protected abstract class AEnemy(val name: String, var life: Int,var defence: Int
     this.defence = newDp
   }
 
-  def Juega(entity: GameUnit): String = " "
-  def magic(gameUnit: GameUnit): Int = {
-    gameUnit.ComoSoyComun()
+  def Style(entity: GameUnit): String = " "
+
+  def HowIPlay(): String = "enemy"
+  def IsMagic(gameUnit: GameUnit): Int = {
+    gameUnit.IAmCommon()
   }
 
-  override def ComoSoyComun(): Int = 0
-
-  override def ComoSoyMagico(): Int = 0
 
 
-  def ComoJuego(): String = "enemy"
   /**
    * Abstract method to attack an entity.
    * @param entity The entity being attacked.

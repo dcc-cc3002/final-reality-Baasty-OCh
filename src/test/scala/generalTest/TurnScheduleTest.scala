@@ -27,7 +27,7 @@ class TurnScheduleTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     Team1 = new TurnSchedule()
-    Cristiano = new Paladin("Cristiano", 0, 50, 50)
+    Cristiano = new Paladin("Cristiano", 1, 50, 50)
     Alexis = new WhiteMagican("Alexis")
     Messi = new Warrior("Messi")
   }

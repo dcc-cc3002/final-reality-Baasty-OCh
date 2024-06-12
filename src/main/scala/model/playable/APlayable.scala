@@ -133,9 +133,11 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
     }
   }
 
-  def Juega(entity: GameUnit): String = {
-    entity.ComoJuego()
+  def Style(entity: GameUnit): String = {
+    entity.HowIPlay()
   }
+
+  def HowIPlay(): String = "playable"
 
   /**
    * Implementation method to know if Playable can be attacked by another particular GameUnit.
@@ -143,13 +145,12 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * @return True if GameUnit is an enemy of our playable entity.
    */
   def wasAttackBy(entity: GameUnit): Boolean = entity.CanAttackPlayable()
-  def magic(gameUnit: GameUnit): Int = {
-    gameUnit.ComoSoyComun()
+  def IsMagic(gameUnit: GameUnit): Int = {
+    gameUnit.IAmCommon()
   }
-  def ComoJuego(): String = "playable"
-  def ComoSoyComun(): Int = 1
+  override def IAmCommon(): Int = 1
 
-  override def ComoSoyMagico(): Int = 0
+
   /**
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity.
