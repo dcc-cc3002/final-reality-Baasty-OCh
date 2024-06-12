@@ -12,7 +12,7 @@ import scala.collection.mutable.ArrayBuffer
 trait GameUnit {
 
   /**Optionally holds a weapon for the game unit. */
-  var arma: Option[Weapon]
+  var arma: Option[Weapon] = None
 
   /**
    * Gets the name of the game unit.
@@ -86,7 +86,7 @@ trait GameUnit {
   /**
    * Gets the mana points of the game unit.
    * @return The mana points of the game unit. */
-  def getMana: Int
+  def getMana: Int = 0
 
   /**
    * Equips a weapon on the game unit.
@@ -122,26 +122,30 @@ trait GameUnit {
   def IAmMagic(): Int = 0
 
   /**
-   * Throws a spell at a target game unit.
+   * Abstract Method Throws a spell at a target game unit.
    * @param target The game unit at which the spell is aimed.
-   * @return A message indicating the success of casting the spell. */
-  def throwSpell(target: GameUnit): String
+   * @return A message indicating the success of casting the spell.
+   */
+  def throwSpell(target: GameUnit): String = "nothing"
+
+
+  /**
+   * Allows the character to choose a spell for casting.
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
+  def selectSpell(spell: Spell): String = "nothing"
+
 
   /**
    * Gets the list of spells usable by the game unit.
    * @return An ArrayBuffer containing the spells usable by the game unit. */
-  def spells(): ArrayBuffer[Spell]
+  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
 
   /**
    * Gets the list of weapons usable by the game unit.
    * @return An ArrayBuffer containing the weapons usable by the game unit. */
   def weapons(): ArrayBuffer[Weapon]
-
-  /**
-   * Allows the game unit to choose a spell for casting.
-   * @param spell The spell to be chosen by the game unit.
-   * @return A message indicating the success of the spell selection. */
-  def selectSpell(spell: Spell): String
 
   /**
    * Registers an attack observer for the game unit.

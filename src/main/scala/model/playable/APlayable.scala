@@ -21,82 +21,76 @@ import scala.collection.mutable.ArrayBuffer
  */
 protected abstract class APlayable(val name: String, var healthPoints: Int,
                                    var defensePoints: Int, val weight: Int) extends Playable {
-  require(healthPoints >= 0)
-  require(defensePoints >= 0)
-  require(weight >= 0)
+  require(healthPoints >= 0, "Health points must be non-negative.")
+  require(defensePoints >= 0, "Defense points must be non-negative.")
+  require(weight >= 0, "Weight must be non-negative.")
 
   protected var attackObs = ArrayBuffer.empty[ObserverAttack]
 
-  private var _weapons = ArrayBuffer.empty[Weapon]
+  private val _weapons = ArrayBuffer.empty[Weapon]
 
+  /**
+   * Retrieves a clone of the weapons currently equipped by the playable entity.
+   * @return A clone of the ArrayBuffer containing the playable entity's weapons. */
   override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
-  def addWeapon(weapon: Option[Weapon]): Unit = _weapons += weapon.get
+
+  /**
+   * Auxiliary method to add default weapons to the playable entity's arsenal. */
+  private def addWeapon(weapon: Option[Weapon]): Unit = _weapons += weapon.get
+
   addWeapon(Some(new Bow))
   addWeapon(Some(new Sword))
   addWeapon(Some(new Axe))
   addWeapon(Some(new Staff))
   addWeapon(Some(new Wand))
-  /**
-   * Variable to represent a weapon in an APlayable Entity.
-   * Base State: None (without weapon).
-   */
-  var arma: Option[Weapon] = None
 
   /**
-   * Implementation of Method to get the name of the playable entity.
-   * @return The name of the playable entity.
-   */
+   * Retrieves the name of the playable entity.
+   * @return The name of the playable entity. */
   def getName: String = name
 
   /**
-   * Implementation of Method to get the health points of the playable entity.
-   * @return The health points of the playable entity.
-   */
+   * Retrieves the health points of the playable entity.
+   * @return The health points of the playable entity. */
   def getHp: Int = healthPoints
 
   /**
-   * Implementation of Method to set the health points of the playable entity.
-   * @param newHp The new health points of the playable entity.
-   */
+   * Sets the health points of the playable entity.
+   * @param newHp The new health points of the playable entity. */
   def setHp(newHp: Int): Unit = {
     this.healthPoints = newHp
   }
 
   /**
-   * Implementation of Method to set the health points of the playable entity.
-   * @param newHp The new health points of the playable entity.
-   */
+   * Sets the defense points of the playable entity.
+   * @param newDp The new defense points of the playable entity. */
   def setDp(newDp: Int): Unit = {
     this.defensePoints = newDp
   }
 
   /**
-   * Implementation of Method to get the defense points of the playable entity.
-   * @return The defense points of the playable entity.
-   */
+   * Retrieves the defense points of the playable entity.
+   * @return The defense points of the playable entity. */
   def getDp: Int = defensePoints
 
   /**
-   * Implementation of Method to get the weight of the playable entity.
-   * @return The weight of the playable entity.
-   */
+   * Retrieves the weight of the playable entity.
+   * @return The weight of the playable entity. */
   def getWeight: Int = weight
 
   /**
-   * Implementation of Method to know if a Playable Entity has or not a weapon.
-   * @return The Weapon of the Character or None in case he/she does not have one.
-   */
+   * Checks if the playable entity has a weapon equipped.
+   * @return Some(Weapon) if the playable entity has a weapon, None otherwise. */
   def hasWeapon: Option[Weapon] = arma
 
   /**
-   * Abstract Method to equip a Weapon on a Playable Entity.
+   * Abstract method to equip a Weapon on a Playable Entity.
    * @param weapon Any class of Weapon.
-   */
+   * @return A message indicating the success or failure of equipping the weapon. */
   def putWeapon(weapon: Weapon): String
 
   /**
-   * Implementation method to 'reset' the state of the 'arma' parameter in a playable entity.
-   */
+   * Drops the weapon currently equipped by the playable entity. */
   def dropWeapon(): Unit = {
     if (this.hasWeapon.nonEmpty) {
       this.arma = None
@@ -104,16 +98,14 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   }
 
   /**
-   * Implementation of method to alert if the player is attempting to use a weapon owned by another character.
-   * @return an Exception.
-   */
+   * Throws an exception indicating that the playable entity cannot use a foreign weapon.
+   * @return An InvalidPutWeaponException. */
   def foreignWeapon(): Boolean = throw new InvalidPutWeaponException
 
   /**
-   * Implementation method to attack a GameUnit entity.
-   * @param entity The target of attack.
-   * @return An affirmative message in case the target was correctly attacked and an "exception" message in other cases.
-   */
+   * Attacks a GameUnit entity.
+   * @param entity The target of the attack.
+   * @return A message indicating if the attack was successful or not. */
   def attack(entity: GameUnit): String = {
     try {
       entity.wasAttackBy(this)
@@ -125,36 +117,45 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
           o.notifySimpleAttack(this, entity, damage)
         }
         "The enemy was attacked"
-      } else
-        {entity.setDp(entity.getDp-damage.abs)
-        "The enemy was attacked, but the damage is not enough"}
+      } else {
+        entity.setDp(entity.getDp - damage.abs)
+        "The enemy was attacked, but the damage is not enough"
+      }
     } catch {
       case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
     }
   }
 
+  /**
+   * Retrieves the playing style of the playable entity.
+   * @param entity The entity whose style is being queried.
+   * @return The playing style of the entity. */
   def Style(entity: GameUnit): String = {
     entity.HowIPlay()
   }
 
+  /**
+   * Retrieves the playing style identifier of the playable entity.
+   * @return A string identifying the playing style of the entity. */
   def HowIPlay(): String = "playable"
 
   /**
-   * Implementation method to know if Playable can be attacked by another particular GameUnit.
-   * @param entity Represents the possible attacker.
-   * @return True if GameUnit is an enemy of our playable entity.
-   */
+   * Determines if the playable entity can be attacked by another specific GameUnit.
+   * @param entity The possible attacker.
+   * @return true if the GameUnit is an enemy of our playable entity, false otherwise. */
   def wasAttackBy(entity: GameUnit): Boolean = entity.CanAttackPlayable()
+
+  /**
+   * Retrieves the identifier indicating whether the playable entity is magical or not.
+   * @param gameUnit The entity being queried.
+   * @return 1, indicating the playable entity is not magical. */
   def IsMagic(gameUnit: GameUnit): Int = {
     gameUnit.IAmCommon()
   }
-  override def IAmCommon(): Int = 1
-
 
   /**
    * Method to simulate the playable entity being attacked.
-   * @param pain The amount of damage inflicted on the playable entity.
-   */
+   * @param pain The amount of damage inflicted on the playable entity. */
   def wasAttacked(pain: Int): Unit = {
     if (this.healthPoints >= pain) {
       this.setHp(this.healthPoints - pain)
@@ -164,44 +165,20 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   }
 
   /**
-   * Method to determine if a Playable entity can suffer the effects of a spell.
+   * Determines if the playable entity can suffer the effects of a spell.
    * @param spell The spell being cast.
-   * @return True if the Playable entity can suffer the spell's effects, false otherwise.
-   */
+   * @return True if the playable entity can suffer the spell's effects, false otherwise. */
   def canSuffer(spell: Spell): Boolean = spell.actOnPlayable(this)
 
-
+  /**
+   * Registers an attack observer for the playable entity.
+   * @param obs The observer to be registered. */
   def registerAttackObserver(obs: ObserverAttack): Unit = {
     attackObs += obs
   }
 
-
   /**
-   * Abstract of Method to get the mana points of the playable entity
-   * @return The mana of playable entity
-   */
-  def getMana: Int = 0
-
-
-  /**
-   * Abstract Method Throws a spell at a target game unit.
-   * @param target The game unit at which the spell is aimed.
-   * @return A message indicating the success of casting the spell.
-   */
-  def throwSpell(target: GameUnit): String = "nothing"
-
-  /**
-   * Array to represent usable spells
-   */
-  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
-
-  /**
-   * Allows the character to choose a spell for casting.
-   * @param spell The spell to be chosen by the character.
-   * @return A message indicating the success of the spell selection.
-   */
-  def selectSpell(spell: Spell): String = "nothing"
-
-
+   * Retrieves the attack points of the playable entity.
+   * @return The attack points of the playable entity. */
   def getAttack: Int = arma.map(_.getAttack).getOrElse(0)
 }

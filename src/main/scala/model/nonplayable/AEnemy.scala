@@ -164,29 +164,4 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
   def putWeapon(weapon: Weapon): String = throw new InvalidPutWeaponException
 
 
-  /**
-   * Abstract of Method to get the mana points of the playable entity
-   * @return The mana of playable entity
-   */
-  def getMana: Int = 0
-
-  /**
-   * Array to represent usable spells
-   */
-  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
-
-  /**
-   * Allows the character to choose a spell for casting.
-   * @param spell The spell to be chosen by the character.
-   * @return A message indicating the success of the spell selection.
-   */
-  def selectSpell(spell: Spell): String = "tirar exceptions dsp"
-
-  /**
-   * Abstract Method Throws a spell at a target game unit.
-   * @param target The game unit at which the spell is aimed.
-   * @return A message indicating the success of casting the spell.
-   */
-  def throwSpell(target: GameUnit): String = "tirar exceptions dsp"
-
 }

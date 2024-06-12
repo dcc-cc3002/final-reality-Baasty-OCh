@@ -13,11 +13,5 @@ import scala.collection.mutable.ArrayBuffer
  */
 trait NonPlayable extends GameUnit{
 
-  var arma: Option[Weapon] = None
-
-
-
-
-
 }
 
