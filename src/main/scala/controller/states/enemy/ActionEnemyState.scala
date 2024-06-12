@@ -12,7 +12,7 @@ class ActionEnemyState(private val source: GameUnit,val people : TurnSchedule) e
   private var selected: Option[GameState] = None
 
   override def handleInput(controller: GameController): Unit = {
-    selected = Some(controller.getAIChoice(source,people))
+    selected = Some(new TargetEnemyState(source,people))
   }
 
   override def update(controller: GameController): Unit = {

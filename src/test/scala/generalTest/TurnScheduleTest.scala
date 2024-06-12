@@ -88,6 +88,9 @@ class TurnScheduleTest extends FunSuite {
     Team1.addPlayer(Cristiano)
     Team1.addPlayer(Alexis)
     Team1.fillActionBar(12)
+
+    assertEquals(Team1.actionBar.toMap,Map(Cristiano -> (50, 12), Alexis -> (60, 12)))
+
     Team1.resetActionBar(Cristiano)
     val expected: Map[GameUnit, (Int, Int)] = Map(Cristiano -> (50, 0), Alexis -> (60, 12))
 

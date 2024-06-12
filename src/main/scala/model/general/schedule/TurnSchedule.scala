@@ -63,7 +63,7 @@ class TurnSchedule extends Schedule {
       if (newCntBar >= maxActionBar) {
         if (key.getHp != 0)
         {turns.enqueue(key)
-        actionBar.update(key, (maxActionBar, 0))} else this.deletePlayer(key)
+        resetActionBar(key)} else this.deletePlayer(key)
       }
     }
   }

@@ -62,27 +62,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
     view.getNumericalInput()
   }
 
-  def getAlly(choice: Int): GameUnit = {
-    val u = model.allies.buff(choice)
-    notifyAllyChoose(u)
-    u
-  }
-
   def getEnemy(choice: Int): GameUnit = {
     val u = model.enemies.buff(choice)
     u
-  }
-
-  def getAIUnit(): GameUnit = {
-    var choice = 1//ai.nextInt(model.enemies.buff.length)
-    while(model.enemies.buff(choice).getHp == 0) {
-      choice = ai.nextInt(model.enemies.buff.length)
-    }
-    model.enemies.buff(choice)
-  }
-
-  def getAIChoice(u: GameUnit,t :TurnSchedule): GameState = {
-    new TargetEnemyState(u,t)
   }
 
   def calcTurns(t:TurnSchedule): GameUnit ={
