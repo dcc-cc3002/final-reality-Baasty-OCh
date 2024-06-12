@@ -1,12 +1,12 @@
 package model.spell.dark
 
+import model.general.GameUnit
 import model.playable.magic.AMagicPlayable
 import model.spell.ASpell
 
 /**
  * Represents a Fire spell, a type of dark spell.
- * Inherits properties and behaviors from ASpell.
- */
+ * Inherits properties and behaviors from ASpell. */
 class Fire extends ASpell {
   /** The cost of casting the Fire spell. */
   val cost: Int = 15
@@ -14,11 +14,11 @@ class Fire extends ASpell {
   /** The name of casting the Fire spell. */
   def name: String = "Fire"
 
+  override def Effect(gameUnit: GameUnit): Unit = {}
+
   /**
    * Determines if the Fire spell can be selected by a player.
-   *
    * @param player The player attempting to select the Fire spell.
-   * @return True if the Fire spell can be selected by the player, false otherwise.
-   */
+   * @return True if the Fire spell can be selected by the player, false otherwise. */
   def canBeSelectedBy(player: AMagicPlayable): Boolean = player.canSelectFire()
 }

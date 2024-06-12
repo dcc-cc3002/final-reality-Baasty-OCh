@@ -23,7 +23,7 @@ class EnemyTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     Neymar = new Enemy("Neymar")
-    Pedro = new Enemy("Pedro",100,50,25,49)
+    Pedro = new Enemy("Pedro",100,50,50,0)
     Cristiano = new Paladin("Cristiano",100,50,25)
   }
 
@@ -77,7 +77,7 @@ class EnemyTest extends FunSuite {
    */
   test("attack"){
     assertEquals(Neymar.attack(Cristiano), "The target was attacked")
-    //assertEquals(Pedro.attack(Cristiano), "The enemy was attacked, but the damage is not enough")
+    assertEquals(Pedro.attack(Cristiano), "The enemy was attacked, but the damage is not enough")
   }
 
   /**

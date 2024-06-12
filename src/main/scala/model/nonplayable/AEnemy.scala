@@ -100,17 +100,16 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
     try {
       entity.wasAttackBy(this)
       val damage: Int = this.attackPoints - entity.getDp
-      if (damage >= 0) {
-        entity.setDp(0)
+      if (damage < 0) {
+        entity.setDp(damage.abs)
+        "The enemy was attacked, but the damage is not enough"
+      } else {
         entity.wasAttacked(damage)
         for (o <- attackObs) {
           o.notifySimpleEnemyAttack(this, entity, damage)
         }
         "The target was attacked"
-      } else {
-        entity.setDp(damage.abs)
-        "The enemy was attacked, but the damage is not enough"
-      }
+    }
     } catch {
       case _: InvalidAttackAllyException => s"The character: ${this.getName} can't attack an ally"
     }
@@ -137,6 +136,7 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
    * Simulates the enemy being attacked.
    * @param damage The amount of damage inflicted on the enemy. */
   def wasAttacked(damage: Int): Unit = {
+    this.setDp(0)
     if (this.life >= damage) {
       this.setHp(this.life - damage)
     } else {

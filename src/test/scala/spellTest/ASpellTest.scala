@@ -69,6 +69,14 @@ class ASpellTest extends FunSuite {
     assertEquals(Poison.getCost, 30)
   }
 
+  test("getName"){
+    assertEquals(Fire.name, "Fire")
+    assertEquals(Thunder.name, "Thunder")
+    assertEquals(Healing.name, "Healing")
+    assertEquals(Paralysis.name, "Paralysis")
+    assertEquals(Poison.name, "Poison")
+  }
+
   /**
    * Validates the behavior of different spells when acting on enemy units.
    * This test verifies the behavior of various spells (Fire, Thunder, Paralysis, Poison) when acting on enemy units.

@@ -109,15 +109,15 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   def attack(entity: GameUnit): String = {
     try {
       entity.wasAttackBy(this)
-      val damage = arma.map(_.getAttack - entity.getDp).getOrElse(0)
+      val damage: Int = arma.map(_.getAttack).getOrElse(0) - entity.getDp
       if (damage >= 0) {
-        entity.setDp(0)
         entity.wasAttacked(damage)
         for (o <- attackObs) {
           o.notifySimpleAttack(this, entity, damage)
         }
         "The enemy was attacked"
-      } else {
+      }
+      else {
         entity.setDp(entity.getDp - damage.abs)
         "The enemy was attacked, but the damage is not enough"
       }
@@ -157,7 +157,8 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * Method to simulate the playable entity being attacked.
    * @param pain The amount of damage inflicted on the playable entity. */
   def wasAttacked(pain: Int): Unit = {
-    if (this.healthPoints >= pain) {
+    this.setDp(0)
+    if (this.healthPoints > pain) {
       this.setHp(this.healthPoints - pain)
     } else {
       this.setHp(0)

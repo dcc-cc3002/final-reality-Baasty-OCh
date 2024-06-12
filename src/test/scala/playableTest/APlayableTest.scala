@@ -162,7 +162,7 @@ class APlayableTest extends FunSuite{
    * The expected result is "The enemy was Attack" if the attack is successful, and "The enemy was Attack,
    * but the damage is not enough" if the attack is not strong enough to defeat the enemy.
    */
- /* test("attack") {
+  test("attack") {
     val Staff: Staff = new Staff()
     val Wand: Wand = new Wand()
     val Sword: Sword = new Sword()
@@ -188,5 +188,5 @@ class APlayableTest extends FunSuite{
     Amancio.putWeapon(Axe)
     assertEquals(Amancio.attack(Iniesta),"The enemy was attacked")
     assertEquals(Amancio.attack(Puyol),"The enemy was attacked, but the damage is not enough")
-  }*/
+  }
 }

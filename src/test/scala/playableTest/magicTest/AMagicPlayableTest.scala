@@ -57,8 +57,8 @@ class AMagicPlayableTest extends FunSuite{
    * and if the character WhiteMagican `Gento` with 5 mana cannot use the `Healing` spell.
    */
   test("hasEnoughMana"){
-    var Fire : Spell = new Fire()
-    var Healing : Spell = new Healing()
+    val Fire : Spell = new Fire()
+    val Healing : Spell = new Healing()
     Kopa.setMana(100)
     Kopa.selectSpell(Fire)
     assert(Kopa.hasEnoughMana == "It is Enough")
@@ -79,10 +79,10 @@ class AMagicPlayableTest extends FunSuite{
    * The expected return value is "Yes" if the character has a magic weapon, and "The weapon is not magic" otherwise.
    */
   test("hasMagicWeapon"){
-    var Staff: Weapon = new Staff()
-    var Wand: Weapon = new Wand()
-    var Sword: Weapon = new Sword()
-    var Bow: Weapon = new Bow()
+    val Staff: Weapon = new Staff()
+    val Wand: Weapon = new Wand()
+    val Sword: Weapon = new Sword()
+    val Bow: Weapon = new Bow()
     Kopa.putWeapon(Staff)
     assertEquals(Kopa.hasMagicWeapon, "Yes")
 
@@ -90,7 +90,7 @@ class AMagicPlayableTest extends FunSuite{
     assertEquals(Kopa.hasMagicWeapon, "Yes")
 
     Kopa.putWeapon(Sword)
-    assertEquals(Kopa.hasMagicWeapon, " The weapon is not magic")
+    assertEquals(Kopa.hasMagicWeapon, "The weapon is not magic")
 
     Gento.putWeapon(Staff)
     assertEquals(Gento.hasMagicWeapon, "Yes")
@@ -99,7 +99,7 @@ class AMagicPlayableTest extends FunSuite{
     assertEquals(Gento.hasMagicWeapon, "Yes")
 
     Gento.putWeapon(Bow)
-    assertEquals(Gento.hasMagicWeapon, " The weapon is not magic")
+    assertEquals(Gento.hasMagicWeapon, "The weapon is not magic")
   }
 
   /**
@@ -110,18 +110,18 @@ class AMagicPlayableTest extends FunSuite{
    * Both cases are expected to return "nice spell".
    */
   test("throwSpell"){
-    var Staff : Staff = new Staff()
-    var Wand : Wand = new Wand()
-    var Fire : Spell = new Fire()
-    var Healing : Spell = new Healing()
-    var Laudrup: Enemy = new Enemy("Laudrup")
+    val Staff : Staff = new Staff()
+    val Wand : Wand = new Wand()
+    val Fire : Spell = new Fire()
+    val Healing : Spell = new Healing()
+    val Laudrup: Enemy = new Enemy("Laudrup")
     Kopa.putWeapon(Staff)
     Kopa.selectSpell(Fire)
-    assertEquals(Kopa.throwSpell(Laudrup), "nice spell")
+    assertEquals(Kopa.throwSpell(Laudrup), "Nice spell")
 
     Gento.putWeapon(Wand)
     Gento.selectSpell(Healing)
-    assertEquals(Gento.throwSpell(Kopa), "nice spell")
+    assertEquals(Gento.throwSpell(Kopa), "Nice spell")
   }
 
   /**
@@ -139,10 +139,10 @@ class AMagicPlayableTest extends FunSuite{
     val Laudrup: Enemy = new Enemy("Laudrup")
     Kopa.putWeapon(Staff)
     Kopa.selectSpell(Fire)
-    assertEquals(Kopa.throwSpell(Gento), "The spell can not act in that target")
+    assertEquals(Kopa.throwSpell(Gento), "The spell cannot act on that target")
 
     Gento.putWeapon(Wand)
     Gento.selectSpell(Healing)
-    assertEquals(Gento.throwSpell(Laudrup), "The spell can not act in that target")
+    assertEquals(Gento.throwSpell(Laudrup), "The spell cannot act on that target")
   }
 }
