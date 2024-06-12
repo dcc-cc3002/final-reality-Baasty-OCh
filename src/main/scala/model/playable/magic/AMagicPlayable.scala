@@ -24,6 +24,7 @@ abstract class AMagicPlayable(name: String, healthPoints: Int,
                               mana: Int) extends APlayable(name, healthPoints, defensePoints, weight) with MagicPlayable {
 
 
+  /**
    * Private variable representing the magical energy available for casting spells. */
   private var Mana: Int = mana
 
