@@ -38,7 +38,7 @@ class PartyTest extends FunSuite {
    * This test adds a playable character to the Party and checks if the character is added successfully.
    */
   test("addCharacter") {
-    assertEquals(Team1.addGameUnit(Cristiano), "The unit was add successfully")
+    assertEquals(Team1.addGameUnit(Cristiano), "The unit was added successfully.")
   }
 
   /**
@@ -46,12 +46,12 @@ class PartyTest extends FunSuite {
    * This test adds three playable characters to the Party and checks if adding a fourth character
    * throws an exception indicating that the Party is full.
    */
-  test("It should throw an exception if the Party cant add more than 3 players") {
-    assertEquals(Team1.addGameUnit(Cristiano), "The unit was add successfully")
-    assertEquals(Team1.addGameUnit(Vinicius), "The unit was add successfully")
-    assertEquals(Team1.addGameUnit(Bellingham), "The unit was add successfully")
+  test("It should throw an exception if the Party cant added more than 3 players") {
+    assertEquals(Team1.addGameUnit(Cristiano), "The unit was added successfully.")
+    assertEquals(Team1.addGameUnit(Vinicius), "The unit was added successfully.")
+    assertEquals(Team1.addGameUnit(Bellingham), "The unit was added successfully.")
 
-    assertEquals(Team1.addGameUnit(Alexis), "The Party cant add more than 3 players, is full")
+    assertEquals(Team1.addGameUnit(Alexis), "The party cannot add more than 3 players; it is full.")
   }
 
   /**
