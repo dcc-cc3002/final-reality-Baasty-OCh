@@ -27,7 +27,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
     notifyInitMessage()
     attackObs += new ObserverAttack(view)
     model.init(this)
-    state = new TurnState(model._participantes)
+    state = new TurnState(model.participants)
     //TurnoDe(model._participantes)
   }
   private def checkFinished(): Unit = {
@@ -116,10 +116,21 @@ class GameController(private val model: GameModel, private val view: GameView) {
     spells(choice)
   }
 */
-  def registerUnit(gUnit: GameUnit) = {
+  def registerAllyUnit(gUnit: GameUnit) = {
     for (o <- attackObs) {
       gUnit.registerAttackObserver(o)
     }
+    model.participants.addPlayer(gUnit)
+    model.allies.addGameUnit(gUnit)
+  }
+
+
+  def registerEnemyUnit(gUnit: GameUnit) = {
+    for (o <- attackObs) {
+      gUnit.registerAttackObserver(o)
+    }
+    model.participants.addPlayer(gUnit)
+    model.enemies.addGameUnit(gUnit)
   }
 
   def notifyInitMessage() = {
