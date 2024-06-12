@@ -1,76 +1,90 @@
 package model.playable.magic
 
-import controller.observers.ObserverAttack
 import exceptions.spells.{InvalidNoEnoughMana, InvalidSpellTarget}
 import exceptions.weapons.InvalidKindOfWeapon
 import model.general.GameUnit
 import model.playable.APlayable
 import model.spell.Spell
+import model.spell.dark.{Fire, Thunder}
+import model.spell.light.{Healing, Paralysis, Poison}
 
 import scala.collection.mutable.ArrayBuffer
 
 /**
- * Abstract class to made a group of magic characters
- * @param name The name of the character.
- * @param healthPoints The health points of the character.
- * @param defensePoints The defense points of the character.
- * @param weight The weight of the character.
- * @param mana The mana of the character.
+ * Abstract class representing a magic playable entity in the game.
+ *
+ * @param name           The name of the character.
+ * @param healthPoints   The health points of the character.
+ * @param defensePoints  The defense points of the character.
+ * @param weight         The weight of the character.
+ * @param mana           The mana points of the character.
  */
-abstract class AMagicPlayable(name:String, healthPoints:Int,
-                              defensePoints:Int, weight:Int,
-                              mana:Int) extends APlayable(name,healthPoints, defensePoints,weight) with MagicPlayable {
+abstract class AMagicPlayable(name: String, healthPoints: Int,
+                              defensePoints: Int, weight: Int,
+                              mana: Int) extends APlayable(name, healthPoints, defensePoints, weight) with MagicPlayable {
 
-  /**
-   * The mana of the character.
-   * This variable is private and represents the magical energy available for casting spells.
-   */
+
+   * Private variable representing the magical energy available for casting spells. */
   private var Mana: Int = mana
 
-  private var _spells = ArrayBuffer.empty[Spell]
-
-
-  override def spells(): ArrayBuffer[Spell] = _spells.clone()
-  def addSpell(spell: Spell): Unit = _spells += spell
+  private val _spells = ArrayBuffer.empty[Spell]
 
   /**
-   * The spell that the character can cast.
-   * This variable is public and represents the current spell associated with the character.
-   */
+   * Retrieves a clone of the spells available to the magic playable entity.
+   * @return A clone of the ArrayBuffer containing the spells. */
+  override def spells(): ArrayBuffer[Spell] = _spells.clone()
+
+  /**
+   * Method to add a spell to the magic playable entity's repertoire.
+   * @param spell The spell to add. */
+  def addSpell(spell: Spell): Unit = _spells += spell
+
+  // Adding default spells
+  addSpell(new Healing)
+  addSpell(new Paralysis)
+  addSpell(new Poison)
+  addSpell(new Fire)
+  addSpell(new Thunder)
+
+  /** Public variable representing the current spell associated with the magic playable entity. */
   var spell: Spell
 
   /**
-   * Implementation of Method to get the mana points of the playable entity
-   *
-   * @return The mana of playable entity
-   */
+   * Retrieves the current mana points of the magic playable entity.
+   * @return The current mana points. */
   override def getMana: Int = Mana
 
+  /**
+   * Overrides the playing style method to indicate that this entity is a magic playable.
+   * @return The string "magicPlayable". */
   override def HowIPlay(): String = "magicPlayable"
 
+  /**
+   * Returns the identifier indicating that this entity is magical.
+   * @return The integer 2. */
   override def IAmMagic(): Int = 2
 
+  /**
+   * Retrieves the magical identifier of another GameUnit entity.
+   * @param gameUnit The entity being queri
+   * @return The result of calling `IAmMagic()` on the queried entity. */
   override def IsMagic(gameUnit: GameUnit): Int = {
     gameUnit.IAmMagic()
   }
 
   /**
-   * Implementation of Method to set the mana points of the playable entity
-   *
-   * @param newMana represent the new mana points of the playable entity
-   */
+   * Sets the current mana points of the magic playable entity.
+   * @param newMana The new mana points. */
   def setMana(newMana: Int): Unit = {
     this.Mana = newMana
   }
 
   /**
-   * Checks if the character has enough mana to cast the current spell.
-   * If the character has sufficient mana to cast the spell, returns "It is Enough".
-   * Otherwise, throws an InvalidnoEnoughMana exception with a message indicating the mana insufficiency.
-   *
-   * @return "It is Enough" if the mana points are sufficient to cast the spell
-   * @throws InvalidNoEnoughMana if the mana points are insufficient to cast the spell
-   */
+   * Checks if the magic playable entity has enough mana to cast the current spell.
+   * If enough mana is available, returns "It is Enough".
+   * Otherwise, throws an InvalidNoEnoughMana exception.
+   * @return "It is Enough" if sufficient mana is availab
+   * @throws InvalidNoEnoughMana if insufficient mana is available. */
   def hasEnoughMana: String = {
     if (this.Mana < spell.getCost) {
       throw new InvalidNoEnoughMana(s"The character ${this.getName} does not have enough mana to use the spell.")
@@ -80,84 +94,74 @@ abstract class AMagicPlayable(name:String, healthPoints:Int,
   }
 
   /**
-   * Checks if the character has a magic weapon equipped.
-   * If the character has a magic weapon equipped, returns "good".
-   * Otherwise, throws an InvalidkindOfWeapon exception with a message indicating that the weapon is not magic.
-   *
-   * @return "good" if the character has a magic weapon equipped
-   * @throws InvalidKindOfWeapon if the character does not have a magic weapon equipped
-   */
+   * Checks if the magic playable entity has a magic weapon equipped.
+   * If a magic weapon is equipped, returns "Yes".
+   * Otherwise, throws an InvalidKindOfWeapon exception.
+   * @return "Yes" if a magic weapon is equipp
+   * @throws InvalidKindOfWeapon if no magic weapon is equipped. */
   def hasMagicWeapon: String = {
     try {
       this.arma.exists(_.iAmMagic)
       "Yes"
     } catch {
-      case _: InvalidKindOfWeapon => s" The weapon is not magic"
+      case _: InvalidKindOfWeapon => s"The weapon is not magic"
     }
   }
 
   /**
-   * Allows the character to choose a spell for casting.
-   * @param spell The spell to be chosen by the character.
-   * @return A message indicating the success of the spell selection.
-   */
+   * Allows the magic playable entity to select a spell for casting.
+   * @param spell The spell to be select
+   * @return A message indicating the success of selecting the spell. */
   def selectSpell(spell: Spell): String
 
   /**
-   * Throws a spell at a target game unit.
-   * This method performs several checks before throwing the spell:
-   *   - It verifies if the character has a magic weapon equipped.
-   *   - It checks if the character has enough mana to cast the spell.
-   *   - It verifies if the target can suffer the effects of the spell.
-   *   - Finally, it applies the effects of the spell on the target.
-   *
-   * @param target The game unit at which the spell is aimed.
-   * @return A message indicating the success of casting the spell.
-   * @throws InvalidSpellTarget if the spell cannot act on the specified target.
-   */
+   * Throws the current spell at a target GameUnit entity.
+   * Performs checks to ensure:
+   * - The entity has a magic weapon equipped.
+   * - The entity has enough mana to cast the spell.
+   * - The spell can affect the target entity.
+   * If all conditions are met, applies the spell's effects on the target.
+   * @param target The target GameUnit entity.
+   * @return A message indicating the success of casting the spe
+   * @throws InvalidSpellTarget if the spell cannot affect the target entity. */
   override def throwSpell(target: GameUnit): String = {
     try {
       this.hasMagicWeapon
       this.hasEnoughMana
       target.canSuffer(spell)
-      this.setMana(this.getMana-spell.getCost)
+      this.setMana(this.getMana - spell.getCost)
       for (o <- attackObs) {
-        o.notifySpellAttack(this, target, spell, 5)
+        o.notifySpellAttack(this, target, spell, 0)
       }
       spell.Effect(target)
-      "nice spell"
+      "Nice spell"
     } catch {
-      case _: InvalidSpellTarget => s"The spell can not act in that target"
+      case _: InvalidSpellTarget => s"The spell cannot act on that target"
     }
   }
 
   /**
-   * Abstract method to checks if the character can select a healing spell.
-   * @return true if the character can select a healing spell, false otherwise.
-   */
+   * Abstract method to check if the magic playable entity can select a healing spell.
+   * @return true if the entity can select a healing spell, false otherwise. */
   def canSelectHealing(): Boolean
 
   /**
-   * Abstract method to checks if the character can select a poison spell.
-   * @return true if the character can select a poison spell, false otherwise.
-   */
+   * Abstract method to check if the magic playable entity can select a poison spell.
+   * @return true if the entity can select a poison spell, false otherwise. */
   def canSelectPoison(): Boolean
 
   /**
-   * Abstract method to checks if the character can select a paralysis spell.
-   * @return true if the character can select a paralysis spell, false otherwise.
-   */
+   * Abstract method to check if the magic playable entity can select a paralysis spell.
+   * @return true if the entity can select a paralysis spell, false otherwise. */
   def canSelectParalysis(): Boolean
 
   /**
-   * Abstract method to checks if the character can select a fire spell.
-   * @return true if the character can select a fire spell, false otherwise.
-   */
+   * Abstract method to check if the magic playable entity can select a fire spell.
+   * @return true if the entity can select a fire spell, false otherwise. */
   def canSelectFire(): Boolean
 
   /**
-   * Abstract method to checks if the character can select a thunder spell.
-   * @return true if the character can select a thunder spell, false otherwise.
-   */
+   * Abstract method to check if the magic playable entity can select a thunder spell.
+   * @return true if the entity can select a thunder spell, false otherwise. */
   def canSelectThunder(): Boolean
 }
