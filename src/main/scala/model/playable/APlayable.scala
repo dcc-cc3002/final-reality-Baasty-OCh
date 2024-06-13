@@ -118,7 +118,7 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
         "The enemy was attacked"
       }
       else {
-        entity.setDp(entity.getDp - damage.abs)
+        entity.setDp(damage.abs)
         "The enemy was attacked, but the damage is not enough"
       }
     } catch {
@@ -152,6 +152,8 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
   def IsMagic(gameUnit: GameUnit): Int = {
     gameUnit.IAmCommon()
   }
+
+  override def IAmCommon(): Int = 1
 
   /**
    * Method to simulate the playable entity being attacked.

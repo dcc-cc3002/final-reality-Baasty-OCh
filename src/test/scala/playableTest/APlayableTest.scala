@@ -126,8 +126,7 @@ class APlayableTest extends FunSuite{
    * Test case when a 'Playable' was attack by other entity
    * This test verifies if the 'wasAttacked' method inflicts the correct damage on the Paladin 'Di_Stefano', Ninja 'Puskas',
    * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento' when are attacked by entity with 45 points of power
-   * and when the power is 200
-   */
+   * and when the power is 200 */
   test("wasAttacked"){
     Di_Stefano.wasAttacked(45)
     assertEquals(Di_Stefano.getHp,55)
@@ -160,8 +159,7 @@ class APlayableTest extends FunSuite{
    * This test checks the attack functionality of different characters against enemy game units.
    * Each character equips a different weapon (Staff, Wand, Sword, Bow, Axe) and attacks enemy units (Iniesta and Puyol).
    * The expected result is "The enemy was Attack" if the attack is successful, and "The enemy was Attack,
-   * but the damage is not enough" if the attack is not strong enough to defeat the enemy.
-   */
+   * but the damage is not enough" if the attack is not strong enough to defeat the enemy. */
   test("attack") {
     val Staff: Staff = new Staff()
     val Wand: Wand = new Wand()
