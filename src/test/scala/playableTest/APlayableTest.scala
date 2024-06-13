@@ -4,15 +4,19 @@ import model.nonplayable.Enemy
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.{BlackMagican, WhiteMagican}
+import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
+
+
+import scala.collection.mutable.ArrayBuffer
 
 /**
  * Test suite for the abstract class `APlayable` and its subclasses.
  * This suite verifies the behavior of playable characters in the game.
  */
-class APlayableTest extends FunSuite{
+class APlayableTest extends FunSuite {
   var Di_Stefano: Playable = _
   var Puskas: Playable = _
   var Amancio: Playable = _
@@ -109,6 +113,20 @@ class APlayableTest extends FunSuite{
     assertEquals(Gento.getWeight, 60)
   }
 
+
+  test("Style"){
+    assertEquals(Di_Stefano.Style(Di_Stefano), "playable")
+    assertEquals(Puskas.Style(Puskas), "playable")
+    assertEquals(Amancio.Style(Amancio), "playable")
+  }
+
+  test("IsMagic"){
+    assertEquals(Di_Stefano.IsMagic(Di_Stefano), 1)
+    assertEquals(Puskas.IsMagic(Puskas), 1)
+    assertEquals(Amancio.IsMagic(Amancio), 1)
+
+  }
+
   /**
    * Test case for `hasWeapon` method.
    * This test verifies if the Paladin 'Di_Stefano', Ninja 'Puskas',
@@ -120,6 +138,24 @@ class APlayableTest extends FunSuite{
     assertEquals(Amancio.hasWeapon, None)
     assertEquals(Kopa.hasWeapon, None)
     assertEquals(Gento.hasWeapon, None)
+  }
+
+  test("ArrayOfWeapons"){
+    assertEquals(Di_Stefano.weapons(),ArrayBuffer(Di_Stefano.Bow,
+                 Di_Stefano.Sword,Di_Stefano.Axe,Di_Stefano.Staff,Di_Stefano.Wand))
+
+    assertEquals(Kopa.weapons(),ArrayBuffer(Kopa.Bow,
+      Kopa.Sword,Kopa.Axe,Kopa.Staff,Kopa.Wand))
+
+    assertEquals(Amancio.weapons(),ArrayBuffer(Amancio.Bow,
+      Amancio.Sword,Amancio.Axe,Amancio.Staff,Amancio.Wand))
+
+    assertEquals(Puskas.weapons(),ArrayBuffer(Puskas.Bow,
+      Puskas.Sword,Puskas.Axe,Puskas.Staff,Puskas.Wand))
+
+    assertEquals(Gento.weapons(),ArrayBuffer(Gento.Bow,
+      Gento.Sword,Gento.Axe,Gento.Staff,Gento.Wand))
+
   }
 
   /**
@@ -152,6 +188,29 @@ class APlayableTest extends FunSuite{
     assertEquals(Gento.getHp,55)
     Gento.wasAttacked(200)
     assertEquals(Gento.getHp,0)
+  }
+
+  test("getAttack") {
+    val Staff: Staff = new Staff()
+    val Wand: Wand = new Wand()
+    val Sword: Sword = new Sword()
+    val Bow: Bow = new Bow()
+    val Axe: Axe = new Axe()
+
+    Gento.putWeapon(Wand)
+    assertEquals(Gento.getAttack,50)
+
+    Kopa.putWeapon(Staff)
+    assertEquals(Kopa.getAttack,70)
+
+    Di_Stefano.putWeapon(Sword)
+    assertEquals(Di_Stefano.getAttack,70)
+
+    Puskas.putWeapon(Bow)
+    assertEquals(Puskas.getAttack,40)
+
+    Amancio.putWeapon(Axe)
+    assertEquals(Amancio.getAttack,50)
   }
 
   /**

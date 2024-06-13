@@ -19,15 +19,19 @@ import scala.collection.mutable.ArrayBuffer
  * @param defensePoints The defense points of the character.
  * @param weight The weight of the character.
  */
-protected abstract class APlayable(val name: String, var healthPoints: Int,
+abstract class APlayable(val name: String, var healthPoints: Int,
                                    var defensePoints: Int, val weight: Int) extends Playable {
   require(healthPoints >= 0, "Health points must be non-negative.")
   require(defensePoints >= 0, "Defense points must be non-negative.")
   require(weight >= 0, "Weight must be non-negative.")
 
   protected var attackObs = ArrayBuffer.empty[ObserverAttack]
-
   private val _weapons = ArrayBuffer.empty[Weapon]
+  private val Arco: Weapon = new Bow
+  private val Espada: Weapon = new Sword
+  private val Hacha: Weapon = new Axe
+  private val Baston: Weapon = new Staff
+  private val Varita: Weapon = new Wand
 
   /**
    * Retrieves a clone of the weapons currently equipped by the playable entity.
@@ -38,11 +42,17 @@ protected abstract class APlayable(val name: String, var healthPoints: Int,
    * Auxiliary method to add default weapons to the playable entity's arsenal. */
   private def addWeapon(weapon: Option[Weapon]): Unit = _weapons += weapon.get
 
-  addWeapon(Some(new Bow))
-  addWeapon(Some(new Sword))
-  addWeapon(Some(new Axe))
-  addWeapon(Some(new Staff))
-  addWeapon(Some(new Wand))
+  def Bow = Arco
+  def Sword = Espada
+  def Axe = Hacha
+  def Staff = Baston
+  def Wand = Varita
+
+  addWeapon(Some(Arco))
+  addWeapon(Some(Espada))
+  addWeapon(Some(Hacha))
+  addWeapon(Some(Baston))
+  addWeapon(Some(Varita))
 
   /**
    * Retrieves the name of the playable entity.

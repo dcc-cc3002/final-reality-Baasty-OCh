@@ -68,4 +68,10 @@ trait Playable extends GameUnit{
    * @return true, we have to attack enemy entities */
   def CanAttackEnemies(): Boolean = true
 
+  def Bow : Weapon
+  def Sword : Weapon
+  def Axe : Weapon
+  def Staff : Weapon
+  def Wand : Weapon
+
 }
