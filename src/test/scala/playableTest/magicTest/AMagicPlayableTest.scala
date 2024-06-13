@@ -27,6 +27,17 @@ class AMagicPlayableTest extends FunSuite{
     Gento = new WhiteMagican("Gento")
   }
 
+  test("Style"){
+    assertEquals(Kopa.Style(Kopa), "magicPlayable")
+    assertEquals(Gento.Style(Gento), "magicPlayable")
+  }
+
+
+  test("IsMagic"){
+    assertEquals(Kopa.IsMagic(Kopa), 2)
+    assertEquals(Gento.IsMagic(Gento), 2)
+  }
+
   /**
    * Test case for `getMana` method.
    * This test verifies if the returned mana value for the character BlackMagican `Kopa` and WhiteMagican 'Gento'
