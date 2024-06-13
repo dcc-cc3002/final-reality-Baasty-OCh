@@ -78,6 +78,33 @@ abstract class APlayable(val name: String, var healthPoints: Int,
     this.defensePoints = newDp
   }
 
+  def IAmMagic(): Int = 0
+  /**
+   * Gets the mana points of the game unit.
+   * @return The mana points of the game unit. */
+  def getMana: Int = 0
+
+  /**
+   * Abstract Method Throws a spell at a target game unit.
+   * @param target The game unit at which the spell is aimed.
+   * @return A message indicating the success of casting the spell.
+   */
+  def throwSpell(target: GameUnit): String = "nothing"
+
+
+  /**
+   * Allows the character to choose a spell for casting.
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
+  def selectSpell(spell: Spell): String = "nothing"
+
+
+  /**
+   * Gets the list of spells usable by the game unit.
+   * @return An ArrayBuffer containing the spells usable by the game unit. */
+  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
+
   /**
    * Retrieves the defense points of the playable entity.
    * @return The defense points of the playable entity. */

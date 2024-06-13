@@ -86,7 +86,7 @@ trait GameUnit {
   /**
    * Gets the mana points of the game unit.
    * @return The mana points of the game unit. */
-  def getMana: Int = 0
+  def getMana: Int
 
   /**
    * Equips a weapon on the game unit.
@@ -114,19 +114,19 @@ trait GameUnit {
   /**
    * Abstract auxiliary method to know if a game unit is a Common one or not..
    * @return An integer representing the common attributes. */
-  def IAmCommon(): Int = 0
+  def IAmCommon(): Int
 
   /**
    * Abstract auxiliary method to know if a game unit is a Magic one or not..
    * @return An integer representing the magic attributes. */
-  def IAmMagic(): Int = 0
+  def IAmMagic(): Int
 
   /**
    * Abstract Method Throws a spell at a target game unit.
    * @param target The game unit at which the spell is aimed.
    * @return A message indicating the success of casting the spell.
    */
-  def throwSpell(target: GameUnit): String = "nothing"
+  def throwSpell(target: GameUnit): String
 
 
   /**
@@ -134,13 +134,13 @@ trait GameUnit {
    * @param spell The spell to be chosen by the character.
    * @return A message indicating the success of the spell selection.
    */
-  def selectSpell(spell: Spell): String = "nothing"
+  def selectSpell(spell: Spell): String
 
 
   /**
    * Gets the list of spells usable by the game unit.
    * @return An ArrayBuffer containing the spells usable by the game unit. */
-  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
+  def spells(): ArrayBuffer[Spell]
 
   /**
    * Gets the list of weapons usable by the game unit.

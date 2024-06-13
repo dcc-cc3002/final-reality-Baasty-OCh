@@ -1,15 +1,22 @@
 package nonplayableTest
 
+import exceptions.weapons.InvalidPutWeaponException
 import model.nonplayable.Enemy
 import model.playable.Playable
 import model.playable.common.Paladin
+import model.spell.Spell
+import model.spell.dark.Fire
+import model.weapons.Weapon
+import model.weapons.common.Bow
 import munit.FunSuite
+
+import scala.collection.mutable.ArrayBuffer
 /**
  * Test suite for the Enemy class.
  * This suite contains tests for the Enemy class, which represents enemy game units.
  * It includes tests for methods such as equals, setName, setWeight, setAttack, setDefencePoints, attack, and wasInjure.
  */
-class EnemyTest extends FunSuite {
+class AEnemyTest extends FunSuite {
   var Neymar: Enemy = _
   var Pedro : Enemy = _
   var Cristiano: Playable = _
@@ -23,7 +30,7 @@ class EnemyTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     Neymar = new Enemy("Neymar")
-    Pedro = new Enemy("Pedro",100,50,50,0)
+    Pedro = new Enemy("Pedro",100,50,50,15)
     Cristiano = new Paladin("Cristiano",100,50,25)
   }
 
@@ -38,6 +45,35 @@ class EnemyTest extends FunSuite {
     assertEquals(Neymar.equals(Cristiano),false)
   }
 
+  test("Style"){
+    assertEquals(Neymar.Style(Neymar), "enemy")
+  }
+
+  test("IsMagic"){
+    assertEquals(Neymar.IsMagic(Neymar),0)
+  }
+  test("IAmMagic"){
+    assertEquals(Neymar.IAmMagic(),0)
+  }
+  test("getMana"){
+    assertEquals(Neymar.getMana,0)
+  }
+
+  test("selectSpell"){
+    val Fire: Spell = new Fire
+    assertEquals(Neymar.selectSpell(Fire),"nothing")
+  }
+
+  test("throwSpell"){
+    assertEquals(Neymar.throwSpell(Cristiano),"nothing")
+  }
+
+  test("ArrayOfWeapons"){
+    assertEquals(Neymar.weapons(),ArrayBuffer.empty[Weapon])
+  }
+  test("ArrayOfSpells"){
+    assertEquals(Neymar.spells(), ArrayBuffer.empty[Spell])
+  }
   /**
    * Test case for the 'getName' method.
    * This test verifies the functionality of the getName method by checking if the name of Neymar is set correctly.
@@ -70,15 +106,21 @@ class EnemyTest extends FunSuite {
     assertEquals(Neymar.getDp,50)
   }
 
+  test("It should throw an exception if a enemy cannot equip a Weapon"){
+    val Bow: Weapon = new Bow()
+    assertEquals(Neymar.putWeapon(Bow), "Invalid")
+  }
+
   /**
    * Test case for the 'attack' method.
    * This test checks the attack functionality of Neymar and Pedro against a playable game unit.
    * It verifies if the target was attacked successfully and if the damage was not enough in Pedro's case.
    */
   test("attack"){
+    assertEquals(Pedro.attack(Cristiano), "The enemy was attacked, but the damage is not enough")
     assertEquals(Neymar.attack(Cristiano), "The target was attacked")
-    //assertEquals(Pedro.attack(Cristiano), "The enemy was attacked, but the damage is not enough")
-  }
+
+    }
 
   /**
    * Test case for verifying if an exception is thrown when Neymar attacks a game unit.

@@ -34,7 +34,7 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
   /**
    * Retrieves a clone of the weapons currently equipped by the enemy.
    * @return A clone of the ArrayBuffer containing the enemy's weapons. */
-  override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
+  override def weapons(): ArrayBuffer[Weapon] = _weapons
 
   /**
    * Retrieves the name of the non-playable entity.
@@ -74,6 +74,35 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
   def setDp(newDp: Int): Unit = {
     this.defence = newDp
   }
+
+  def IAmCommon(): Int = 0
+
+  def IAmMagic(): Int = 0
+  /**
+   * Gets the mana points of the game unit.
+   * @return The mana points of the game unit. */
+  def getMana: Int = 0
+
+  /**
+   * Abstract Method Throws a spell at a target game unit.
+   * @param target The game unit at which the spell is aimed.
+   * @return A message indicating the success of casting the spell.
+   */
+  def throwSpell(target: GameUnit): String = "nothing"
+
+
+  /**
+   * Allows the character to choose a spell for casting.
+   * @param spell The spell to be chosen by the character.
+   * @return A message indicating the success of the spell selection.
+   */
+  def selectSpell(spell: Spell): String = "nothing"
+
+
+  /**
+   * Gets the list of spells usable by the game unit.
+   * @return An ArrayBuffer containing the spells usable by the game unit. */
+  def spells(): ArrayBuffer[Spell] = ArrayBuffer.empty[Spell]
 
   /**
    * Retrieves the style of the non-playable entity.
@@ -161,7 +190,11 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
    * Method to equip a Weapon on a Non-Playable Entity.
    * @param weapon The weapon to be equipped.
    * @return A message indicating the success or failure of equipping the weapon. */
-  def putWeapon(weapon: Weapon): String = throw new InvalidPutWeaponException
-
+  def putWeapon(weapon: Weapon): String =
+    try {
+      throw new InvalidPutWeaponException
+    } catch {
+      case e: InvalidPutWeaponException => "Invalid"
+    }
 
 }
