@@ -12,16 +12,25 @@ class ActionState(private val ally: GameUnit,val people : TurnSchedule) extends 
   private var selected: Option[GameState] = None
 
   override def notify(controller: GameController): Unit = {
-    controller.notifyPlayerUnits()
     controller.notifyPlayerAction()
   }
 
   override def handleInput(controller: GameController): Unit = {
     val choice = controller.getNumericalInput()
+    if (!ally.arma.isEmpty){
+      choice match {
+        case 0 => selected = Some(new SurrenderState())
+        case 1 => selected = Some(new TargetState(ally,people))
+        case 2 => selected = Some(new WeaponState(ally,people))
+
+      }
+    } else {
     choice match {
       case 0 => selected = Some(new SurrenderState())
       case 1 => selected = Some(new WeaponState(ally,people))
+      case 2 => selected = Some(new WeaponState(ally,people))
       case _ => controller.notifyErrorInvalidOption(choice)
+    }
     }
   }
 

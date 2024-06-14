@@ -38,6 +38,7 @@ class Paladin(name:String, healthPoints: Int,
    */
   def putWeapon(weapon: Weapon): String = {
     try {
+      this.dropWeapon()
       weapon.canBeEquippedBy(this)
       this.arma = Some(weapon)
       weapon.setOwner(this)

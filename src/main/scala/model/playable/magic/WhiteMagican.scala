@@ -36,6 +36,7 @@ class WhiteMagican(name:String, healthPoints:Int,
    *         negative one in other cases, with his particular exception. */
   def putWeapon(weapon: Weapon): String = {
     try {
+      this.dropWeapon()
       weapon.canBeEquippedBy(this)
       this.arma = Some(weapon)
       weapon.setOwner(this)

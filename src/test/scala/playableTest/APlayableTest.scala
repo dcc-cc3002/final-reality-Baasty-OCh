@@ -121,9 +121,9 @@ class APlayableTest extends FunSuite {
   }
 
   test("IsMagic"){
-    assertEquals(Di_Stefano.IsMagic(Di_Stefano), 1)
-    assertEquals(Puskas.IsMagic(Puskas), 1)
-    assertEquals(Amancio.IsMagic(Amancio), 1)
+    assertEquals(Di_Stefano.IsMagic(Di_Stefano), 0)
+    assertEquals(Puskas.IsMagic(Puskas), 0)
+    assertEquals(Amancio.IsMagic(Amancio), 0)
 
   }
 

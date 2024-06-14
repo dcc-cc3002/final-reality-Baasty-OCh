@@ -1,7 +1,7 @@
 package controller
 
 import model.general.GameModel
-import states.{GameState, InitialPlayerState, TurnState}
+import states.{GameState, InitialPlayerState, SurrenderState, TurnState}
 import observers._
 import model.general.GameUnit
 import model.nonplayable.Enemy
@@ -33,13 +33,13 @@ class GameController(private val model: GameModel, private val view: GameView) {
   private def checkFinished(): Unit = {
     if (win()) {
       view.displayVictory()
-    } else if (lose(false)) {
+    } else if (lose()) {
       view.displayDefeat()
     }
   }
 
   def hasFinished(): Boolean = {
-    win() || lose(false)
+    win() || (lose() || abandonaste())
   }
 
   def handleInput(): Unit = {
@@ -119,6 +119,10 @@ class GameController(private val model: GameModel, private val view: GameView) {
     view.displayInitMessage()
   }
 
+  def notifyReportMessage() = {
+    view.displayReportMessage(model.allies,model.enemies)
+  }
+
   def notifyPlayerStart(pj:GameUnit) = {
     view.displayPlayerStart(pj)
   }
@@ -131,6 +135,10 @@ class GameController(private val model: GameModel, private val view: GameView) {
     view.displayPlayerUnits(model.allies)
   }
 
+  def notifySurrenderMessage() = {
+    view.displaySurrender()
+  }
+
   def notifyMagicPlayerAction() = {
     view.displayMagicPlayerAction()
   }
@@ -141,6 +149,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
 
   def notifyPlayerTarget() = {
     view.displayPlayerTarget(model.enemies)
+  }
+  def notifyMagicPlayerTarget() = {
+    view.displayMagicPlayerTarget(model.enemies)
   }
 
   def notifyPlayerUnitSpells(pUnit: GameUnit) = {
@@ -175,8 +186,15 @@ class GameController(private val model: GameModel, private val view: GameView) {
     model.enemies.isDefeated()
   }
 
-  def lose(x:Boolean): Boolean = {
-    model.allies.isDefeated() || x
+  def lose(): Boolean = {
+    model.allies.isDefeated()
+  }
+  def abandono(): Boolean = {false}
+
+  def abandonaste(): Boolean = {
+    if (state == new SurrenderState()){
+      true
+    } else false
   }
 
 }

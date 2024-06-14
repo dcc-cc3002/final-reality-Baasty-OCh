@@ -48,13 +48,13 @@ class GameModel {
     val Zidane: Playable = new WhiteMagican("Zidane", 150, 50, 7, 25)
     controller.registerAllyUnit(Cristiano)
     controller.registerAllyUnit(Vini)
-    controller.registerAllyUnit(Zidane)
+    //controller.registerAllyUnit(Zidane)
 
     val Messi: NonPlayable = new Enemy("Messi", 250, 50, 55, 20)
     val Guardiola: NonPlayable = new Enemy("Guardiola", 200, 25, 45, 30)
     val Laporta: NonPlayable = new Enemy("Laporta", 250, 100, 3, 100)
     controller.registerEnemyUnit(Messi)
     controller.registerEnemyUnit(Guardiola)
-    controller.registerEnemyUnit(Laporta)
+    //controller.registerEnemyUnit(Laporta)
   }
 }

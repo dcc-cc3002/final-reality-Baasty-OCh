@@ -1,10 +1,12 @@
 package model.view
 
 import controller.observers._
+
 import scala.io.StdIn
-import scala.collection.mutable.{Queue, ArrayBuffer}
+import scala.collection.mutable.{ArrayBuffer, Queue}
 import model.general.GameUnit
 import model.general.party.Party
+import model.general.schedule.TurnSchedule
 import model.spell.Spell
 import model.weapons.Weapon
 
@@ -30,6 +32,13 @@ class GameView {
    */
   def displayInitMessage(): Unit = {
     queue.enqueue("Bienvenido al combate!")
+    queue.enqueue("Ojo con el peso!")
+  }
+
+  def displayReportMessage(allies:Party, enemies: Party): Unit = {
+    queue.enqueue("Estado de la Partida:")
+    displayPlayerUnits(allies)
+    displayEnemiesUnits(enemies)
   }
 
   /**
@@ -70,23 +79,42 @@ class GameView {
     }
   }
 
+
+  /**
+   * Displays the status of enemy player units.
+   *
+   * @param enemies The player's party.
+   */
+  def displayEnemiesUnits(enemies: Party): Unit = {
+    queue.enqueue("Estado de los enemigos:")
+    for (i <- enemies.buff.indices) {
+      queue.enqueue(s"${i+1}) ${enemies.buff(i).getName} || PV: ${enemies.buff(i).getHp} " +
+        s"|| WT: ${enemies.buff(i).getWeight + enemies.buff(i).arma.map(_.getWeight).getOrElse(0)}")
+    }
+  }
+
   /**
    * Displays the available actions for the player including magic options.
    */
   def displayMagicPlayerAction(): Unit = {
     queue.enqueue("Escoge una acción:")
+    queue.enqueue("0) Abandonar Partida")
     queue.enqueue("1) Atacar")
-    queue.enqueue("2) Usar Magia")
-    queue.enqueue("5) Terminar Partida")
-  }
+    queue.enqueue("2) Atacar con Magia")
+    queue.enqueue("3) Cambiar Arma")
+    queue.enqueue("4) Cambiar Hechizo")
+    }
 
   /**
    * Displays the available actions for the player.
    */
   def displayPlayerAction(): Unit = {
     queue.enqueue("Escoge una acción:")
+    queue.enqueue("0) Abandonar partida")
     queue.enqueue("1) Atacar")
-    queue.enqueue("5) Terminar Partida")
+    queue.enqueue("2) Cambiar Arma")
+
+
   }
 
   /**
@@ -101,6 +129,16 @@ class GameView {
       queue.enqueue(s"${i+1}) ${enemies.buff(i).getName} ${enemies.buff(i).getHp} PV || ${enemies.buff(i).getDp} DP " +
         s"|| ${enemies.buff(i).getAttack} AP")
     }
+  }
+
+  def displayMagicPlayerTarget(enemies: Party): Unit = {
+    queue.enqueue("Escoge un enemigo:")
+    queue.enqueue("0) Volver a elegir Arma")
+    for (i <- enemies.buff.indices) {
+      queue.enqueue(s"${i+1}) ${enemies.buff(i).getName} ${enemies.buff(i).getHp} PV || ${enemies.buff(i).getDp} DP " +
+        s"|| ${enemies.buff(i).getAttack} AP")
+    }
+    queue.enqueue("4) Volver a elegir Hechizo")
   }
 
   /**
@@ -141,7 +179,7 @@ class GameView {
     for (i <- weapons.indices) {
       queue.enqueue(s"${i+1}) ${weapons(i).getName} ${weapons(i).getAttack} AP")
     }
-    queue.enqueue("4) Volver a elegir Hechizo")
+    queue.enqueue("6) Volver a elegir Hechizo")
   }
 
   /**
@@ -220,7 +258,7 @@ class GameView {
    * Displays the surrender message.
    */
   def displaySurrender(): Unit = {
-    queue.enqueue("Perdiste, COBARDE!!")
+    queue.enqueue("COBARDEEE!!")
   }
 
   /**

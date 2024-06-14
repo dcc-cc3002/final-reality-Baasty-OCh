@@ -63,7 +63,7 @@ abstract class AMagicPlayable(name: String, healthPoints: Int,
   /**
    * Returns the identifier indicating that this entity is magical.
    * @return The integer 2. */
-  override def IAmMagic(): Int = 2
+  override def IAmMagic(): Int = 1
 
   /**
    * Retrieves the magical identifier of another GameUnit entity.

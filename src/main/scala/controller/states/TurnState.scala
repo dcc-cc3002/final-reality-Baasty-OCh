@@ -9,7 +9,7 @@ class TurnState(val people:TurnSchedule) extends AGameState {
   var pj : GameUnit = calcTurns(people)
   var choice: Int = 0
 
-  def calcTurns(t:TurnSchedule): GameUnit ={
+  private def calcTurns(t:TurnSchedule): GameUnit ={
     while(t.turns.isEmpty){
       t.fillActionBar(5)
     }
@@ -18,7 +18,7 @@ class TurnState(val people:TurnSchedule) extends AGameState {
   }
 
   override def notify(controller: GameController) = {
-   // controller.notifyInitMessage()
+   controller.notifyReportMessage()
   }
 
   override def handleInput(controller: GameController): Unit = {

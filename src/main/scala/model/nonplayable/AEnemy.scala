@@ -197,4 +197,5 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
       case e: InvalidPutWeaponException => "Invalid"
     }
 
+  def dropWeapon(): Unit = {}
 }

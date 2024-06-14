@@ -34,8 +34,8 @@ class AMagicPlayableTest extends FunSuite{
 
 
   test("IsMagic"){
-    assertEquals(Kopa.IsMagic(Kopa), 2)
-    assertEquals(Gento.IsMagic(Gento), 2)
+    assertEquals(Kopa.IsMagic(Kopa), 1)
+    assertEquals(Gento.IsMagic(Gento), 1)
   }
 
   /**

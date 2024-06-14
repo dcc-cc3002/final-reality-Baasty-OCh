@@ -190,7 +190,7 @@ abstract class APlayable(val name: String, var healthPoints: Int,
     gameUnit.IAmCommon()
   }
 
-  override def IAmCommon(): Int = 1
+  override def IAmCommon(): Int = 0
 
   /**
    * Method to simulate the playable entity being attacked.

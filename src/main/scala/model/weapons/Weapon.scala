@@ -32,6 +32,8 @@ trait Weapon{
    */
   def setOwner(newOwner:Playable) : Unit
 
+  def getOwner(): Option[Playable]
+
   /**
    * Abstract method to check if a Weapon entity (weapon) can be equipped by some particular playable entity
    * @param player The possible owner of the weapon

@@ -151,4 +151,6 @@ trait GameUnit {
    * Registers an attack observer for the game unit.
    * @param obs The observer to be registered. */
   def registerAttackObserver(obs: ObserverAttack): Unit
+
+  def dropWeapon(): Unit
 }
