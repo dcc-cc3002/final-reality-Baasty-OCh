@@ -32,11 +32,28 @@ class GameView {
    */
   def displayInitMessage(): Unit = {
     queue.enqueue("Bienvenido al combate!")
-    queue.enqueue("Ojo con el peso!")
+    queue.enqueue("En el siguiente combate el peso de los personajes (WT)")
+    queue.enqueue("es la clave para obtener el turno de participacion, entre menor sea tu peso mas rapido accederas ")
+    queue.enqueue("al turno, las armas tienen punto de ataque (AP) y peso (WT), ")
+    queue.enqueue("entre mas ataque tenga un arma, mas pesada será, ELIGE CON SABIDURIA")
+    queue.enqueue("si un personaje sin arma ataca su daño sera cero 0")
+    queue.enqueue("NO todas las armas son seleccionables por todos los personajes, ojo con eso")
+    queue.enqueue("Un arma con dueño NO puede ser ocupada por otro aliado")
+    queue.enqueue("Para esta version aun no estan implementada la magia (ni hechizos, ni personajes)")
+    queue.enqueue("Buena suerte! La necesitaras...")
+
+
+
+  }
+
+  object ConsoleColors {
+    val RED = "\u001b[31m"
+    val RESET = "\u001b[0m"
+    val GREEN = "\u001b[32m"
   }
 
   def displayReportMessage(allies:Party, enemies: Party): Unit = {
-    queue.enqueue("Estado de la Partida:")
+    queue.enqueue("Estado de la Partida")
     displayPlayerUnits(allies)
     displayEnemiesUnits(enemies)
   }
@@ -74,8 +91,14 @@ class GameView {
   def displayPlayerUnits(allies: Party): Unit = {
     queue.enqueue("Estado de los aliados:")
     for (i <- allies.buff.indices) {
-      queue.enqueue(s"${i+1}) ${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " +
-        s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}")
+      if (allies.buff(i).getHp == 0){
+        queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
+          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}${ConsoleColors.RESET}")
+      } else {
+        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
+          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}${ConsoleColors.RESET}")
+
+      }
     }
   }
 
@@ -88,8 +111,14 @@ class GameView {
   def displayEnemiesUnits(enemies: Party): Unit = {
     queue.enqueue("Estado de los enemigos:")
     for (i <- enemies.buff.indices) {
-      queue.enqueue(s"${i+1}) ${enemies.buff(i).getName} || PV: ${enemies.buff(i).getHp} " +
-        s"|| WT: ${enemies.buff(i).getWeight + enemies.buff(i).arma.map(_.getWeight).getOrElse(0)}")
+      if (enemies.buff(i).getHp == 0){
+      queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${enemies.buff(i).getName} || PV: ${enemies.buff(i).getHp} " + s"|| DP: ${enemies.buff(i).getDp}" +
+        s"|| WT: ${enemies.buff(i).getWeight + enemies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${enemies.buff(i).getAttack}${ConsoleColors.RESET}")
+    } else {
+        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${enemies.buff(i).getName} || PV: ${enemies.buff(i).getHp} " + s"|| DP: ${enemies.buff(i).getDp}" +
+          s"|| WT: ${enemies.buff(i).getWeight + enemies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${enemies.buff(i).getAttack}${ConsoleColors.RESET}")
+
+      }
     }
   }
 

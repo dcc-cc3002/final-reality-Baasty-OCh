@@ -44,17 +44,18 @@ class GameModel {
    * @param controller The game controller used to register units. */
   def init(controller: GameController): Unit = {
     val Cristiano: Playable = new Paladin("Cristiano", 100, 40, 10)
-    val Vini: Playable = new Warrior("Vinicius", 80, 25, 5)
-    val Zidane: Playable = new WhiteMagican("Zidane", 150, 50, 7, 25)
+    val Vini: Playable = new Warrior("Vinicius", 100, 25, 5)
+    val Zidane: Playable = new WhiteMagican("Zidane", 150, 50, 15, 25)
+    val Modric: Playable = new Ninja("Modric", 50, 100, 35)
     controller.registerAllyUnit(Cristiano)
     controller.registerAllyUnit(Vini)
-    //controller.registerAllyUnit(Zidane)
+    controller.registerAllyUnit(Modric)
 
-    val Messi: NonPlayable = new Enemy("Messi", 250, 50, 55, 20)
+    val Messi: NonPlayable = new Enemy("Messi", 250, 50, 55, 40)
     val Guardiola: NonPlayable = new Enemy("Guardiola", 200, 25, 45, 30)
-    val Laporta: NonPlayable = new Enemy("Laporta", 250, 100, 3, 100)
+    val Laporta: NonPlayable = new Enemy("Laporta", 150, 100, 100, 100)
     controller.registerEnemyUnit(Messi)
     controller.registerEnemyUnit(Guardiola)
-    //controller.registerEnemyUnit(Laporta)
+    controller.registerEnemyUnit(Laporta)
   }
 }
