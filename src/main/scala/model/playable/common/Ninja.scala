@@ -16,6 +16,10 @@ import model.weapons.magic.{Staff, Wand}
  */
 class Ninja(name:String, healthPoints: Int,
             defensePoints: Int, weight: Int) extends ACommonPlayable(name, healthPoints, defensePoints, weight){
+  private val InitialHp: Int = 100
+  override def maxHp(): Int = InitialHp
+
+
 
 
   /**
@@ -25,7 +29,7 @@ class Ninja(name:String, healthPoints: Int,
    * @return Playable
    */
   def this(name:String) = {
-    this(name,80,70,30)
+    this(name,100,70,30)
   }
 
   /**

@@ -7,6 +7,11 @@ import controller.GameController
 import model.general.party.Party
 import model.general.schedule.TurnSchedule
 import model.playable.Playable
+import model.weapons.Weapon
+import model.weapons.common.{Axe, Bow, Sword}
+import model.weapons.magic.{Staff, Wand}
+
+import scala.collection.mutable.ArrayBuffer
 
 /**
  * Represents the model for the game, managing allies, enemies, and participants. */
@@ -23,6 +28,7 @@ class GameModel {
   /**
    * The schedule of participants' turns. */
   private val _participants = new TurnSchedule()
+  //private val _weapons = ArrayBuffer.empty[Weapon]
 
   /**
    * Gets the party of allies.
@@ -38,24 +44,38 @@ class GameModel {
    * Gets the schedule of participants' turns.
    * @return The schedule of participants' turns. */
   def participants: TurnSchedule = _participants
+  //def weapons: ArrayBuffer[Weapon] = _weapons
+
 
   /**
    * Initializes the game model by creating and registering ally and enemy units.
    * @param controller The game controller used to register units. */
   def init(controller: GameController): Unit = {
-    val Cristiano: Playable = new Paladin("Cristiano", 100, 40, 10)
-    val Vini: Playable = new Warrior("Vinicius", 100, 25, 5)
-    val Zidane: Playable = new WhiteMagican("Zidane", 150, 50, 15, 25)
-    val Modric: Playable = new Ninja("Modric", 50, 100, 35)
+    val Cristiano: Playable = new Paladin("Cristiano")
+    val Vini: Playable = new WhiteMagican("Vinicius")
+    val Zidane: Playable = new BlackMagican("Zidane",300,100,5,100)
+    val Modric: Playable = new Ninja("Modric")
     controller.registerAllyUnit(Cristiano)
     controller.registerAllyUnit(Vini)
-    controller.registerAllyUnit(Modric)
+    //controller.registerAllyUnit(Modric)
+    controller.registerAllyUnit(Zidane)
 
-    val Messi: NonPlayable = new Enemy("Messi", 250, 50, 55, 40)
-    val Guardiola: NonPlayable = new Enemy("Guardiola", 200, 25, 45, 30)
-    val Laporta: NonPlayable = new Enemy("Laporta", 150, 100, 100, 100)
+    val Messi: NonPlayable = new Enemy("Messi")
+    val Guardiola: NonPlayable = new Enemy("Guardiola")
+    val Laporta: NonPlayable = new Enemy("Laporta")
     controller.registerEnemyUnit(Messi)
     controller.registerEnemyUnit(Guardiola)
     controller.registerEnemyUnit(Laporta)
+
+    //val Arco: Weapon = new Bow()
+    //val Espada: Weapon = new Sword()
+    //val Hacha: Weapon = new Axe()
+    //val Baston: Weapon = new Staff()
+    //val Varita: Weapon = new Wand()
+    //controller.registerWeapon(Arco)
+    //controller.registerWeapon(Espada)
+    //controller.registerWeapon(Hacha)
+    //controller.registerWeapon(Baston)
+    //controller.registerWeapon(Varita)
   }
 }

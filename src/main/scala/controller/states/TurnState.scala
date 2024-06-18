@@ -18,7 +18,9 @@ class TurnState(val people:TurnSchedule) extends AGameState {
   }
 
   override def notify(controller: GameController) = {
-   controller.notifyReportMessage()
+    if (pj.Style(pj) == "playable"){
+      controller.notifyReportMessage()
+    } else controller.notifyMagicReportMessage()
   }
 
   override def handleInput(controller: GameController): Unit = {

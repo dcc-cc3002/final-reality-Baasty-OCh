@@ -27,7 +27,7 @@ class AMagicWeaponTest extends FunSuite{
    */
   test("getMAP") {
     assertEquals(wand.getMAP, 30)
-    assertEquals(staff.getMAP, 40)
+    assertEquals(staff.getMAP, 60)
   }
 
   /**

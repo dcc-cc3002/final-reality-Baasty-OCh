@@ -18,8 +18,10 @@ import model.weapons.magic.{Staff, Wand}
 class BlackMagican(name:String, healthPoints:Int,
                 defensePoints:Int, weight:Int,
                 mana:Int) extends AMagicPlayable(name,healthPoints, defensePoints,weight,mana) {
+  private val InitialHp: Int = 200
+  override def maxHp(): Int = InitialHp
 
-  var spell: Spell = spells.head
+
 
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
@@ -38,7 +40,6 @@ class BlackMagican(name:String, healthPoints:Int,
     try {
       this.dropWeapon()
       weapon.canBeEquippedBy(this)
-      this.dropWeapon()
       this.arma = Some(weapon)
       weapon.setOwner(this)
       "The weapon was wear"
@@ -56,8 +57,8 @@ class BlackMagican(name:String, healthPoints:Int,
   override def selectSpell(spell: Spell): String = {
     try {
       spell.canBeSelectedBy(this)
-      this.spell = spell
-      spell.setMagican(this)
+      this.spell = Some(spell)
+      spell.setMagician(this)
       "The spell was selected"
     } catch {
       case _: InvalidSelectHealingSpell => s"The character ${this.getName} can't select a Healing Spell"

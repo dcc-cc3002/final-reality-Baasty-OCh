@@ -21,7 +21,7 @@ class Staff(name: String, weight: Int,
    * @param owner The playable entity that will own this staff
    */
   def this() = {
-    this("Baston", 70, 70, 40)
+    this("Baston", 70, 70, 60)
   }
 
   /**

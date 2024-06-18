@@ -47,8 +47,8 @@ abstract class AMagicPlayable(name: String, healthPoints: Int,
   addSpell(new Fire)
   addSpell(new Thunder)
 
-  /** Public variable representing the current spell associated with the magic playable entity. */
-  var spell: Spell
+
+
 
   /**
    * Retrieves the current mana points of the magic playable entity.
@@ -87,7 +87,7 @@ abstract class AMagicPlayable(name: String, healthPoints: Int,
    * @return "It is Enough" if sufficient mana is availab
    * @throws InvalidNoEnoughMana if insufficient mana is available. */
   def hasEnoughMana: String = {
-    if (this.Mana < spell.getCost) {
+    if (this.Mana < this.spell.map(_.getCost).getOrElse(0)){
       throw new InvalidNoEnoughMana(s"The character ${this.getName} does not have enough mana to use the spell.")
     } else {
       "It is Enough"
@@ -129,12 +129,13 @@ abstract class AMagicPlayable(name: String, healthPoints: Int,
     try {
       this.hasMagicWeapon
       this.hasEnoughMana
-      target.canSuffer(spell)
-      this.setMana(this.getMana - spell.getCost)
+      target.canSuffer(spell.get)
+      this.setMana(this.getMana - this.spell.map(_.getCost).getOrElse(0))
       for (o <- attackObs) {
-        o.notifySpellAttack(this, target, spell, 0)
+        o.notifySpellAttack(this, target, spell.get, 0)
       }
-      spell.Effect(target)
+      spell.get.Effect(target)
+      this.dropSpell()
       "Nice spell"
     } catch {
       case _: InvalidSpellTarget => s"The spell cannot act on that target"

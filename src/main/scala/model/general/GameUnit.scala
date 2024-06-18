@@ -13,6 +13,7 @@ trait GameUnit {
 
   /**Optionally holds a weapon for the game unit. */
   var arma: Option[Weapon] = None
+  var spell: Option[Spell] = None
 
   /**
    * Gets the name of the game unit.
@@ -40,16 +41,21 @@ trait GameUnit {
    * @return The attack points of the game unit. */
   def getAttack: Int
 
+  def getStatus: String
+  def setStatus(newStatus :String): Unit
+
   /**
    * Gets the health points of the game unit.
    * @return The health points of the game unit. */
   def getHp: Int
-
+  def hasWeapon: Option[Weapon]
   /**
    * Sets the health points of the game unit.
    * @param newHp The new health points of the game unit. */
   def setHp(newHp: Int): Unit
 
+
+  def maxHp(): Int
   /**
    * Attacks another game unit.
    * @param entity The target of the attack.
@@ -153,4 +159,6 @@ trait GameUnit {
   def registerAttackObserver(obs: ObserverAttack): Unit
 
   def dropWeapon(): Unit
+
+  def dropSpell(): Unit
 }

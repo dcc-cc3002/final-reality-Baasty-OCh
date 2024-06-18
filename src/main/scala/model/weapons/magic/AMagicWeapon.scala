@@ -19,7 +19,7 @@ protected abstract class AMagicWeapon(name: String, weight: Int,
    * Retrieves the magic attack points of the magical weapon.
    * @return The magic attack points of the weapon.
    */
-  def getMAP: Int = MAP
+  override def getMAP: Int = MAP
 
   /**
    * Indicates whether the weapon is magical or not.

@@ -1,7 +1,7 @@
 package model.spell
 
 import model.general.GameUnit
-import model.playable.magic.AMagicPlayable
+import model.playable.magic.{AMagicPlayable, MagicPlayable}
 /**
  * Trait representing a spell in the game.
  * A spell has a cost, an effect on a target, and can be selected by certain players.
@@ -13,6 +13,8 @@ trait Spell {
    * Abstract method to gets the cost of the spell.
    * @return The cost of the spell as an integer. */
   def getCost: Int
+
+  def getName: String
 
   /**
    * Abstract method to applies the effect of the spell to the target.
@@ -38,5 +40,5 @@ trait Spell {
   /**
    * Abstract method to sets the magician associated with this spell.
    * @param mago The magician to be associated with the spell. */
-  def setMagican(mago: AMagicPlayable): Unit
+  def setMagician(mago: MagicPlayable): Unit
 }

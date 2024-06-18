@@ -27,16 +27,18 @@ abstract class APlayable(val name: String, var healthPoints: Int,
 
   protected var attackObs = ArrayBuffer.empty[ObserverAttack]
   private val _weapons = ArrayBuffer.empty[Weapon]
-  private val Arco: Weapon = new Bow
-  private val Espada: Weapon = new Sword
-  private val Hacha: Weapon = new Axe
-  private val Baston: Weapon = new Staff
-  private val Varita: Weapon = new Wand
+  private val Arco: Weapon = new Bow()
+  private val Espada: Weapon = new Sword()
+  private val Hacha: Weapon = new Axe()
+  private val Baston: Weapon = new Staff()
+  private val Varita: Weapon = new Wand()
 
   /**
    * Retrieves a clone of the weapons currently equipped by the playable entity.
    * @return A clone of the ArrayBuffer containing the playable entity's weapons. */
   override def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
+  def setStatus(s:String) = {}
+  def getStatus = "Sano"
 
   /**
    * Auxiliary method to add default weapons to the playable entity's arsenal. */
@@ -130,6 +132,7 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * Drops the weapon currently equipped by the playable entity. */
   def dropWeapon(): Unit = {
     if (this.hasWeapon.nonEmpty) {
+      this.hasWeapon.get.resetOwner()
       this.arma = None
     } else {}
   }
@@ -221,4 +224,7 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * Retrieves the attack points of the playable entity.
    * @return The attack points of the playable entity. */
   def getAttack: Int = arma.map(_.getAttack).getOrElse(0)
+  def dropSpell(): Unit = {
+    this.spell = None
+  }
 }

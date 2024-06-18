@@ -1,7 +1,10 @@
 package model.weapons
 
+import controller.observers.ObserverAttack
 import exceptions.weapons.InvalidKindOfWeapon
 import model.playable.Playable
+
+import scala.collection.mutable.ArrayBuffer
 
 /**
  * Abstract class representing a weapon that is non-playable.
@@ -14,6 +17,8 @@ import model.playable.Playable
  */
 abstract class AWeapon(name: String, weight: Int,
                        attackPoints: Int) extends Weapon {
+
+  protected var attackObs = ArrayBuffer.empty[ObserverAttack]
 
   /**
    * Validates that the weight of the weapon is within the valid range.
@@ -71,6 +76,9 @@ abstract class AWeapon(name: String, weight: Int,
     require(newOwner != null, "newOwner cannot be null")
     this.owner = Some(newOwner)
   }
+  def resetOwner(): Unit ={
+    this.owner = None
+  }
 
   /**
    * Indicates whether the weapon is magical.
@@ -80,6 +88,14 @@ abstract class AWeapon(name: String, weight: Int,
    */
   def iAmMagic: Boolean = throw new InvalidKindOfWeapon
 
+  def getMAP: Int = 0
+
+  /**
+   * Registers an attack observer for the playable entity.
+   * @param obs The observer to be registered. */
+  def registerAttackObserver(obs: ObserverAttack): Unit = {
+    attackObs += obs
+  }
 }
 
 

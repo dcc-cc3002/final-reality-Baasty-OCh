@@ -8,6 +8,7 @@ import model.spell.Spell
 
 class SpellState(private val src: GameUnit,val people : TurnSchedule) extends AGameState {
   private var selected: Option[Spell] = None
+  src.dropSpell()
   var choice : Int = 0
 
   override def notify(controller: GameController) = {
@@ -34,12 +35,20 @@ class SpellState(private val src: GameUnit,val people : TurnSchedule) extends AG
   }
 
   override def update(controller: GameController): Unit = {
-    choice match{
-      case 0 => controller.state = new ActionMagicState(src,people)
-      case 1 => controller.state = new WeaponMagicState(src,selected, people)
-      case 2 => controller.state = new WeaponMagicState(src,selected, people)
-      case 3 => controller.state = new WeaponMagicState(src,selected, people)
+    if (src.spell.isEmpty) {
+      controller.state = new SpellState(src,people)
+    } else {
+      choice match{
+        case 0 => controller.state = new ActionMagicState(src,people)
+        case 1 => controller.state = new WeaponMagicState(src,selected, people)
+        case 2 => controller.state = new WeaponMagicState(src,selected, people)
+        case 3 => controller.state = new WeaponMagicState(src,selected, people)
+        case 4 => controller.state = new WeaponMagicState(src,selected, people)
+        case 5 => controller.state = new WeaponMagicState(src,selected, people)
+        case 6 => controller.state = new SpellState(src,people)
 
+      }
     }
   }
+
 }

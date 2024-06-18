@@ -36,8 +36,8 @@ class APlayableTest extends FunSuite {
     Amancio = new Warrior("Amancio")
     Kopa = new BlackMagican("Kopa")
     Gento = new WhiteMagican("Gento")
-    Iniesta = new Enemy("Iniesta",250,1,50,50)
-    Puyol = new Enemy("Puyol",250,500,50,50) // enemy with ridiculous defense
+    Iniesta = new Enemy("Iniesta",250,1,50,50, "Sano")
+    Puyol = new Enemy("Puyol",250,500,50,50, "Sano") // enemy with ridiculous defense
     }
 
   /**
@@ -61,9 +61,9 @@ class APlayableTest extends FunSuite {
    * Warrior 'Amancio', BlackMagican 'Kopa', and WhiteMagican 'Gento' matches the expected values (100,80,120,90,100).
    */
   test("getHealthPoints") {
-    assertEquals(Di_Stefano.getHp, 100)
-    assertEquals(Puskas.getHp, 80)
-    assertEquals(Amancio.getHp, 120)
+    assertEquals(Di_Stefano.getHp, 150)
+    assertEquals(Puskas.getHp, 100)
+    assertEquals(Amancio.getHp, 200)
     assertEquals(Kopa.getHp, 90)
     assertEquals(Gento.getHp, 100)
   }
@@ -165,17 +165,17 @@ class APlayableTest extends FunSuite {
    * and when the power is 200 */
   test("wasAttacked"){
     Di_Stefano.wasAttacked(45)
-    assertEquals(Di_Stefano.getHp,55)
+    assertEquals(Di_Stefano.getHp,105)
     Di_Stefano.wasAttacked(200)
     assertEquals(Di_Stefano.getHp,0)
 
     Puskas.wasAttacked(45)
-    assertEquals(Puskas.getHp,35)
+    assertEquals(Puskas.getHp,55)
     Puskas.wasAttacked(200)
     assertEquals(Puskas.getHp,0)
 
     Amancio.wasAttacked(45)
-    assertEquals(Amancio.getHp,75)
+    assertEquals(Amancio.getHp,155)
     Amancio.wasAttacked(200)
     assertEquals(Amancio.getHp,0)
 

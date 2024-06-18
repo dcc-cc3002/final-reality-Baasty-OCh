@@ -6,8 +6,13 @@ import controller.GameController
 import model.general.schedule.TurnSchedule
 import model.spell.Spell
 import model.weapons.Weapon
+
+
+////REGISTRO DE ARMAS ESTILO ENEMIES, ESO VA SOLUCIONAR TODO
 class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends AGameState {
   var choice : Int = 0
+
+
   src.dropWeapon()
   private var selected: Option[Weapon] = None
 
@@ -30,7 +35,7 @@ class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends 
           selected = Some(w)
           people.deletePlayer(src)
           people.addPlayer(src)
-        } else choice = 6
+        } else src.dropWeapon()
       }
     }
     catch {
@@ -50,7 +55,7 @@ class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends 
         case 3 => controller.state = new TargetState (src, people)
         case 4 => controller.state = new WeaponState (src, people)
         case 5 => controller.state = new WeaponState (src, people)
-        case 6 => controller.state = new WeaponState(src,people)
+        case 6 => controller.state = new WeaponState (src, people)
       }
     }
   }

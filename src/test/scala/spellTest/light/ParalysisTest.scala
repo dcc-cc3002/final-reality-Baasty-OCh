@@ -1,8 +1,11 @@
 package spellTest.light
 
+import model.nonplayable.{Enemy, NonPlayable}
 import model.playable.magic.{BlackMagican, WhiteMagican}
 import model.spell.Spell
 import model.spell.light.Paralysis
+import model.weapons.Weapon
+import model.weapons.magic.Staff
 import munit.FunSuite
 
 /**
@@ -22,6 +25,7 @@ class ParalysisTest extends FunSuite {
    * This variable is initialized in the beforeEach method.
    */
   var Guler: WhiteMagican = _
+  var Yamal: NonPlayable = _
 
   /**
    * Sets up the test environment before each test case.
@@ -32,6 +36,7 @@ class ParalysisTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Paralysis = new Paralysis()
     Guler = new WhiteMagican("Arda")
+    Yamal = new Enemy("Yamal")
   }
 
   /**
@@ -40,5 +45,13 @@ class ParalysisTest extends FunSuite {
    */
   test("canSelectedBy") {
     assertEquals(Paralysis.canBeSelectedBy(Guler), true)
+  }
+  test("Effect"){
+    val w: Weapon = new Staff()
+    Guler.putWeapon(w)
+    Guler.selectSpell(Paralysis)
+    Guler.throwSpell(Yamal)
+    assertEquals(Yamal.getStatus, "Paralizado")
+
   }
 }

@@ -2,7 +2,7 @@ package model.spell
 
 import exceptions.spells.InvalidSpellTarget
 import model.general.GameUnit
-import model.playable.magic.AMagicPlayable
+import model.playable.magic.{AMagicPlayable, MagicPlayable}
 
 /**
  * Abstract class representing a spell in the game.
@@ -11,9 +11,10 @@ abstract class ASpell extends Spell {
 
   /** The cost of the spell. */
   val cost: Int
+  val name: String
 
   /** The magician associated with this spell. */
-  protected var magician: Option[AMagicPlayable] = None
+  protected var magician: Option[MagicPlayable] = None
 
   /**
    * Determines if the spell can act on enemy units.
@@ -38,11 +39,12 @@ abstract class ASpell extends Spell {
    * Retrieves the cost of the spell.
    * @return The cost of the spell. */
   def getCost: Int = cost
+  def getName: String = name
 
   /**
    * Sets the magician associated with this spell.
    * @param mago The magician to be associated with the spell. */
-  def setMagican(mago: AMagicPlayable): Unit = {
+  def setMagician(mago: MagicPlayable): Unit = {
     this.magician = Some(mago)
   }
 

@@ -45,7 +45,7 @@ class AMagicPlayableTest extends FunSuite{
    */
   test("getMana") {
     assertEquals(Kopa.getMana, 50)
-    assertEquals(Gento.getMana, 40)
+    assertEquals(Gento.getMana, 60)
   }
 
   /**

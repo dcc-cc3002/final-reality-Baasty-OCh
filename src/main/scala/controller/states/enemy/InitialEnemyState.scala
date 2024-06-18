@@ -12,6 +12,14 @@ class InitialEnemyState(val people: TurnSchedule, val pj: GameUnit) extends AGam
   }
 
   override def update(controller: GameController) = {
+    if (pj.getStatus == "Paralizado"){
+      controller.state = new ParalyzedState(pj,people)
+    } else if (pj.getStatus == "Envenenado con Baston" || pj.getStatus == "Envenenado con Varita" ){
+      controller.state = new PoisonedState(pj,people)
+    } else if(pj.getStatus == "Quemado con Baston" || pj.getStatus == "Quemado con Varita"){
+      controller.state = new BurnedState(pj,people)
+    }
+    else
     controller.state = new TargetEnemyState(pj, people)
   }
 

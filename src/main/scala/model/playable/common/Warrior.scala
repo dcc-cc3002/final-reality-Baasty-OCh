@@ -18,6 +18,8 @@ import model.weapons.magic.{Staff, Wand}
  */
 class Warrior(name:String, healthPoints: Int,
               defensePoints: Int, weight: Int) extends ACommonPlayable(name, healthPoints, defensePoints, weight){
+  private val InitialHp: Int = 200
+  override def maxHp(): Int = InitialHp
 
 
   /**
@@ -26,7 +28,7 @@ class Warrior(name:String, healthPoints: Int,
    * @param name
    */
   def this(name:String) = {
-    this(name,120,100,70)
+    this(name,200,100,70)
   }
 
   /**

@@ -14,6 +14,7 @@ import scala.util.Random
 import controller.states.enemy.{InitialEnemyState, TargetEnemyState}
 import model.general.schedule.TurnSchedule
 import model.view.GameView
+import model.weapons.Weapon
 
 class GameController(private val model: GameModel, private val view: GameView) {
 
@@ -66,6 +67,15 @@ class GameController(private val model: GameModel, private val view: GameView) {
     val u = model.enemies.buff(choice)
     u
   }
+  //def getWeapon(choice: Int): Weapon = {
+    //val w = model.weapons(choice)
+    //w
+  //}
+
+  def getAlly(choice: Int): GameUnit ={
+    val u = model.allies.buff(choice)
+    u
+  }
 
   def calcTurns(t:TurnSchedule): GameUnit ={
     while(t.turns.isEmpty){
@@ -115,12 +125,25 @@ class GameController(private val model: GameModel, private val view: GameView) {
     model.enemies.addGameUnit(gUnit)
   }
 
+
+  //def registerWeapon(wUnit: Weapon) = {
+    //for (o <- attackObs) {
+     // wUnit.registerAttackObserver(o)
+   // }
+    //model.weapons += wUnit
+  //}
+
   def notifyInitMessage() = {
     view.displayInitMessage()
   }
 
   def notifyReportMessage() = {
     view.displayReportMessage(model.allies,model.enemies)
+  }
+
+
+  def notifyMagicReportMessage() = {
+    view.displayMagicReportMessage(model.allies,model.enemies)
   }
 
   def notifyPlayerStart(pj:GameUnit) = {
@@ -153,6 +176,12 @@ class GameController(private val model: GameModel, private val view: GameView) {
   def notifyMagicPlayerTarget() = {
     view.displayMagicPlayerTarget(model.enemies)
   }
+  def notifyEnemyStatus(pUnit:GameUnit) = {
+    view.displayEnemyStatus(pUnit)
+  }
+  def notifyHealingTarget() = {
+    view.displayHealingTarget(model.allies)
+  }
 
   def notifyPlayerUnitSpells(pUnit: GameUnit) = {
     view.displayPlayerUnitSpells(pUnit.spells())
@@ -165,6 +194,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
     view.displayMagicPlayerUnitWeapons(pUnit.weapons())
   }
 
+  def notifyError(s: String) = {
+    view.displayNotifyError(s)
+  }
 
 
 

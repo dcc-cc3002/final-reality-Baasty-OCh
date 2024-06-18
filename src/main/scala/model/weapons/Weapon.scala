@@ -1,5 +1,6 @@
 package model.weapons
 
+import controller.observers.ObserverAttack
 import model.playable.Playable
 
 
@@ -11,6 +12,7 @@ trait Weapon{
    */
   def getName: String
 
+  def getMAP: Int
   /**
    * Abstract method to get the weight of the Weapon entity
    *
@@ -31,6 +33,7 @@ trait Weapon{
    * @param newOwner the new owner of the weapon
    */
   def setOwner(newOwner:Playable) : Unit
+  def resetOwner(): Unit
 
   def getOwner(): Option[Playable]
 
@@ -46,5 +49,8 @@ trait Weapon{
    * @return true if the weapon is magical, false otherwise.
    */
   def iAmMagic: Boolean
-
+  /**
+   * Registers an attack observer for the playable entity.
+   * @param obs The observer to be registered. */
+  def registerAttackObserver(obs: ObserverAttack): Unit
 }

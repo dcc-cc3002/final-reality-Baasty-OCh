@@ -18,15 +18,17 @@ import model.weapons.magic.{Staff, Wand}
 class WhiteMagican(name:String, healthPoints:Int,
                  defensePoints:Int, weight:Int,
                  mana:Int) extends AMagicPlayable(name,healthPoints, defensePoints,weight,mana) {
+  private val InitialHp: Int = 150
+  override def maxHp(): Int = InitialHp
 
-  var spell : Spell = spells.head
+
 
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."
    * @param name */
   def this(name:String) = {
-    this(name,100,80,60,40)
+    this(name,100,80,60,60)
   }
 
   /**
@@ -55,7 +57,8 @@ class WhiteMagican(name:String, healthPoints:Int,
   override def selectSpell(spell: Spell): String = {
     try {
       spell.canBeSelectedBy(this)
-      this.spell = spell
+      this.spell = Some(spell)
+      spell.setMagician(this)
       "The spell was selected"
     } catch {
       case _: InvalidSelectFireSpell => s"The character ${this.getName} can't select a Fire Spell"

@@ -2,6 +2,8 @@ package model.spell.light
 
 import model.general.GameUnit
 import model.playable.magic.AMagicPlayable
+import model.weapons.Weapon
+import model.weapons.magic.MagicWeapon
 
 /**
  * Represents a Poison spell, a type of light spell.
@@ -11,9 +13,15 @@ class Poison extends ALightSpell {
   val cost: Int = 30
 
   /** The name of casting the Poison spell. */
-  def name: String = "Poison"
+  val name: String = "Poison"
 
-  override def Effect(gameUnit: GameUnit): Unit = {}
+  override def Effect(gameUnit: GameUnit): Unit = {
+    val MagicWeapon: Weapon = this.magician.get.arma.get
+    if (MagicWeapon.getName == "Baston"){
+      gameUnit.setStatus("Envenenado con Baston")
+    } else gameUnit.setStatus("Envenenado con Varita")
+
+  }
 
   /**
    * Determines if the Poison spell can be selected by a player.

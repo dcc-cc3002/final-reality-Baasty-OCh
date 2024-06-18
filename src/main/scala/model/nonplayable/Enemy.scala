@@ -11,14 +11,16 @@ package model.nonplayable
  * @param attackPoints The attack points of the enemy.
  */
 class Enemy(name: String, life: Int, defence: Int,
-                  weight: Int, attackPoints: Int) extends AEnemy(name, life, defence, weight, attackPoints) {
+                  weight: Int, attackPoints: Int, status: String) extends AEnemy(name, life, defence, weight, attackPoints, status) {
+  private val InitialHp : Int = 250
+  override def maxHp(): Int = InitialHp
 
   /**
    * Auxiliary constructor that initializes an enemy with default statistics based on the enemy class.
    * @param name The name chosen for the enemy.
    * @return An instance of the Enemy class with preset default statistics. */
   def this(name: String) = {
-    this(name, 250, 50, 60, 80)
+    this(name, 250, 50, 60, 80, "Sano")
   }
 
   /**

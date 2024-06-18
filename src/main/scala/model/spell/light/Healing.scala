@@ -13,9 +13,11 @@ class Healing extends ALightSpell {
   val cost: Int = 15
 
   /** The name of casting the Healing spell. */
-  def name: String = "Healing"
+  val name: String = "Healing"
 
-  override def Effect(gameUnit: GameUnit): Unit = {}
+  override def Effect(gameUnit: GameUnit): Unit = {
+    gameUnit.setHp(gameUnit.getHp + gameUnit.maxHp()/3)
+  }
 
   /**
    * Determines if the Healing spell can act on playable units.

@@ -11,9 +11,11 @@ class Paralysis extends ALightSpell {
   val cost: Int = 25
 
   /** The name of casting the Paralysis spell. */
-  def name: String = "Paralysis"
+  val name: String = "Paralysis"
 
-  override def Effect(gameUnit: GameUnit): Unit = {}
+  override def Effect(gameUnit: GameUnit): Unit = {
+    gameUnit.setStatus("Paralizado")
+  }
 
   /**
    * Determines if the Paralysis spell can be selected by a player.

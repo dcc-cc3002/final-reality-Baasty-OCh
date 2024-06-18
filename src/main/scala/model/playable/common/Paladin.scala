@@ -17,6 +17,8 @@ import model.weapons.magic.{Staff, Wand}
  */
 class Paladin(name:String, healthPoints: Int,
               defensePoints: Int, weight: Int) extends ACommonPlayable(name, healthPoints, defensePoints, weight) {
+  private val InitialHp: Int = 150
+  override def maxHp(): Int = InitialHp
 
 
 
@@ -27,7 +29,7 @@ class Paladin(name:String, healthPoints: Int,
    * @return Playable
    */
   def this(name: String) = {
-    this(name, 100, 75, 50) // stats by default: HP:100 , DP:75 , Weight:50
+    this(name, 150, 75, 50) // stats by default: HP:100 , DP:75 , Weight:50
   }
 
   /**

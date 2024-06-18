@@ -1,8 +1,11 @@
 package spellTest.light
 
+import model.nonplayable.Enemy
 import model.playable.magic.WhiteMagican
 import model.spell.Spell
 import model.spell.light.Poison
+import model.weapons.Weapon
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
 
@@ -23,6 +26,7 @@ class PoisonTest extends FunSuite {
    * This variable is initialized in the beforeEach method.
    */
   var Guler: WhiteMagican = _
+  var Yamal: Enemy = _
 
   /**
    * Sets up the test environment before each test case.
@@ -33,6 +37,7 @@ class PoisonTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Poison = new Poison()
     Guler = new WhiteMagican("Arda")
+    Yamal = new Enemy("Yamal")
   }
 
   /**
@@ -41,6 +46,19 @@ class PoisonTest extends FunSuite {
    */
   test("canSelectedBy") {
     assertEquals(Poison.canBeSelectedBy(Guler), true)
+  }
+  test("Effect") {
+    val w1: Weapon = new Staff()
+    Guler.putWeapon(w1)
+    Guler.selectSpell(Poison)
+    Guler.throwSpell(Yamal)
+    assertEquals(Yamal.getStatus, "Envenenado con Baston")
+    val w2: Weapon = new Wand()
+    Guler.putWeapon(w2)
+    Guler.selectSpell(Poison)
+    Guler.throwSpell(Yamal)
+    assertEquals(Yamal.getStatus, "Envenenado con Varita")
+
   }
 }
 
