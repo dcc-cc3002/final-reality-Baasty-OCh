@@ -77,6 +77,12 @@ Contains unit tests to verify the correct functioning of the code.
 #### Inheritance:
 Used to model the relationship between abstract and concrete classes, allowing code reuse and behavior specialization.
 
+#### State:
+Used to model the relationship between all units in the game.
+![Diagram:](diagrama-estados.png)
+
+
+
 #### Traits:
 Used to define common functionalities that can be shared among multiple classes, promoting code reuse and modularity.
 
