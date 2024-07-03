@@ -2,8 +2,8 @@ package controllerTest
 
 import controller.GameController
 import model.general.GameModel
-import model.view.GameView
 import munit.FunSuite
+import view.GameView
 
 class GameControllerTest extends FunSuite{
   val gameModel: GameModel = new GameModel()

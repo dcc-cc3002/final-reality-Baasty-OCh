@@ -14,5 +14,7 @@ class InitialPlayerState(val people : TurnSchedule, val pj: GameUnit) extends AG
     controller.notifyPlayerStart(pj)
   }
 
+  override def isInitialPlayerState(): Boolean = true
+
 
 }

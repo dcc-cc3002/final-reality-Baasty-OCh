@@ -1,4 +1,4 @@
-package model.view
+package view
 
 import controller.observers._
 
@@ -228,6 +228,7 @@ class GameView {
    * @param weapons The weapons available to the player's unit.
    */
   def displayPlayerUnitWeapons(weapons: ArrayBuffer[Weapon]): Unit = {
+    queue.enqueue("WARNING: NO ELIJAS ARMAS NO DISPONIBLES")
     queue.enqueue("Escoge un arma:")
     queue.enqueue("0) Volver a elegir acción")
     for (i <- weapons.indices) {
@@ -242,6 +243,7 @@ class GameView {
    * @param weapons The weapons available to the player's unit.
    */
   def displayMagicPlayerUnitWeapons(weapons: ArrayBuffer[Weapon]): Unit = {
+    queue.enqueue("WARNING: NO ELIJAS ARMAS NO DISPONIBLES")
     queue.enqueue("Escoge un arma:")
     queue.enqueue("0) Volver a elegir acción")
     for (i <- weapons.indices) {

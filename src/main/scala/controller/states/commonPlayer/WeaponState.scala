@@ -24,12 +24,12 @@ class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends 
     choice = controller.getNumericalInput()
     try {
       if (choice == 0){
-        val w = src.weapons()(choice)
+        val w = controller.getWeapon(choice)
         src.putWeapon(w)
         selected = Some(w)
       }
       else{
-        val w = src.weapons()(choice-1)
+        val w = controller.getWeapon(choice-1)
         if (w.getOwner().isEmpty){
           src.putWeapon(w)
           selected = Some(w)

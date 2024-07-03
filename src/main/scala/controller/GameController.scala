@@ -13,8 +13,8 @@ import scala.collection.mutable.ArrayBuffer
 import scala.util.Random
 import controller.states.enemy.{InitialEnemyState, TargetEnemyState}
 import model.general.schedule.TurnSchedule
-import model.view.GameView
 import model.weapons.Weapon
+import view.GameView
 
 class GameController(private val model: GameModel, private val view: GameView) {
 
@@ -67,10 +67,10 @@ class GameController(private val model: GameModel, private val view: GameView) {
     val u = model.enemies.buff(choice)
     u
   }
-  //def getWeapon(choice: Int): Weapon = {
-    //val w = model.weapons(choice)
-    //w
-  //}
+  def getWeapon(choice: Int): Weapon = {
+    val w = model._weapons(choice)
+    w
+  }
 
   def getAlly(choice: Int): GameUnit ={
     val u = model.allies.buff(choice)
@@ -126,12 +126,12 @@ class GameController(private val model: GameModel, private val view: GameView) {
   }
 
 
-  //def registerWeapon(wUnit: Weapon) = {
-    //for (o <- attackObs) {
-     // wUnit.registerAttackObserver(o)
-   // }
-    //model.weapons += wUnit
-  //}
+  def registerWeapon(wUnit: Weapon) = {
+    for (o <- attackObs) {
+      wUnit.registerAttackObserver(o)
+    }
+    model.addWeapon(Some(wUnit))
+  }
 
   def notifyInitMessage() = {
     view.displayInitMessage()

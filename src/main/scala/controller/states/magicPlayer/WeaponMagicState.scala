@@ -1,5 +1,4 @@
 package controller.states.magicPlayer
-
 import controller.states.AGameState
 import model.general.GameUnit
 import controller.GameController
@@ -25,11 +24,11 @@ class WeaponMagicState(private val src: GameUnit, private var spell: Option[Spel
     choice = controller.getNumericalInput()
     try {
       if (choice == 0 || choice == 6) {
-        val w = src.weapons()(choice)
+        val w = controller.getWeapon(choice)
         src.putWeapon(w)
         selected = Some(w)
       } else {
-        val w = src.weapons()(choice - 1)
+        val w = controller.getWeapon(choice - 1)
           src.putWeapon(w)
           selected = Some(w)
           people.deletePlayer(src)

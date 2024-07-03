@@ -16,4 +16,5 @@ class SurrenderState() extends AGameState {
     throw new InvalidSurrenderException
   }
 
+
 }

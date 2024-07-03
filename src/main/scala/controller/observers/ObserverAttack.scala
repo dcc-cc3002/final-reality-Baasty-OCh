@@ -2,7 +2,7 @@ package controller.observers
 
 import model.general.GameUnit
 import model.spell.Spell
-import model.view.GameView
+import view.GameView
 
 /**
  * The ObserverAttack class is responsible for notifying the game view about different types of attacks.
