@@ -17,10 +17,10 @@ class UnitState(val people : TurnSchedule, val pj: GameUnit) extends AGameState 
   override def update(controller: GameController): Unit = {
     if (selected.getHp != 0) {
       choice match{
-        case 0 => controller.state = new ActionState(selected,people)
-        case 1 => controller.state = new ActionMagicState(selected,people)
+        case 0 => controller.SetState(new ActionState(selected,people))
+        case 1 => controller.SetState(new ActionMagicState(selected,people))
       }
-    } else controller.state = new UnitState(people,pj)
+    } else controller.SetState(new UnitState(people,pj))
   }
 
 }

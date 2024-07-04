@@ -12,7 +12,7 @@ class ParalyzedState(enemy: GameUnit, people: TurnSchedule) extends AGameState{
 
   override def update(controller: GameController): Unit = {
     enemy.setStatus("Sano")
-    controller.state = new TurnState(people)
+    controller.SetState(new TurnState(people))
 
   }
 

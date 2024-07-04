@@ -9,7 +9,8 @@ class TurnState(val people:TurnSchedule) extends AGameState {
   var pj : GameUnit = calcTurns(people)
   var choice: Int = 0
 
-  private def calcTurns(t:TurnSchedule): GameUnit ={
+  override def isTurnState(): Boolean = true
+  override def calcTurns(t:TurnSchedule): GameUnit ={
     while(t.turns.isEmpty){
       t.fillActionBar(5)
     }
@@ -29,8 +30,8 @@ class TurnState(val people:TurnSchedule) extends AGameState {
 
   override def update(controller: GameController): Unit = {
     choice match{
-      case 1 => controller.state = new InitialEnemyState(people,pj)
-      case 2 => controller.state = new InitialPlayerState(people,pj)
+      case 1 => controller.SetState(new InitialEnemyState(people,pj))
+      case 2 => controller.SetState(new InitialPlayerState(people,pj))
     }
   }
 

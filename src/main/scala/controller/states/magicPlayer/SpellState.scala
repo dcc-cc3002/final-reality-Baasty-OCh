@@ -36,16 +36,16 @@ class SpellState(private val src: GameUnit,val people : TurnSchedule) extends AG
 
   override def update(controller: GameController): Unit = {
     if (src.spell.isEmpty) {
-      controller.state = new SpellState(src,people)
+      controller.SetState(new SpellState(src,people))
     } else {
       choice match{
-        case 0 => controller.state = new ActionMagicState(src,people)
-        case 1 => controller.state = new WeaponMagicState(src,selected, people)
-        case 2 => controller.state = new WeaponMagicState(src,selected, people)
-        case 3 => controller.state = new WeaponMagicState(src,selected, people)
-        case 4 => controller.state = new WeaponMagicState(src,selected, people)
-        case 5 => controller.state = new WeaponMagicState(src,selected, people)
-        case 6 => controller.state = new SpellState(src,people)
+        case 0 => controller.SetState(new ActionMagicState(src,people))
+        case 1 => controller.SetState(new WeaponMagicState(src,selected, people))
+        case 2 => controller.SetState(new WeaponMagicState(src,selected, people))
+        case 3 => controller.SetState(new WeaponMagicState(src,selected, people))
+        case 4 => controller.SetState(new WeaponMagicState(src,selected, people))
+        case 5 => controller.SetState(new WeaponMagicState(src,selected, people))
+        case 6 => controller.SetState(new SpellState(src,people))
 
       }
     }

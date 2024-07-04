@@ -30,11 +30,11 @@ class HealingState(src: GameUnit, spell: Option[Spell],
   override def update(controller: GameController): Unit = {
     if(selected.map(_.getHp).getOrElse(0) != 0) {
       choice match{
-        case 0 => controller.state = new WeaponMagicState(src, spell, people)
-        case 1 => controller.state = new TurnState(people)
-        case 2 => controller.state = new TurnState(people)
-        case 3 => controller.state = new TurnState(people)
+        case 0 => controller.SetState(new WeaponMagicState(src, spell, people))
+        case 1 => controller.SetState(new TurnState(people))
+        case 2 => controller.SetState(new TurnState(people))
+        case 3 => controller.SetState(new TurnState(people))
       }
-    } else controller.state = new HealingState(src,spell,people,weapon)
+    } else controller.SetState(new HealingState(src,spell,people,weapon))
   }
 }

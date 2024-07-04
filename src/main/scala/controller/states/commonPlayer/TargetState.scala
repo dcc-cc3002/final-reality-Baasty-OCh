@@ -31,11 +31,11 @@ class TargetState(private val source: GameUnit, val people : TurnSchedule) exten
   override def update(controller: GameController): Unit = {
     if (selected.map(_.getHp).getOrElse(0) !=0){
     choice match {
-      case 0 => controller.state = new WeaponState(source, people)
-      case 1 => controller.state = new FinalState(source, selected.get, people)
-      case 2 => controller.state = new FinalState(source, selected.get, people)
-      case 3 => controller.state = new FinalState(source, selected.get, people)}
-    } else controller.state = new TargetState(source, people)
+      case 0 => controller.SetState(new WeaponState(source, people))
+      case 1 => controller.SetState(new FinalState(source, selected.get, people))
+      case 2 => controller.SetState(new FinalState(source, selected.get, people))
+      case 3 => controller.SetState(new FinalState(source, selected.get, people))}
+    } else controller.SetState(new TargetState(source, people))
   }
 
 

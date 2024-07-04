@@ -16,6 +16,6 @@ class TargetEnemyState(private val source: GameUnit,val people : TurnSchedule) e
   }
 
   override def update(controller: GameController): Unit = {
-      controller.state = new FinalEnemyState(source, selected, people)
+      controller.SetState(new FinalEnemyState(source, selected, people))
   }
 }

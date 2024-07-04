@@ -28,7 +28,8 @@ class GameController(private val model: GameModel, private val view: GameView) {
     notifyInitMessage()
     attackObs += new ObserverAttack(view)
     model.init(this)
-    state = new TurnState(model.participants)
+    val start: GameState = new TurnState(model.participants)
+    this.SetState(start)
     //TurnoDe(model._participantes)
   }
   private def checkFinished(): Unit = {
@@ -54,7 +55,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
   }
 
   def state: GameState = _state
-  def state_=(other: GameState): Unit = {
+  def SetState(other: GameState): Unit = {
     _state =  other
     _state.notify(this)
   }

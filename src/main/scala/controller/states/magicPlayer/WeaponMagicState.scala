@@ -42,28 +42,28 @@ class WeaponMagicState(private val src: GameUnit, private var spell: Option[Spel
 
   override def update(controller: GameController): Unit = {
     if (src.arma.isEmpty) {
-      controller.state = new WeaponMagicState(src, spell, people)
+      controller.SetState(new WeaponMagicState(src, spell, people))
     }
     else if( spell.isDefined && spell.get.getName == "Healing"){
       choice match{
-        case 0 => controller.state = new ActionMagicState(src, people)
-        case 1 => controller.state = new WeaponMagicState(src, spell, people)
-        case 2 => controller.state = new WeaponMagicState(src, spell, people)
-        case 3 => controller.state = new WeaponMagicState(src, spell, people)
-        case 4 => controller.state = new HealingState(src, spell, people, selected)
-        case 5 => controller.state = new HealingState(src, spell, people, selected)
+        case 0 => controller.SetState(new ActionMagicState(src, people))
+        case 1 => controller.SetState(new WeaponMagicState(src, spell, people))
+        case 2 => controller.SetState(new WeaponMagicState(src, spell, people))
+        case 3 => controller.SetState(new WeaponMagicState(src, spell, people))
+        case 4 => controller.SetState(new HealingState(src, spell, people, selected))
+        case 5 => controller.SetState(new HealingState(src, spell, people, selected))
       }
     }
     else {
       choice match {
-        case 0 => controller.state = new ActionMagicState(src, people)
-        case 1 => controller.state = new TargetMagicState(src, spell, people, selected)
-        case 2 => controller.state = new TargetMagicState(src, spell, people, selected)
-        case 3 => controller.state = new WeaponMagicState(src, spell, people)
-        case 4 => controller.state = new TargetMagicState(src, spell, people, selected)
-        case 5 => controller.state = new TargetMagicState(src, spell, people, selected)
+        case 0 => controller.SetState(new ActionMagicState(src, people))
+        case 1 => controller.SetState(new TargetMagicState(src, spell, people, selected))
+        case 2 => controller.SetState(new TargetMagicState(src, spell, people, selected))
+        case 3 => controller.SetState(new WeaponMagicState(src, spell, people))
+        case 4 => controller.SetState(new TargetMagicState(src, spell, people, selected))
+        case 5 => controller.SetState(new TargetMagicState(src, spell, people, selected))
         //case 6 => controller.state = new SpellState(src,people)
-        case 7 => controller.state = new WeaponState(src, people)
+        case 7 => controller.SetState(new WeaponMagicState(src, people))
       }
     }
   }

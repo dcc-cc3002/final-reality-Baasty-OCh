@@ -17,6 +17,6 @@ class UnitEnemyState(val people : TurnSchedule, val pj: GameUnit) extends AGameS
   }
 
   override def update(controller: GameController): Unit = {
-    controller.state = new ActionEnemyState(selected,people)
+    controller.SetState(new ActionEnemyState(selected,people))
   }
 } 

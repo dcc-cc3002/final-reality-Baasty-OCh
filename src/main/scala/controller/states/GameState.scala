@@ -1,6 +1,8 @@
 package controller.states
 
 import controller.GameController
+import model.general.GameUnit
+import model.general.schedule.TurnSchedule
 
 
 /**
@@ -8,6 +10,9 @@ import controller.GameController
  * Defines methods for handling notifications, inputs, updates, and checking specific states.
  */
 trait GameState {
+
+
+  def calcTurns(t:TurnSchedule): GameUnit
 
   /**
    * Notify the controller of the current state.

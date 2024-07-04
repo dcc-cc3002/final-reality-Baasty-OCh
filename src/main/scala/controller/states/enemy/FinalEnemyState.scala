@@ -10,6 +10,6 @@ class FinalEnemyState(private val src: GameUnit, private val dest: GameUnit,val 
   override def update(controller: GameController): Unit = {
     src.attack(dest)
 
-    controller.state = new TurnState(people)
+    controller.SetState(new TurnState(people))
   }
 }

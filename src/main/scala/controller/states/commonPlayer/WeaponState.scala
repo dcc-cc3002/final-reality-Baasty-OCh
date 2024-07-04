@@ -45,17 +45,17 @@ class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends 
 
   override def update(controller: GameController): Unit = {
     if (src.arma.isEmpty){
-      controller.state = new WeaponState(src,people)
+      controller.SetState(new WeaponState(src,people))
     }
     else {
       choice match {
-        case 0 => controller.state = new ActionState (src, people)
-        case 1 => controller.state = new TargetState (src, people)
-        case 2 => controller.state = new TargetState (src, people)
-        case 3 => controller.state = new TargetState (src, people)
-        case 4 => controller.state = new WeaponState (src, people)
-        case 5 => controller.state = new WeaponState (src, people)
-        case 6 => controller.state = new WeaponState (src, people)
+        case 0 => controller.SetState(new ActionState (src, people))
+        case 1 => controller.SetState(new TargetState (src, people))
+        case 2 => controller.SetState(new TargetState (src, people))
+        case 3 => controller.SetState(new TargetState (src, people))
+        case 4 => controller.SetState(new WeaponState (src, people))
+        case 5 => controller.SetState(new WeaponState (src, people))
+        case 6 => controller.SetState(new WeaponState (src, people))
       }
     }
   }

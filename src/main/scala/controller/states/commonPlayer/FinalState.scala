@@ -12,6 +12,6 @@ class FinalState(private val source: GameUnit, private val target: GameUnit, val
 
   override def update(controller: GameController): Unit = {
     source.attack(target)
-    controller.state = new TurnState(people)
+    controller.SetState(new TurnState(people))
   }
 }

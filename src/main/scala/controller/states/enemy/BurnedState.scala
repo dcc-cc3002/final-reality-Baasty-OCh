@@ -15,16 +15,16 @@ class BurnedState(enemy:GameUnit, people: TurnSchedule) extends  AGameState{
       if (enemy.getStatus == "Quemado con Baston"){
         enemy.wasAttacked(30)
         cnt +=1
-        controller.state = new TargetEnemyState(enemy,people)
+        controller.SetState(new TargetEnemyState(enemy,people))
       } else {
         enemy.wasAttacked(15)
         cnt +=1
-        controller.state = new TargetEnemyState(enemy,people)
+        controller.SetState(new TargetEnemyState(enemy,people))
       }
     }
     else {
       enemy.setStatus("Sano")
-      controller.state = new TargetEnemyState(enemy,people)
+      controller.SetState(new TargetEnemyState(enemy,people))
     }
   }
 

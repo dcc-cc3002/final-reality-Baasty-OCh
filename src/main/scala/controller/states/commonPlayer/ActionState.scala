@@ -36,6 +36,6 @@ class ActionState(private val ally: GameUnit,val people : TurnSchedule) extends 
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined)
-      controller.state = selected.get
+      controller.SetState(selected.get)
   }
 }

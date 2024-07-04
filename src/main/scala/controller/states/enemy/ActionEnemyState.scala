@@ -16,6 +16,6 @@ class ActionEnemyState(private val source: GameUnit,val people : TurnSchedule) e
   }
 
   override def update(controller: GameController): Unit = {
-    controller.state = selected.get
+    controller.SetState(selected.get)
   }
 }

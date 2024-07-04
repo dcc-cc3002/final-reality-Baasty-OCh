@@ -16,16 +16,16 @@ class PoisonedState (enemy: GameUnit, people: TurnSchedule) extends AGameState{
       if (enemy.getStatus == "Envenenado con Baston"){
         enemy.wasAttacked(20)
         cnt +=1
-        controller.state = new TargetEnemyState(enemy,people)
+        controller.SetState(new TargetEnemyState(enemy,people))
       } else {
         enemy.wasAttacked(10)
         cnt +=1
-        controller.state = new TargetEnemyState(enemy,people)
+        controller.SetState(new TargetEnemyState(enemy,people))
       }
     }
     else {
       enemy.setStatus("Sano")
-      controller.state = new TargetEnemyState(enemy,people)
+      controller.SetState(new TargetEnemyState(enemy,people))
     }
   }
 

@@ -1,6 +1,9 @@
 package controller.states
 
 import controller.GameController
+import model.general.GameUnit
+import model.general.schedule.TurnSchedule
+import model.playable.common.Paladin
 
 /**
  * Abstract class representing a base game state.
@@ -8,6 +11,7 @@ import controller.GameController
  */
 abstract class AGameState extends GameState {
 
+  def calcTurns(t:TurnSchedule): GameUnit = new Paladin("Goku")
   /**
    * Handle input in the current state.
    * Default implementation does nothing.

@@ -37,6 +37,6 @@ class ActionMagicState(private val ally: GameUnit, val people : TurnSchedule) ex
 
   override def update(controller: GameController): Unit = {
     if (selected.isDefined)
-      controller.state = selected.get
+      controller.SetState(selected.get)
   }
 }
