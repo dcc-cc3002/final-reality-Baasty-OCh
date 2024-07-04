@@ -11,7 +11,7 @@ import model.playable.common.Paladin
  */
 abstract class AGameState extends GameState {
 
-  def calcTurns(t:TurnSchedule): GameUnit = new Paladin("Goku")
+
   /**
    * Handle input in the current state.
    * Default implementation does nothing.

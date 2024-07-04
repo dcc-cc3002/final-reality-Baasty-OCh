@@ -10,7 +10,7 @@ class TurnState(val people:TurnSchedule) extends AGameState {
   var choice: Int = 0
 
   override def isTurnState(): Boolean = true
-  override def calcTurns(t:TurnSchedule): GameUnit ={
+  def calcTurns(t:TurnSchedule): GameUnit ={
     while(t.turns.isEmpty){
       t.fillActionBar(5)
     }

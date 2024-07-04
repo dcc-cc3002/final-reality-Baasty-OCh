@@ -12,7 +12,7 @@ import model.general.schedule.TurnSchedule
 trait GameState {
 
 
-  def calcTurns(t:TurnSchedule): GameUnit
+
 
   /**
    * Notify the controller of the current state.

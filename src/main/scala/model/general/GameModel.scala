@@ -69,7 +69,7 @@ class GameModel {
     //controller.registerAllyUnit(Modric)
     controller.registerAllyUnit(Zidane)
 
-    val Messi: NonPlayable = new Enemy("Messi")
+    val Messi: NonPlayable = new Enemy("Messi",250,50,55,30,"Sano")
     val Guardiola: NonPlayable = new Enemy("Guardiola")
     val Laporta: NonPlayable = new Enemy("Laporta")
     controller.registerEnemyUnit(Messi)
