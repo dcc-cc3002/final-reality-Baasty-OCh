@@ -21,6 +21,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
   private var _state: GameState = null
   private val ai = new Random()
   private val attackObs = new ArrayBuffer[ObserverAttack].empty
+  private var _WhiteFlag = false
+  def WhiteFlag(): Boolean = _WhiteFlag
+
   init()
 
 
@@ -36,12 +39,13 @@ class GameController(private val model: GameModel, private val view: GameView) {
     if (win()) {
       view.displayVictory()
     } else if (lose()) {
+      view.displayPlayerUnits(model.allies)
       view.displayDefeat()
     }
   }
 
   def hasFinished(): Boolean = {
-    win() || (lose() || abandonaste())
+    win() || (lose())
   }
 
   def handleInput(): Unit = {
@@ -78,14 +82,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
     u
   }
 
-  def calcTurns(t:TurnSchedule): GameUnit ={
-    while(t.turns.isEmpty){
-      t.fillActionBar(30)
-    }
-    val src: GameUnit = t.turns.head
-    t.turns.enqueue(src)
-    src
-  }
+
   def TurnoDe(x: GameUnit): Int = {
     val mode = x.Style(x)
     if (mode == "playable" || mode == "magicPlayable"){2}
@@ -99,16 +96,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
     }
     model.allies.buff(choice)
   }
-/*
-  def getAISpell(u: GameUnit): Ability = {
-    val spells = u.spells()
-    var choice = ai.nextInt(spells.length)
-    while(!u.canUse(spells(choice))) {
-      choice = ai.nextInt(spells.length)
-    }
-    spells(choice)
-  }
-*/
+
   def registerAllyUnit(gUnit: GameUnit) = {
     for (o <- attackObs) {
       gUnit.registerAttackObserver(o)
@@ -220,14 +208,11 @@ class GameController(private val model: GameModel, private val view: GameView) {
   }
 
   def lose(): Boolean = {
-    model.allies.isDefeated()
-  }
-  def abandono(): Boolean = {false}
-
-  def abandonaste(): Boolean = {
-    if (state == new SurrenderState()){
-      true
-    } else false
+    (model.allies.isDefeated())
   }
 
+  def PutWhiteFlag(): Unit = {
+    model.allies.setAllHpToZero()
+    _WhiteFlag = true
+  }
 }

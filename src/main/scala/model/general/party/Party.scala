@@ -35,6 +35,13 @@ class Party {
   }
 
   /**
+   * Sets the health points (HP) of all game units in the party to 0.
+   */
+  def setAllHpToZero(): Unit = {
+    buff.foreach(_.setHp(0))
+  }
+
+  /**
    * Checks if the party is defeated.
    * A party is considered defeated if:
    *   - The party is empty (no allies)

@@ -353,6 +353,8 @@ class GameView {
    */
   def displaySurrender(): Unit = {
     queue.enqueue("COBARDEEE!!")
+    queue.enqueue("TRAICIONASTE A TU ARMADA")
+
   }
 
   /**
