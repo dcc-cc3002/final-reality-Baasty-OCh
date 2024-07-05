@@ -53,7 +53,7 @@ class GameController(private val model: GameModel, private val view: GameView) {
   }
 
   def update(): Unit = {
-    state.update(this)
+    state.update(this,this.state.choice)
     checkFinished()
     view.render()
   }

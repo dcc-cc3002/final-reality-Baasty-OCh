@@ -13,7 +13,7 @@ class ParalyzedState(var enemy: GameUnit, var entities: TurnSchedule) extends AG
     controller.notifyEnemyStatus(enemy)
   }
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     enemy.setStatus("Sano")
     controller.SetState(new TurnState(people))
 

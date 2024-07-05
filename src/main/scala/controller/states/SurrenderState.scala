@@ -17,7 +17,7 @@ class SurrenderState(src: GameUnit, entities: TurnSchedule) extends AGameState {
     controller.notifySurrenderMessage(pj)
 
   }
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     controller.PutWhiteFlag()
 
   }

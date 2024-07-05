@@ -16,7 +16,7 @@ class UnitEnemyState(var enemy: GameUnit, var entities: TurnSchedule) extends AG
 
   override def handleInput(controller: GameController): Unit = {}
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     controller.SetState(new ActionEnemyState(pj,people))
   }
 } 

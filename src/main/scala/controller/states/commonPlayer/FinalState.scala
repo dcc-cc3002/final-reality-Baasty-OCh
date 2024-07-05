@@ -12,7 +12,7 @@ class FinalState(var ally: GameUnit, private val target: GameUnit, var entities 
   var pj: GameUnit = ally
   var people: TurnSchedule = entities
   var choice : Int = 0
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     pj.attack(target)
     controller.SetState(new TurnState(people))
   }

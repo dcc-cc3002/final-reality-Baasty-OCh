@@ -14,7 +14,7 @@ class FinalMagicState(var ally: GameUnit, private val target: GameUnit,
   var people : TurnSchedule = entities
   var choice: Int = 0
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     if (spell.isDefined) {
       pj.throwSpell(target)
     } else {

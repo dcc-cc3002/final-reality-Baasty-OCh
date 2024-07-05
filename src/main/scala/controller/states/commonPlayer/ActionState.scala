@@ -14,31 +14,31 @@ class ActionState(private val ally: GameUnit,val entities : TurnSchedule) extend
   var people: TurnSchedule = entities
   var choice: Int = 0
 
+  override def isActionState(): Boolean = true
   override def notify(controller: GameController): Unit = {
     controller.notifyPlayerAction()
   }
 
   override def handleInput(controller: GameController): Unit = {
     choice = controller.getNumericalInput()
-    if (!ally.arma.isEmpty){ // has a weapon
-      choice match {
-        case 0 => selected = Some(new SurrenderState(pj,people))
-        case 1 => selected = Some(new TargetState(pj,people))
-        case 2 => selected = Some(new WeaponState(pj,people))
+
+  }
+
+  override def update(controller: GameController, input: Int = choice): Unit = {
+    if (!ally.arma.isEmpty) { // has a weapon
+      input match {
+        case 0 => controller.SetState(new SurrenderState(pj, people))
+        case 1 => controller.SetState(new TargetState(pj, people))
+        case 2 => controller.SetState(new WeaponState(pj, people))
 
       }
     } else { // has not a weapon
-    choice match {
-      case 0 => selected = Some(new SurrenderState(pj,people))
-      case 1 => selected = Some(new WeaponState(pj,people))
-      case 2 => selected = Some(new WeaponState(pj,people))
-      case _ => controller.notifyErrorInvalidOption(choice)
+      input match {
+        case 0 => controller.SetState(new SurrenderState(pj, people))
+        case 1 => controller.SetState(new WeaponState(pj, people))
+        case 2 => controller.SetState(new WeaponState(pj, people))
+        case _ => controller.notifyErrorInvalidOption(choice)
+      }
     }
-    }
-  }
-
-  override def update(controller: GameController): Unit = {
-    if (selected.isDefined)
-      controller.SetState(selected.get)
   }
 }

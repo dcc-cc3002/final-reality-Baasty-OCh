@@ -43,13 +43,13 @@ class WeaponState (var ally: GameUnit, var entities: TurnSchedule) extends AGame
     }
   }
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     if (pj.arma.isEmpty){
       controller.SetState(new WeaponState(pj,people))
       controller.notifyInvalidWeapon()
     }
     else {
-      choice match {
+      input match {
         case 0 => controller.SetState(new ActionState (pj, people)) // eliminar este caso , sera facil cuando corra la vista
         case 1 => controller.SetState(new TargetState (pj, people))
         case 2 => controller.SetState(new TargetState (pj, people))

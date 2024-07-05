@@ -14,7 +14,7 @@ class InitialEnemyState(val entities: TurnSchedule, val src: GameUnit) extends A
     controller.notifyEnemyStart(pj)
   }
 
-  override def update(controller: GameController) = {
+  override def update(controller: GameController, input:Int = choice) = {
     if (pj.getStatus == "Paralizado"){
       controller.SetState(new ParalyzedState(pj,people))
     }

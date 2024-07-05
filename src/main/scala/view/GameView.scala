@@ -371,14 +371,14 @@ class GameView {
    * Displays the victory message.
    */
   def displayVictory(): Unit = {
-    queue.enqueue("Felicidades! Ganaste!")
+    queue.enqueue("SIUUUUUU! Ganaste! ")
   }
 
   /**
    * Displays the defeat message.
    */
   def displayDefeat(): Unit = {
-    queue.enqueue("Oh no! Perdiste :c")
+    queue.enqueue("Perdiste! ")
   }
 
   /**

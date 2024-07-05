@@ -14,7 +14,7 @@ class PoisonedState (var enemy: GameUnit, var entities: TurnSchedule) extends AG
     controller.notifyEnemyStatus(pj)
   }
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     if (cnt < 4){ // no esta pescando el tema de los turnos, hay que implementarlo diff
       if (pj.getStatus == "Envenenado con Baston"){
         pj.wasAttacked(20)

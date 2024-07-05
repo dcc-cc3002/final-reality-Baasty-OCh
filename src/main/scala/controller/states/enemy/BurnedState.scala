@@ -13,7 +13,7 @@ class BurnedState(var enemy:GameUnit, var entities: TurnSchedule) extends  AGame
   override def notify(controller: GameController): Unit = {
     controller.notifyEnemyStatus(pj)
   }
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     if (cnt < 4){ // no esta pescando el tema de los turnos
       if (pj.getStatus == "Quemado con Baston"){
         pj.wasAttacked(30)

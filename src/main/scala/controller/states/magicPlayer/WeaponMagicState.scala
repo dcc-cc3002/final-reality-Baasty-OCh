@@ -42,13 +42,13 @@ class WeaponMagicState(var ally: GameUnit, private var spell: Option[Spell], var
     }
   }
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     if (pj.arma.isEmpty) {
       controller.SetState(new WeaponMagicState(pj, spell, people))
       controller.notifyInvalidWeapon()
     }
     else if( spell.isDefined && spell.get.getName == "Healing"){
-      choice match{
+      input match{
         case 0 => controller.SetState(new ActionMagicState(pj, people)) // sacar con vista
         case 1 => controller.SetState(new WeaponMagicState(pj, spell, people)) //
         case 2 => controller.SetState(new WeaponMagicState(pj, spell, people)) // quizas estos 3 casos se puedan sacar
@@ -58,7 +58,7 @@ class WeaponMagicState(var ally: GameUnit, private var spell: Option[Spell], var
       }
     }
     else {
-      choice match {
+      input match {
         case 0 => controller.SetState(new ActionMagicState(pj, people)) // sacar con vista
         case 1 => controller.SetState(new TargetMagicState(pj, spell, people, selected))
         case 2 => controller.SetState(new TargetMagicState(pj, spell, people, selected))

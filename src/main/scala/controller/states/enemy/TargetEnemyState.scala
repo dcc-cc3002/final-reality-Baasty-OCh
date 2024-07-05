@@ -18,7 +18,7 @@ class TargetEnemyState(var enemy: GameUnit, var entities : TurnSchedule) extends
     selected = Some(controller.getAITarget())
   }
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
       controller.SetState(new FinalEnemyState(pj, selected.get, people))
   }
 }

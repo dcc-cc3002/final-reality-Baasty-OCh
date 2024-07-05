@@ -210,6 +210,7 @@ abstract class APlayable(val name: String, var healthPoints: Int,
       this.setHp(this.healthPoints - pain)
     } else {
       this.setHp(0)
+      this.dropWeapon()
     }
   }
 

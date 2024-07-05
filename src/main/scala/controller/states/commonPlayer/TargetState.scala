@@ -31,12 +31,12 @@ class TargetState(var ally: GameUnit, var entities : TurnSchedule) extends AGame
     }
   }
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     if (selected.map(_.getHp).getOrElse(0) ==0){
       controller.SetState(new TargetState(pj, people))
       controller.notifyInvalidTarget()
     } else {
-      choice match {
+      input match {
         case 0 => controller.SetState(new WeaponState(pj, people))
         case 1 => controller.SetState(new FinalState(pj, selected.get, people))
         case 2 => controller.SetState(new FinalState(pj, selected.get, people))

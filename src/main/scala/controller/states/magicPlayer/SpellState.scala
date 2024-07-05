@@ -36,12 +36,12 @@ class SpellState(var ally: GameUnit,var entities : TurnSchedule) extends AGameSt
     }
   }
 
-  override def update(controller: GameController): Unit = {
+  override def update(controller: GameController, input:Int = choice): Unit = {
     if (pj.spell.isEmpty) {
       controller.SetState(new SpellState(pj,people))
       controller.notifyInvalidSpell()
     } else {
-      choice match{
+      input match{
         case 0 => controller.SetState(new ActionMagicState(pj,people)) // sacar con vista
         case 1 => controller.SetState(new WeaponMagicState(pj,selected, people))
         case 2 => controller.SetState(new WeaponMagicState(pj,selected, people))
