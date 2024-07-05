@@ -1,8 +1,9 @@
-package controller.states.magicPlayer
+package controller.states.player.magicPlayer
 
 import controller.GameController
-import controller.states.commonPlayer.{TargetState, WeaponState}
-import controller.states.{AGameState, GameState, SurrenderState, UnitState}
+import controller.states.player.commonPlayer.{TargetState, WeaponState}
+import controller.states.player.{SurrenderState, UnitState}
+import controller.states.{AGameState, GameState}
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 

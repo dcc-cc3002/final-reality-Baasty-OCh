@@ -1,7 +1,7 @@
-package controller.states
+package controller.states.player
 
 import controller.GameController
-
+import controller.states.AGameState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 

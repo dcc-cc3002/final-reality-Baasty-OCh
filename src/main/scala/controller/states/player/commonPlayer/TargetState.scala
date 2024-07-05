@@ -1,6 +1,4 @@
-package controller.states.commonPlayer
-
-
+package controller.states.player.commonPlayer
 
 import model.general.GameUnit
 import controller.states.AGameState

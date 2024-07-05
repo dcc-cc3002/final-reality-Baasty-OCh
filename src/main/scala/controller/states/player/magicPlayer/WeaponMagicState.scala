@@ -1,8 +1,9 @@
-package controller.states.magicPlayer
+package controller.states.player.magicPlayer
+
 import controller.states.AGameState
 import model.general.GameUnit
 import controller.GameController
-import controller.states.commonPlayer.WeaponState
+import controller.states.player.commonPlayer.WeaponState
 import model.general.schedule.TurnSchedule
 import model.spell.Spell
 import model.weapons.Weapon

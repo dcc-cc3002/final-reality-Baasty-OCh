@@ -1,7 +1,8 @@
 package controller.states.enemy
 
 import controller.GameController
-import controller.states.{AGameState, UnitState}
+import controller.states.AGameState
+import controller.states.player.UnitState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 

@@ -1,7 +1,8 @@
 package controllerTest
 
 import controller.GameController
-import controller.states.{InitialPlayerState, TurnState}
+import controller.states.player.InitialPlayerState
+import controller.states.TurnState
 import junit.framework.Assert
 import junit.framework.Assert.assertTrue
 import model.general.{GameModel, GameUnit}

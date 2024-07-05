@@ -1,9 +1,9 @@
-package controller.states.commonPlayer
-
+package controller.states.player.commonPlayer
 
 import controller.GameController
-import controller.states.magicPlayer.SpellState
-import controller.states.{AGameState, GameState, SurrenderState, UnitState}
+import controller.states.player.magicPlayer.SpellState
+import controller.states.player.{SurrenderState, UnitState}
+import controller.states.{AGameState, GameState}
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 import model.playable.Playable

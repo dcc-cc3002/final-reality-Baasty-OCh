@@ -1,7 +1,8 @@
 package controllerTest.statesTest
 
 import controller.GameController
-import controller.states.{GameState, InitialPlayerState, TurnState}
+import controller.states.player.InitialPlayerState
+import controller.states.{GameState, TurnState}
 import model.general.GameModel
 import munit.FunSuite
 import view.GameView

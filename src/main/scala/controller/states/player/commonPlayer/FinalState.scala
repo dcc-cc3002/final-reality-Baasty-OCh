@@ -1,6 +1,4 @@
-package controller.states.commonPlayer
-
-
+package controller.states.player.commonPlayer
 
 import controller.states.{AGameState, TurnState, enemy}
 import model.general.GameUnit

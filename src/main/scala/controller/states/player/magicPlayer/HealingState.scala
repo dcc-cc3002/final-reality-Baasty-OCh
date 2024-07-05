@@ -1,4 +1,4 @@
-package controller.states.magicPlayer
+package controller.states.player.magicPlayer
 
 import controller.GameController
 import controller.states.{AGameState, TurnState}

@@ -1,8 +1,7 @@
-package controller.states
+package controller.states.player
 
 import controller.GameController
-import exceptions.InvalidSurrenderException
-import exceptions.weapons.InvalidPutWeaponException
+import controller.states.AGameState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 

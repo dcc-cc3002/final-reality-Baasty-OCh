@@ -1,6 +1,7 @@
 package controller.states.enemy
-import controller.states.{AGameState, InitialPlayerState, TurnState, magicPlayer}
+
 import controller.GameController
+import controller.states.player.InitialPlayerState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 import model.spell.Spell

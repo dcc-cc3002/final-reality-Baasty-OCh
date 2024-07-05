@@ -1,7 +1,8 @@
 package controller
 
+import controller.states.player.{InitialPlayerState, SurrenderState}
 import model.general.GameModel
-import states.{GameState, InitialPlayerState, SurrenderState, TurnState}
+import states.{GameState, TurnState}
 import observers._
 import model.general.GameUnit
 import model.nonplayable.Enemy

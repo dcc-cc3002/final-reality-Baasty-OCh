@@ -1,4 +1,4 @@
-package controller.states.magicPlayer
+package controller.states.player.magicPlayer
 
 import model.general.GameUnit
 import controller.states.AGameState

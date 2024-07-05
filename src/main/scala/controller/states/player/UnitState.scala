@@ -1,8 +1,9 @@
-package controller.states
+package controller.states.player
 
 import controller.GameController
-import controller.states.commonPlayer.ActionState
-import controller.states.magicPlayer.ActionMagicState
+import controller.states.AGameState
+import controller.states.player.commonPlayer.ActionState
+import controller.states.player.magicPlayer.ActionMagicState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 

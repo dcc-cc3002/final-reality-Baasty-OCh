@@ -1,7 +1,8 @@
 package controllerTest.statesTest
 
 import controller.GameController
-import controller.states.{GameState, InitialPlayerState, UnitState}
+import controller.states.player.{InitialPlayerState, UnitState}
+import controller.states.GameState
 import model.general.GameModel
 import munit.FunSuite
 import view.GameView
@@ -29,8 +30,11 @@ class UnitStateTest extends FunSuite{
   }
   test("update to ActionState"){
     testState.update(gameController,0)
-    println(gameController.state)
     assertEquals(gameController.state.isActionState(),true)
+  }
+  test("update to ActionMagicState"){
+    testState.update(gameController,1)
+    assertEquals(gameController.state.isActionMagicState(),true)
   }
 
 
