@@ -6,9 +6,10 @@ import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
 class TurnState(var entities:TurnSchedule) extends AGameState {
+  var people: TurnSchedule = entities
   var pj : GameUnit = calcTurns(people)
   var choice: Int = 0
-  var people: TurnSchedule = entities
+
 
   override def isTurnState(): Boolean = true
   private def calcTurns(t:TurnSchedule): GameUnit ={

@@ -5,27 +5,30 @@ import controller.states.{AGameState, TurnState}
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class PoisonedState (enemy: GameUnit, people: TurnSchedule) extends AGameState{
+class PoisonedState (var enemy: GameUnit, var entities: TurnSchedule) extends AGameState{
   private var cnt: Int = 0
+  var pj: GameUnit = enemy
+  var people : TurnSchedule = entities
+  var choice: Int = 0
   override def notify(controller: GameController) = {
-    controller.notifyEnemyStatus(enemy)
+    controller.notifyEnemyStatus(pj)
   }
 
   override def update(controller: GameController): Unit = {
-    if (cnt < 4){ // no esta pescando el tema de los turnos
-      if (enemy.getStatus == "Envenenado con Baston"){
-        enemy.wasAttacked(20)
+    if (cnt < 4){ // no esta pescando el tema de los turnos, hay que implementarlo diff
+      if (pj.getStatus == "Envenenado con Baston"){
+        pj.wasAttacked(20)
         cnt +=1
-        controller.SetState(new TargetEnemyState(enemy,people))
+        controller.SetState(new TargetEnemyState(pj,people))
       } else {
-        enemy.wasAttacked(10)
+        pj.wasAttacked(10)
         cnt +=1
-        controller.SetState(new TargetEnemyState(enemy,people))
+        controller.SetState(new TargetEnemyState(pj,people))
       }
     }
     else {
-      enemy.setStatus("Sano")
-      controller.SetState(new TargetEnemyState(enemy,people))
+      pj.setStatus("Sano")
+      controller.SetState(new TargetEnemyState(pj,people))
     }
   }
 

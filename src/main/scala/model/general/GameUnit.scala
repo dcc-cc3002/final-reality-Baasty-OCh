@@ -129,6 +129,8 @@ trait GameUnit {
    * @return An integer representing the magic attributes. */
   def IAmMagic(): Int
 
+  def hasSpell(): Option[Spell]
+
   /**
    * Abstract Method Throws a spell at a target game unit.
    * @param target The game unit at which the spell is aimed.

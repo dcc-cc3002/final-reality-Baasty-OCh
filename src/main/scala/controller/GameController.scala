@@ -158,6 +158,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
   def notifyInvalidTarget(): Unit = {
     view.displayInvalidTargetMessage()
   }
+  def notifyInvalidSpell(): Unit = {
+    view.displayInvalidSpellMessage()
+  }
 
   def notifyMagicPlayerAction() = {
     view.displayMagicPlayerAction()

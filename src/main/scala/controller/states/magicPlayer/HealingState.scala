@@ -7,9 +7,11 @@ import model.general.schedule.TurnSchedule
 import model.spell.Spell
 import model.weapons.Weapon
 
-class HealingState(src: GameUnit, spell: Option[Spell],
-                   people: TurnSchedule, weapon: Option[Weapon]) extends AGameState{
+class HealingState(var ally: GameUnit, spell: Option[Spell],
+                   var entities: TurnSchedule, weapon: Option[Weapon]) extends AGameState{
   private var selected: Option[GameUnit] = None
+  var pj : GameUnit = ally
+  var people: TurnSchedule = entities
   var choice: Int = 0
 
   override def notify(controller: GameController) = {
@@ -20,7 +22,7 @@ class HealingState(src: GameUnit, spell: Option[Spell],
     choice = controller.getNumericalInput()
     try{
       selected = Some(controller.getAlly(choice - 1))
-      src.throwSpell(selected.get)
+      pj.throwSpell(selected.get)
     }
     catch {
       case e: IndexOutOfBoundsException => controller.notifyErrorInvalidOption(choice)
@@ -30,11 +32,11 @@ class HealingState(src: GameUnit, spell: Option[Spell],
   override def update(controller: GameController): Unit = {
     if(selected.map(_.getHp).getOrElse(0) != 0) {
       choice match{
-        case 0 => controller.SetState(new WeaponMagicState(src, spell, people))
+        case 0 => controller.SetState(new WeaponMagicState(pj, spell, people))
         case 1 => controller.SetState(new TurnState(people))
         case 2 => controller.SetState(new TurnState(people))
         case 3 => controller.SetState(new TurnState(people))
       }
-    } else controller.SetState(new HealingState(src,spell,people,weapon))
+    } else controller.SetState(new HealingState(pj,spell,people,weapon))
   }
 }

@@ -5,7 +5,10 @@ import controller.states.{AGameState, TurnState}
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class ParalyzedState(enemy: GameUnit, people: TurnSchedule) extends AGameState{
+class ParalyzedState(var enemy: GameUnit, var entities: TurnSchedule) extends AGameState{
+  var pj: GameUnit = enemy
+  var people : TurnSchedule = entities
+  var choice: Int = 0
   override def notify(controller: GameController) = {
     controller.notifyEnemyStatus(enemy)
   }

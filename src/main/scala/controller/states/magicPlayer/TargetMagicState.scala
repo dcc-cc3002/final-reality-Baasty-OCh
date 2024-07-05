@@ -8,12 +8,15 @@ import model.spell.Spell
 import model.weapons.Weapon
 
 
-class TargetMagicState(private val source: GameUnit, private val spell: Option[Spell], val people : TurnSchedule, var weapon: Option[Weapon]) extends AGameState {
+class TargetMagicState(var ally: GameUnit, private val spell: Option[Spell],
+                       var entities : TurnSchedule, var weapon: Option[Weapon]) extends AGameState {
   private var selected: Option[GameUnit] = None
+  var pj: GameUnit = ally
+  var people: TurnSchedule = entities
   var choice : Int = 0
 
-  def this(source: GameUnit, t :TurnSchedule, w :Option[Weapon]) = {
-    this(source, None,t, w)
+  def this(ally: GameUnit, entities :TurnSchedule, w :Option[Weapon]) = {
+    this(ally, None, entities, w)
   }
 
   override def notify(controller: GameController) = {
@@ -40,14 +43,18 @@ class TargetMagicState(private val source: GameUnit, private val spell: Option[S
   }
 
   override def update(controller: GameController): Unit = {
-    if(selected.map(_.getHp).getOrElse(0) != 0)
-    choice match{
-      case 0 => controller.SetState(new WeaponMagicState(source, spell,people))
-      case 1 => controller.SetState(new FinalMagicState(source, selected.get, spell, people, weapon))
-      case 2 => controller.SetState(new FinalMagicState(source, selected.get, spell, people, weapon))
-      case 3 => controller.SetState(new FinalMagicState(source, selected.get, spell, people, weapon))
-      case 4 => controller.SetState(new SpellState(source,people))
-    } else controller.SetState(new TargetMagicState(source, spell, people, weapon))
+    if(selected.map(_.getHp).getOrElse(0) == 0){
+      controller.SetState(new TargetMagicState(pj, spell, people, weapon))
+      controller.notifyInvalidTarget()
+    } else{
+      choice match{
+        case 0 => controller.SetState(new WeaponMagicState(pj, spell,people))
+        case 1 => controller.SetState(new FinalMagicState(pj, selected.get, spell, people, weapon))
+        case 2 => controller.SetState(new FinalMagicState(pj, selected.get, spell, people, weapon))
+        case 3 => controller.SetState(new FinalMagicState(pj, selected.get, spell, people, weapon))
+        case 4 => controller.SetState(new SpellState(pj,people))
+      }
+    }
   }
 
 }

@@ -134,6 +134,7 @@ class GameView {
           s" || WT: ${allies.buff(i).getWeight}" +
           s" || AP: ${allies.buff(i).getAttack}" +
           s" || MP: ${allies.buff(i).getMana}" +
+          s" || Spell: ${allies.buff(i).hasSpell().map(_.getName).getOrElse("None")}" +
           s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
       } else if (allies.buff(i).getHp <= allies.buff(i).maxHp()/2){
         queue.enqueue(s"${i+1}) ${ConsoleColors.YELLOW}${allies.buff(i).getName} " +
@@ -142,6 +143,7 @@ class GameView {
           s" || WT: ${allies.buff(i).getWeight}" +
           s" || AP: ${allies.buff(i).getAttack}" +
           s" || MP: ${allies.buff(i).getMana}" +
+          s" || Spell: ${allies.buff(i).hasSpell().map(_.getName).getOrElse("None")}" +
           s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")}
       else {
         queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${allies.buff(i).getName} " +
@@ -150,6 +152,7 @@ class GameView {
           s" || WT: ${allies.buff(i).getWeight}" +
           s" || AP: ${allies.buff(i).getAttack}" +
           s" || MP: ${allies.buff(i).getMana}" +
+          s" || Spell: ${allies.buff(i).hasSpell().map(_.getName).getOrElse("None")}" +
           s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
 
       }
@@ -323,7 +326,7 @@ class GameView {
    */
   def displaySimpleAttack(src: GameUnit, dest: GameUnit, amount: Int): Unit = {
     queue.enqueue(s"${src.getName} ataca ${dest.getName}")
-    queue.enqueue(s"${src.getName} usó ${src.arma.get.getClass()} que tiene ${src.arma.get.getAttack} puntos de ataque")
+    queue.enqueue(s"${src.getName} usó ${src.arma.get.getName} que tiene ${src.arma.get.getAttack} puntos de ataque")
     //queue.enqueue(s"como ${dest.getName} tenia ${dest.getDp + amount} puntos de escudo!")
     queue.enqueue(s"${dest.getName} usa su escudo, recibió ${amount} de daño!")
     queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
@@ -343,7 +346,7 @@ class GameView {
    */
   def displaySimpleEnemyAttack(src: GameUnit, dest: GameUnit, amount: Int): Unit = {
     queue.enqueue(s"${src.getName} ataca ${dest.getName}")
-    queue.enqueue(s"${src.getName} hizo ${amount} de daño!")
+    queue.enqueue(s"${dest.getName} usa su escudo, recibió ${amount} de daño!")
     queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
     queue.enqueue(s"DP de ${dest.getName} reducidos a ${dest.getDp}")
     if (dest.getHp == 0) queue.enqueue(s"${dest.getName} : ES CULPA DE NEGREIRAAAA")
@@ -392,6 +395,9 @@ class GameView {
   }
   def displayInvalidTargetMessage(): Unit = {
     queue.enqueue(" No se puede atacar a un Enemigo Muerto, Intentalo de nuevo!")
+  }
+  def displayInvalidSpellMessage(): Unit = {
+    queue.enqueue(" Elegiste un Hechizo invalido para este personaje, Intentalo de nuevo!")
   }
 
   /**

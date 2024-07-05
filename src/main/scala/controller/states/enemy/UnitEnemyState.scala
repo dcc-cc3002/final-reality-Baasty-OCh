@@ -5,18 +5,18 @@ import controller.GameController
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class UnitEnemyState(val people : TurnSchedule, val pj: GameUnit) extends AGameState {
-  private var selected: GameUnit = pj
+class UnitEnemyState(var enemy: GameUnit, var entities: TurnSchedule) extends AGameState {
+  var pj: GameUnit = enemy
+  var people : TurnSchedule = entities
+  var choice: Int = 0
 
   override def notify(controller: GameController): Unit = {
-    controller.notifyEnemyStart(selected)
+    controller.notifyEnemyStart(pj)
   }
 
-  override def handleInput(controller: GameController): Unit = {
-
-  }
+  override def handleInput(controller: GameController): Unit = {}
 
   override def update(controller: GameController): Unit = {
-    controller.SetState(new ActionEnemyState(selected,people))
+    controller.SetState(new ActionEnemyState(pj,people))
   }
 } 

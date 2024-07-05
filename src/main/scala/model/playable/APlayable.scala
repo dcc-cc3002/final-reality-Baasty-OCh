@@ -197,6 +197,8 @@ abstract class APlayable(val name: String, var healthPoints: Int,
     gameUnit.IAmCommon()
   }
 
+  def hasSpell(): Option[Spell] = spell
+
   override def IAmCommon(): Int = 0
 
   /**

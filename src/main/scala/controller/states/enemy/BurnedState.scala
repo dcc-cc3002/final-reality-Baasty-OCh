@@ -5,26 +5,29 @@ import controller.states.AGameState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class BurnedState(enemy:GameUnit, people: TurnSchedule) extends  AGameState{
+class BurnedState(var enemy:GameUnit, var entities: TurnSchedule) extends  AGameState{
   private var cnt: Int = 0
+  var pj: GameUnit = enemy
+  var people : TurnSchedule = entities
+  var choice: Int = 0
   override def notify(controller: GameController): Unit = {
-    controller.notifyEnemyStatus(enemy)
+    controller.notifyEnemyStatus(pj)
   }
   override def update(controller: GameController): Unit = {
     if (cnt < 4){ // no esta pescando el tema de los turnos
-      if (enemy.getStatus == "Quemado con Baston"){
-        enemy.wasAttacked(30)
+      if (pj.getStatus == "Quemado con Baston"){
+        pj.wasAttacked(30)
         cnt +=1
-        controller.SetState(new TargetEnemyState(enemy,people))
+        controller.SetState(new TargetEnemyState(pj,people))
       } else {
-        enemy.wasAttacked(15)
+        pj.wasAttacked(15)
         cnt +=1
-        controller.SetState(new TargetEnemyState(enemy,people))
+        controller.SetState(new TargetEnemyState(pj,people))
       }
     }
     else {
-      enemy.setStatus("Sano")
-      controller.SetState(new TargetEnemyState(enemy,people))
+      pj.setStatus("Sano")
+      controller.SetState(new TargetEnemyState(pj,people))
     }
   }
 

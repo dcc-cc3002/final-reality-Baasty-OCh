@@ -90,6 +90,8 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
   def IAmCommon(): Int = 0
 
   def IAmMagic(): Int = 0
+
+  def hasSpell(): Option[Spell] = None
   /**
    * Gets the mana points of the game unit.
    * @return The mana points of the game unit. */
@@ -150,7 +152,7 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
       } else {
         entity.setDp(damage.abs)
         for (o <- attackObs) {
-          o.notifySimpleEnemyAttack(this, entity, damage)
+          o.notifySimpleEnemyAttack(this, entity, 0)
         }
         "The enemy was attacked, but the damage is not enough"
       }
