@@ -30,7 +30,7 @@ trait GameState {
    * Update the current state.
    * @param controller the GameController instance to update
    */
-  def update(controller: GameController): Unit
+  def update(controller: GameController, input: Int): Unit
 
   // General States
 

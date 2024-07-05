@@ -15,6 +15,7 @@ class TargetMagicState(var ally: GameUnit, private val spell: Option[Spell],
   var people: TurnSchedule = entities
   var choice : Int = 0
 
+  override def isTargetMagicState(): Boolean = true
   def this(ally: GameUnit, entities :TurnSchedule, w :Option[Weapon]) = {
     this(ally, None, entities, w)
   }

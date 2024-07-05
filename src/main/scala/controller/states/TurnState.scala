@@ -30,8 +30,8 @@ class TurnState(var entities:TurnSchedule) extends AGameState {
     choice  = controller.TurnoDe(pj)
   }
 
-  override def update(controller: GameController): Unit = {
-    choice match{
+  override def update(controller: GameController, input:Int = choice): Unit = {
+    input match{
       case 1 => controller.SetState(new InitialEnemyState(people,pj))
       case 2 => controller.SetState(new InitialPlayerState(people,pj))
     }

@@ -11,6 +11,7 @@ class SurrenderState(src: GameUnit, entities: TurnSchedule) extends AGameState {
   var people: TurnSchedule = entities
   var choice: Int = 0
 
+  override def isSurrenderState(): Boolean = true
 
   override def notify(controller: GameController): Unit = {
     controller.notifySurrenderMessage(pj)

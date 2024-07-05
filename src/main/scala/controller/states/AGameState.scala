@@ -26,7 +26,7 @@ abstract class AGameState extends GameState {
    * Default implementation does nothing.
    * @param controller the GameController instance to update
    */
-  override def update(controller: GameController): Unit = {}
+  override def update(controller: GameController, input: Int): Unit = {}
 
   /**
    * Notify the controller of the current state.

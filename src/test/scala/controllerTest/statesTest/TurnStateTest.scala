@@ -7,7 +7,7 @@ import model.weapons.common.Sword
 import munit.FunSuite
 import view.GameView
 
-class TurnStateTest extends FunSuite{
+class TurnStateTest extends FunSuite{ // flujo de jugador zidane
   /** Instance of GameModel used for testing. */
   val gameModel: GameModel = new GameModel()
 
@@ -19,22 +19,29 @@ class TurnStateTest extends FunSuite{
   /**
    * An instance of a subclass of AGameState used for testing.
    */
-  val testState: GameState = gameController.state
+  val testState: GameState = gameController.state // by default TurnState
 
   test("handleInput"){
     testState.handleInput(gameController)
   }
-  test("update match 2"){
+  test("update to InitialPlayerState"){
     testState.update(gameController)
     assertEquals(gameController.state.isInitialPlayerState(),true)
   }
-  test("update match 1"){
-    val ZZ: GameUnit = gameController.getAlly(2)
-    ZZ.putWeapon( new Sword())
-    println(ZZ.getName)
-    println(ZZ.getWeight)
-    testState.update(gameController)
-    assertEquals(gameController.state.isInitialEnemyState(),true)
+  test("update to UnitState"){
+    gameController.state.update(gameController)
+    assertEquals(gameController.state.isUnitState(),true)
   }
+  test("update to ActionMagicState"){
+    gameController.state.handleInput(gameController)
+    gameController.state.update(gameController)
+    assertEquals(gameController.state.isActionMagicState(),true)
+  }
+  test("update to SurrenderState"){
+    gameController.state.choice = 0
+    gameController.state.update(gameController)
+    assertEquals(gameController.state.isActionMagicState(),true)
+  }
+
 
 }

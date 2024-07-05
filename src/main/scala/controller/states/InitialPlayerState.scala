@@ -11,7 +11,7 @@ class InitialPlayerState(val entities : TurnSchedule, val src: GameUnit) extends
   var choice: Int = 0
   override def isInitialPlayerState(): Boolean = true
 
-  override def update(controller: GameController) = {
+  override def update(controller: GameController, input: Int = choice) = {
     controller.SetState(new UnitState(people,pj))
   }
 

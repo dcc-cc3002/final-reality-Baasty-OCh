@@ -11,12 +11,14 @@ class UnitState(val entities : TurnSchedule, val src: GameUnit) extends AGameSta
   var people : TurnSchedule = entities
   var choice: Int = 0
 
+  override def isUnitState(): Boolean = true
+
   override def handleInput(controller: GameController): Unit = {
     choice = pj.IsMagic(pj)
   }
 
-  override def update(controller: GameController): Unit = {
-      choice match{
+  override def update(controller: GameController, input: Int = choice): Unit = {
+      input match{
         case 0 => controller.SetState(new ActionState(pj,people))
         case 1 => controller.SetState(new ActionMagicState(pj,people))
       }
