@@ -1,9 +1,8 @@
-package controllerTest.statesTest
+package controllerTest.statesTest.playerTest
 
 import controller.GameController
 import controller.states.{GameState, TurnState}
-import model.general.{GameModel, GameUnit}
-import model.weapons.common.Sword
+import model.general.GameModel
 import munit.FunSuite
 import view.GameView
 

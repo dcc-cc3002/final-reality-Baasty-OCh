@@ -1,13 +1,13 @@
-package controllerTest.statesTest
+package controllerTest.statesTest.playerTest
 
 import controller.GameController
-import controller.states.player.InitialPlayerState
-import controller.states.{GameState, TurnState}
+import controller.states.GameState
+import controller.states.player.UnitState
 import model.general.GameModel
 import munit.FunSuite
 import view.GameView
 
-class InitialPlayerStateTest extends FunSuite{
+class UnitStateTest extends FunSuite{
   /** Instance of GameModel used for testing. */
   val gameModel: GameModel = new GameModel()
 
@@ -22,11 +22,20 @@ class InitialPlayerStateTest extends FunSuite{
   var testState: GameState = _ // by default TurnState
 
   override def beforeEach(context: BeforeEach): Unit = {
-    testState = new InitialPlayerState(gameModel.participants,gameController.state.pj)
+    testState = new UnitState(gameModel.participants,gameController.state.pj)
   }
-  test("update to UnitState"){
+  test("handleInput"){
+    testState.handleInput(gameController)
+    assertEquals(testState.choice,1)
+  }
+  test("update to ActionState"){
     testState.update(gameController,0)
-    assertEquals(gameController.state.isUnitState(),true)
+    assertEquals(gameController.state.isActionState(),true)
   }
+  test("update to ActionMagicState"){
+    testState.update(gameController,1)
+    assertEquals(gameController.state.isActionMagicState(),true)
+  }
+
 
 }

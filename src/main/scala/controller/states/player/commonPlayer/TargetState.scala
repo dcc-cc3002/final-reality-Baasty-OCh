@@ -13,7 +13,7 @@ class TargetState(var ally: GameUnit, var entities : TurnSchedule) extends AGame
   var people: TurnSchedule = entities
   var choice : Int = 0
 
-
+  override def isTargetState(): Boolean = true
   override def notify(controller: GameController) = {
     controller.notifyPlayerTarget()
   }

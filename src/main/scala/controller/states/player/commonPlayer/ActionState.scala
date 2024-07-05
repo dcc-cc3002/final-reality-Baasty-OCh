@@ -37,7 +37,6 @@ class ActionState(private val ally: GameUnit,val entities : TurnSchedule) extend
         case 0 => controller.SetState(new SurrenderState(pj, people))
         case 1 => controller.SetState(new WeaponState(pj, people))
         case 2 => controller.SetState(new WeaponState(pj, people))
-        case _ => controller.notifyErrorInvalidOption(choice)
       }
     }
   }

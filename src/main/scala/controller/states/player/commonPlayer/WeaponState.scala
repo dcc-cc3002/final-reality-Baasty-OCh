@@ -8,7 +8,7 @@ import model.spell.Spell
 import model.weapons.Weapon
 
 
-////REGISTRO DE ARMAS ESTILO ENEMIES, ESO VA SOLUCIONAR TODO
+
 class WeaponState (var ally: GameUnit, var entities: TurnSchedule) extends AGameState {
   var pj: GameUnit = ally
   var people: TurnSchedule = entities
@@ -16,6 +16,7 @@ class WeaponState (var ally: GameUnit, var entities: TurnSchedule) extends AGame
   pj.dropWeapon()
   private var selected: Option[Weapon] = None
 
+  override def isWeaponState(): Boolean = true
   override def notify(controller: GameController) = {
     controller.notifyPlayerUnitWeapons(pj)
   }
@@ -56,7 +57,7 @@ class WeaponState (var ally: GameUnit, var entities: TurnSchedule) extends AGame
         case 3 => controller.SetState(new TargetState (pj, people))
         case 4 => controller.SetState(new WeaponState (pj, people))
         case 5 => controller.SetState(new WeaponState (pj, people))
-        case 6 => controller.SetState(new WeaponState (pj, people))
+
       }
     }
   }
