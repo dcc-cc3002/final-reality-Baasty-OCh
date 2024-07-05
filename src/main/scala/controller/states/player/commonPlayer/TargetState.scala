@@ -29,8 +29,8 @@ class TargetState(var ally: GameUnit, var entities : TurnSchedule) extends AGame
     }
   }
 
-  override def update(controller: GameController, input:Int = choice): Unit = {
-    if (selected.map(_.getHp).getOrElse(0) ==0){
+  override def update(controller: GameController, input:Int = choice): Unit = { // se arregla agregando un var de selected en update
+    if (selected.map(_.getHp).getOrElse(10) == 0 || selected.isEmpty){
       controller.SetState(new TargetState(pj, people))
       controller.notifyInvalidTarget()
     } else {
