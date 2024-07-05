@@ -6,21 +6,21 @@ import controller.states.magicPlayer.ActionMagicState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class UnitState(val people : TurnSchedule, val pj: GameUnit) extends AGameState {
-  private val selected: GameUnit = pj
-  private var choice: Int = 2
+class UnitState(val entities : TurnSchedule, val src: GameUnit) extends AGameState {
+  var pj: GameUnit = src
+  var people : TurnSchedule = entities
+  var choice: Int = 0
 
   override def handleInput(controller: GameController): Unit = {
-    choice = selected.IsMagic(selected)
+    choice = pj.IsMagic(pj)
   }
 
   override def update(controller: GameController): Unit = {
-    if (selected.getHp != 0) {
       choice match{
-        case 0 => controller.SetState(new ActionState(selected,people))
-        case 1 => controller.SetState(new ActionMagicState(selected,people))
+        case 0 => controller.SetState(new ActionState(pj,people))
+        case 1 => controller.SetState(new ActionMagicState(pj,people))
       }
-    } else controller.SetState(new UnitState(people,pj))
   }
+
 
 }

@@ -43,6 +43,7 @@ class Paladin(name:String, healthPoints: Int,
       this.dropWeapon()
       weapon.canBeEquippedBy(this)
       this.arma = Some(weapon)
+      this.setWeight(this.getWeight + weapon.getWeight)
       weapon.setOwner(this)
       "The weapon was wear"
   } catch {

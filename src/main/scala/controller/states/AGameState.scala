@@ -10,7 +10,9 @@ import model.playable.common.Paladin
  * Provides default implementations for the methods defined in the GameState trait.
  */
 abstract class AGameState extends GameState {
-
+  var pj: GameUnit
+  var people: TurnSchedule
+  var choice: Int
 
   /**
    * Handle input in the current state.

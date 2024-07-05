@@ -26,6 +26,8 @@ trait GameUnit {
    */
   def getWeight: Int
 
+  def setWeight(newWeight: Int) : Unit
+
   /**
    * Gets the defense points of the game unit.
    * @return The defense points of the game unit. */

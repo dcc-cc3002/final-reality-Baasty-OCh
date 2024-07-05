@@ -99,17 +99,26 @@ class GameView {
     queue.enqueue("Estado de los aliados:")
     for (i <- allies.buff.indices) {
       if (allies.buff(i).getHp == 0){
-        queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
-          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}" + s"|| " +
-            s"|| Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
+        queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${allies.buff(i).getName}" +
+          s" || PV: ${allies.buff(i).getHp} " +
+          s" || DP: ${allies.buff(i).getDp}" +
+          s" || WT: ${allies.buff(i).getWeight}" +
+          s" || AP: ${allies.buff(i).getAttack}" +
+          s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
       } else if (allies.buff(i).getHp <= allies.buff(i).maxHp()/2){
-        queue.enqueue(s"${i+1}) ${ConsoleColors.YELLOW}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
-          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}" + s"|| " +
-            s"|| Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")}
+        queue.enqueue(s"${i+1}) ${ConsoleColors.YELLOW}${allies.buff(i).getName} " +
+          s" || PV: ${allies.buff(i).getHp} " +
+          s" || DP: ${allies.buff(i).getDp}" +
+          s" || WT: ${allies.buff(i).getWeight}" +
+          s" || AP: ${allies.buff(i).getAttack}" +
+          s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")}
       else {
-        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
-          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}" + s"|| " +
-            s"|| Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
+        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${allies.buff(i).getName} " +
+          s" || PV: ${allies.buff(i).getHp} " +
+          s" || DP: ${allies.buff(i).getDp}" +
+          s" || WT: ${allies.buff(i).getWeight}" +
+          s" || AP: ${allies.buff(i).getAttack}" +
+          s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
 
       }
     }
@@ -119,17 +128,29 @@ class GameView {
     queue.enqueue("Estado de los aliados:")
     for (i <- allies.buff.indices) {
       if (allies.buff(i).getHp == 0){
-        queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
-          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}" + s"|| " +
-          s"MP: ${allies.buff(i).getMana}" + s"|| Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
+        queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${allies.buff(i).getName} " +
+          s" || PV: ${allies.buff(i).getHp} " +
+          s" || DP: ${allies.buff(i).getDp}" +
+          s" || WT: ${allies.buff(i).getWeight}" +
+          s" || AP: ${allies.buff(i).getAttack}" +
+          s" || MP: ${allies.buff(i).getMana}" +
+          s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
       } else if (allies.buff(i).getHp <= allies.buff(i).maxHp()/2){
-        queue.enqueue(s"${i+1}) ${ConsoleColors.YELLOW}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
-          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}" + s"|| " +
-          s"MP: ${allies.buff(i).getMana}" + s"|| Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")}
+        queue.enqueue(s"${i+1}) ${ConsoleColors.YELLOW}${allies.buff(i).getName} " +
+          s" || PV: ${allies.buff(i).getHp} " +
+          s" || DP: ${allies.buff(i).getDp}" +
+          s" || WT: ${allies.buff(i).getWeight}" +
+          s" || AP: ${allies.buff(i).getAttack}" +
+          s" || MP: ${allies.buff(i).getMana}" +
+          s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")}
       else {
-        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${allies.buff(i).getName} || PV: ${allies.buff(i).getHp} " + s"|| DP: ${allies.buff(i).getDp}" +
-          s"|| WT: ${allies.buff(i).getWeight + allies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${allies.buff(i).getAttack}" + s"|| " +
-          s"MP: ${allies.buff(i).getMana}" + s"|| Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
+        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${allies.buff(i).getName} " +
+          s" || PV: ${allies.buff(i).getHp} " +
+          s" || DP: ${allies.buff(i).getDp}" +
+          s" || WT: ${allies.buff(i).getWeight}" +
+          s" || AP: ${allies.buff(i).getAttack}" +
+          s" || MP: ${allies.buff(i).getMana}" +
+          s" || Weapon: ${allies.buff(i).hasWeapon.map(_.getName).getOrElse("None")}${ConsoleColors.RESET}")
 
       }
     }
@@ -145,17 +166,26 @@ class GameView {
     queue.enqueue("Estado de los enemigos:")
     for (i <- enemies.buff.indices) {
       if (enemies.buff(i).getHp == 0){
-        queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${enemies.buff(i).getName} || PV: ${enemies.buff(i).getHp} " + s"|| DP: ${enemies.buff(i).getDp}" +
-          s"|| WT: ${enemies.buff(i).getWeight + enemies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${enemies.buff(i).getAttack}" +
-          s"|| Status:${" Muerto"}${ConsoleColors.RESET}")
+        queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${enemies.buff(i).getName} " +
+          s" || PV: ${enemies.buff(i).getHp} " +
+          s" || DP: ${enemies.buff(i).getDp}" +
+          s" || WT: ${enemies.buff(i).getWeight}" +
+          s" || AP: ${enemies.buff(i).getAttack}" +
+          s" || Status:${"Muerto"}${ConsoleColors.RESET}")
       } else if (enemies.buff(i).getHp <= enemies.buff(i).maxHp()/2){
-        queue.enqueue(s"${i+1}) ${ConsoleColors.YELLOW}${enemies.buff(i).getName} || PV: ${enemies.buff(i).getHp} " + s"|| DP: ${enemies.buff(i).getDp}" +
-          s"|| WT: ${enemies.buff(i).getWeight + enemies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${enemies.buff(i).getAttack}" +
-          s"|| Status:${enemies.buff(i).getStatus}${ConsoleColors.RESET}")}
+        queue.enqueue(s"${i+1}) ${ConsoleColors.YELLOW}${enemies.buff(i).getName} " +
+          s" || PV: ${enemies.buff(i).getHp} " +
+          s" || DP: ${enemies.buff(i).getDp}" +
+          s" || WT: ${enemies.buff(i).getWeight}" +
+          s" || AP: ${enemies.buff(i).getAttack}" +
+          s" || Status:${enemies.buff(i).getStatus}${ConsoleColors.RESET}")}
       else {
-        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${enemies.buff(i).getName} || PV: ${enemies.buff(i).getHp} " + s"|| DP: ${enemies.buff(i).getDp}" +
-          s"|| WT: ${enemies.buff(i).getWeight + enemies.buff(i).arma.map(_.getWeight).getOrElse(0)}" + s"|| AP: ${enemies.buff(i).getAttack}" +
-          s"|| Status:${enemies.buff(i).getStatus}${ConsoleColors.RESET}")
+        queue.enqueue(s"${i+1}) ${ConsoleColors.GREEN}${enemies.buff(i).getName} " +
+          s" || PV: ${enemies.buff(i).getHp} " +
+          s" || DP: ${enemies.buff(i).getDp}" +
+          s" || WT: ${enemies.buff(i).getWeight}" +
+          s" || AP: ${enemies.buff(i).getAttack}" +
+          s" || Status:${enemies.buff(i).getStatus}${ConsoleColors.RESET}")
 
       }
     }
@@ -351,10 +381,17 @@ class GameView {
   /**
    * Displays the surrender message.
    */
-  def displaySurrender(): Unit = {
-    queue.enqueue("COBARDEEE!!")
+  def displaySurrender(coward:GameUnit): Unit = {
+    queue.enqueue(s"${coward.getName}  COBARDEEE!!")
     queue.enqueue("TRAICIONASTE A TU ARMADA")
 
+  }
+
+  def displayInvalidWeaponMessage() : Unit = {
+    queue.enqueue(" Elegiste un Arma invalida para este personaje, Intentalo de nuevo!")
+  }
+  def displayInvalidTargetMessage(): Unit = {
+    queue.enqueue(" No se puede atacar a un Enemigo Muerto, Intentalo de nuevo!")
   }
 
   /**

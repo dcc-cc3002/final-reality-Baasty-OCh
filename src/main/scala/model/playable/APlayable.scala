@@ -20,7 +20,7 @@ import scala.collection.mutable.ArrayBuffer
  * @param weight The weight of the character.
  */
 abstract class APlayable(val name: String, var healthPoints: Int,
-                                   var defensePoints: Int, val weight: Int) extends Playable {
+                                   var defensePoints: Int, var weight: Int) extends Playable {
   require(healthPoints >= 0, "Health points must be non-negative.")
   require(defensePoints >= 0, "Defense points must be non-negative.")
   require(weight >= 0, "Weight must be non-negative.")
@@ -116,6 +116,10 @@ abstract class APlayable(val name: String, var healthPoints: Int,
    * Retrieves the weight of the playable entity.
    * @return The weight of the playable entity. */
   def getWeight: Int = weight
+
+  def setWeight(newWeight: Int): Unit ={
+    this.weight = newWeight
+  }
 
   /**
    * Checks if the playable entity has a weapon equipped.

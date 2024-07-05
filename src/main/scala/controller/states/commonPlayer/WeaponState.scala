@@ -9,15 +9,15 @@ import model.weapons.Weapon
 
 
 ////REGISTRO DE ARMAS ESTILO ENEMIES, ESO VA SOLUCIONAR TODO
-class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends AGameState {
+class WeaponState (var ally: GameUnit, var entities: TurnSchedule) extends AGameState {
+  var pj: GameUnit = ally
+  var people: TurnSchedule = entities
   var choice : Int = 0
-
-
-  src.dropWeapon()
+  pj.dropWeapon()
   private var selected: Option[Weapon] = None
 
   override def notify(controller: GameController) = {
-    controller.notifyPlayerUnitWeapons(src)
+    controller.notifyPlayerUnitWeapons(pj)
   }
 
   override def handleInput(controller: GameController): Unit = {
@@ -25,17 +25,17 @@ class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends 
     try {
       if (choice == 0){
         val w = controller.getWeapon(choice)
-        src.putWeapon(w)
+        pj.putWeapon(w)
         selected = Some(w)
       }
       else{
         val w = controller.getWeapon(choice-1)
         if (w.getOwner().isEmpty){
-          src.putWeapon(w)
+          pj.putWeapon(w)
           selected = Some(w)
-          people.deletePlayer(src)
-          people.addPlayer(src)
-        } else src.dropWeapon()
+          people.deletePlayer(pj)
+          people.addPlayer(pj)
+        } else pj.dropWeapon()
       }
     }
     catch {
@@ -44,18 +44,19 @@ class WeaponState (private val src: GameUnit,val people : TurnSchedule) extends 
   }
 
   override def update(controller: GameController): Unit = {
-    if (src.arma.isEmpty){
-      controller.SetState(new WeaponState(src,people))
+    if (pj.arma.isEmpty){
+      controller.SetState(new WeaponState(pj,people))
+      controller.notifyInvalidWeapon()
     }
     else {
       choice match {
-        case 0 => controller.SetState(new ActionState (src, people))
-        case 1 => controller.SetState(new TargetState (src, people))
-        case 2 => controller.SetState(new TargetState (src, people))
-        case 3 => controller.SetState(new TargetState (src, people))
-        case 4 => controller.SetState(new WeaponState (src, people))
-        case 5 => controller.SetState(new WeaponState (src, people))
-        case 6 => controller.SetState(new WeaponState (src, people))
+        case 0 => controller.SetState(new ActionState (pj, people)) // eliminar este caso , sera facil cuando corra la vista
+        case 1 => controller.SetState(new TargetState (pj, people))
+        case 2 => controller.SetState(new TargetState (pj, people))
+        case 3 => controller.SetState(new TargetState (pj, people))
+        case 4 => controller.SetState(new WeaponState (pj, people))
+        case 5 => controller.SetState(new WeaponState (pj, people))
+        case 6 => controller.SetState(new WeaponState (pj, people))
       }
     }
   }

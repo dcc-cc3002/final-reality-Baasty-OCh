@@ -21,7 +21,7 @@ import scala.collection.mutable.ArrayBuffer
  * @param attackPoints The attack points of the enemy.
  */
 protected abstract class AEnemy(val name: String, var life: Int, var defence: Int,
-                                val weight: Int, val attackPoints: Int, var status: String) extends NonPlayable {
+                                var weight: Int, val attackPoints: Int, var status: String) extends NonPlayable {
 
   require(weight >= 0 && weight <= 150, "Weight must be between 0 and 150.")
   require(attackPoints >= 0 && attackPoints <= 100, "Attack points must be between 0 and 100.")
@@ -50,6 +50,10 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
    * @return The weight of the non-playable entity. */
   def getWeight: Int = weight
 
+  def setWeight(newWeight: Int): Unit = {
+    this.weight = newWeight
+  }
+
   override def hasWeapon: Option[Weapon] = None
   /**
    * Retrieves the defence points of the non-playable entity.
@@ -70,6 +74,9 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
    * Sets the life points of the non-playable entity.
    * @param newLife The new life points of the non-playable entity. */
   def setHp(newLife: Int): Unit = {
+    if (newLife == 0){
+      this.setStatus("Muerto")
+    } else {}
     this.life = newLife
   }
 

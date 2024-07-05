@@ -3,6 +3,7 @@ package controllerTest.statesTest
 import controller.GameController
 import controller.states.GameState
 import model.general.{GameModel, GameUnit}
+import model.weapons.common.Sword
 import munit.FunSuite
 import view.GameView
 
@@ -21,13 +22,19 @@ class TurnStateTest extends FunSuite{
   val testState: GameState = gameController.state
 
   test("handleInput"){
-    val ZZ: GameUnit = gameController.getAlly(2)
-    ZZ.setHp(0)
     testState.handleInput(gameController)
   }
-  test("update"){
-
+  test("update match 2"){
     testState.update(gameController)
+    assertEquals(gameController.state.isInitialPlayerState(),true)
+  }
+  test("update match 1"){
+    val ZZ: GameUnit = gameController.getAlly(2)
+    ZZ.putWeapon( new Sword())
+    println(ZZ.getName)
+    println(ZZ.getWeight)
+    testState.update(gameController)
+    assertEquals(gameController.state.isInitialEnemyState(),true)
   }
 
 }

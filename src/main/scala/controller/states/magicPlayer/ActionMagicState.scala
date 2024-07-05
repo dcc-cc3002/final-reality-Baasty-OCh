@@ -6,30 +6,33 @@ import controller.states.{AGameState, GameState, SurrenderState, UnitState}
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class ActionMagicState(private val ally: GameUnit, val people : TurnSchedule) extends AGameState {
+class ActionMagicState(var ally: GameUnit, var entities : TurnSchedule) extends AGameState {
   private var selected: Option[GameState] = None
+  var pj: GameUnit = ally
+  var people: TurnSchedule = entities
+  var choice : Int = 0
 
   override def notify(controller: GameController): Unit = {
     controller.notifyMagicPlayerAction()
   }
 
   override def handleInput(controller: GameController): Unit = {
-    val choice = controller.getNumericalInput()
-    if (ally.arma.isDefined || ally.spell.isDefined){ // tiene arma?
+    choice = controller.getNumericalInput()
+    if (pj.arma.isDefined || pj.spell.isDefined){ // has Weapon or Spell
       choice match {
-        case 0 => selected = Some(new SurrenderState())
-        case 1 => selected = Some(new TargetMagicState(ally,people, ally.arma))
-        case 2 => selected = Some(new SpellState(ally,people))
-        case 3 => selected = Some(new WeaponMagicState(ally,people))
-        case 4 => selected = Some(new SpellState(ally,people))
+        case 0 => selected = Some(new SurrenderState(pj,people))
+        case 1 => selected = Some(new TargetMagicState(pj,people, pj.arma))
+        case 2 => selected = Some(new SpellState(pj,people))
+        case 3 => selected = Some(new WeaponMagicState(pj,people))
+        case 4 => selected = Some(new SpellState(pj,people))
       }
     } else {
       choice match {
-        case 0 => selected = Some(new SurrenderState())
-        case 1 => selected = Some(new WeaponMagicState(ally,people))
-        case 2 => selected = Some(new SpellState(ally,people))
-        case 3 => selected = Some(new WeaponMagicState(ally,people))
-        case 4 => selected = Some(new SpellState(ally,people))
+        case 0 => selected = Some(new SurrenderState(pj,people))
+        case 1 => selected = Some(new WeaponMagicState(pj,people))
+        case 2 => selected = Some(new SpellState(pj,people))
+        case 3 => selected = Some(new WeaponMagicState(pj,people))
+        case 4 => selected = Some(new SpellState(pj,people))
         case _ => controller.notifyErrorInvalidOption(choice)
       }
     }

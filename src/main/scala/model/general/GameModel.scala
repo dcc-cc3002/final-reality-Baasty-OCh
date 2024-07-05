@@ -62,7 +62,7 @@ class GameModel {
   def init(controller: GameController): Unit = {
     val Cristiano: Playable = new Warrior("Cristiano")
     val Vini: Playable = new WhiteMagican("Vinicius")
-    val Zidane: Playable = new BlackMagican("Zidane",300,100,5,100)
+    val Zidane: Playable = new BlackMagican("Zidane",300,100,10,100)
     val Modric: Playable = new Ninja("Modric")
     controller.registerAllyUnit(Cristiano)
     controller.registerAllyUnit(Vini)

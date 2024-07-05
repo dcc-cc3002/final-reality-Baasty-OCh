@@ -10,9 +10,9 @@ import model.general.schedule.TurnSchedule
  * Defines methods for handling notifications, inputs, updates, and checking specific states.
  */
 trait GameState {
-
-
-
+  var pj: GameUnit
+  var people: TurnSchedule
+  var choice: Int
 
   /**
    * Notify the controller of the current state.

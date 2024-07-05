@@ -147,8 +147,16 @@ class GameController(private val model: GameModel, private val view: GameView) {
     view.displayPlayerUnits(model.allies)
   }
 
-  def notifySurrenderMessage() = {
-    view.displaySurrender()
+  def notifySurrenderMessage(coward: GameUnit) = {
+    view.displaySurrender(coward)
+  }
+
+  def notifyInvalidWeapon(): Unit ={
+    view.displayInvalidWeaponMessage()
+  }
+
+  def notifyInvalidTarget(): Unit = {
+    view.displayInvalidTargetMessage()
   }
 
   def notifyMagicPlayerAction() = {

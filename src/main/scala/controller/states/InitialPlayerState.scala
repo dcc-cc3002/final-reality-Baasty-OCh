@@ -5,7 +5,10 @@ import controller.states.enemy.UnitEnemyState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class InitialPlayerState(val people : TurnSchedule, val pj: GameUnit) extends AGameState {
+class InitialPlayerState(val entities : TurnSchedule, val src: GameUnit) extends AGameState {
+  var pj: GameUnit = src
+  var people: TurnSchedule = entities
+  var choice: Int = 0
   override def isInitialPlayerState(): Boolean = true
 
   override def update(controller: GameController) = {
@@ -15,6 +18,7 @@ class InitialPlayerState(val people : TurnSchedule, val pj: GameUnit) extends AG
   override def notify(controller: GameController): Unit = {
     controller.notifyPlayerStart(pj)
   }
+
 
 
 
