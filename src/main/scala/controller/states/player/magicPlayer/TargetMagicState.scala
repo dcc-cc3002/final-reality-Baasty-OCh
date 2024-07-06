@@ -10,7 +10,7 @@ import model.weapons.Weapon
 
 class TargetMagicState(var ally: GameUnit, private val spell: Option[Spell],
                        var entities : TurnSchedule, var weapon: Option[Weapon]) extends AGameState {
-  private var selected: Option[GameUnit] = None
+  var selected: Option[GameUnit] = None
   var pj: GameUnit = ally
   var people: TurnSchedule = entities
   var choice : Int = 0

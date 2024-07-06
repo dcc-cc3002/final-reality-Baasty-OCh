@@ -22,4 +22,6 @@ class FinalMagicState(var ally: GameUnit, private val target: GameUnit,
     }
     controller.SetState(new TurnState(people))
   }
+
+  override def isFinalMagicState(): Boolean = true
 }
