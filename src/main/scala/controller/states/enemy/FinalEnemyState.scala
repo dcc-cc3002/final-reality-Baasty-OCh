@@ -16,4 +16,6 @@ class FinalEnemyState(var enemy: GameUnit, private val dest: GameUnit,var entiti
 
     controller.SetState(new TurnState(people))
   }
+
+  override def isFinalEnemyState(): Boolean = true
 }

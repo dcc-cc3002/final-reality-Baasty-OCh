@@ -7,7 +7,7 @@ import model.general.schedule.TurnSchedule
 import model.spell.Spell
 
 class TargetEnemyState(var enemy: GameUnit, var entities : TurnSchedule) extends AGameState {
-  private var selected : Option[GameUnit] = None
+  var selected : Option[GameUnit] = None
   var pj: GameUnit = enemy
   var people : TurnSchedule = entities
   var choice: Int = 0
