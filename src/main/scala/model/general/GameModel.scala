@@ -35,7 +35,7 @@ class GameModel {
   private val Hacha: Weapon = new Axe()
   private val Baston: Weapon = new Staff()
   private val Varita: Weapon = new Wand()
-  def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
+  //def weapons(): ArrayBuffer[Weapon] = _weapons.clone()
 
   def addWeapon(weapon: Option[Weapon]): Unit = _weapons += weapon.get
 

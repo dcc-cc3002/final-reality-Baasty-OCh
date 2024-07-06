@@ -35,6 +35,9 @@ class PaladinTest extends FunSuite {
     assertEquals(Cristiano.equals(Bale),false)
     assertEquals(Cristiano.equals(Pique),false)
   }
+  test("maxHp"){
+    assertEquals(Cristiano.maxHp(),150)
+  }
 
   /**
    * Test case for 'canEquip' methods.

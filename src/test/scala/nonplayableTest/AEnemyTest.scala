@@ -142,6 +142,16 @@ class AEnemyTest extends FunSuite {
     Neymar.wasAttacked(300)
     assertEquals(Neymar.getHp,0)
   }
+  test("hasSpell"){
+    assertEquals(Neymar.hasSpell(),None)
+  }
+  test("hasWeapon"){
+    assertEquals(Neymar.hasWeapon,None)
+  }
+  test("SetWeight"){
+    Neymar.setWeight(10)
+    assertEquals(Neymar.getWeight,10)
+  }
 }
 
 

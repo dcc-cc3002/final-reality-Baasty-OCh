@@ -12,7 +12,7 @@ import scala.util.Random
 class Fire extends ASpell {
   def probabilisticFunction(): Int = {
     val randomValue = Random.nextDouble() // Genera un número aleatorio entre 0 y 1
-    if (randomValue <= 0.2) 1 else 0 // Devuelve 1 con probabilidad de 30%, 0 en caso contrario
+    if (randomValue <= 0.2) 1 else 0 // Devuelve 1 con probabilidad de 20%, 0 en caso contrario
   }
   /** The cost of casting the Fire spell. */
   val cost: Int = 15

@@ -36,6 +36,9 @@ class NinjaTest extends FunSuite {
     assertEquals(Kroos.equals(Alonso),false)
     assertEquals(Kroos.equals(Rakitic),false)
   }
+  test("maxHp"){
+    assertEquals(Kroos.maxHp(),100)
+  }
 
   /**
    * Test case for 'canEquip' methods.

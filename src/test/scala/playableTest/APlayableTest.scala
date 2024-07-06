@@ -4,13 +4,16 @@ import model.nonplayable.Enemy
 import model.playable.Playable
 import model.playable.common.{Ninja, Paladin, Warrior}
 import model.playable.magic.{BlackMagican, WhiteMagican}
+import model.spell.Spell
+import model.spell.dark.{Fire, Thunder}
+import model.spell.light.{Healing, Paralysis, Poison}
 import model.weapons.Weapon
 import model.weapons.common.{Axe, Bow, Sword}
 import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
-
 import scala.collection.mutable.ArrayBuffer
+import scala.jdk.CollectionConverters._
 
 /**
  * Test suite for the abstract class `APlayable` and its subclasses.
@@ -246,4 +249,38 @@ class APlayableTest extends FunSuite {
     assertEquals(Amancio.attack(Iniesta),"The enemy was attacked")
     assertEquals(Amancio.attack(Puyol),"The enemy was attacked, but the damage is not enough")
   }
+  test("getStatus"){
+    assertEquals(Gento.getStatus,"Sano")
+    assertEquals(Kopa.getStatus,"Sano")
+    assertEquals(Di_Stefano.getStatus,"Sano")
+    assertEquals(Puskas.getStatus,"Sano")
+    assertEquals(Amancio.getStatus,"Sano")
+  }
+  test("iAmMagic"){
+    assertEquals(Di_Stefano.IAmMagic(),0)
+    assertEquals(Puskas.IAmMagic(),0)
+    assertEquals(Amancio.IAmMagic(),0)
+  }
+  test("selectSpell"){
+    assertEquals(Di_Stefano.selectSpell(new Fire()),"nothing")
+    assertEquals(Puskas.selectSpell(new Fire()),"nothing")
+    assertEquals(Amancio.selectSpell(new Fire()),"nothing")
+  }
+  test("throwSpell"){
+    assertEquals(Di_Stefano.throwSpell(Kopa),"nothing")
+    assertEquals(Puskas.throwSpell(Kopa),"nothing")
+    assertEquals(Amancio.throwSpell(Kopa),"nothing")
+  }
+  test("spells array"){
+    /*println(Gento.spells())
+    val expectedSpells = ArrayBuffer(
+      new Healing,
+      new Paralysis,
+      new Poison,
+      new Fire,
+      new Thunder
+    )
+    assertEquals(Gento.spells().map(_.getName), expectedSpells.map(_.getName))
+    */assertEquals(Puskas.spells(),ArrayBuffer.empty[Spell])
+   }
 }

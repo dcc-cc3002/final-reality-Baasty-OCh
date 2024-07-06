@@ -1,8 +1,10 @@
 package spellTest.dark
 
+import model.nonplayable.Enemy
 import model.playable.magic.BlackMagican
 import model.spell.Spell
 import model.spell.dark.Thunder
+import model.weapons.magic.Staff
 import munit.FunSuite
 
 /**
@@ -40,6 +42,11 @@ class ThunderTest extends FunSuite {
    */
   test("canSelectedBy") {
     assertEquals(Thunder.canBeSelectedBy(Brahim), true)
+  }
+  test("Effect"){
+    Brahim.putWeapon(new Staff())
+    Brahim.selectSpell(Thunder)
+    Brahim.throwSpell(new Enemy("Pedri"))
   }
 
 }
