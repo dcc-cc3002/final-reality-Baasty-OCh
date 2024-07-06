@@ -9,7 +9,7 @@ import model.weapons.Weapon
 
 class HealingState(var ally: GameUnit, spell: Option[Spell],
                    var entities: TurnSchedule, weapon: Option[Weapon]) extends AGameState{
-  private var selected: Option[GameUnit] = None
+  var selected: Option[GameUnit] = None
   var pj : GameUnit = ally
   var people: TurnSchedule = entities
   var choice: Int = 0
@@ -32,10 +32,9 @@ class HealingState(var ally: GameUnit, spell: Option[Spell],
   override def update(controller: GameController, input:Int = choice): Unit = {
     if(selected.map(_.getHp).getOrElse(0) != 0) {
       input match{
-        case 0 => controller.SetState(new WeaponMagicState(pj, spell, people))
         case 1 => controller.SetState(new TurnState(people))
         case 2 => controller.SetState(new TurnState(people))
-        case 3 => controller.SetState(new TurnState(people))
+        case 3 => controller.SetState(new TurnState(people)) // revisar
       }
     } else controller.SetState(new HealingState(pj,spell,people,weapon))
   }

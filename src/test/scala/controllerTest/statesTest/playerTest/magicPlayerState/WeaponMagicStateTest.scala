@@ -73,7 +73,6 @@ class WeaponMagicStateTest extends FunSuite{
   test("update to WeaponMagicState"){
     testState2.pj.dropSpell()
     testState2.update(gameController,3)
-    println(gameController.state)
     assertEquals(gameController.state.isWeaponMagicState(),true)
   }
   test("update to TargetMagicState, if pj spell != healing"){
