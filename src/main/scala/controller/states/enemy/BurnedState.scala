@@ -6,7 +6,7 @@ import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
 class BurnedState(var enemy:GameUnit, var entities: TurnSchedule) extends  AGameState{
-  private var cnt: Int = 0
+  var cnt: Int = 0
   var pj: GameUnit = enemy
   var people : TurnSchedule = entities
   var choice: Int = 0
