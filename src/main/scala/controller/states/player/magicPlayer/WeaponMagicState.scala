@@ -61,7 +61,7 @@ class WeaponMagicState(var ally: GameUnit, private var spell: Option[Spell], var
     else {
       input match {
         case 0 => controller.SetState(new ActionMagicState(pj, people)) // sacar con vista
-        case 1 => controller.SetState(new TargetMagicState(pj, spell, people, selected))
+        case 1 => controller.SetState(new TargetMagicState(pj, spell, people, selected)) // revisar test
         case 2 => controller.SetState(new TargetMagicState(pj, spell, people, selected))
         case 3 => controller.SetState(new WeaponMagicState(pj, spell, people))
         case 4 => controller.SetState(new TargetMagicState(pj, spell, people, selected))

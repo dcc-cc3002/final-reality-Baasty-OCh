@@ -39,4 +39,6 @@ class HealingState(var ally: GameUnit, spell: Option[Spell],
       }
     } else controller.SetState(new HealingState(pj,spell,people,weapon))
   }
+
+  override def isHealingState(): Boolean = true
 }
