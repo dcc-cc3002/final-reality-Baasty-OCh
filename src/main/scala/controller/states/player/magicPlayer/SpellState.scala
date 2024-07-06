@@ -48,7 +48,7 @@ class SpellState(var ally: GameUnit,var entities : TurnSchedule) extends AGameSt
         case 3 => controller.SetState(new WeaponMagicState(pj,selected, people))
         case 4 => controller.SetState(new WeaponMagicState(pj,selected, people))
         case 5 => controller.SetState(new WeaponMagicState(pj,selected, people))
-        case 6 => controller.SetState(new SpellState(pj,people))
+
 
       }
     }
