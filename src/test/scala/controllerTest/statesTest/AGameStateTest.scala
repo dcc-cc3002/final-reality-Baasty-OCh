@@ -3,7 +3,7 @@ package controllerTest
 
 
 import controller.GameController
-import controller.states.{GameState}
+import controller.states.{AGameState, GameState, TurnState}
 import model.general.GameModel
 import munit.FunSuite
 import view.GameView
@@ -24,14 +24,14 @@ class AGameStateTest extends FunSuite {
   /**
    * An instance of a subclass of AGameState used for testing.
    */
-  val testState: GameState = gameController.state
+  val TurnTest: AGameState = new TurnState(gameModel.participants)
 
   /**
    * Test to check if the state is InitialPlayerState.
    * The default implementation should return false.
    */
   test("isInitialPlayerState") {
-    assertEquals(testState.isInitialPlayerState(), false)
+    assertEquals(TurnTest.isInitialPlayerState(), false)
   }
 
   /**
@@ -39,7 +39,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isSurrenderState") {
-    assertEquals(testState.isSurrenderState(), false)
+    assertEquals(TurnTest.isSurrenderState(), false)
   }
 
   /**
@@ -47,7 +47,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isTurnState") {
-    assertEquals(testState.isTurnState(), true)
+    assertEquals(TurnTest.isTurnState(), true)
   }
 
   /**
@@ -55,7 +55,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isUnitState") {
-    assertEquals(testState.isUnitState(), false)
+    assertEquals(TurnTest.isUnitState(), false)
   }
 
   /**
@@ -63,7 +63,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isActionState") {
-    assertEquals(testState.isActionState(), false)
+    assertEquals(TurnTest.isActionState(), false)
   }
 
   /**
@@ -71,7 +71,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isFinalState") {
-    assertEquals(testState.isFinalState(), false)
+    assertEquals(TurnTest.isFinalState(), false)
   }
 
   /**
@@ -79,7 +79,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isTargetState") {
-    assertEquals(testState.isTargetState(), false)
+    assertEquals(TurnTest.isTargetState(), false)
   }
 
   /**
@@ -87,7 +87,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isWeaponState") {
-    assertEquals(testState.isWeaponState(), false)
+    assertEquals(TurnTest.isWeaponState(), false)
   }
 
   /**
@@ -95,7 +95,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isActionMagicState") {
-    assertEquals(testState.isActionMagicState(), false)
+    assertEquals(TurnTest.isActionMagicState(), false)
   }
 
   /**
@@ -103,7 +103,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isFinalMagicState") {
-    assertEquals(testState.isFinalMagicState(), false)
+    assertEquals(TurnTest.isFinalMagicState(), false)
   }
 
   /**
@@ -111,7 +111,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isHealingState") {
-    assertEquals(testState.isHealingState(), false)
+    assertEquals(TurnTest.isHealingState(), false)
   }
 
   /**
@@ -119,7 +119,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isSpellState") {
-    assertEquals(testState.isSpellState(), false)
+    assertEquals(TurnTest.isSpellState(), false)
   }
 
   /**
@@ -127,7 +127,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return true.
    */
   test("isTargetMagicState") {
-    assertEquals(testState.isTargetMagicState(), true)
+    assertEquals(TurnTest.isTargetMagicState(), true)
   }
 
   /**
@@ -135,7 +135,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isWeaponMagicState") {
-    assertEquals(testState.isWeaponMagicState(), false)
+    assertEquals(TurnTest.isWeaponMagicState(), false)
   }
 
   /**
@@ -143,7 +143,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isAccionEnemyState") {
-    assertEquals(testState.isAccionEnemyState(), false)
+    assertEquals(TurnTest.isAccionEnemyState(), false)
   }
 
   /**
@@ -151,7 +151,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isBurnedState") {
-    assertEquals(testState.isBurnedState(), false)
+    assertEquals(TurnTest.isBurnedState(), false)
   }
 
   /**
@@ -159,7 +159,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isFinalEnemyState") {
-    assertEquals(testState.isFinalEnemyState(), false)
+    assertEquals(TurnTest.isFinalEnemyState(), false)
   }
 
   /**
@@ -167,7 +167,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isInitialEnemyState") {
-    assertEquals(testState.isInitialEnemyState(), false)
+    assertEquals(TurnTest.isInitialEnemyState(), false)
   }
 
   /**
@@ -175,7 +175,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isParalyzedState") {
-    assertEquals(testState.isParalyzedState(), false)
+    assertEquals(TurnTest.isParalyzedState(), false)
   }
 
   /**
@@ -183,7 +183,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isPoisonedState") {
-    assertEquals(testState.isPoisonedState(), false)
+    assertEquals(TurnTest.isPoisonedState(), false)
   }
 
   /**
@@ -191,7 +191,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isTargetEnemyState") {
-    assertEquals(testState.isTargetEnemyState(), false)
+    assertEquals(TurnTest.isTargetEnemyState(), false)
   }
 
   /**
@@ -199,7 +199,7 @@ class AGameStateTest extends FunSuite {
    * The default implementation should return false.
    */
   test("isUnitEnemyState") {
-    assertEquals(testState.isUnitEnemyState(), false)
+    assertEquals(TurnTest.isUnitEnemyState(), false)
   }
 }
 

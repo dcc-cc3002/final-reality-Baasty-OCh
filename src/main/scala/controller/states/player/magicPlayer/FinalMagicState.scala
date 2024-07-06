@@ -8,7 +8,7 @@ import model.general.schedule.TurnSchedule
 import model.weapons.Weapon
 
 class FinalMagicState(var ally: GameUnit, private val target: GameUnit,
-                      private val spell: Option[Spell], var entities : TurnSchedule,
+                      var spell: Option[Spell], var entities : TurnSchedule,
                       var weapon: Option[Weapon]) extends AGameState {
   var pj: GameUnit = ally
   var people : TurnSchedule = entities
@@ -16,7 +16,7 @@ class FinalMagicState(var ally: GameUnit, private val target: GameUnit,
 
   override def update(controller: GameController, input:Int = choice): Unit = {
     if (spell.isDefined) {
-      pj.throwSpell(target)
+      pj.throwSpell(target) // revisar
     } else {
       pj.attack(target)
     }
