@@ -54,4 +54,6 @@ class SpellState(var ally: GameUnit,var entities : TurnSchedule) extends AGameSt
     }
   }
 
+  override def isSpellState(): Boolean = true
+
 }

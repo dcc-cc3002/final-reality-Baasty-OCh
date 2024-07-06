@@ -11,7 +11,7 @@ class FinalState(var ally: GameUnit, private val target: GameUnit, var entities 
   var people: TurnSchedule = entities
   var choice : Int = 0
 
-  override def isFinalState(): Boolean = true
+  override def isFinalState(): Boolean = true // se probará en TargetStateTest
   override def update(controller: GameController, input:Int = choice): Unit = {
     pj.attack(target)
     controller.SetState(new TurnState(people))

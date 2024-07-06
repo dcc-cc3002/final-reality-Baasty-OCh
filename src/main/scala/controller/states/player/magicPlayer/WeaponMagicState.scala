@@ -72,4 +72,6 @@ class WeaponMagicState(var ally: GameUnit, private var spell: Option[Spell], var
     }
   }
 
+  override def isWeaponMagicState(): Boolean = true
+
 }
