@@ -31,5 +31,7 @@ class BurnedState(var enemy:GameUnit, var entities: TurnSchedule) extends  AGame
     }
   }
 
+  override def isBurnedState(): Boolean = true
+
 
 }

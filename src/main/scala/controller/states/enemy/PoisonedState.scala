@@ -32,4 +32,6 @@ class PoisonedState (var enemy: GameUnit, var entities: TurnSchedule) extends AG
     }
   }
 
+  override def isPoisonedState(): Boolean = true
+
 }

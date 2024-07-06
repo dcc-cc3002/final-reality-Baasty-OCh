@@ -19,6 +19,8 @@ class ParalyzedState(var enemy: GameUnit, var entities: TurnSchedule) extends AG
 
   }
 
+  override def isParalyzedState(): Boolean = true
+
 
 
 }
