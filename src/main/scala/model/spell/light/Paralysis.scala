@@ -14,7 +14,7 @@ class Paralysis extends ALightSpell {
   val name: String = "Paralysis"
 
   override def Effect(gameUnit: GameUnit,chance: Int): Unit = {
-    gameUnit.setStatus("Paralizado")
+    gameUnit.setStatus("Paralyzed")
   }
 
   /**

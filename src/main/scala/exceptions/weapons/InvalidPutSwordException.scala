@@ -1,5 +1,9 @@
 package exceptions.weapons
 
-class InvalidPutSwordException extends Exception{
+/**
+ * Exception thrown when attempting to put an invalid sword.
+ */
+class InvalidPutSwordException extends Exception {
 
 }
+

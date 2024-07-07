@@ -1,5 +1,8 @@
 package exceptions.weapons
 
-class InvalidPutBowException extends Exception{
+/**
+ * Exception thrown when attempting to put an invalid bow.
+ */
+class InvalidPutBowException extends Exception {
 
 }

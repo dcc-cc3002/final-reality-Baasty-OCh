@@ -1,41 +1,61 @@
 package controller
 
-import controller.states.player.{InitialPlayerState, SurrenderState}
 import model.general.GameModel
 import states.{GameState, TurnState}
 import observers._
 import model.general.GameUnit
-import model.nonplayable.Enemy
-import model.playable.common.{Ninja, Paladin, Warrior}
-import model.playable.magic.{BlackMagican, WhiteMagican}
-import model.spell.Spell
-
-import scala.collection.mutable.ArrayBuffer
-import scala.util.Random
-import controller.states.enemy.{InitialEnemyState, TargetEnemyState}
-import model.general.schedule.TurnSchedule
 import model.weapons.Weapon
 import view.GameView
 
+import scala.collection.mutable.ArrayBuffer
+import scala.util.Random
+
+/**
+ * Controller class that manages game logic and interaction between the model and view.
+ *
+ * @param model The game model containing game data.
+ * @param view The game view responsible for displaying the game state.
+ */
 class GameController(private val model: GameModel, private val view: GameView) {
 
   private var _state: GameState = null
   private val ai = new Random()
   private val attackObs = new ArrayBuffer[ObserverAttack].empty
   private var _WhiteFlag = false
-  def WhiteFlag(): Boolean = _WhiteFlag
 
-  init()
-
-
+  /**
+   * Initializes the game controller, sets up observers, and initializes the game state.
+   */
   private def init(): Unit = {
     notifyInitMessage()
     attackObs += new ObserverAttack(view)
     model.init(this)
     val start: GameState = new TurnState(model.participants)
     this.SetState(start)
-    //TurnoDe(model._participantes)
   }
+
+  init()
+
+  /**
+   * Retrieves the current state of the white flag.
+   *
+   * @return `true` if the white flag is raised; otherwise `false`.
+   */
+  def WhiteFlags(): Boolean = _WhiteFlag
+
+
+  /**
+   * Checks if the game has finished (either the player has won or lost).
+   *
+   * @return `true` if the game has finished, otherwise `false`.
+   */
+  def hasFinished(): Boolean = {
+    win() || lose()
+  }
+
+  /**
+   * Checks if the game has finished (either the player has won or lost) and updates the view accordingly.
+   */
   private def checkFinished(): Unit = {
     if (win()) {
       view.displayVictory()
@@ -45,60 +65,110 @@ class GameController(private val model: GameModel, private val view: GameView) {
     }
   }
 
-  def hasFinished(): Boolean = {
-    win() || (lose())
-  }
+  /**
+   * Retrieves the current game state.
+   *
+   * @return The current game state.
+   */
+  def state: GameState = _state
 
+
+  /**
+   * Handles player input based on the current game state.
+   */
   def handleInput(): Unit = {
     state.handleInput(this)
   }
 
+  /**
+   * Updates the game state, checks if the game has finished, and renders the updated view.
+   */
   def update(): Unit = {
-    state.update(this,this.state.choice)
+    state.update(this, this.state.choice)
     checkFinished()
     view.render()
   }
 
-  def state: GameState = _state
+  /**
+   * Sets the current game state.
+   *
+   * @param other The new game state to set.
+   */
   def SetState(other: GameState): Unit = {
-    _state =  other
+    _state = other
     _state.notify(this)
   }
 
+  /**
+   * Retrieves numerical input from the view.
+   *
+   * @return The numerical input received from the view.
+   */
   def getNumericalInput(): Int = {
     view.getNumericalInput()
   }
 
+  /**
+   * Retrieves an enemy unit based on the player's choice.
+   *
+   * @param choice The index of the chosen enemy unit.
+   * @return The chosen enemy unit.
+   */
   def getEnemy(choice: Int): GameUnit = {
-    val u = model.enemies.buff(choice)
-    u
+    model.enemies.buff(choice)
   }
+
+  /**
+   * Retrieves a weapon based on the player's choice.
+   *
+   * @param choice The index of the chosen weapon.
+   * @return The chosen weapon.
+   */
   def getWeapon(choice: Int): Weapon = {
-    val w = model._weapons(choice)
-    w
+    model._weapons(choice)
   }
 
-  def getAlly(choice: Int): GameUnit ={
-    val u = model.allies.buff(choice)
-    u
+  /**
+   * Retrieves an ally unit based on the player's choice.
+   *
+   * @param choice The index of the chosen ally unit.
+   * @return The chosen ally unit.
+   */
+  def getAlly(choice: Int): GameUnit = {
+    model.allies.buff(choice)
   }
 
-
+  /**
+   * Determines the turn mode of a game unit.
+   *
+   * @param x The game unit to determine the turn mode for.
+   * @return `2` if the unit's style is "playable" or "magicPlayable", otherwise `1`.
+   */
   def TurnoDe(x: GameUnit): Int = {
     val mode = x.Style(x)
-    if (mode == "playable" || mode == "magicPlayable"){2}
+    if (mode == "playable" || mode == "magicPlayable") 2
     else 1
   }
 
+  /**
+   * Retrieves an AI target for the current turn.
+   *
+   * @return The AI-chosen target game unit.
+   */
   def getAITarget(): GameUnit = {
     var choice = ai.nextInt(model.allies.buff.length)
-    while(model.allies.buff(choice).getHp == 0) {
+    while (model.allies.buff(choice).getHp == 0) {
       choice = ai.nextInt(model.allies.buff.length)
     }
     model.allies.buff(choice)
   }
 
-  def registerAllyUnit(gUnit: GameUnit) = {
+  /**
+   * Registers an ally unit to the game controller and model.
+   *
+   * @param gUnit The ally unit to register.
+   */
+  def registerAllyUnit(gUnit: GameUnit): Unit = {
     for (o <- attackObs) {
       gUnit.registerAttackObserver(o)
     }
@@ -106,8 +176,12 @@ class GameController(private val model: GameModel, private val view: GameView) {
     model.allies.addGameUnit(gUnit)
   }
 
-
-  def registerEnemyUnit(gUnit: GameUnit) = {
+  /**
+   * Registers an enemy unit to the game controller and model.
+   *
+   * @param gUnit The enemy unit to register.
+   */
+  def registerEnemyUnit(gUnit: GameUnit): Unit = {
     for (o <- attackObs) {
       gUnit.registerAttackObserver(o)
     }
@@ -115,114 +189,188 @@ class GameController(private val model: GameModel, private val view: GameView) {
     model.enemies.addGameUnit(gUnit)
   }
 
-
-  def registerWeapon(wUnit: Weapon) = {
+  /**
+   * Registers a weapon to the game controller and model.
+   *
+   * @param wUnit The weapon to register.
+   */
+  def registerWeapon(wUnit: Weapon): Unit = {
     for (o <- attackObs) {
       wUnit.registerAttackObserver(o)
     }
     model.addWeapon(Some(wUnit))
   }
 
-  def notifyInitMessage() = {
+  /**
+   * Notifies the view to display the initial game message.
+   */
+  def notifyInitMessage(): Unit = {
     view.displayInitMessage()
   }
 
-  def notifyReportMessage() = {
-    view.displayReportMessage(model.allies,model.enemies)
+  /**
+   * Notifies the view to display the game report message.
+   */
+  def notifyReportMessage(): Unit = {
+    view.displayReportMessage(model.allies, model.enemies)
   }
 
-
-  def notifyMagicReportMessage() = {
-    view.displayMagicReportMessage(model.allies,model.enemies)
+  /**
+   * Notifies the view to display the magic report message.
+   */
+  def notifyMagicReportMessage(): Unit = {
+    view.displayMagicReportMessage(model.allies, model.enemies)
   }
 
-  def notifyPlayerStart(pj:GameUnit) = {
+  /**
+   * Notifies the view to display the start message for a player unit.
+   *
+   * @param pj The player unit to notify about.
+   */
+  def notifyPlayerStart(pj: GameUnit): Unit = {
     view.displayPlayerStart(pj)
   }
 
-  def notifyEnemyStart(pj:GameUnit) = {
+  /**
+   * Notifies the view to display the start message for an enemy unit.
+   *
+   * @param pj The enemy unit to notify about.
+   */
+  def notifyEnemyStart(pj: GameUnit): Unit = {
     view.displayEnemyStart(pj)
   }
 
-  def notifyPlayerUnits() = {
-    view.displayPlayerUnits(model.allies)
-  }
-
-  def notifySurrenderMessage(coward: GameUnit) = {
+  /**
+   * Notifies the view to display the surrender message for a coward unit.
+   *
+   * @param coward The coward unit to notify about.
+   */
+  def notifySurrenderMessage(coward: GameUnit): Unit = {
     view.displaySurrender(coward)
   }
 
-  def notifyInvalidWeapon(): Unit ={
+  /**
+   * Notifies the view to display the message for choosing an invalid weapon.
+   */
+  def notifyInvalidWeapon(): Unit = {
     view.displayInvalidWeaponMessage()
   }
 
+  /**
+   * Notifies the view to display the message for targeting an invalid enemy.
+   */
   def notifyInvalidTarget(): Unit = {
     view.displayInvalidTargetMessage()
   }
+
+  /**
+   * Notifies the view to display the message for choosing an invalid spell.
+   */
   def notifyInvalidSpell(): Unit = {
     view.displayInvalidSpellMessage()
   }
 
-  def notifyMagicPlayerAction() = {
+  /**
+   * Notifies the view to display the action message for a magic player action.
+   */
+  def notifyMagicPlayerAction(): Unit = {
     view.displayMagicPlayerAction()
   }
 
+  /**
+   * Notifies the view to display the action message for a player action.
+   */
   def notifyPlayerAction(): Unit = {
     view.displayPlayerAction()
   }
 
-  def notifyPlayerTarget() = {
+  /**
+   * Notifies the view to display the target selection message for player units targeting enemies.
+   */
+  def notifyPlayerTarget(): Unit = {
     view.displayPlayerTarget(model.enemies)
   }
-  def notifyMagicPlayerTarget() = {
+
+  /**
+   * Notifies the view to display the target selection message for magic player units targeting enemies.
+   */
+  def notifyMagicPlayerTarget(): Unit = {
     view.displayMagicPlayerTarget(model.enemies)
   }
-  def notifyEnemyStatus(pUnit:GameUnit) = {
+
+  /**
+   * Notifies the view to display the status message of an enemy unit.
+   *
+   * @param pUnit The enemy unit to notify about.
+   */
+  def notifyEnemyStatus(pUnit: GameUnit): Unit = {
     view.displayEnemyStatus(pUnit)
   }
-  def notifyHealingTarget() = {
+
+  /**
+   * Notifies the view to display the healing target selection message for player units.
+   */
+  def notifyHealingTarget(): Unit = {
     view.displayHealingTarget(model.allies)
   }
 
-  def notifyPlayerUnitSpells(pUnit: GameUnit) = {
+  /**
+   * Notifies the view to display the available spells for a player unit.
+   *
+   * @param pUnit The player unit to notify about.
+   */
+  def notifyPlayerUnitSpells(pUnit: GameUnit): Unit = {
     view.displayPlayerUnitSpells(pUnit.spells())
   }
-  def notifyPlayerUnitWeapons(pUnit: GameUnit) = {
+
+  /**
+   * Notifies the view to display the available weapons for a player unit.
+   *
+   * @param pUnit The player unit to notify about.
+   */
+  def notifyPlayerUnitWeapons(pUnit: GameUnit): Unit = {
     view.displayPlayerUnitWeapons(pUnit.weapons())
   }
 
-  def notifyMagicPlayerUnitWeapons(pUnit: GameUnit) = {
+  /**
+   * Notifies the view to display the available weapons for a magic player unit.
+   *
+   * @param pUnit The magic player unit to notify about.
+   */
+  def notifyMagicPlayerUnitWeapons(pUnit: GameUnit): Unit = {
     view.displayMagicPlayerUnitWeapons(pUnit.weapons())
   }
 
-  def notifyError(s: String) = {
-    view.displayNotifyError(s)
-  }
-
-
-
-
-  def notifyAllyChoose(pUnit: GameUnit) = {
-    view.displayUnitInfo(pUnit)
-  }
-
-  def notifyErrorNoEnergy() = {
-    view.displayErrorNoEnergy()
-  }
-
-  def notifyErrorInvalidOption(choice: Int) = {
+  /**
+   * Notifies the view to display an error message for an invalid option chosen by the player.
+   *
+   * @param choice The invalid choice made by the player.
+   */
+  def notifyErrorInvalidOption(choice: Int): Unit = {
     view.displayErrorInvalidOption(choice)
   }
 
-
+  /**
+   * Checks if the player has won the game.
+   *
+   * @return `true` if the player has defeated all enemies, otherwise `false`.
+   */
   def win(): Boolean = {
     model.enemies.isDefeated()
   }
 
+  /**
+   * Checks if the player has lost the game.
+   *
+   * @return `true` if all player units are defeated, otherwise `false`.
+   */
   def lose(): Boolean = {
-    (model.allies.isDefeated())
+    model.allies.isDefeated()
   }
 
+  /**
+   * Triggers a white flag scenario, setting all player units' HP to zero.
+   */
   def PutWhiteFlag(): Unit = {
     model.allies.setAllHpToZero()
     _WhiteFlag = true

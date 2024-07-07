@@ -20,7 +20,7 @@ class Enemy(name: String, life: Int, defence: Int,
    * @param name The name chosen for the enemy.
    * @return An instance of the Enemy class with preset default statistics. */
   def this(name: String) = {
-    this(name, 250, 50, 60, 80, "Sano")
+    this(name, 250, 50, 60, 80, "Healthy")
   }
 
   /**

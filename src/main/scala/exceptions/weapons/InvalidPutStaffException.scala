@@ -1,5 +1,8 @@
 package exceptions.weapons
 
-class InvalidPutStaffException extends Exception{
+/**
+ * Exception thrown when attempting to put an invalid staff.
+ */
+class InvalidPutStaffException extends Exception {
 
 }

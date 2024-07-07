@@ -26,8 +26,8 @@ class Fire extends ASpell {
     val damage: Int = this.magician.get.arma.get.getMAP
     gameUnit.wasAttacked(damage)
     if (chance == 1){
-      if (damage == 60){gameUnit.setStatus("Quemado con Baston")}
-      else {gameUnit.setStatus("Quemado con Varita")}
+      if (damage == 60){gameUnit.setStatus("Burned with Staff")}
+      else {gameUnit.setStatus("Burned with Wand")}
     } else {}
   }
 

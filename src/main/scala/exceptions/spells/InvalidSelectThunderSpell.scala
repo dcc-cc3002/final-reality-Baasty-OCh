@@ -1,5 +1,8 @@
 package exceptions.spells
 
-class InvalidSelectThunderSpell extends Exception{
+/**
+ * Exception thrown when an attempt is made to select an invalid thunder spell.
+ */
+class InvalidSelectThunderSpell extends Exception {
 
 }

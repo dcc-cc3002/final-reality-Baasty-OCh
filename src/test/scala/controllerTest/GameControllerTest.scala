@@ -33,7 +33,7 @@ class GameControllerTest extends FunSuite {
     assertEquals(gameController.hasFinished(), false)
   }
   test("WhiteFlag"){
-    assertEquals(gameController.WhiteFlag(),false)
+    assertEquals(gameController.WhiteFlags(),false)
   }
 
 

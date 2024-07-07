@@ -1,7 +1,6 @@
 package model.general
 
 import controller.GameController
-import model.general.GameModel
 import view.GameView
 
 /*** Represents the main class to run the battle game. */

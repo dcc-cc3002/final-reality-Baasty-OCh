@@ -7,34 +7,61 @@ import model.general.schedule.TurnSchedule
 import model.spell.Spell
 import model.weapons.Weapon
 
-
+/**
+ * State representing the selection of a target for a magic spell by a magic-capable player unit.
+ *
+ * @param ally The player unit selecting the target for the spell.
+ * @param spell The spell being used (optional).
+ * @param entities The turn schedule containing game entities.
+ * @param weapon The weapon being used (optional).
+ */
 class TargetMagicState(var ally: GameUnit, private val spell: Option[Spell],
-                       var entities : TurnSchedule, var weapon: Option[Weapon]) extends AGameState {
+                       var entities: TurnSchedule, var weapon: Option[Weapon]) extends AGameState {
   var selected: Option[GameUnit] = None
   var pj: GameUnit = ally
   var people: TurnSchedule = entities
-  var choice : Int = 0
+  var choice: Int = 0
 
-  override def isTargetMagicState(): Boolean = true
-  def this(ally: GameUnit, entities :TurnSchedule, w :Option[Weapon]) = {
+  /**
+   * Secondary constructor to initialize the state with an optional weapon.
+   *
+   * @param ally The player unit selecting the target for the spell.
+   * @param entities The turn schedule containing game entities.
+   * @param w The weapon being used (optional).
+   */
+  def this(ally: GameUnit, entities: TurnSchedule, w: Option[Weapon]) = {
     this(ally, None, entities, w)
   }
 
-  override def notify(controller: GameController) = {
+  /**
+   * Checks if the state represents the target selection phase of a magic spell.
+   *
+   * @return `true` since this state represents the target selection phase of a magic spell.
+   */
+  override def isTargetMagicState(): Boolean = true
+
+  /**
+   * Notifies the game controller to display the available targets for the magic spell.
+   *
+   * @param controller The game controller handling the game logic.
+   */
+  override def notify(controller: GameController): Unit = {
     controller.notifyMagicPlayerTarget()
   }
 
-
+  /**
+   * Handles player input during the target selection phase of a magic spell.
+   *
+   * @param controller The game controller handling the game logic.
+   */
   override def handleInput(controller: GameController): Unit = {
     choice = controller.getNumericalInput()
     try {
-      if (choice == 0 ) {
+      if (choice == 0) {
         selected = Some(controller.getEnemy(choice))
-      }
-      else if (choice == 4){
-        selected = Some(controller.getEnemy(choice-2))
-      }
-      else {
+      } else if (choice == 4) {
+        selected = Some(controller.getEnemy(choice - 2))
+      } else {
         selected = Some(controller.getEnemy(choice - 1))
       }
     }
@@ -43,19 +70,24 @@ class TargetMagicState(var ally: GameUnit, private val spell: Option[Spell],
     }
   }
 
-  override def update(controller: GameController, input:Int = choice): Unit = {
-    if(selected.map(_.getHp).getOrElse(0) == 0){
+  /**
+   * Updates the game state based on player input during the target selection phase of a magic spell.
+   *
+   * @param controller The game controller handling the game logic.
+   * @param input The player's input choice.
+   */
+  override def update(controller: GameController, input: Int = choice): Unit = {
+    if (selected.map(_.getHp).getOrElse(0) == 0) {
       controller.SetState(new TargetMagicState(pj, spell, people, weapon))
       controller.notifyInvalidTarget()
-    } else{
-      input match{
-        case 0 => controller.SetState(new WeaponMagicState(pj, spell,people))
+    } else {
+      input match {
+        case 0 => controller.SetState(new WeaponMagicState(pj, spell, people))
         case 1 => controller.SetState(new FinalMagicState(pj, selected.get, spell, people, weapon))
         case 2 => controller.SetState(new FinalMagicState(pj, selected.get, spell, people, weapon))
         case 3 => controller.SetState(new FinalMagicState(pj, selected.get, spell, people, weapon))
-        case 4 => controller.SetState(new SpellState(pj,people))
+        case 4 => controller.SetState(new SpellState(pj, people))
       }
     }
   }
-
 }

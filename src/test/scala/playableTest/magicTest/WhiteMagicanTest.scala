@@ -28,7 +28,7 @@ class WhiteMagicanTest extends FunSuite {
     Benzema = new WhiteMagican("Benzema")
     Ozil = new WhiteMagican("Ozil",55,90,32,90)
     Ter_Stegen = new Enemy("Ter_Stegen")
-    Suarez = new Enemy("Suarez",250,500,50,50, "Sano") // enemy with ridiculous defense
+    Suarez = new Enemy("Suarez",250,500,50,50, "Healthy") // enemy with ridiculous defense
   }
 
   /**

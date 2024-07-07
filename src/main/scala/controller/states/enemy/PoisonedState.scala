@@ -1,37 +1,60 @@
 package controller.states.enemy
 
 import controller.GameController
-import controller.states.{AGameState, TurnState}
+import controller.states.AGameState
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
-class PoisonedState (var enemy: GameUnit, var entities: TurnSchedule) extends AGameState{
+/**
+ * Represents the state of an enemy unit that is poisoned and taking damage over time.
+ *
+ * @param enemy    The enemy unit that is poisoned.
+ * @param entities The turn schedule containing all game units.
+ */
+class PoisonedState(var enemy: GameUnit, var entities: TurnSchedule) extends AGameState {
   var cnt: Int = 0
   var pj: GameUnit = enemy
-  var people : TurnSchedule = entities
+  var people: TurnSchedule = entities
   var choice: Int = 0
-  override def notify(controller: GameController) = {
+
+  /**
+   * Notifies the game controller about the status of the poisoned enemy unit.
+   *
+   * @param controller The game controller responsible for managing game states.
+   */
+  override def notify(controller: GameController): Unit = {
     controller.notifyEnemyStatus(pj)
   }
 
-  override def update(controller: GameController, input:Int = choice): Unit = {
-    if (cnt < 4){ // no esta pescando el tema de los turnos, hay que implementarlo diff
-      if (pj.getStatus == "Envenenado con Baston"){
+  /**
+   * Updates the game state when the poisoned enemy unit's turn ends.
+   * Applies damage to the enemy unit over multiple turns, based on the poison type.
+   * Resets the enemy unit's status to "Healthy" if the poison effect expires.
+   *
+   * @param controller The game controller handling the state transitions.
+   * @param input      Optional input parameter (not used in this state).
+   */
+  override def update(controller: GameController, input: Int = choice): Unit = {
+    if (cnt < 4) { // Apply damage over 4 turns
+      if (pj.getStatus == "Poisoned with Staff") {
         pj.wasAttacked(20)
-        cnt +=1
-        controller.SetState(new TargetEnemyState(pj,people))
-      } else {
+      } else { // "Poisoned with Wand"
         pj.wasAttacked(10)
-        cnt +=1
-        controller.SetState(new TargetEnemyState(pj,people))
       }
-    }
-    else {
-      pj.setStatus("Sano")
-      controller.SetState(new TargetEnemyState(pj,people))
+      cnt += 1
+      controller.SetState(new TargetEnemyState(pj, people))
+    } else {
+      // Reset the enemy unit's status to "Healthy" when poison effect expires
+      pj.setStatus("Healthy")
+      controller.SetState(new TargetEnemyState(pj, people))
     }
   }
 
+  /**
+   * Indicates whether this state represents the poisoned state of an enemy unit.
+   *
+   * @return `true` since this state represents the poisoned state of an enemy unit.
+   */
   override def isPoisonedState(): Boolean = true
 
 }

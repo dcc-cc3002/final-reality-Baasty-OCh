@@ -30,7 +30,7 @@ class AEnemyTest extends FunSuite {
    */
   override def beforeEach(context: BeforeEach): Unit = {
     Neymar = new Enemy("Neymar")
-    Pedro = new Enemy("Pedro",100,50,50,15, "Sano")
+    Pedro = new Enemy("Pedro",100,50,50,15, "Healthy")
     Cristiano = new Paladin("Cristiano",100,50,25)
   }
 

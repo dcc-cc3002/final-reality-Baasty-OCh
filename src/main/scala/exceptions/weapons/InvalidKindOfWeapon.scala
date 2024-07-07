@@ -1,5 +1,8 @@
 package exceptions.weapons
 
-class InvalidKindOfWeapon extends Exception{
+/**
+ * Exception thrown when attempting to handle an invalid kind of weapon.
+ */
+class InvalidKindOfWeapon extends Exception {
 
 }

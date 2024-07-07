@@ -1,5 +1,8 @@
 package exceptions.spells
 
-class InvalidSelectFireSpell extends Exception{
+/**
+ * Exception thrown when an attempt is made to select an invalid fire spell.
+ */
+class InvalidSelectFireSpell extends Exception {
 
 }

@@ -28,7 +28,7 @@ class Thunder extends ADarkSpell {
     val damage: Int = this.magician.get.arma.get.getMAP
     gameUnit.wasAttacked(damage)
     if (chance == 1){
-      gameUnit.setStatus("Paralizado")
+      gameUnit.setStatus("Paralyzed")
     } else {}
   }
 

@@ -6,26 +6,41 @@ import controller.GameController
 import model.general.schedule.TurnSchedule
 import model.spell.Spell
 
-class SpellState(var ally: GameUnit,var entities : TurnSchedule) extends AGameState {
+/**
+ * State representing the selection and use of a spell by a magic-capable player unit.
+ *
+ * @param ally The player unit selecting and using the spell.
+ * @param entities The turn schedule containing game entities.
+ */
+class SpellState(var ally: GameUnit, var entities: TurnSchedule) extends AGameState {
   private var selected: Option[Spell] = None
   var pj: GameUnit = ally
   var people: TurnSchedule = entities
-  var choice : Int = 0
+  var choice: Int = 0
   pj.dropSpell()
 
-  override def notify(controller: GameController) = {
+  /**
+   * Notifies the game controller to display the spells available to the player unit.
+   *
+   * @param controller The game controller handling the game logic.
+   */
+  override def notify(controller: GameController): Unit = {
     controller.notifyPlayerUnitSpells(pj)
   }
 
+  /**
+   * Handles player input during the spell selection phase.
+   *
+   * @param controller The game controller handling the game logic.
+   */
   override def handleInput(controller: GameController): Unit = {
     choice = controller.getNumericalInput()
     try {
-      if (choice == 0){
+      if (choice == 0) {
         val s = pj.spells()(choice)
         pj.selectSpell(s)
         selected = Some(s)
-      }
-      else {
+      } else {
         val s = pj.spells()(choice - 1)
         pj.selectSpell(s)
         selected = Some(s)
@@ -36,24 +51,31 @@ class SpellState(var ally: GameUnit,var entities : TurnSchedule) extends AGameSt
     }
   }
 
-  override def update(controller: GameController, input:Int = choice): Unit = {
+  /**
+   * Updates the game state based on player input during the spell selection phase.
+   *
+   * @param controller The game controller handling the game logic.
+   * @param input The player's input choice.
+   */
+  override def update(controller: GameController, input: Int = choice): Unit = {
     if (pj.spell.isEmpty) {
-      controller.SetState(new SpellState(pj,people))
+      controller.SetState(new SpellState(pj, people))
       controller.notifyInvalidSpell()
     } else {
-      input match{
-        case 0 => controller.SetState(new ActionMagicState(pj,people)) // sacar con vista
-        case 1 => controller.SetState(new WeaponMagicState(pj,selected, people))
-        case 2 => controller.SetState(new WeaponMagicState(pj,selected, people))
-        case 3 => controller.SetState(new WeaponMagicState(pj,selected, people))
-        case 4 => controller.SetState(new WeaponMagicState(pj,selected, people))
-        case 5 => controller.SetState(new WeaponMagicState(pj,selected, people))
-
-
+      input match {
+        case 1 => controller.SetState(new WeaponMagicState(pj, selected, people))
+        case 2 => controller.SetState(new WeaponMagicState(pj, selected, people))
+        case 3 => controller.SetState(new WeaponMagicState(pj, selected, people))
+        case 4 => controller.SetState(new WeaponMagicState(pj, selected, people))
+        case 5 => controller.SetState(new WeaponMagicState(pj, selected, people))
       }
     }
   }
 
+  /**
+   * Checks if the state represents the spell selection state.
+   *
+   * @return `true` since this state represents the spell selection state.
+   */
   override def isSpellState(): Boolean = true
-
 }

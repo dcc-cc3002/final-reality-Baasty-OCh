@@ -1,5 +1,8 @@
 package exceptions
 
-class InvalidAdditionPartyException extends Exception{
+/**
+ * Exception thrown when attempting to add an invalid party member.
+ */
+class InvalidAdditionPartyException extends Exception {
 
 }

@@ -18,8 +18,8 @@ class Poison extends ALightSpell {
   override def Effect(gameUnit: GameUnit, chance:Int): Unit = {
     val MagicWeapon: Weapon = this.magician.get.arma.get
     if (MagicWeapon.getName == "Baston"){
-      gameUnit.setStatus("Envenenado con Baston")
-    } else gameUnit.setStatus("Envenenado con Varita")
+      gameUnit.setStatus("Poisoned with Staff")
+    } else gameUnit.setStatus("Poisoned with Wand")
 
   }
 

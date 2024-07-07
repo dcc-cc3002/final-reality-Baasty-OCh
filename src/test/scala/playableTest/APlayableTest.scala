@@ -39,8 +39,8 @@ class APlayableTest extends FunSuite {
     Amancio = new Warrior("Amancio")
     Kopa = new BlackMagican("Kopa")
     Gento = new WhiteMagican("Gento")
-    Iniesta = new Enemy("Iniesta",250,1,50,50, "Sano")
-    Puyol = new Enemy("Puyol",250,500,50,50, "Sano") // enemy with ridiculous defense
+    Iniesta = new Enemy("Iniesta",250,1,50,50, "Healthy")
+    Puyol = new Enemy("Puyol",250,500,50,50, "Healthy") // enemy with ridiculous defense
     }
 
   /**
@@ -250,11 +250,11 @@ class APlayableTest extends FunSuite {
     assertEquals(Amancio.attack(Puyol),"The enemy was attacked, but the damage is not enough")
   }
   test("getStatus"){
-    assertEquals(Gento.getStatus,"Sano")
-    assertEquals(Kopa.getStatus,"Sano")
-    assertEquals(Di_Stefano.getStatus,"Sano")
-    assertEquals(Puskas.getStatus,"Sano")
-    assertEquals(Amancio.getStatus,"Sano")
+    assertEquals(Gento.getStatus,"Healthy")
+    assertEquals(Kopa.getStatus,"Healthy")
+    assertEquals(Di_Stefano.getStatus,"Healthy")
+    assertEquals(Puskas.getStatus,"Healthy")
+    assertEquals(Amancio.getStatus,"Healthy")
   }
   test("iAmMagic"){
     assertEquals(Di_Stefano.IAmMagic(),0)

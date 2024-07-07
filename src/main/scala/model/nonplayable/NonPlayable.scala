@@ -1,10 +1,7 @@
 package model.nonplayable
 
 import model.general.GameUnit
-import model.spell.Spell
-import model.weapons.Weapon
 
-import scala.collection.mutable.ArrayBuffer
 
 /**
  * Trait representing a non-playable entity in the game.
