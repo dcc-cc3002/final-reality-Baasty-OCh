@@ -33,7 +33,7 @@ abstract class ASpell extends Spell {
   /**
    * Applies the spell's effect to the target game unit.
    * @param gameUnit The game unit that the spell will affect. */
-  def Effect(gameUnit: GameUnit): Unit = {}
+  def Effect(gameUnit: GameUnit, proba: Int): Unit = {}
 
   /**
    * Retrieves the cost of the spell.

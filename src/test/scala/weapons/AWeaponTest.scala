@@ -106,4 +106,9 @@ class AWeaponTest extends FunSuite{
     assertEquals(Azteca.getOwner, Some(Maradona))
     assertEquals(Telstar.getOwner, Some(Mbappe))
   }
+  test("getMAP"){
+    assertEquals(Tango.getMAP,0)
+    assertEquals(Jabulani.getMAP,0)
+    assertEquals(Cachanna.getMAP,0)
+  }
 }

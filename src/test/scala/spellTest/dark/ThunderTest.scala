@@ -24,6 +24,7 @@ class ThunderTest extends FunSuite {
    * This variable is initialized in the beforeEach method.
    */
   var Brahim: BlackMagican = _
+  var Pedri: Enemy = _
 
   /**
    * Sets up the test environment before each test case.
@@ -34,6 +35,7 @@ class ThunderTest extends FunSuite {
   override def beforeEach(context: BeforeEach): Unit = {
     Thunder = new Thunder()
     Brahim = new BlackMagican("Brahim")
+    Pedri = new Enemy("Pedri")
   }
 
   /**
@@ -46,7 +48,8 @@ class ThunderTest extends FunSuite {
   test("Effect"){
     Brahim.putWeapon(new Staff())
     Brahim.selectSpell(Thunder)
-    Brahim.throwSpell(new Enemy("Pedri"))
+    Brahim.throwSpell(Pedri)
+    assertEquals(Pedri.getStatus,"Paralizado")
   }
 
 }
