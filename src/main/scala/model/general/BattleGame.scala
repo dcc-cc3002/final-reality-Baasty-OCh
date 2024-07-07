@@ -17,5 +17,4 @@ class BattleGame {
       controller.update()
     }
   }
-
 }

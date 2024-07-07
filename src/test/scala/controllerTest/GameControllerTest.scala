@@ -4,7 +4,7 @@ import controller.GameController
 import controller.states.player.InitialPlayerState
 import controller.states.TurnState
 import junit.framework.Assert
-import junit.framework.Assert.assertTrue
+import junit.framework.Assert.{assertFalse, assertNull, assertTrue}
 import model.general.{GameModel, GameUnit}
 import model.playable.common.Ninja
 import munit.FunSuite
@@ -32,6 +32,11 @@ class GameControllerTest extends FunSuite {
   test("hasFinished") {
     assertEquals(gameController.hasFinished(), false)
   }
+  test("WhiteFlag"){
+    assertEquals(gameController.WhiteFlag(),false)
+  }
+
+
 
   /**
    * Test to verify that the default state of the game controller is TurnState.
