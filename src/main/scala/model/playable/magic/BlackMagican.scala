@@ -23,6 +23,7 @@ class BlackMagican(name:String, healthPoints:Int,
 
 
 
+
   /**
    * "The auxiliary builder receives the name that the user chooses for their character
    *  and sets the other statistics according to the chosen class."

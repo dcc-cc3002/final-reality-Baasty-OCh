@@ -7,15 +7,28 @@ import model.playable.magic.{AMagicPlayable, MagicPlayable}
  * A spell has a cost, an effect on a target, and can be selected by certain players.
  * It can act on playables or enemies and is associated with a magician. */
 trait Spell {
+  /**
+   * The probability of the spell's effect occurring.
+   * Represented as an integer.
+   */
   val probability: Int
-  def name : String
 
   /**
-   * Abstract method to gets the cost of the spell.
+   * The name of the spell.
+   * Represented as a string.
+   */
+  def name: String
+
+  /**
+   * Abstract method to get the cost of the spell.
    * @return The cost of the spell as an integer. */
   def getCost: Int
 
+  /**
+   * Gets the name of the spell.
+   * @return The name of the spell as a string. */
   def getName: String
+}
 
   /**
    * Abstract method to applies the effect of the spell to the target.

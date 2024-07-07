@@ -291,6 +291,51 @@ abstract class APlayable(val name: String, var healthPoints: Int, var defensePoi
    */
   def dropSpell(): Unit = {}
 
+  /**
+   * Checks if the magic playable entity has a spell selected.
+   * @return An Option containing the selected spell if any, otherwise None.
+   */
+  override def hasSpell(): Option[Spell] = None
+
+  /**
+   * Checks if the magic playable entity has a weapon equipped.
+   * @return An Option containing the equipped weapon if any, otherwise None.
+   */
+  override def hasWeapon: Option[Weapon] = this.arma
+
+  /**
+   * Sets the status of the magic playable entity.
+   * @param newStatus The new status to be set.
+   */
+  override def setStatus(newStatus: String): Unit = {}
+
+  /**
+   * Identifies the entity as a common (non-magical) entity.
+   * @return The integer 1 indicating the entity is common.
+   */
+  override def IAmCommon(): Int = 1
+
+  /**
+   * Allows the magic playable entity to select a spell for casting.
+   * @param spell The spell to be selected.
+   * @return A message indicating the selection of the spell.
+   */
+  override def selectSpell(spell: Spell): String = "Nothing"
+
+  /**
+   * Throws a spell at a target GameUnit entity.
+   * @param target The target GameUnit entity.
+   * @return A message indicating the success of casting the spell.
+   */
+  override def throwSpell(target: GameUnit): String = "Nothing"
+
+  /**
+   * Retrieves the current mana points of the magic playable entity.
+   * @return The integer 0, indicating no mana points.
+   */
+  override def getMana: Int = 0
+
+
   // Initialize default weapons for the playable entity
   addWeapon(Some(Arco))
   addWeapon(Some(Espada))
