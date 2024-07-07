@@ -137,6 +137,7 @@ abstract class APlayable(val name: String, var healthPoints: Int,
   def dropWeapon(): Unit = {
     if (this.hasWeapon.nonEmpty) {
       this.hasWeapon.get.resetOwner()
+      this.setWeight(this.getWeight-this.arma.get.getWeight)
       this.arma = None
     } else {}
   }

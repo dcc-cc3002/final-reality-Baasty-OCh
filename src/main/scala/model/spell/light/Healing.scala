@@ -15,7 +15,7 @@ class Healing extends ALightSpell {
   /** The name of casting the Healing spell. */
   val name: String = "Healing"
 
-  override def Effect(gameUnit: GameUnit): Unit = {
+  override def Effect(gameUnit: GameUnit, chance: Int): Unit = {
     gameUnit.setHp(gameUnit.getHp + gameUnit.maxHp()/3)
   }
 

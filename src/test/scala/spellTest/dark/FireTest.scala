@@ -4,7 +4,7 @@ import model.nonplayable.Enemy
 import model.playable.magic.BlackMagican
 import model.spell.Spell
 import model.spell.dark.Fire
-import model.weapons.magic.Wand
+import model.weapons.magic.{Staff, Wand}
 import munit.FunSuite
 
 /**
@@ -45,12 +45,17 @@ class FireTest extends FunSuite {
   test("canSelectedBy") {
     assertEquals(Fire.canBeSelectedBy(Brahim), true)
   }
-  test("Effect"){
+  test("Effect with Wand"){
     Brahim.putWeapon(new Wand())
     Brahim.selectSpell(Fire)
-    Brahim.throwSpell(Pedri)
-   // assertEquals(Pedri.getStatus,"Quemado con Varita")
-
+    Fire.Effect(Pedri,1)
+    assertEquals(Pedri.getStatus,"Quemado con Varita")
+  }
+  test("Effect with Staff"){
+    Brahim.putWeapon(new Staff())
+    Brahim.selectSpell(Fire)
+    Fire.Effect(Pedri,1)
+    assertEquals(Pedri.getStatus,"Quemado con Baston")
   }
 
 }

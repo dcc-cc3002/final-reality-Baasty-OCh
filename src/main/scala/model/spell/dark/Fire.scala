@@ -14,16 +14,18 @@ class Fire extends ASpell {
     val randomValue = Random.nextDouble() // Genera un número aleatorio entre 0 y 1
     if (randomValue <= 0.2) 1 else 0 // Devuelve 1 con probabilidad de 20%, 0 en caso contrario
   }
+  override val probability: Int = probabilisticFunction()
   /** The cost of casting the Fire spell. */
   val cost: Int = 15
 
   /** The name of casting the Fire spell. */
   val name: String = "Fire"
 
-  override def Effect(gameUnit: GameUnit): Unit = {
+
+  override def Effect(gameUnit: GameUnit, chance: Int = probability): Unit = {
     val damage: Int = this.magician.get.arma.get.getMAP
     gameUnit.wasAttacked(damage)
-    if (probabilisticFunction() == 1){
+    if (chance == 1){
       if (damage == 60){gameUnit.setStatus("Quemado con Baston")}
       else {gameUnit.setStatus("Quemado con Varita")}
     } else {}

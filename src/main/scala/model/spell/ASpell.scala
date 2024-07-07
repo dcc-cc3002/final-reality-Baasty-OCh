@@ -15,6 +15,7 @@ abstract class ASpell extends Spell {
 
   /** The magician associated with this spell. */
   protected var magician: Option[MagicPlayable] = None
+  val probability: Int = 1
 
   /**
    * Determines if the spell can act on enemy units.
@@ -33,7 +34,7 @@ abstract class ASpell extends Spell {
   /**
    * Applies the spell's effect to the target game unit.
    * @param gameUnit The game unit that the spell will affect. */
-  def Effect(gameUnit: GameUnit, proba: Int): Unit = {}
+  def Effect(gameUnit: GameUnit, chance: Int): Unit = {}
 
   /**
    * Retrieves the cost of the spell.

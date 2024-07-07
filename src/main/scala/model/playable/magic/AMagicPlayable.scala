@@ -134,7 +134,7 @@ abstract class AMagicPlayable(name: String, healthPoints: Int,
       for (o <- attackObs) {
         o.notifySpellAttack(this, target, spell.get, 0)
       }
-      spell.get.Effect(target)
+      spell.get.Effect(target,spell.get.probability)
       this.dropSpell()
       "Nice spell"
     } catch {

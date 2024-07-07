@@ -7,6 +7,7 @@ import model.playable.magic.{AMagicPlayable, MagicPlayable}
  * A spell has a cost, an effect on a target, and can be selected by certain players.
  * It can act on playables or enemies and is associated with a magician. */
 trait Spell {
+  val probability: Int
   def name : String
 
   /**
@@ -19,7 +20,7 @@ trait Spell {
   /**
    * Abstract method to applies the effect of the spell to the target.
    * @param target The game unit that the spell will affect. */
-  def Effect(target: GameUnit): Unit
+  def Effect(target: GameUnit, chance: Int): Unit
 
   /**
    * Abstract method to determines if the spell can be selected by a given player.

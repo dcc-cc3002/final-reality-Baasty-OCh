@@ -15,7 +15,7 @@ class Poison extends ALightSpell {
   /** The name of casting the Poison spell. */
   val name: String = "Poison"
 
-  override def Effect(gameUnit: GameUnit): Unit = {
+  override def Effect(gameUnit: GameUnit, chance:Int): Unit = {
     val MagicWeapon: Weapon = this.magician.get.arma.get
     if (MagicWeapon.getName == "Baston"){
       gameUnit.setStatus("Envenenado con Baston")

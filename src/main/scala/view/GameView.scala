@@ -350,7 +350,7 @@ class GameView {
     queue.enqueue(s"PV de ${dest.getName} reducidos a ${dest.getHp}")
     queue.enqueue(s"DP de ${dest.getName} reducidos a ${dest.getDp}")
     if (dest.getHp == 0) queue.enqueue(s"${dest.getName} : ES CULPA DE NEGREIRAAAA")
-    else queue.enqueue("Buen golpe")
+    else {}
   }
 
   /**

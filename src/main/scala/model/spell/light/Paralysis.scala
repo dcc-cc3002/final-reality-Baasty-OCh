@@ -13,7 +13,7 @@ class Paralysis extends ALightSpell {
   /** The name of casting the Paralysis spell. */
   val name: String = "Paralysis"
 
-  override def Effect(gameUnit: GameUnit): Unit = {
+  override def Effect(gameUnit: GameUnit,chance: Int): Unit = {
     gameUnit.setStatus("Paralizado")
   }
 
