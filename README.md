@@ -116,8 +116,8 @@ Here's the translation:
 
 **Design Decisions-Exceptions:**
 To prevent the game from crashing at runtime in an "unexplainable" manner, we've adorned such crashes with exceptions. These prevent the code from breaking and cover certain quite plausible edge cases. Some of the most notable ones include: InvalidEnoughMana, InvalidAdditionParty, InvalidSelect[NameOfSpell], InvalidPut[NameOfWeapon]Exception.
-# Estados:
-![Diagram of states in game](Final_Diagram.png)
+# States:
+![Diagram of states in game](Diagram.png)
 
 
 
