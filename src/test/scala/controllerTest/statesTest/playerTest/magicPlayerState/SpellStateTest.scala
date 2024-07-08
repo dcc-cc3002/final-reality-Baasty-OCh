@@ -27,13 +27,10 @@ class SpellStateTest extends FunSuite{
     testState.pj.dropWeapon()
     testState.pj.selectSpell(new Fire())
   }
-  test("update to SpellState, if pj failed putting the spell"){
-    testState.pj.dropSpell()
-    testState.update(gameController,0)
-    assertEquals(gameController.state.isSpellState(),true)
-  }
+
   test("update to WeaponMagicState"){
     testState.update(gameController,1)
+    println(gameController.state)
     assertEquals(gameController.state.isWeaponMagicState(),true)
   }
   test("update to WeaponMagicState"){
@@ -51,6 +48,12 @@ class SpellStateTest extends FunSuite{
   test("update to WeaponMagicState"){
     testState.update(gameController,5)
     assertEquals(gameController.state.isWeaponMagicState(),true)
+  }
+  test("update to SpellState, if pj failed putting the spell"){
+    testState.pj.spell = None
+    testState.update(gameController,3)
+    println(gameController.state)
+    assertEquals(gameController.state.isSpellState(),true)
   }
 
 }

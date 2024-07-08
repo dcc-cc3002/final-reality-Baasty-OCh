@@ -170,7 +170,7 @@ class GameView {
   def displayEnemiesUnits(enemies: Party): Unit = {
     queue.enqueue("Status of enemies:")
     for (i <- enemies.buff.indices) {
-      if (enemies.buff(i).getHp == 0) {
+      if (enemies.buff(i).getStatus == "Dead") {
         queue.enqueue(s"${i+1}) ${ConsoleColors.RED}${enemies.buff(i).getName} " +
           s" || HP: ${enemies.buff(i).getHp} " +
           s" || DP: ${enemies.buff(i).getDp}" +
@@ -437,6 +437,10 @@ class GameView {
    */
   def displayErrorInvalidOption(choice: Int): Unit = {
     queue.enqueue(s"Invalid option ${choice}")
+  }
+
+  def displayNoMana(): Unit = {
+    queue.enqueue(s"The character has not enough mana to use his magic powers")
   }
 
   /**

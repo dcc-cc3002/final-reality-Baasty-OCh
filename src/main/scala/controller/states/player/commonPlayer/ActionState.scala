@@ -49,7 +49,7 @@ class ActionState(private val ally: GameUnit, val entities: TurnSchedule) extend
    * @param input The player's input choice.
    */
   override def update(controller: GameController, input: Int = choice): Unit = {
-    if (!ally.arma.isEmpty) { // has a weapon
+    if (ally.arma.isDefined) { // has a weapon
       input match {
         case 0 => controller.SetState(new SurrenderState(pj, people))
         case 1 => controller.SetState(new TargetState(pj, people))

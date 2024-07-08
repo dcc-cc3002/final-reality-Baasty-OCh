@@ -49,13 +49,13 @@ class FireTest extends FunSuite {
     Brahim.putWeapon(new Wand())
     Brahim.selectSpell(Fire)
     Fire.Effect(Pedri,1)
-    assertEquals(Pedri.getStatus,"Quemado con Varita")
+    assertEquals(Pedri.getStatus,"Burned with Wand")
   }
   test("Effect with Staff"){
     Brahim.putWeapon(new Staff())
     Brahim.selectSpell(Fire)
     Fire.Effect(Pedri,1)
-    assertEquals(Pedri.getStatus,"Quemado con Baston")
+    assertEquals(Pedri.getStatus,"Burned with Staff")
   }
 
 }

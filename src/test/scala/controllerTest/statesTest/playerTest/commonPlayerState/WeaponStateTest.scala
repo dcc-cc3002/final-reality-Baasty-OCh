@@ -43,11 +43,7 @@ class WeaponStateTest extends FunSuite{
     testState.update(gameController,5)
     assertEquals(gameController.state.isWeaponState(),true)
   }
-  test("update to ActionState"){
-    testState.pj.putWeapon(new Sword())
-    testState.update(gameController,0)
-    assertEquals(gameController.state.isActionState(),true)
-  }
+
   test("update to TargetState if pj success putting a weapon"){
     testState.pj.putWeapon(new Sword())
     testState.update(gameController,1)

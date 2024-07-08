@@ -25,6 +25,21 @@ class ActionStateTest extends FunSuite{
 
   override def beforeEach(context: BeforeEach): Unit = {
     testState = new ActionState(gameController.state.pj,gameModel.participants)
+    testState.pj.dropWeapon()
+  }
+  test("update to SurrenderState"){
+    testState.update(gameController,0)
+    assertEquals(gameController.state.isSurrenderState(),true)
+  }
+  test("update to WeaponState to attack"){
+    testState.update(gameController,1)
+    println(gameController.state)
+    assertEquals(gameController.state.isWeaponState(),true)
+  }
+  test("update to WeaponState to change weapon"){
+
+    testState.update(gameController,2)
+    assertEquals(gameController.state.isWeaponState(),true)
   }
   test("update to SurrenderState with army pj"){
     testState.pj.putWeapon(new Sword())
@@ -42,19 +57,7 @@ class ActionStateTest extends FunSuite{
     assertEquals(gameController.state.isWeaponState(),true)
   }
 
-  test("update to SurrenderState"){
-    testState.update(gameController,0)
-    assertEquals(gameController.state.isSurrenderState(),true)
-  }
-  test("update to WeaponState to attack"){
-    testState.update(gameController,1)
-    assertEquals(gameController.state.isWeaponState(),true)
-  }
-  test("update to WeaponState to change weapon"){
 
-    testState.update(gameController,2)
-    assertEquals(gameController.state.isWeaponState(),true)
-  }
 
 
 }

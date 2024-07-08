@@ -349,6 +349,9 @@ class GameController(private val model: GameModel, private val view: GameView) {
   def notifyErrorInvalidOption(choice: Int): Unit = {
     view.displayErrorInvalidOption(choice)
   }
+  def notifyNoMana(): Unit = {
+    view.displayNoMana()
+  }
 
   /**
    * Checks if the player has won the game.

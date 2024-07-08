@@ -32,27 +32,27 @@ class InitialEnemyStateTest extends FunSuite{
     assertEquals(gameController.state.isTargetEnemyState(),true)
   }
   test("update to ParalysisState") {
-    testState.pj.setStatus("Paralizado")
+    testState.pj.setStatus("Paralyzed")
     testState.update(gameController, 0)
     assertEquals(gameController.state.isParalyzedState(), true)
   }
   test("update to PoisonedState"){
-    testState.pj.setStatus("Envenenado con Baston")
+    testState.pj.setStatus("Poisoned with Staff")
     testState.update(gameController, 0)
     assertEquals(gameController.state.isPoisonedState(), true)
   }
   test("update to PoisonedState"){
-    testState.pj.setStatus("Envenenado con Varita")
+    testState.pj.setStatus("Poisoned with Wand")
     testState.update(gameController, 0)
     assertEquals(gameController.state.isPoisonedState(), true)
   }
   test("update to BurnedState"){
-    testState.pj.setStatus("Quemado con Varita")
+    testState.pj.setStatus("Burned with Staff")
     testState.update(gameController, 0)
     assertEquals(gameController.state.isBurnedState(), true)
   }
   test("update to PoisonedState"){
-    testState.pj.setStatus("Quemado con Varita")
+    testState.pj.setStatus("Burned with Wand")
     testState.update(gameController, 0)
     assertEquals(gameController.state.isBurnedState(), true)
   }

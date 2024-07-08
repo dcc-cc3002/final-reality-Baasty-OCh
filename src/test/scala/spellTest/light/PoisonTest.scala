@@ -52,12 +52,12 @@ class PoisonTest extends FunSuite {
     Guler.putWeapon(w1)
     Guler.selectSpell(Poison)
     Guler.throwSpell(Yamal)
-    assertEquals(Yamal.getStatus, "Envenenado con Baston")
+    assertEquals(Yamal.getStatus, "Poisoned with Staff")
     val w2: Weapon = new Wand()
     Guler.putWeapon(w2)
     Guler.selectSpell(Poison)
     Guler.throwSpell(Yamal)
-    assertEquals(Yamal.getStatus, "Envenenado con Varita")
+    assertEquals(Yamal.getStatus, "Poisoned with Wand")
 
   }
 }

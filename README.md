@@ -82,6 +82,10 @@ Used to define common functionalities that can be shared among multiple classes,
 
 ### Conclusion
 
+![Diagram of states in game](Final_Diagram.png)
+
+
+
 Final Reality is an educational project that uses programming concepts to create a simplified game. The organization of code into packages and the use of design patterns such as inheritance and traits make the code modular, readable, and easy to maintain.
 This project is licensed under the
 [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).

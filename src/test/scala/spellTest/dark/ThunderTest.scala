@@ -49,7 +49,7 @@ class ThunderTest extends FunSuite {
     Brahim.putWeapon(new Staff())
     Brahim.selectSpell(Thunder)
     Thunder.Effect(Pedri,1)
-    assertEquals(Pedri.getStatus,"Paralizado")
+    assertEquals(Pedri.getStatus,"Paralyzed")
   }
 
 }

@@ -25,6 +25,8 @@ abstract class APlayable(val name: String, var healthPoints: Int, var defensePoi
   require(defensePoints >= 0, "Defense points must be non-negative.")
   require(weight >= 0, "Weight must be non-negative.")
 
+  var arma: Option[Weapon] = None
+  var spell: Option[Spell] = None
   protected var attackObs = ArrayBuffer.empty[ObserverAttack]
   private val _weapons = ArrayBuffer.empty[Weapon]
   private val Arco: Weapon = new Bow()
@@ -162,11 +164,13 @@ abstract class APlayable(val name: String, var healthPoints: Int, var defensePoi
   /**
    * Drops the weapon currently equipped by the playable entity.
    */
+  /**
+   * Drops the weapon currently equipped by the playable entity. */
   def dropWeapon(): Unit = {
     if (this.hasWeapon.nonEmpty) {
       this.hasWeapon.get.resetOwner()
-      this.setWeight(this.getWeight - this.hasWeapon.get.getWeight)
-      this._weapons.clear()
+      this.setWeight(this.getWeight-this.arma.get.getWeight)
+      this.arma = None
     } else {}
   }
 
@@ -313,21 +317,21 @@ abstract class APlayable(val name: String, var healthPoints: Int, var defensePoi
    * Identifies the entity as a common (non-magical) entity.
    * @return The integer 1 indicating the entity is common.
    */
-  override def IAmCommon(): Int = 1
+  override def IAmCommon(): Int = 0
 
   /**
    * Allows the magic playable entity to select a spell for casting.
    * @param spell The spell to be selected.
    * @return A message indicating the selection of the spell.
    */
-  override def selectSpell(spell: Spell): String = "Nothing"
+  override def selectSpell(spell: Spell): String = "nothing"
 
   /**
    * Throws a spell at a target GameUnit entity.
    * @param target The target GameUnit entity.
    * @return A message indicating the success of casting the spell.
    */
-  override def throwSpell(target: GameUnit): String = "Nothing"
+  override def throwSpell(target: GameUnit): String = "nothing"
 
   /**
    * Retrieves the current mana points of the magic playable entity.
@@ -336,11 +340,6 @@ abstract class APlayable(val name: String, var healthPoints: Int, var defensePoi
   override def getMana: Int = 0
 
 
-  // Initialize default weapons for the playable entity
-  addWeapon(Some(Arco))
-  addWeapon(Some(Espada))
-  addWeapon(Some(Hacha))
-  addWeapon(Some(Baston))
-  addWeapon(Some(Varita))
+
 
 }

@@ -132,11 +132,11 @@ class AEnemyTest extends FunSuite {
   }
 
   /**
-   * Test case for the 'wasInjure' method.
-   * This test checks the functionality of the wasInjure method by simulating Neymar being attacked with different damage values.
+   * Test case for the 'wasAttacked' method.
+   * This test checks the functionality of the wasAttacked method by simulating Neymar being attacked with different damage values.
    * It verifies if Neymar's life points decrease correctly after being attacked.
    */
-  test("wasInjure"){
+  test("wasAttacked"){
     Neymar.wasAttacked(25)
     assertEquals(Neymar.getHp,225)
     Neymar.wasAttacked(300)

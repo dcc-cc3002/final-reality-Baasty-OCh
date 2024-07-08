@@ -61,7 +61,13 @@ class SpellState(var ally: GameUnit, var entities: TurnSchedule) extends AGameSt
     if (pj.spell.isEmpty) {
       controller.SetState(new SpellState(pj, people))
       controller.notifyInvalidSpell()
-    } else {
+    } else if (selected.isDefined ){
+      if((pj.getMana < selected.get.getCost)) {
+        controller.SetState(new ActionMagicState(pj,people))
+        controller.notifyNoMana()
+      } else{}
+    }
+    else {
       input match {
         case 1 => controller.SetState(new WeaponMagicState(pj, selected, people))
         case 2 => controller.SetState(new WeaponMagicState(pj, selected, people))

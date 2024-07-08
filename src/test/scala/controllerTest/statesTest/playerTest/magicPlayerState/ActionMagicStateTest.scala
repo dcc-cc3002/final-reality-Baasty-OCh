@@ -28,6 +28,26 @@ class ActionMagicStateTest extends FunSuite{
     testState.pj.dropSpell()
     testState.pj.dropWeapon()
   }
+  test("update to SurrenderState"){
+    testState.update(gameController,0)
+    assertEquals(gameController.state.isSurrenderState(),true)
+  }
+  test("update to WeaponMagicState"){
+    testState.update(gameController,1)
+    assertEquals(gameController.state.isWeaponMagicState(),true)
+  }
+  test("update to SpellState"){
+    testState.update(gameController,2)
+    assertEquals(gameController.state.isSpellState(),true)
+  }
+  test("update to WeaponMagicState"){
+    testState.update(gameController,3)
+    assertEquals(gameController.state.isWeaponMagicState(),true)
+  }
+  test("update to SpellState"){
+    testState.update(gameController,4)
+    assertEquals(gameController.state.isSpellState(),true)
+  }
   test("update to SurrenderState , if pj has a weapon"){
     testState.pj.putWeapon(new Wand())
     testState.update(gameController,0)
@@ -63,26 +83,7 @@ class ActionMagicStateTest extends FunSuite{
     testState.update(gameController,4)
     assertEquals(gameController.state.isSpellState(),true)
   }
-  test("update to SurrenderState"){
-    testState.update(gameController,0)
-    assertEquals(gameController.state.isSurrenderState(),true)
-  }
-  test("update to WeaponMagicState"){
-    testState.update(gameController,1)
-    assertEquals(gameController.state.isWeaponMagicState(),true)
-  }
-  test("update to SpellState"){
-    testState.update(gameController,2)
-    assertEquals(gameController.state.isSpellState(),true)
-  }
-  test("update to WeaponMagicState"){
-    testState.update(gameController,3)
-    assertEquals(gameController.state.isWeaponMagicState(),true)
-  }
-  test("update to SpellState"){
-    testState.update(gameController,4)
-    assertEquals(gameController.state.isSpellState(),true)
-  }
+
 
 
 }

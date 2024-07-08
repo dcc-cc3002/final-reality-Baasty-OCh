@@ -12,8 +12,8 @@ import scala.collection.mutable.ArrayBuffer
 trait GameUnit {
 
   /** Optionally holds a weapon for the game unit. */
-  var arma: Option[Weapon] = None
-  var spell: Option[Spell] = None
+  var arma: Option[Weapon]
+  var spell: Option[Spell]
 
   /**
    * Gets the name of the game unit.

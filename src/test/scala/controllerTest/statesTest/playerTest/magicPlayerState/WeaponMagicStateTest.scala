@@ -35,7 +35,7 @@ class WeaponMagicStateTest extends FunSuite{
   }
   test("update to WeaponMagicState, if pj failed putting a weapon"){
     testState.pj.dropWeapon()
-    testState.update(gameController,0)
+    testState.update(gameController,1)
     assertEquals(gameController.state.isWeaponMagicState(),true)
   }
   test("update to WeaponMagicState, if spell is Healing"){

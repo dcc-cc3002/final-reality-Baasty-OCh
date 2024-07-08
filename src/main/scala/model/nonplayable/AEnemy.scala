@@ -32,6 +32,9 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
   private val attackObs = ArrayBuffer.empty[ObserverAttack]
   private val _weapons = ArrayBuffer.empty[Weapon]
 
+  var arma: Option[Weapon] = None
+  var spell: Option[Spell] = None
+
   /**
    * Retrieves a clone of the weapons currently equipped by the enemy.
    * @return A clone of the ArrayBuffer containing the enemy's weapons.
@@ -96,10 +99,9 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
    */
   def setHp(newLife: Int): Unit = {
     if (newLife == 0) {
-      this.setStatus("Muerto")
-    } else {
-      this.life = newLife
-    }
+      this.setStatus("Dead")
+    } else {}
+    this.life = newLife
   }
 
   /**
@@ -228,8 +230,7 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
 
   /**
    * Simulates the enemy being attacked.
-   * @param damage The amount of damage inflicted on the enemy.
-   */
+   * @param damage The amount of damage inflicted on the enemy. */
   def wasAttacked(damage: Int): Unit = {
     this.setDp(0)
     if (this.life >= damage) {

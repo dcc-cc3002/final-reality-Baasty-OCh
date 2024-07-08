@@ -67,8 +67,8 @@ class GameModel {
    */
   def init(controller: GameController): Unit = {
     // Create and register ally units
-    val Cristiano: Playable = new Warrior("Cristiano")
-    val Vini: Playable = new WhiteMagican("Vinicius")
+    val Cristiano: Playable = new Warrior("Cristiano",350,100,20)
+    val Vini: Playable = new WhiteMagican("Vinicius",150,150,15,50)
     val Zidane: Playable = new BlackMagican("Zidane", 300, 100, 10, 100)
     val Modric: Playable = new Ninja("Modric")
     controller.registerAllyUnit(Cristiano)
@@ -78,8 +78,8 @@ class GameModel {
 
     // Create and register enemy units
     val Messi: NonPlayable = new Enemy("Messi", 250, 50, 55, 30, "Healthy")
-    val Guardiola: NonPlayable = new Enemy("Guardiola")
-    val Laporta: NonPlayable = new Enemy("Laporta")
+    val Guardiola: NonPlayable = new Enemy("Guardiola",150,150,65,40,"Healthy")
+    val Laporta: NonPlayable = new Enemy("Laporta",300,50,100,100,"Healthy")
     controller.registerEnemyUnit(Messi)
     controller.registerEnemyUnit(Guardiola)
     controller.registerEnemyUnit(Laporta)

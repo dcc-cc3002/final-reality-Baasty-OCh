@@ -51,7 +51,7 @@ class ParalysisTest extends FunSuite {
     Guler.putWeapon(w)
     Guler.selectSpell(Paralysis)
     Guler.throwSpell(Yamal)
-    assertEquals(Yamal.getStatus, "Paralizado")
+    assertEquals(Yamal.getStatus, "Paralyzed")
 
   }
 }
