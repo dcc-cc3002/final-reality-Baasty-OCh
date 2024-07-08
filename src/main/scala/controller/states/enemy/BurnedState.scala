@@ -1,7 +1,7 @@
 package controller.states.enemy
 
 import controller.GameController
-import controller.states.AGameState
+import controller.states.{AGameState, TurnState}
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
@@ -42,7 +42,10 @@ class BurnedState(var enemy: GameUnit, var entities: TurnSchedule) extends AGame
       }
       cnt += 1
       // Transition to the next state
-      controller.SetState(new TargetEnemyState(pj, people))
+      if(pj.getHp == 0){
+        controller.SetState(new TurnState(people))
+      } else {
+      controller.SetState(new TargetEnemyState(pj, people))}
     } else {
       // Resetting the enemy's status after the burn effect ends
       pj.setStatus("Healthy")

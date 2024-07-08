@@ -119,11 +119,60 @@ To prevent the game from crashing at runtime in an "unexplainable" manner, we've
 # Estados:
 ![Diagram of states in game](Final_Diagram.png)
 
-Here's the translation:
 
-**TurnState:**
+
+## TurnState:
 God in person, the initial and final state of the game, everything goes through here, He decides it all. It receives a TurnSchedule with the combat participants (allies and enemies). Based on their weight, it calculates who plays first and passes the baton to the next state (as appropriate).
 In the specific game model implemented in GameModel, the character Zidane has the lowest weight. Therefore (since he isn't armed from the beginning), he is the one who starts playing. I will continue detailing the gameplay flow from his perspective...
+
+
+## InitialPlayerState:
+The starting state of a player's turn, it notifies that the turn has begun and prepares the environment for it. The update directs us towards UnitState.
+
+## UnitState:
+In this state, we discern whether the player for this turn is magical or common. Since in this example, the player is magical, we will follow that gameplay flow.
+
+## ActionMagicState:
+Here, a wider range of options opens up for execution. The state presents different options such as: leaving the game, attacking, attacking with magic, changing the weapon, or changing the spell. Depending on our choice, we will proceed accordingly. For this example, we will attack with magic, moving to SpellState.
+
+## SpellState:
+Here, as expected, we choose the spell we want to equip. All spells in the game are displayed, but we will only proceed to choose a weapon if we select a dark spell (for our Black Mage). Both fire and thunder will lead us to WeaponMagicState.
+
+## WeaponMagicState:
+Derived from the SpellState, we are "obligated" to select a magical weapon (provided another character is not using it). The options are Wand and Staff, and either choice will send us to TargetMagicState.
+
+## TargetMagicState:
+Once we have selected our spell and equipped our magical weapon, we only need to choose the final target. The party of enemies from the GameModel is displayed on the screen, showing the options. As long as the enemy is alive, choosing it will lead us to FinalMagicState.
+
+## FinalMagicState:
+Here, the corresponding attack action is executed. In this case, the spell is cast on our target, and we close the cycle, returning to TurnState.
+
+## InitialEnemyState:
+Now it's the enemy's turn. This state notifies that it begins and will check the enemy's state to act. Suppose our character cast fire on the enemy, and it got burned. If that is the case, the enemy's state will be "Burned with [Nameofweapon]", leading to BurnedState.
+
+## BurnedState:
+Here, the "secondary" effects of being burned are applied. The enemy loses life relative to the weapon with which it was burned and continues playing (if it dies after these effects, it directly returns to TurnState).
+
+## TargetEnemyState:
+If the enemy survived its current state, it will choose whom to attack. The selection is made randomly (respecting the rule of not attacking dead targets) and will move to FinalEnemyState.
+
+## FinalEnemyState:
+Here, the enemy's single attack action is executed, returning to TurnState.
+
+## ActionState:
+Suppose the next player to play is not magical but a paladin. This player will have only three options: leave the game, attack, or change the weapon. If the player wants to change their weapon, they will go to WeaponState.
+
+## WeaponState:
+All weapons are displayed here, similar to before, along with a message indicating that not all are selectable, depending on availability. We proceed accordingly (if an unavailable option is chosen, we return to WeaponState until a valid option is selected). Suppose the sword is chosen; it has 70 AP and 70 WP, and the weight is added to the player (which will count towards calculating their next turn).
+
+## TargetState:
+Same as TargetMagicState.
+
+## FinalState:
+Same as FinalMagicState.
+
+## ParalyzedState:
+A particular state (since poison is very similar to burned) is the paralyzed state. If the InitialEnemyState detects that the enemy is in this state, it moves to "ParalyzedState", which directly connects to TurnState and ends the turn (the state is cleared depending on the turn).
 
 
 Final Reality is an educational project that uses programming concepts to create a simplified game. The organization of code into packages and the use of design patterns such as inheritance and traits make the code modular, readable, and easy to maintain.

@@ -13,7 +13,7 @@ import model.spell.Spell
  * @param entities The turn schedule containing game entities.
  */
 class SpellState(var ally: GameUnit, var entities: TurnSchedule) extends AGameState {
-  private var selected: Option[Spell] = None
+  var selected: Option[Spell] = None
   var pj: GameUnit = ally
   var people: TurnSchedule = entities
   var choice: Int = 0
