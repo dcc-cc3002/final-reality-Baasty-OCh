@@ -108,26 +108,22 @@ Here lies the key to the game itself. Allies, enemies, weapons, and their charac
 ### BattleGame:
 Here, some controller methods are connected through the `run` method to "start" the game.
 
+
 ## Design Decisions-View:
+While the task is aimed for the subject assistants to test and approve it, I wanted to make the view as explanatory as possible. Therefore, I implemented many "unnecessary" methods that only add more depth to the game itself and to the user experience. Some of these include adding colors to characters according to their state, notifying when attempting to choose an improper weapon or spell without sufficient Mana, etc.
 
-#### Controller Package:
-Contains classes that control the game flow, such as turn management and battle.
+Here's the translation:
 
-#### Test Package:
-Contains unit tests to verify the correct functioning of the code.
-
-### Design Patterns Used
-
-#### Inheritance:
-Used to model the relationship between abstract and concrete classes, allowing code reuse and behavior specialization.
-
-#### Traits:
-Used to define common functionalities that can be shared among multiple classes, promoting code reuse and modularity.
-
-### Conclusion
-
+**Design Decisions-Exceptions:**
+To prevent the game from crashing at runtime in an "unexplainable" manner, we've adorned such crashes with exceptions. These prevent the code from breaking and cover certain quite plausible edge cases. Some of the most notable ones include: InvalidEnoughMana, InvalidAdditionParty, InvalidSelect[NameOfSpell], InvalidPut[NameOfWeapon]Exception.
+# Estados:
 ![Diagram of states in game](Final_Diagram.png)
 
+Here's the translation:
+
+**TurnState:**
+God in person, the initial and final state of the game, everything goes through here, He decides it all. It receives a TurnSchedule with the combat participants (allies and enemies). Based on their weight, it calculates who plays first and passes the baton to the next state (as appropriate).
+In the specific game model implemented in GameModel, the character Zidane has the lowest weight. Therefore (since he isn't armed from the beginning), he is the one who starts playing. I will continue detailing the gameplay flow from his perspective...
 
 
 Final Reality is an educational project that uses programming concepts to create a simplified game. The organization of code into packages and the use of design patterns such as inheritance and traits make the code modular, readable, and easy to maintain.
