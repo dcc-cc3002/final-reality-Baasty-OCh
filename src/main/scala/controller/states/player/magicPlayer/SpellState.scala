@@ -65,15 +65,14 @@ class SpellState(var ally: GameUnit, var entities: TurnSchedule) extends AGameSt
       if((pj.getMana < selected.get.getCost)) {
         controller.SetState(new ActionMagicState(pj,people))
         controller.notifyNoMana()
-      } else{}
-    }
-    else {
-      input match {
-        case 1 => controller.SetState(new WeaponMagicState(pj, selected, people))
-        case 2 => controller.SetState(new WeaponMagicState(pj, selected, people))
-        case 3 => controller.SetState(new WeaponMagicState(pj, selected, people))
-        case 4 => controller.SetState(new WeaponMagicState(pj, selected, people))
-        case 5 => controller.SetState(new WeaponMagicState(pj, selected, people))
+      } else {
+        input match {
+          case 1 => controller.SetState(new WeaponMagicState(pj, selected, people))
+          case 2 => controller.SetState(new WeaponMagicState(pj, selected, people))
+          case 3 => controller.SetState(new WeaponMagicState(pj, selected, people))
+          case 4 => controller.SetState(new WeaponMagicState(pj, selected, people))
+          case 5 => controller.SetState(new WeaponMagicState(pj, selected, people))
+        }
       }
     }
   }
