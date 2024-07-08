@@ -32,15 +32,15 @@ class InitialEnemyState(val entities: TurnSchedule, val src: GameUnit) extends A
    * @param input      Optional input parameter (not used in this state).
    */
   override def update(controller: GameController, input:Int = choice): Unit = {
-    if (pj.getStatus == "Paralyzed") {
-      controller.SetState(new ParalyzedState(pj, people))
-    } else if (pj.getStatus == "Poisoned with Staff" || pj.getStatus == "Poisoned with Wand") {
-      controller.SetState(new PoisonedState(pj, people))
-    } else if (pj.getStatus == "Burned with Staff" || pj.getStatus == "Burned with Wand") {
-      controller.SetState(new BurnedState(pj, people))
-    } else {
-      controller.SetState(new TargetEnemyState(pj, people))
+    if (pj.getStatus == "Paralyzed") {controller.SetState(new ParalyzedState(pj, people))}
+
+    else if (pj.getStatus == "Poisoned with Staff" || pj.getStatus == "Poisoned with Wand"){
+               controller.SetState(new PoisonedState(pj, people))
     }
+    else if (pj.getStatus == "Burned with Staff" || pj.getStatus == "Burned with Wand") {
+             controller.SetState(new BurnedState(pj, people))
+    }
+    else {controller.SetState(new TargetEnemyState(pj, people))}
   }
 
   /**

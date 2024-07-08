@@ -41,6 +41,7 @@ class Fire extends ASpell {
         gameUnit.setStatus("Burned with Staff")
       } else {
         gameUnit.setStatus("Burned with Wand")
+
       }
     }
   }

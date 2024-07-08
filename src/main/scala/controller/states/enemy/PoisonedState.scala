@@ -1,7 +1,7 @@
 package controller.states.enemy
 
 import controller.GameController
-import controller.states.AGameState
+import controller.states.{AGameState, TurnState}
 import model.general.GameUnit
 import model.general.schedule.TurnSchedule
 
@@ -12,7 +12,6 @@ import model.general.schedule.TurnSchedule
  * @param entities The turn schedule containing all game units.
  */
 class PoisonedState(var enemy: GameUnit, var entities: TurnSchedule) extends AGameState {
-  var cnt: Int = 0
   var pj: GameUnit = enemy
   var people: TurnSchedule = entities
   var choice: Int = 0
@@ -35,17 +34,23 @@ class PoisonedState(var enemy: GameUnit, var entities: TurnSchedule) extends AGa
    * @param input      Optional input parameter (not used in this state).
    */
   override def update(controller: GameController, input: Int = choice): Unit = {
-    if (cnt < 4) { // Apply damage over 4 turns
+    if (pj.cnt < 4) {
+      // Damage calculation based on the type of burn status
       if (pj.getStatus == "Poisoned with Staff") {
-        pj.wasAttacked(20)
-      } else { // "Poisoned with Wand"
-        pj.wasAttacked(10)
+        pj.wasAttacked(30)
+      } else {
+        pj.wasAttacked(15)
       }
-      cnt += 1
-      controller.SetState(new TargetEnemyState(pj, people))
+      pj.cnt += 1
+      // Transition to the next state
+      if(pj.getHp == 0){
+        controller.SetState(new TurnState(people))
+      } else {
+        controller.SetState(new TargetEnemyState(pj, people))}
     } else {
-      // Reset the enemy unit's status to "Healthy" when poison effect expires
+      // Resetting the enemy's status after the burn effect ends
       pj.setStatus("Healthy")
+      // Transition to the next state
       controller.SetState(new TargetEnemyState(pj, people))
     }
   }

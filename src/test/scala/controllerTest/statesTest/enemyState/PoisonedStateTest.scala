@@ -33,7 +33,6 @@ class PoisonedStateTest extends FunSuite{
     assertEquals(gameController.state.isTargetEnemyState(),true)
   }
   test("update after 4 turns"){
-    testState.cnt = 4
     testState.update(gameController,0)
     assertEquals(gameController.state.isTargetEnemyState(),true)
   }

@@ -174,6 +174,8 @@ Same as FinalMagicState.
 ## ParalyzedState:
 A particular state (since poison is very similar to burned) is the paralyzed state. If the InitialEnemyState detects that the enemy is in this state, it moves to "ParalyzedState", which directly connects to TurnState and ends the turn (the state is cleared depending on the turn).
 
+## Coverage:
+Si bien el All es 86%, el profesor dijo que no habia que contar la view, el porcetaje de los 3 grandes paquetes es 90%
 
 Final Reality is an educational project that uses programming concepts to create a simplified game. The organization of code into packages and the use of design patterns such as inheritance and traits make the code modular, readable, and easy to maintain.
 This project is licensed under the

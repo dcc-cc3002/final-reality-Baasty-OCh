@@ -33,19 +33,19 @@ class BurnedState(var enemy: GameUnit, var entities: TurnSchedule) extends AGame
    * @param input      Optional input parameter (not used in this state).
    */
   override def update(controller: GameController, input: Int = choice): Unit = {
-    if (cnt < 4) {
+    if (pj.cnt < 4) {
       // Damage calculation based on the type of burn status
       if (pj.getStatus == "Burned with Staff") {
         pj.wasAttacked(30)
       } else {
         pj.wasAttacked(15)
       }
-      cnt += 1
+      pj.cnt += 1
       // Transition to the next state
       if(pj.getHp == 0){
         controller.SetState(new TurnState(people))
       } else {
-      controller.SetState(new TargetEnemyState(pj, people))}
+        controller.SetState(new TargetEnemyState(pj, people))}
     } else {
       // Resetting the enemy's status after the burn effect ends
       pj.setStatus("Healthy")
@@ -53,7 +53,6 @@ class BurnedState(var enemy: GameUnit, var entities: TurnSchedule) extends AGame
       controller.SetState(new TargetEnemyState(pj, people))
     }
   }
-
   /**
    * Indicates whether this state represents an enemy unit that is burned.
    *

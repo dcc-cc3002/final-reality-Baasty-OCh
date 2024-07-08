@@ -14,6 +14,7 @@ trait GameUnit {
   /** Optionally holds a weapon for the game unit. */
   var arma: Option[Weapon]
   var spell: Option[Spell]
+  var cnt: Int
 
   /**
    * Gets the name of the game unit.

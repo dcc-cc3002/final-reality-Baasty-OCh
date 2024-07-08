@@ -27,6 +27,7 @@ abstract class APlayable(val name: String, var healthPoints: Int, var defensePoi
 
   var arma: Option[Weapon] = None
   var spell: Option[Spell] = None
+  var cnt : Int = 0
   protected var attackObs = ArrayBuffer.empty[ObserverAttack]
   private val _weapons = ArrayBuffer.empty[Weapon]
   private val Arco: Weapon = new Bow()

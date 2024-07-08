@@ -20,7 +20,6 @@ class Poison extends ALightSpell {
     if (MagicWeapon.getName == "Baston"){
       gameUnit.setStatus("Poisoned with Staff")
     } else gameUnit.setStatus("Poisoned with Wand")
-
   }
 
   /**

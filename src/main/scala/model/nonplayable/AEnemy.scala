@@ -34,6 +34,7 @@ protected abstract class AEnemy(val name: String, var life: Int, var defence: In
 
   var arma: Option[Weapon] = None
   var spell: Option[Spell] = None
+  var cnt: Int = 0
 
   /**
    * Retrieves a clone of the weapons currently equipped by the enemy.
