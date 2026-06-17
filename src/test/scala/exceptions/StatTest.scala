@@ -1,5 +1,6 @@
 package exceptions
 
+import munit.FunSuite
 class StatTest extends munit.FunSuite {
   private val statName = "testStat"
   private val testRange = 1 to 10
