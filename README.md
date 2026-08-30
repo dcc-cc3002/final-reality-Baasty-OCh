@@ -3,6 +3,8 @@
 Final Reality is a simplified clone of the renowned game, Final Fantasy. Its main purpose is to
 serve as an educational tool, teaching foundational programming concepts.
 
+this game will be selling more than final fantasy...
+
 This README is yours to complete it. Take this opportunity to describe your contributions, the
 design decisions you've made, and any other information you deem necessary.
 
